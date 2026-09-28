@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offerwax - Earn Rewards</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #050914;
+      color: white;
+      padding-bottom: 85px;
+    }
+
+    /* HEADER */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: rgba(5, 9, 20, 0.96);
+      border-bottom: 1px solid #172033;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #b82cff;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .balance {
+      background: #131b2b;
+      padding: 9px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #131b2b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 14px;
+    }
+
+    /* BANNER */
+    .banner {
+      min-height: 190px;
+      border-radius: 22px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 85% 20%, #ec39ff 0%, transparent 30%),
+        linear-gradient(135deg, #6414d9, #132cbb);
+      box-shadow: 0 12px 40px rgba(86, 36, 255, .22);
+    }
+
+    .banner-tag {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #d9c7ff;
+    }
+
+    .banner h1 {
+      font-size: 29px;
+      line-height: 1.05;
+      max-width: 290px;
+      margin-bottom: 10px;
+    }
+
+    .banner p {
+      max-width: 290px;
+      color: #eee8ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .banner button {
+      width: fit-content;
+      margin-top: 16px;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      color: #4112a5;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #48536a;
+    }
+
+    .dot.active {
+      width: 18px;
+      border-radius: 10px;
+      background: #a72bff;
+    }
+
+    /* SECTION */
+    .section {
+      margin-top: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-size: 18px;
+    }
+
+    .section-title a {
+      color: #9e55ff;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    /* HIGH PAYING */
+    .high-card {
+      background: linear-gradient(135deg, #111a35, #22115a);
+      border: 1px solid #5632c9;
+      padding: 16px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .high-left {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .offer-logo {
+      width: 52px;
+      height: 52px;
+      background: white;
+      color: #171717;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .offer-info h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .offer-info p {
+      color: #9ca9bd;
+      font-size: 11px;
+    }
+
+    .reward {
+      color: #43e99a;
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    /* SMALL OFFER CARDS */
+    .offers-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 7px;
+      scrollbar-width: none;
+    }
+
+    .offers-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .small-card {
+      min-width: 125px;
+      background: #0e1626;
+      border: 1px solid #1e2b43;
+      border-radius: 17px;
+      padding: 13px;
+      cursor: pointer;
+    }
+
+    .small-logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: white;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .small-card h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .small-card p {
+      color: #48e99d;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .small-card .type {
+      color: #8794aa;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    /* INFO */
+    .notice {
+      margin-top: 20px;
+      background: #0c1423;
+      border: 1px solid #1d2940;
+      border-radius: 16px;
+      padding: 15px;
+      color: #aeb9ca;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      z-index: 200;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 12, 23, .97);
+      border-top: 1px solid #1b273a;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 4px 12px;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #7f8da3;
+      text-align: center;
+      font-size: 10px;
+      min-width: 52px;
+    }
+
+    .nav-icon {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item.active {
+      color: #c23cff;
+      font-weight: bold;
+    }
+
+    @media (min-width: 700px) {
+      .bottom-nav {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 600px;
+        border-left: 1px solid #1b273a;
+        border-right: 1px solid #1b273a;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">Offer<span>wax</span></div>
+
+    <div class="header-right">
+      <div class="balance">🔥 ₹0</div>
+      <div class="icon" title="Notifications">🔔</div>
+      <div class="icon" title="Profile">👤</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- AUTO BANNER -->
+    <section>
+      <div class="banner" id="banner">
+        <div class="banner-tag" id="bannerTag">
+          START EARNING
+        </div>
+
+        <h1 id="bannerTitle">
+          How to Use Offerwax & Earn Money
+        </h1>
+
+        <p id="bannerText">
+          Choose an offer, follow the required steps and earn rewards after successful tracking.
+        </p>
+
+        <button id="bannerButton">
+          Watch Guide ▶
+        </button>
+      </div>
+
+      <div class="dots">
+        <div class="dot active" id="dot0"></div>
+        <div class="dot" id="dot1"></div>
+        <div class="dot" id="dot2"></div>
+      </div>
+    </section>
+
+
+    <!-- HIGH PAYING -->
+    <section class="section">
+
+      <div class="section-title">
+        <h2>🔥 High Paying Offers</h2>
+        <a href="offers.html">View All →</a>
+      </div>
+
+      <div class="high-card" onclick="location.href='offer.html'">
+
+        <div class="high-left">
+          <div class="offer-logo">Kotak</div>
+
+          <div class="offer-info">
+            <h3>Kotak 811</h3>
+            <p>Complete required steps</p>
+          </div>
+        </div>
+
+        <div class="reward">₹1,250</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TRENDING -->
+    <section class="section">
+
+      <div class="section-title">
+        <h2>⚡ Trending Offers</h2>
+        <a href="offers.html">View All →</a>
+      </div>
+
+      <div class="offers-scroll">
+
+        <div class="small-card" onclick="location.href='offer.html'">
+          <div class="small-logo">CoinDCX</div>
+          <h3>CoinDCX</h3>
+          <p>₹500</p>
+          <div class="type">Trending</div>
+        </div>
+
+        <div class="small-card" onclick="location.href='offer.html'">
+          <div class="small-logo">Angel</div>
+          <h3>Angel One</h3>
+          <p>₹400</p>
+          <div class="type">Popular</div>
+        </div>
+
+        <div class="small-card" onclick="location.href='offer.html'">
+          <div class="small-logo">Upstox</div>
+          <h3>Upstox</h3>
+          <p>₹350</p>
+          <div class="type">Hot</div>
+        </div>
+
+        <div class="small-card" onclick="location.href='offer.html'">
+          <div class="small-logo">Groww</div>
+          <h3>Groww</h3>
+          <p>₹200</p>
+          <div class="type">Popular</div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="notice">
+      🔒 Complete every offer only according to its instructions.
+      Your progress and reward status will be shown inside the offer page.
+    </div>
+
+  </main>
+
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+
+    <a class="nav-item active" href="index.html">
+      <span class="nav-icon">⌂</span>
+      Home
+    </a>
+
+    <a class="nav-item" href="offers.html">
+      <span class="nav-icon">▣</span>
+      Offers
+    </a>
+
+    <a class="nav-item" href="refer.html">
+      <span class="nav-icon">♧</span>
+      Refer
+    </a>
+
+    <a class="nav-item" href="share.html">
+      <span class="nav-icon">↗</span>
+      Share
+    </a>
+
+    <a class="nav-item" href="wallet.html">
+      <span class="nav-icon">▤</span>
+      Wallet
+    </a>
+
+  </nav>
+
+
+  <script>
+    const banners = [
+      {
+        tag: "START EARNING",
+        title: "How to Use Offerwax & Earn Money",
+        text: "Choose an offer, follow the required steps and earn rewards after successful tracking.",
+        button: "Watch Guide ▶",
+        background:
+          "radial-gradient(circle at 85% 20%, #ec39ff 0%, transparent 30%), linear-gradient(135deg, #6414d9, #132cbb)"
+      },
+
+      {
+        tag: "HIGH PAYOUT",
+        title: "Complete Offers. Earn Rewards.",
+        text: "Explore high-paying offers and track your progress directly from Offerwax.",
+        button: "Explore Offers →",
+        background:
+          "radial-gradient(circle at 80% 20%, #17e9d2 0%, transparent 28%), linear-gradient(135deg, #071e68, #4e13b7)"
+      },
+
+      {
+        tag: "REFER & EARN",
+        title: "Invite Friends & Earn Up To ₹100",
+        text: "Share your referral link and earn when your friend successfully completes the required task.",
+        button: "Refer Now →",
+        background:
+          "radial-gradient(circle at 85% 20%, #ffb12b 0%, transparent 30%), linear-gradient(135deg, #6e0ad8, #d1199e)"
+      }
+    ];
+
+    let currentBanner = 0;
+
+    function changeBanner() {
+
+      currentBanner = (currentBanner + 1) % banners.length;
+
+      const data = banners[currentBanner];
+
+      document.getElementById("bannerTag").innerText = data.tag;
+      document.getElementById("bannerTitle").innerText = data.title;
+      document.getElementById("bannerText").innerText = data.text;
+      document.getElementById("bannerButton").innerText = data.button;
+      document.getElementById("banner").style.background = data.background;
+
+      for (let i = 0; i < banners.length; i++) {
+        document
+          .getElementById("dot" + i)
+          .classList.remove("active");
+      }
+
+      document
+        .getElementById("dot" + currentBanner)
+        .classList.add("active");
+    }
+
+    setInterval(changeBanner, 3500);
+  </script>
+
+</body>
+                                 </html>
