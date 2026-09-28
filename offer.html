@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offer Details | Offerwax</title>
+  <title>Kotak 811 Offer - Offerwax</title>
 
   <style>
     * {
@@ -13,27 +13,28 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
       background: #050914;
-      color: white;
-      padding-bottom: 100px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding-bottom: 105px;
     }
 
     /* HEADER */
-    .header {
-      height: 80px;
+    .topbar {
+      height: 76px;
       padding: 0 20px;
+      background: #071323;
+      border-bottom: 1px solid #192237;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #07101f;
-      border-bottom: 1px solid #182238;
     }
 
     .back {
+      font-size: 30px;
       color: white;
       text-decoration: none;
-      font-size: 27px;
+      width: 40px;
     }
 
     .logo {
@@ -42,281 +43,345 @@
     }
 
     .logo span {
-      color: #d626f5;
+      color: #d624f5;
     }
 
-    .icons {
+    .top-icons {
       display: flex;
       gap: 10px;
     }
 
-    .icon {
+    .circle {
       width: 43px;
       height: 43px;
-      background: #111b30;
+      background: #111a2d;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 19px;
+      font-size: 21px;
     }
 
     /* MAIN */
     .container {
-      max-width: 600px;
+      padding: 24px 20px;
+      max-width: 680px;
       margin: auto;
-      padding: 24px 18px;
     }
 
     /* OFFER HEADER */
     .offer-head {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
+      gap: 17px;
+      margin-bottom: 26px;
     }
 
     .offer-logo {
-      width: 75px;
-      height: 75px;
-      flex-shrink: 0;
+      width: 82px;
+      height: 82px;
+      min-width: 82px;
       border-radius: 21px;
       background: white;
       color: #111;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 21px;
       font-weight: 800;
-      font-size: 17px;
     }
 
     .offer-info {
       flex: 1;
+      min-width: 0;
     }
 
     .offer-info h1 {
-      font-size: 25px;
-      margin-bottom: 6px;
+      font-size: 28px;
+      margin-bottom: 7px;
     }
 
     .offer-info p {
-      color: #8995aa;
-      font-size: 14px;
+      color: #8993a8;
+      font-size: 15px;
     }
 
-    .payout {
-      color: #23e49b;
+    .reward {
+      color: #20e59a;
+      font-size: 25px;
       font-weight: 800;
-      font-size: 23px;
+      white-space: nowrap;
     }
 
-    /* VIDEO */
+    /* VIDEO GUIDE */
     .video-card {
-      height: 205px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #6114dd, #d820e9, #183ed1);
+      min-height: 220px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #7217f2, #dc20e8, #164be1);
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-      margin-bottom: 30px;
-    }
-
-    .play {
-      width: 67px;
-      height: 67px;
-      border-radius: 50%;
-      background: white;
-      color: #6317d8;
-      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 27px;
-      margin-bottom: 13px;
-    }
-
-    .video-card strong {
-      font-size: 17px;
-    }
-
-    .video-card span {
-      margin-top: 6px;
-      font-size: 12px;
-      opacity: .8;
-    }
-
-    /* SECTIONS */
-    .section {
-      margin-top: 27px;
-    }
-
-    .section h2 {
-      font-size: 21px;
-      margin-bottom: 15px;
-    }
-
-    /* INSTRUCTIONS */
-    .step {
-      padding: 15px;
-      margin-bottom: 10px;
-      border: 1px solid #202d47;
-      background: #10192c;
-      border-radius: 16px;
-      display: flex;
-      gap: 13px;
-    }
-
-    .step-number {
-      width: 31px;
-      height: 31px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: #7022ef;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
-
-    .step p {
-      color: #b6bfd0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* TRACKING */
-    .tracking-box {
-      padding: 18px;
-      background: #0c1425;
-      border: 1px solid #1d2942;
-      border-radius: 20px;
-    }
-
-    .track-row {
-      display: flex;
-      gap: 14px;
-      padding-bottom: 25px;
-    }
-
-    .track-row:last-child {
-      padding-bottom: 0;
-    }
-
-    .track-icon {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: #172239;
-      color: #7f8ba0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
-
-    .track-row.active .track-icon {
-      background: #7424f5;
-      color: white;
-    }
-
-    .track-text strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .track-text span {
-      color: #8490a6;
-      font-size: 13px;
-    }
-
-    .waiting {
-      margin-top: 5px;
-      font-size: 11px;
-      color: #b256ff;
-    }
-
-    /* BUTTON */
-    .start-btn {
-      width: 100%;
-      border: none;
-      padding: 18px;
-      margin-top: 26px;
-      border-radius: 17px;
-      background: linear-gradient(90deg, #6d20ef, #d720e8);
-      color: white;
-      font-size: 17px;
-      font-weight: 800;
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 25px;
       cursor: pointer;
     }
 
-    .notice {
-      color: #778399;
-      font-size: 12px;
+    .play {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: white;
+      color: #6815da;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 31px;
+      padding-left: 5px;
+      margin-bottom: 17px;
+    }
+
+    .video-card h2 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .video-card p {
+      color: #f1d9f5;
+      font-size: 15px;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 28px 0 18px;
+    }
+
+    /* INSTRUCTIONS */
+    .instruction {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: #10182a;
+      border: 1px solid #25314a;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    .number {
+      width: 43px;
+      height: 43px;
+      min-width: 43px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5c18ef, #9222f3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .instruction p {
+      color: #b9c0d0;
+      line-height: 1.55;
+      font-size: 15px;
+      padding-top: 2px;
+    }
+
+    .instruction strong {
+      color: white;
+    }
+
+    /* LIVE TRACKING */
+    .tracking-card {
+      background: #0e1628;
+      border: 1px solid #25314a;
+      border-radius: 23px;
+      padding: 20px 18px;
+    }
+
+    .track-item {
+      display: flex;
+      gap: 17px;
+      position: relative;
+      padding-bottom: 27px;
+    }
+
+    .track-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .track-number {
+      width: 43px;
+      height: 43px;
+      min-width: 43px;
+      border-radius: 50%;
+      background: #19243c;
+      color: #8993a8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .track-item.active .track-number {
+      background: linear-gradient(135deg, #5c18ef, #9222f3);
+      color: white;
+    }
+
+    .track-content h3 {
+      font-size: 17px;
+      margin: 3px 0 6px;
+    }
+
+    .track-content p {
+      color: #818ba0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .track-content .status {
+      color: #bb45f4;
+      margin-top: 5px;
+    }
+
+    /* START OFFER */
+    .start-button {
+      display: block;
+      width: 100%;
+      margin-top: 28px;
+      padding: 18px 10px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #7217f2, #db20e8);
+      color: white;
+      font-size: 19px;
+      font-weight: 800;
       text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .tracking-note {
+      color: #7f899d;
+      font-size: 12px;
       line-height: 1.5;
-      padding: 14px 10px;
+      text-align: center;
+      margin: 16px 10px 0;
     }
 
     /* BOTTOM NAV */
     .bottom-nav {
       position: fixed;
-      z-index: 100;
-      bottom: 0;
       left: 0;
       right: 0;
+      bottom: 0;
       height: 76px;
-      background: rgba(6, 11, 22, .98);
-      border-top: 1px solid #1b273b;
+      background: rgba(5, 9, 20, 0.98);
+      border-top: 1px solid #192237;
       display: flex;
       justify-content: space-around;
+      align-items: center;
+      z-index: 100;
     }
 
     .nav-item {
-      flex: 1;
+      color: #7e899d;
       text-decoration: none;
-      color: #818ca1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 12px;
+      text-align: center;
+      font-size: 11px;
+      min-width: 58px;
     }
 
     .nav-icon {
-      font-size: 20px;
+      display: block;
+      font-size: 21px;
+      margin-bottom: 5px;
     }
 
     .nav-item.active {
-      color: #c72dff;
+      color: #d42df4;
       font-weight: 700;
+    }
+
+    /* MOBILE */
+    @media (max-width: 480px) {
+      .container {
+        padding: 22px 17px;
+      }
+
+      .offer-logo {
+        width: 72px;
+        height: 72px;
+        min-width: 72px;
+        font-size: 19px;
+      }
+
+      .offer-info h1 {
+        font-size: 24px;
+      }
+
+      .offer-info p {
+        font-size: 13px;
+      }
+
+      .reward {
+        font-size: 22px;
+      }
+
+      .video-card {
+        min-height: 210px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .offer-head {
+        gap: 12px;
+      }
+
+      .offer-logo {
+        width: 65px;
+        height: 65px;
+        min-width: 65px;
+        border-radius: 18px;
+      }
+
+      .offer-info h1 {
+        font-size: 21px;
+      }
+
+      .reward {
+        font-size: 19px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="header">
-
+  <!-- HEADER -->
+  <header class="topbar">
     <a href="offers.html" class="back">←</a>
 
     <div class="logo">
       Offer<span>wax</span>
     </div>
 
-    <div class="icons">
-      <div class="icon">🔔</div>
-      <div class="icon">👤</div>
+    <div class="top-icons">
+      <div class="circle">🔔</div>
+      <div class="circle">👤</div>
     </div>
-
   </header>
 
 
   <main class="container">
 
     <!-- OFFER INFORMATION -->
-    <div class="offer-head">
+    <section class="offer-head">
 
       <div class="offer-logo">
         Kotak
@@ -327,162 +392,177 @@
         <p>Bank Account Offer</p>
       </div>
 
-      <div class="payout">
+      <div class="reward">
         ₹1,250
       </div>
 
-    </div>
+    </section>
 
 
-    <!-- VIDEO -->
-    <div class="video-card">
+    <!-- VIDEO GUIDE -->
+    <div class="video-card" onclick="playGuide()">
 
       <div class="play">
         ▶
       </div>
 
-      <strong>How to Complete This Offer</strong>
+      <h2>How to Complete This Offer</h2>
 
-      <span>Watch the complete guide</span>
+      <p>Watch the complete guide</p>
 
     </div>
 
 
     <!-- INSTRUCTIONS -->
-    <section class="section">
-
-      <h2>📋 Instructions</h2>
-
-      <div class="step">
-        <div class="step-number">1</div>
-
-        <p>
-          Click <b>Start Offer</b> below and continue using
-          the provided tracking link.
-        </p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">2</div>
-
-        <p>
-          Install or open the application through the
-          provided offer link.
-        </p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">3</div>
-
-        <p>
-          Complete registration using your genuine details
-          and follow all required offer steps.
-        </p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">4</div>
-
-        <p>
-          Your reward will be processed after the required
-          actions are tracked and successfully validated.
-        </p>
-      </div>
-
-    </section>
-
-
-    <!-- TRACKING -->
-    <section class="section">
-
-      <h2>📡 Live Tracking</h2>
-
-      <div class="tracking-box">
-
-        <div class="track-row active">
-
-          <div class="track-icon">
-            1
-          </div>
-
-          <div class="track-text">
-            <strong>Offer Click</strong>
-            <span>Start the offer using your tracking link</span>
-            <div class="waiting">Waiting</div>
-          </div>
-
-        </div>
-
-
-        <div class="track-row">
-
-          <div class="track-icon">
-            2
-          </div>
-
-          <div class="track-text">
-            <strong>Install Tracked</strong>
-            <span>Waiting for installation tracking</span>
-          </div>
-
-        </div>
-
-
-        <div class="track-row">
-
-          <div class="track-icon">
-            3
-          </div>
-
-          <div class="track-text">
-            <strong>Registration Complete</strong>
-            <span>Waiting for registration event</span>
-          </div>
-
-        </div>
-
-
-        <div class="track-row">
-
-          <div class="track-icon">
-            4
-          </div>
-
-          <div class="track-text">
-            <strong>Required Action</strong>
-            <span>Complete all required offer conditions</span>
-          </div>
-
-        </div>
-
-
-        <div class="track-row">
-
-          <div class="track-icon">
-            5
-          </div>
-
-          <div class="track-text">
-            <strong>Reward Processing</strong>
-            <span>Reward is processed after validation</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <button class="start-btn" onclick="startOffer()">
-      Start Offer • Earn ₹1,250
-    </button>
-
-
-    <div class="notice">
-      Tracking statuses shown here will update only when
-      confirmed tracking data is received from the campaign.
+    <div class="section-title">
+      📋 Instructions
     </div>
+
+
+    <div class="instruction">
+      <div class="number">1</div>
+
+      <p>
+        Click <strong>Start Offer</strong> below and continue
+        using the provided tracking link.
+      </p>
+    </div>
+
+
+    <div class="instruction">
+      <div class="number">2</div>
+
+      <p>
+        Install or open the application through the
+        provided offer link.
+      </p>
+    </div>
+
+
+    <div class="instruction">
+      <div class="number">3</div>
+
+      <p>
+        Complete registration using your genuine details
+        and follow all required offer steps.
+      </p>
+    </div>
+
+
+    <div class="instruction">
+      <div class="number">4</div>
+
+      <p>
+        Your reward will be processed after the required
+        actions are tracked and successfully validated.
+      </p>
+    </div>
+
+
+    <!-- LIVE TRACKING -->
+    <div class="section-title">
+      📡 Live Tracking
+    </div>
+
+
+    <div class="tracking-card">
+
+      <div class="track-item active">
+
+        <div class="track-number">1</div>
+
+        <div class="track-content">
+          <h3>Offer Click</h3>
+
+          <p>
+            Start the offer using your tracking link
+          </p>
+
+          <p class="status">
+            Waiting
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="track-item">
+
+        <div class="track-number">2</div>
+
+        <div class="track-content">
+          <h3>Install Tracked</h3>
+
+          <p>
+            Waiting for installation tracking
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="track-item">
+
+        <div class="track-number">3</div>
+
+        <div class="track-content">
+          <h3>Registration Complete</h3>
+
+          <p>
+            Waiting for registration event
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="track-item">
+
+        <div class="track-number">4</div>
+
+        <div class="track-content">
+          <h3>Required Action</h3>
+
+          <p>
+            Complete all required offer conditions
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="track-item">
+
+        <div class="track-number">5</div>
+
+        <div class="track-content">
+          <h3>Reward Processing</h3>
+
+          <p>
+            Reward is processed after validation
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- START BUTTON -->
+    <a
+      href="#"
+      class="start-button"
+      id="startOffer"
+      onclick="startOffer(event)"
+    >
+      Start Offer • Earn ₹1,250
+    </a>
+
+
+    <p class="tracking-note">
+      Tracking statuses shown here will update only when
+      tracking data is received and verified.
+    </p>
 
   </main>
 
@@ -490,27 +570,27 @@
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
 
-    <a class="nav-item" href="index.html">
+    <a href="index.html" class="nav-item">
       <span class="nav-icon">⌂</span>
       Home
     </a>
 
-    <a class="nav-item active" href="offers.html">
+    <a href="offers.html" class="nav-item active">
       <span class="nav-icon">▣</span>
       Offers
     </a>
 
-    <a class="nav-item" href="refer.html">
+    <a href="refer.html" class="nav-item">
       <span class="nav-icon">♧</span>
       Refer
     </a>
 
-    <a class="nav-item" href="share.html">
+    <a href="share.html" class="nav-item">
       <span class="nav-icon">↗</span>
       Share
     </a>
 
-    <a class="nav-item" href="wallet.html">
+    <a href="wallet.html" class="nav-item">
       <span class="nav-icon">▤</span>
       Wallet
     </a>
@@ -519,10 +599,27 @@
 
 
   <script>
-    function startOffer() {
-      alert(
-        "Offer tracking link will be connected here."
-      );
+    function playGuide() {
+      alert("Offer guide video will be added here.");
+    }
+
+    function startOffer(event) {
+      event.preventDefault();
+
+      /*
+        IMPORTANT:
+        Later replace YOUR_TRACKING_LINK
+        with the actual affiliate tracking URL.
+      */
+
+      const trackingLink = "YOUR_TRACKING_LINK";
+
+      if (trackingLink === "YOUR_TRACKING_LINK") {
+        alert("Tracking link will be connected here.");
+        return;
+      }
+
+      window.location.href = trackingLink;
     }
   </script>
 
