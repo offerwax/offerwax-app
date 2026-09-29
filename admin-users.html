@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>User Management | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input,select{font-family:inherit}
+
+.topbar{
+  height:66px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#090e18;
+  border-bottom:1px solid #1d2739;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  gap:12px;
+}
+
+.menu-btn{
+  width:39px;height:39px;
+  border-radius:11px;
+  border:1px solid #273249;
+  background:#10182a;
+  color:#fff;
+  font-size:19px;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:900;
+  flex:1;
+}
+
+.logo span{color:#d42df4}
+
+.logo small{
+  display:block;
+  color:#6f7b90;
+  font-size:8px;
+  margin-top:2px;
+}
+
+.bell{
+  width:40px;height:40px;
+  border-radius:12px;
+  border:1px solid #273249;
+  background:#10182a;
+  color:#fff;
+  font-size:16px;
+}
+
+/* SIDEBAR */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  z-index:190;
+}
+
+.sidebar{
+  position:fixed;
+  left:-285px;
+  top:0;
+  bottom:0;
+  width:275px;
+  background:#0b111d;
+  border-right:1px solid #202b40;
+  z-index:200;
+  transition:.25s;
+  overflow-y:auto;
+}
+
+.sidebar.open{left:0}
+
+.sidebar-head{
+  padding:22px 18px;
+  border-bottom:1px solid #202b40;
+}
+
+.sidebar-logo{
+  font-size:23px;
+  font-weight:900;
+}
+
+.sidebar-logo span{color:#d42df4}
+
+.sidebar-head p{
+  color:#6f7b90;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.nav{padding:14px 10px}
+
+.nav-title{
+  color:#536076;
+  font-size:8px;
+  font-weight:800;
+  padding:12px 11px 6px;
+  text-transform:uppercase;
+}
+
+.nav-item{
+  display:flex;
+  align-items:center;
+  min-height:48px;
+  padding:8px 11px;
+  margin:3px 0;
+  border-radius:12px;
+  color:#8d98ab;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:700;
+}
+
+.nav-item.active{
+  color:#fff;
+  background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2);
+}
+
+.nav-icon{
+  width:31px;
+  font-size:16px;
+}
+
+.nav-text{flex:1}
+
+/* MAIN */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:22px 16px 50px;
+}
+
+.page-head h1{
+  font-size:25px;
+}
+
+.page-head p{
+  color:#788499;
+  font-size:10px;
+  margin-top:6px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:16px;
+  padding:14px;
+}
+
+.stat-top{
+  display:flex;
+  justify-content:space-between;
+}
+
+.stat-icon{
+  width:33px;height:33px;
+  border-radius:10px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:21px;
+  margin-top:11px;
+}
+
+.stat small{
+  display:block;
+  color:#7b879b;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.danger strong{color:#ff6e78}
+.green strong{color:#39dc8a}
+.orange strong{color:#ffb84d}
+
+/* SEARCH */
+
+.tools{
+  margin-top:22px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  padding:13px;
+}
+
+.search{
+  width:100%;
+  height:45px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  color:#fff;
+  padding:0 13px;
+  outline:none;
+}
+
+.search:focus{border-color:#c32ee9}
+
+.filters{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-top:11px;
+  scrollbar-width:none;
+}
+
+.filter{
+  flex:0 0 auto;
+  border:1px solid #29364e;
+  background:#0c1321;
+  color:#8c98ab;
+  border-radius:20px;
+  padding:8px 12px;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.filter.active{
+  background:#d42df4;
+  border-color:#d42df4;
+  color:#fff;
+}
+
+/* USER LIST */
+
+.section{
+  margin-top:24px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:11px;
+}
+
+.section-title{
+  font-size:17px;
+}
+
+.count{
+  color:#7b879b;
+  font-size:9px;
+}
+
+.user-list{
+  display:grid;
+  gap:9px;
+}
+
+.user{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  cursor:pointer;
+}
+
+.avatar{
+  width:45px;height:45px;
+  min-width:45px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6e27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:900;
+}
+
+.user-info{
+  flex:1;
+  min-width:0;
+}
+
+.user-info strong{
+  display:block;
+  font-size:12px;
+}
+
+.user-info p{
+  color:#758197;
+  font-size:8px;
+  margin-top:5px;
+}
+
+.user-meta{
+  text-align:right;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:15px;
+  font-size:8px;
+  font-weight:700;
+}
+
+.active-status{
+  color:#39dc8a;
+  background:rgba(57,220,138,.1);
+}
+
+.fraud-status{
+  color:#ff737d;
+  background:rgba(255,89,101,.1);
+}
+
+.blocked-status{
+  color:#ffb84d;
+  background:rgba(255,184,77,.1);
+}
+
+.inactive-status{
+  color:#929caf;
+  background:#1a2232;
+}
+
+.user-meta small{
+  display:block;
+  color:#606d82;
+  font-size:8px;
+  margin-top:6px;
+}
+
+/* USER DRAWER */
+
+.drawer{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  max-width:560px;
+  height:100vh;
+  background:#090f1a;
+  z-index:300;
+  transition:.28s;
+  overflow-y:auto;
+  border-left:1px solid #253047;
+}
+
+.drawer.open{right:0}
+
+.drawer-head{
+  position:sticky;
+  top:0;
+  z-index:5;
+  height:65px;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  background:#090f1a;
+  border-bottom:1px solid #202b40;
+}
+
+.drawer-head h2{
+  flex:1;
+  font-size:17px;
+}
+
+.close{
+  width:35px;height:35px;
+  border-radius:10px;
+  border:1px solid #29364e;
+  background:#111a2a;
+  color:#fff;
+  font-size:19px;
+}
+
+.drawer-body{
+  padding:17px 16px 40px;
+}
+
+.profile{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;
+  border-radius:19px;
+  padding:18px;
+  text-align:center;
+}
+
+.big-avatar{
+  width:66px;height:66px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6e27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:900;
+}
+
+.profile h3{
+  font-size:18px;
+  margin-top:11px;
+}
+
+.profile p{
+  color:#79859a;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.profile-status{
+  display:inline-block;
+  margin-top:10px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:12px;
+}
+
+.detail-box{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:14px;
+  padding:12px;
+}
+
+.detail-box small{
+  color:#6f7c91;
+  font-size:8px;
+}
+
+.detail-box strong{
+  display:block;
+  margin-top:5px;
+  font-size:11px;
+  overflow-wrap:anywhere;
+}
+
+/* USER FINANCE */
+
+.balance-card{
+  margin-top:12px;
+  background:linear-gradient(135deg,#5e27ce,#b82be0);
+  border-radius:17px;
+  padding:16px;
+}
+
+.balance-card small{
+  color:rgba(255,255,255,.75);
+  font-size:9px;
+}
+
+.balance-card h3{
+  font-size:26px;
+  margin-top:5px;
+}
+
+.balance-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:13px;
+}
+
+.balance-btn{
+  height:38px;
+  border:0;
+  border-radius:10px;
+  background:#fff;
+  color:#6525cb;
+  font-size:9px;
+  font-weight:800;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  margin-top:19px;
+  padding-bottom:3px;
+  scrollbar-width:none;
+}
+
+.tab{
+  flex:0 0 auto;
+  border:1px solid #29364e;
+  background:#10182a;
+  color:#8290a4;
+  padding:8px 11px;
+  border-radius:18px;
+  font-size:8px;
+}
+
+.tab.active{
+  color:#fff;
+  background:#a42bcd;
+  border-color:#a42bcd;
+}
+
+.tab-content{
+  display:none;
+  margin-top:11px;
+}
+
+.tab-content.active{display:block}
+
+.info-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px;
+  border-bottom:1px solid #202c43;
+}
+
+.info-row:last-child{border-bottom:0}
+
+.info-row span{
+  color:#78859a;
+  font-size:9px;
+}
+
+.info-row strong{
+  font-size:9px;
+  text-align:right;
+}
+
+.success{color:#39dc8a}
+.pending{color:#ffb84d}
+.red-text{color:#ff6f79}
+
+/* CONTROLS */
+
+.control-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:11px;
+}
+
+.control-btn{
+  min-height:44px;
+  border-radius:11px;
+  border:1px solid #2a354c;
+  background:#111a2a;
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+}
+
+.control-btn.danger-btn{
+  color:#ff737d;
+  border-color:rgba(255,89,101,.3);
+}
+
+.control-btn.warning-btn{
+  color:#ffb84d;
+}
+
+/* ACTION MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  z-index:500;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:520px;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:24px 24px 0 0;
+  padding:22px 18px 28px;
+}
+
+.modal-box h3{
+  font-size:19px;
+}
+
+.modal-box p{
+  color:#7d899d;
+  font-size:9px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.modal-input{
+  width:100%;
+  height:46px;
+  margin-top:14px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  color:#fff;
+  padding:0 12px;
+  outline:none;
+}
+
+.modal-action{
+  width:100%;
+  height:45px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#7227e8,#d42df4);
+  color:#fff;
+  font-weight:800;
+  margin-top:12px;
+}
+
+.modal-cancel{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7b879b;
+  padding-top:13px;
+}
+
+.empty{
+  text-align:center;
+  color:#788499;
+  padding:30px;
+  font-size:10px;
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{
+    margin-left:250px;
+    max-width:none;
+    padding:28px;
+  }
+  .stats{grid-template-columns:repeat(5,1fr)}
+  .user-list{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+  <div class="sidebar-head">
+    <div class="sidebar-logo">
+      Offer<span>wax</span>
+    </div>
+    <p>Admin Control Center</p>
+  </div>
+
+  <nav class="nav">
+
+    <div class="nav-title">Overview</div>
+
+    <a href="admin.html" class="nav-item">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <div class="nav-title">Management</div>
+
+    <a href="admin-users.html" class="nav-item active">
+      <span class="nav-icon">👥</span>
+      <span class="nav-text">Users</span>
+    </a>
+
+    <a href="admin-offers.html" class="nav-item">
+      <span class="nav-icon">▣</span>
+      <span class="nav-text">Offers</span>
+    </a>
+
+    <a href="admin-share.html" class="nav-item">
+      <span class="nav-icon">↗</span>
+      <span class="nav-text">Share & Earn</span>
+    </a>
+
+    <a href="admin-refer.html" class="nav-item">
+      <span class="nav-icon">♧</span>
+      <span class="nav-text">Refer & Earn</span>
+    </a>
+
+    <a href="admin-tracking.html" class="nav-item">
+      <span class="nav-icon">⌖</span>
+      <span class="nav-text">Tracking</span>
+    </a>
+
+    <div class="nav-title">Operations</div>
+
+    <a href="admin-finance.html" class="nav-item">
+      <span class="nav-icon">₹</span>
+      <span class="nav-text">Finance</span>
+    </a>
+
+    <a href="admin-support.html" class="nav-item">
+      <span class="nav-icon">?</span>
+      <span class="nav-text">Support</span>
+    </a>
+
+    <div class="nav-title">Controls</div>
+
+    <a href="admin-content.html" class="nav-item">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">App & Content</span>
+    </a>
+
+  </nav>
+
+</aside>
+
+<!-- TOP -->
+
+<header class="topbar">
+
+  <button class="menu-btn" onclick="openSidebar()">
+    ☰
+  </button>
+
+  <div class="logo">
+    Offer<span>wax</span>
+    <small>USER MANAGEMENT</small>
+  </div>
+
+  <button class="bell">🔔</button>
+
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>User Management</h1>
+    <p>
+      View users, activity, earnings, tracking and account controls.
+    </p>
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-top">
+        <div class="stat-icon">👥</div>
+      </div>
+      <strong>248</strong>
+      <small>Total Users</small>
+    </div>
+
+    <div class="stat green">
+      <div class="stat-top">
+        <div class="stat-icon">✓</div>
+      </div>
+      <strong>179</strong>
+      <small>Active</small>
+    </div>
+
+    <div class="stat orange">
+      <div class="stat-top">
+        <div class="stat-icon">○</div>
+      </div>
+      <strong>58</strong>
+      <small>Inactive</small>
+    </div>
+
+    <div class="stat danger">
+      <div class="stat-top">
+        <div class="stat-icon">!</div>
+      </div>
+      <strong>6</strong>
+      <small>Fraud / Suspicious</small>
+    </div>
+
+    <div class="stat danger">
+      <div class="stat-top">
+        <div class="stat-icon">⊘</div>
+      </div>
+      <strong>5</strong>
+      <small>Blocked</small>
+    </div>
+
+  </section>
+
+  <!-- SEARCH -->
+
+  <section class="tools">
+
+    <input
+      class="search"
+      id="searchInput"
+      type="search"
+      placeholder="Search name, User ID, mobile or email..."
+      oninput="renderUsers()">
+
+    <div class="filters">
+
+      <button class="filter active" onclick="setFilter('all',this)">
+        All
+      </button>
+
+      <button class="filter" onclick="setFilter('active',this)">
+        Active
+      </button>
+
+      <button class="filter" onclick="setFilter('inactive',this)">
+        Inactive
+      </button>
+
+      <button class="filter" onclick="setFilter('fraud',this)">
+        Fraud
+      </button>
+
+      <button class="filter" onclick="setFilter('blocked',this)">
+        Blocked
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- USERS -->
+
+  <section class="section">
+
+    <div class="section-head">
+      <h2 class="section-title">Users</h2>
+      <span class="count" id="resultCount">4 users</span>
+    </div>
+
+    <div class="user-list" id="userList"></div>
+
+  </section>
+
+</main>
+
+<!-- USER DRAWER -->
+
+<section class="drawer" id="userDrawer">
+
+  <div class="drawer-head">
+
+    <h2>User Details</h2>
+
+    <button class="close" onclick="closeDrawer()">
+      ×
+    </button>
+
+  </div>
+
+  <div class="drawer-body">
+
+    <div class="profile">
+
+      <div class="big-avatar" id="drawerAvatar">
+        BK
+      </div>
+
+      <h3 id="drawerName">
+        Bikash
+      </h3>
+
+      <p id="drawerID">
+        OW8473
+      </p>
+
+      <span
+        class="status active-status profile-status"
+        id="drawerStatus">
+        Active
+      </span>
+
+    </div>
+
+    <!-- DETAILS -->
+
+    <div class="detail-grid">
+
+      <div class="detail-box">
+        <small>Mobile</small>
+        <strong id="drawerMobile">98XXXXXX42</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Email</small>
+        <strong id="drawerEmail">user@example.com</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Joined</small>
+        <strong id="drawerJoined">18 Sep 2026</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>UPI</small>
+        <strong id="drawerUPI">bi****@upi</strong>
+      </div>
+
+    </div>
+
+    <!-- WALLET -->
+
+    <div class="balance-card">
+
+      <small>Available Wallet Balance</small>
+
+      <h3 id="drawerBalance">
+        ₹1,250
+      </h3>
+
+      <div class="balance-actions">
+
+        <button
+          class="balance-btn"
+          onclick="openWalletAction('credit')">
+          + Credit Balance
+        </button>
+
+        <button
+          class="balance-btn"
+          onclick="openWalletAction('debit')">
+          − Debit Balance
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+      <button class="tab active" onclick="openTab('overview',this)">
+        Overview
+      </button>
+
+      <button class="tab" onclick="openTab('offers',this)">
+        Offers
+      </button>
+
+      <button class="tab" onclick="openTab('share',this)">
+        Share & Earn
+      </button>
+
+      <button class="tab" onclick="openTab('refer',this)">
+        Refer & Earn
+      </button>
+
+      <button class="tab" onclick="openTab('tracking',this)">
+        Tracking
+      </button>
+
+      <button class="tab" onclick="openTab('withdrawals',this)">
+        Withdrawals
+      </button>
+
+      <button class="tab" onclick="openTab('controls',this)">
+        Controls
+      </button>
+
+    </div>
+
+    <!-- OVERVIEW -->
+
+    <div class="tab-content active" id="tab-overview">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Total Earnings</span>
+          <strong class="success" id="totalEarning">₹3,450</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Share Earnings</span>
+          <strong id="shareEarning">₹3,000</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Referral Earnings</span>
+          <strong id="referEarning">₹450</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Completed Offers</span>
+          <strong>8</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Pending Offers</span>
+          <strong class="pending">2</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- OFFERS -->
+
+    <div class="tab-content" id="tab-offers">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Kotak 811</span>
+          <strong class="success">Completed</strong>
+        </div>
+
+        <div class="info-row">
+          <span>CoinDCX</span>
+          <strong class="pending">Validation</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Upstox</span>
+          <strong class="success">Completed</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SHARE -->
+
+    <div class="tab-content" id="tab-share">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Total Shared Offers</span>
+          <strong>12</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Total Clicks</span>
+          <strong>148</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Tracked Users</span>
+          <strong>63</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Completed</span>
+          <strong class="success">17</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Share Earnings</span>
+          <strong class="success">₹3,000</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- REFER -->
+
+    <div class="tab-content" id="tab-refer">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Total Referrals</span>
+          <strong>9</strong>
+        </div>
+
+        <div class="info-row">
+          <span>First Task Completed</span>
+          <strong class="success">5</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Pending First Task</span>
+          <strong class="pending">4</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Referral Earnings</span>
+          <strong class="success">₹450</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TRACKING -->
+
+    <div class="tab-content" id="tab-tracking">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Kotak 811 • Click</span>
+          <strong class="success">Tracked</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Kotak 811 • Install</span>
+          <strong class="success">Tracked</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Kotak 811 • Registration</span>
+          <strong class="success">Tracked</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Kotak 811 • Required Action</span>
+          <strong class="success">Completed</strong>
+        </div>
+
+        <div class="info-row">
+          <span>CoinDCX • Validation</span>
+          <strong class="pending">Pending</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- WITHDRAWALS -->
+
+    <div class="tab-content" id="tab-withdrawals">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>₹500 • 28 Sep 2026</span>
+          <strong class="pending">Processing</strong>
+        </div>
+
+        <div class="info-row">
+          <span>₹500 • 25 Sep 2026</span>
+          <strong class="success">Paid</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Total Withdrawn</span>
+          <strong>₹1,500</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+
+    <div class="tab-content" id="tab-controls">
+
+      <div class="info-card">
+
+        <div class="info-row">
+          <span>Account Control</span>
+          <strong>Admin Only</strong>
+        </div>
+
+      </div>
+
+      <div class="control-grid">
+
+        <button
+          class="control-btn"
+          onclick="demoAction('Edit User Details')">
+          ✎ Edit User
+        </button>
+
+        <button
+          class="control-btn"
+          onclick="demoAction('Activate / Deactivate Account')">
+          ✓ Activate / Deactivate
+        </button>
+
+        <button
+          class="control-btn warning-btn"
+          onclick="demoAction('Mark User as Fraud')">
+          ! Mark Fraud
+        </button>
+
+        <button
+          class="control-btn"
+          onclick="demoAction('Clear Fraud Flag')">
+          ✓ Clear Fraud
+        </button>
+
+        <button
+          class="control-btn danger-btn"
+          onclick="demoAction('Block User')">
+          ⊘ Block User
+        </button>
+
+        <button
+          class="control-btn"
+          onclick="demoAction('Unblock User')">
+          ↻ Unblock User
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WALLET MODAL -->
+
+<div class="modal" id="walletModal">
+
+  <div class="modal-box">
+
+    <h3 id="walletTitle">
+      Credit Balance
+    </h3>
+
+    <p>
+      Enter the amount and a reason. Real wallet changes
+      will require backend authorization.
+    </p>
+
+    <input
+      class="modal-input"
+      id="walletAmount"
+      type="number"
+      placeholder="Amount ₹">
+
+    <input
+      class="modal-input"
+      id="walletReason"
+      type="text"
+      placeholder="Reason / admin note">
+
+    <button
+      class="modal-action"
+      onclick="submitWalletAction()">
+      Continue
+    </button>
+
+    <button
+      class="modal-cancel"
+      onclick="closeWalletModal()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+/* SAMPLE DATA ONLY */
+
+const users = [
+  {
+    id:"OW8473",
+    name:"Bikash",
+    initials:"BK",
+    mobile:"98XXXXXX42",
+    email:"bikash@example.com",
+    upi:"bi****@upi",
+    joined:"18 Sep 2026",
+    status:"active",
+    balance:"₹1,250",
+    total:"₹3,450",
+    share:"₹3,000",
+    refer:"₹450"
+  },
+
+  {
+    id:"OW9124",
+    name:"Rahul Das",
+    initials:"RD",
+    mobile:"70XXXXXX18",
+    email:"rahul@example.com",
+    upi:"ra****@upi",
+    joined:"22 Sep 2026",
+    status:"active",
+    balance:"₹780",
+    total:"₹2,100",
+    share:"₹1,800",
+    refer:"₹300"
+  },
+
+  {
+    id:"OW6251",
+    name:"Aman Ali",
+    initials:"AA",
+    mobile:"86XXXXXX11",
+    email:"aman@example.com",
+    upi:"am****@upi",
+    joined:"24 Sep 2026",
+    status:"fraud",
+    balance:"₹0",
+    total:"₹850",
+    share:"₹750",
+    refer:"₹100"
+  },
+
+  {
+    id:"OW4402",
+    name:"Rohan Sharma",
+    initials:"RS",
+    mobile:"91XXXXXX27",
+    email:"rohan@example.com",
+    upi:"ro****@upi",
+    joined:"25 Sep 2026",
+    status:"blocked",
+    balance:"₹120",
+    total:"₹620",
+    share:"₹520",
+    refer:"₹100"
+  }
+];
+
+let currentFilter="all";
+let selectedUser=null;
+let walletAction="credit";
+
+
+function renderUsers(){
+
+  const search =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const list =
+    document.getElementById("userList");
+
+  const filtered =
+    users.filter(user => {
+
+      const matchesFilter =
+        currentFilter === "all" ||
+        user.status === currentFilter;
+
+      const haystack =
+        (
+          user.name+" "+
+          user.id+" "+
+          user.mobile+" "+
+          user.email
+        ).toLowerCase();
+
+      return (
+        matchesFilter &&
+        haystack.includes(search)
+      );
+
+    });
+
+  document
+  .getElementById("resultCount")
+  .innerText =
+    filtered.length +
+    (filtered.length===1 ? " user" : " users");
+
+
+  if(!filtered.length){
+
+    list.innerHTML =
+      '<div class="empty">No users found.</div>';
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    filtered.map(user => {
+
+      const statusClass =
+        user.status === "active"
+        ? "active-status"
+        : user.status === "fraud"
+        ? "fraud-status"
+        : user.status === "blocked"
+        ? "blocked-status"
+        : "inactive-status";
+
+      const statusText =
+        user.status.charAt(0).toUpperCase() +
+        user.status.slice(1);
+
+      return `
+        <div
+          class="user"
+          onclick="openUser('${user.id}')">
+
+          <div class="avatar">
+            ${user.initials}
+          </div>
+
+          <div class="user-info">
+            <strong>${user.name}</strong>
+            <p>${user.id} • ${user.mobile}</p>
+          </div>
+
+          <div class="user-meta">
+            <span class="status ${statusClass}">
+              ${statusText}
+            </span>
+            <small>${user.balance}</small>
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+function setFilter(filter,button){
+
+  currentFilter=filter;
+
+  document
+  .querySelectorAll(".filter")
+  .forEach(item =>
+    item.classList.remove("active")
+  );
+
+  button.classList.add("active");
+
+  renderUsers();
+
+}
+
+
+/* USER DRAWER */
+
+function openUser(id){
+
+  selectedUser =
+    users.find(user => user.id===id);
+
+  if(!selectedUser) return;
+
+
+  document
+  .getElementById("drawerAvatar")
+  .innerText=selectedUser.initials;
+
+  document
+  .getElementById("drawerName")
+  .innerText=selectedUser.name;
+
+  document
+  .getElementById("drawerID")
+  .innerText="User ID: "+selectedUser.id;
+
+  document
+  .getElementById("drawerMobile")
+  .innerText=selectedUser.mobile;
+
+  document
+  .getElementById("drawerEmail")
+  .innerText=selectedUser.email;
+
+  document
+  .getElementById("drawerJoined")
+  .innerText=selectedUser.joined;
+
+  document
+  .getElementById("drawerUPI")
+  .innerText=selectedUser.upi;
+
+  document
+  .getElementById("drawerBalance")
+  .innerText=selectedUser.balance;
+
+  document
+  .getElementById("totalEarning")
+  .innerText=selectedUser.total;
+
+  document
+  .getElementById("shareEarning")
+  .innerText=selectedUser.share;
+
+  document
+  .getElementById("referEarning")
+  .innerText=selectedUser.refer;
+
+
+  const status =
+    document.getElementById("drawerStatus");
+
+  status.innerText =
+    selectedUser.status.charAt(0).toUpperCase() +
+    selectedUser.status.slice(1);
+
+  status.className =
+    "status profile-status " +
+    (
+      selectedUser.status==="active"
+      ? "active-status"
+      : selectedUser.status==="fraud"
+      ? "fraud-status"
+      : selectedUser.status==="blocked"
+      ? "blocked-status"
+      : "inactive-status"
+    );
+
+
+  document
+  .getElementById("userDrawer")
+  .classList.add("open");
+
+  document
+  .getElementById("overlay")
+  .style.display="block";
+
+}
+
+
+function closeDrawer(){
+
+  document
+  .getElementById("userDrawer")
+  .classList.remove("open");
+
+  document
+  .getElementById("overlay")
+  .style.display="none";
+
+}
+
+
+/* TABS */
+
+function openTab(name,button){
+
+  document
+  .querySelectorAll(".tab")
+  .forEach(tab =>
+    tab.classList.remove("active")
+  );
+
+  document
+  .querySelectorAll(".tab-content")
+  .forEach(content =>
+    content.classList.remove("active")
+  );
+
+  button.classList.add("active");
+
+  document
+  .getElementById("tab-"+name)
+  .classList.add("active");
+
+}
+
+
+/* WALLET */
+
+function openWalletAction(type){
+
+  walletAction=type;
+
+  document
+  .getElementById("walletTitle")
+  .innerText =
+    type==="credit"
+    ? "Credit User Balance"
+    : "Debit User Balance";
+
+  document
+  .getElementById("walletModal")
+  .style.display="flex";
+
+}
+
+
+function closeWalletModal(){
+
+  document
+  .getElementById("walletModal")
+  .style.display="none";
+
+}
+
+
+function submitWalletAction(){
+
+  const amount =
+    Number(
+      document
+      .getElementById("walletAmount")
+      .value
+    );
+
+  const reason =
+    document
+    .getElementById("walletReason")
+    .value
+    .trim();
+
+
+  if(!amount || amount<=0){
+
+    alert("Enter a valid amount.");
+    return;
+
+  }
+
+
+  if(!reason){
+
+    alert("Enter an admin reason.");
+    return;
+
+  }
+
+
+  alert(
+    "Demo only: ₹" +
+    amount +
+    " was NOT " +
+    (
+      walletAction==="credit"
+      ? "credited"
+      : "debited"
+    ) +
+    ". Backend authorization is not connected yet."
+  );
+
+  closeWalletModal();
+
+}
+
+
+/* ADMIN CONTROLS */
+
+function demoAction(action){
+
+  if(!selectedUser) return;
+
+  const confirmAction =
+    confirm(
+      action +
+      " for " +
+      selectedUser.name +
+      " (" +
+      selectedUser.id +
+      ")?"
+    );
+
+  if(!confirmAction) return;
+
+
+  alert(
+    "Demo only. No real user account was changed. " +
+    "This control will work after the admin backend is connected."
+  );
+
+}
+
+
+/* SIDEBAR */
+
+function openSidebar(){
+
+  document
+  .getElementById("sidebar")
+  .classList.add("open");
+
+  document
+  .getElementById("overlay")
+  .style.display="block";
+
+}
+
+
+function closeAll(){
+
+  document
+  .getElementById("sidebar")
+  .classList.remove("open");
+
+  document
+  .getElementById("userDrawer")
+  .classList.remove("open");
+
+  document
+  .getElementById("overlay")
+  .style.display="none";
+
+}
+
+
+/*
+=======================================
+BACKEND LATER
+=======================================
+
+This page currently uses sample data.
+
+Real admin backend will provide:
+
+GET /api/admin/users
+GET /api/admin/users/:id
+
+and protected admin actions such as:
+
+- activate/deactivate
+- block/unblock
+- fraud flag
+- wallet credit/debit
+- edit user
+- user offers
+- Share & Earn performance
+- Refer & Earn history
+- tracking events
+- withdrawals
+
+Sensitive actions must be authenticated
+and logged server-side.
+
+Never trust client-side admin buttons
+for real finance/account changes.
+*/
+
+renderUsers();
+
+</script>
+
+</body>
+        </html>
