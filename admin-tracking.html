@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Tracking Management | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;color:#fff;min-height:100vh
+}
+button,input,select{font-family:inherit}
+
+/* TOPBAR */
+.topbar{
+  height:66px;position:sticky;top:0;z-index:100;
+  background:#090e18;border-bottom:1px solid #1d2739;
+  display:flex;align-items:center;padding:0 16px;gap:12px
+}
+.menu-btn,.bell{
+  width:40px;height:40px;border-radius:11px;
+  border:1px solid #273249;background:#10182a;
+  color:#fff;font-size:18px
+}
+.logo{flex:1;font-size:20px;font-weight:900}
+.logo span{color:#d42df4}
+.logo small{
+  display:block;color:#6f7b90;font-size:8px;margin-top:2px
+}
+
+/* SIDEBAR */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.76);z-index:190
+}
+.sidebar{
+  position:fixed;left:-285px;top:0;bottom:0;width:275px;
+  background:#0b111d;border-right:1px solid #202b40;
+  z-index:200;transition:.25s;overflow-y:auto
+}
+.sidebar.open{left:0}
+.sidebar-head{padding:22px 18px;border-bottom:1px solid #202b40}
+.sidebar-logo{font-size:23px;font-weight:900}
+.sidebar-logo span{color:#d42df4}
+.sidebar-head p{color:#6f7b90;font-size:9px;margin-top:5px}
+.nav{padding:14px 10px 25px}
+.nav-title{
+  color:#536076;font-size:8px;font-weight:800;
+  padding:12px 11px 6px;text-transform:uppercase
+}
+.nav-item{
+  display:flex;align-items:center;min-height:48px;
+  padding:8px 11px;margin:3px 0;border-radius:12px;
+  color:#8d98ab;text-decoration:none;font-size:11px;font-weight:700
+}
+.nav-item.active{
+  color:#fff;background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+.nav-icon{width:31px;font-size:16px}
+.nav-text{flex:1}
+
+/* MAIN */
+.container{max-width:1150px;margin:auto;padding:22px 16px 50px}
+.page-head h1{font-size:25px}
+.page-head p{
+  color:#788499;font-size:10px;margin-top:6px;line-height:1.5
+}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:20px
+}
+.stat{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:16px;padding:14px
+}
+.stat-icon{
+  width:34px;height:34px;border-radius:10px;background:#172136;
+  display:flex;align-items:center;justify-content:center
+}
+.stat strong{display:block;font-size:21px;margin-top:10px}
+.stat small{display:block;color:#7b879b;font-size:9px;margin-top:5px}
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.red{color:#ff737d!important}
+.purple{color:#d94df4!important}
+.blue{color:#63a9ff!important}
+
+/* SEARCH */
+.tools{
+  margin-top:22px;background:#10182a;border:1px solid #202c43;
+  border-radius:17px;padding:13px
+}
+.search{
+  width:100%;height:44px;background:#080e19;
+  border:1px solid #29364e;border-radius:11px;
+  color:#fff;padding:0 13px;outline:none
+}
+.search:focus{border-color:#d42df4}
+.filters{
+  display:flex;gap:7px;overflow-x:auto;
+  margin-top:10px;scrollbar-width:none
+}
+.filter{
+  flex:0 0 auto;border:1px solid #29364e;
+  background:#0c1321;color:#8995a9;
+  border-radius:18px;padding:8px 12px;font-size:8px
+}
+.filter.active{
+  background:#d42df4;border-color:#d42df4;color:#fff
+}
+
+/* RECORDS */
+.section{margin-top:24px}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:11px
+}
+.section-title{font-size:17px}
+.count{font-size:9px;color:#738096}
+.records{display:grid;gap:10px}
+
+.record{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:18px;padding:14px;cursor:pointer
+}
+.record-top{display:flex;align-items:center;gap:10px}
+.offer-logo{
+  width:44px;height:44px;min-width:44px;border-radius:12px;
+  background:#fff;color:#172136;display:flex;
+  align-items:center;justify-content:center;
+  text-align:center;font-size:8px;font-weight:900;padding:4px
+}
+.record-info{flex:1;min-width:0}
+.record-info h3{font-size:12px}
+.record-info p{
+  color:#748197;font-size:8px;margin-top:5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.status{
+  padding:5px 7px;border-radius:12px;
+  font-size:7px;font-weight:800;white-space:nowrap
+}
+.status-completed{
+  color:#39dc8a;background:rgba(57,220,138,.1)
+}
+.status-progress{
+  color:#63a9ff;background:rgba(99,169,255,.1)
+}
+.status-validation{
+  color:#ffb84d;background:rgba(255,184,77,.1)
+}
+.status-failed{
+  color:#ff737d;background:rgba(255,90,103,.1)
+}
+
+/* MINI PROGRESS */
+.progress{
+  display:flex;gap:4px;margin-top:13px
+}
+.progress-step{
+  flex:1;height:5px;background:#263044;border-radius:5px
+}
+.progress-step.done{background:#39dc8a}
+.progress-step.current{background:#ffb84d}
+.progress-step.failed{background:#ff5a67}
+
+.record-bottom{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:6px;margin-top:11px
+}
+.mini{
+  background:#0b1220;border-radius:9px;padding:8px
+}
+.mini small{
+  display:block;color:#68758a;font-size:6.5px
+}
+.mini strong{
+  display:block;font-size:8px;margin-top:4px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+
+/* DRAWER */
+.drawer{
+  position:fixed;right:-100%;top:0;width:100%;max-width:600px;
+  height:100vh;background:#090f1a;z-index:300;
+  transition:.27s;overflow-y:auto;border-left:1px solid #253047
+}
+.drawer.open{right:0}
+.drawer-head{
+  height:65px;position:sticky;top:0;z-index:5;
+  background:#090f1a;border-bottom:1px solid #202b40;
+  display:flex;align-items:center;padding:0 16px
+}
+.drawer-head h2{flex:1;font-size:17px}
+.close{
+  width:35px;height:35px;border:1px solid #29364e;
+  border-radius:10px;background:#111a2a;color:#fff;font-size:19px
+}
+.drawer-body{padding:17px 16px 40px}
+
+/* DETAIL HERO */
+.detail-hero{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;border-radius:19px;padding:17px
+}
+.hero-top{display:flex;align-items:center;gap:11px}
+.big-logo{
+  width:55px;height:55px;min-width:55px;border-radius:14px;
+  background:#fff;color:#162136;display:flex;
+  align-items:center;justify-content:center;
+  font-size:9px;font-weight:900;text-align:center;padding:5px
+}
+.hero-info{flex:1}
+.hero-info h3{font-size:16px}
+.hero-info p{font-size:8px;color:#78859a;margin-top:5px}
+
+.tracking-id{
+  margin-top:13px;background:#0b1220;
+  border-radius:10px;padding:10px
+}
+.tracking-id small{color:#6f7c91;font-size:7px}
+.tracking-id strong{
+  display:block;font-size:10px;margin-top:4px;
+  word-break:break-all
+}
+
+/* DETAILS */
+.detail-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;margin-top:12px
+}
+.detail-box{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:12px;padding:11px
+}
+.detail-box small{display:block;color:#707d92;font-size:7px}
+.detail-box strong{
+  display:block;font-size:9px;margin-top:5px;word-break:break-word
+}
+
+/* CARDS */
+.card{
+  margin-top:13px;background:#10182a;
+  border:1px solid #202c43;border-radius:17px;overflow:hidden
+}
+.card-title{
+  padding:13px;font-size:12px;border-bottom:1px solid #202c43
+}
+
+/* TIMELINE */
+.timeline{padding:4px 14px 14px}
+.timeline-item{
+  position:relative;padding:15px 0 15px 35px;
+  border-bottom:1px solid #202c43
+}
+.timeline-item:last-child{border-bottom:0}
+.timeline-dot{
+  position:absolute;left:0;top:15px;
+  width:23px;height:23px;border-radius:50%;
+  background:#202b40;color:#748197;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:900
+}
+.timeline-item.done .timeline-dot{
+  background:rgba(57,220,138,.15);color:#39dc8a
+}
+.timeline-item.waiting .timeline-dot{
+  background:rgba(255,184,77,.15);color:#ffb84d
+}
+.timeline-item.failed .timeline-dot{
+  background:rgba(255,90,103,.15);color:#ff737d
+}
+.timeline-item h4{font-size:10px}
+.timeline-item p{
+  color:#6f7c91;font-size:7.5px;margin-top:5px;line-height:1.5
+}
+.timeline-item time{
+  display:block;color:#59677c;font-size:7px;margin-top:5px
+}
+
+/* SOURCE */
+.source-row{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:12px 13px;border-bottom:1px solid #202c43
+}
+.source-row:last-child{border-bottom:0}
+.source-row span{font-size:8px;color:#778499}
+.source-row strong{
+  font-size:8px;text-align:right;word-break:break-word
+}
+
+/* NOTES */
+.note-box{padding:13px}
+.note-box p{
+  color:#778499;font-size:8px;line-height:1.6
+}
+
+/* ACTIONS */
+.actions{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;padding:13px
+}
+.action{
+  min-height:43px;border-radius:11px;
+  border:1px solid #2a354b;background:#111a2a;
+  color:#fff;font-size:9px;font-weight:700
+}
+.recheck{
+  color:#63a9ff;border-color:rgba(99,169,255,.3)
+}
+.review{
+  color:#ffb84d;border-color:rgba(255,184,77,.3)
+}
+
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.82);z-index:500;
+  align-items:flex-end;justify-content:center
+}
+.modal-box{
+  width:100%;max-width:560px;
+  background:#10182a;border:1px solid #29364e;
+  border-radius:24px 24px 0 0;padding:21px 17px 28px
+}
+.modal-box h3{font-size:18px}
+.modal-box p{
+  color:#78859a;font-size:9px;line-height:1.5;margin-top:6px
+}
+.modal-input{
+  width:100%;height:45px;margin-top:13px;
+  background:#080e19;border:1px solid #29364e;
+  border-radius:10px;color:#fff;padding:0 11px;outline:none
+}
+.modal-btn{
+  width:100%;height:44px;border:0;border-radius:11px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;font-size:9px;font-weight:800;margin-top:11px
+}
+.cancel{
+  width:100%;border:0;background:none;
+  color:#7b879b;padding-top:13px
+}
+
+.empty{
+  background:#10182a;border-radius:15px;
+  padding:30px;text-align:center;color:#748197;font-size:10px
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{margin-left:250px;max-width:none;padding:28px}
+  .stats{grid-template-columns:repeat(6,1fr)}
+  .records{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeEverything()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+  <div class="sidebar-head">
+    <div class="sidebar-logo">Offer<span>wax</span></div>
+    <p>Admin Control Center</p>
+  </div>
+
+  <nav class="nav">
+
+    <div class="nav-title">Overview</div>
+
+    <a href="admin.html" class="nav-item">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <div class="nav-title">Management</div>
+
+    <a href="admin-users.html" class="nav-item">
+      <span class="nav-icon">👥</span>
+      <span class="nav-text">Users</span>
+    </a>
+
+    <a href="admin-offers.html" class="nav-item">
+      <span class="nav-icon">▣</span>
+      <span class="nav-text">Offers</span>
+    </a>
+
+    <a href="admin-share.html" class="nav-item">
+      <span class="nav-icon">↗</span>
+      <span class="nav-text">Share & Earn</span>
+    </a>
+
+    <a href="admin-refer.html" class="nav-item">
+      <span class="nav-icon">♧</span>
+      <span class="nav-text">Refer & Earn</span>
+    </a>
+
+    <a href="admin-tracking.html" class="nav-item active">
+      <span class="nav-icon">⌖</span>
+      <span class="nav-text">Tracking</span>
+    </a>
+
+    <div class="nav-title">Operations</div>
+
+    <a href="admin-finance.html" class="nav-item">
+      <span class="nav-icon">₹</span>
+      <span class="nav-text">Finance</span>
+    </a>
+
+    <a href="admin-support.html" class="nav-item">
+      <span class="nav-icon">?</span>
+      <span class="nav-text">Support</span>
+    </a>
+
+    <div class="nav-title">Controls</div>
+
+    <a href="admin-content.html" class="nav-item">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">App & Content</span>
+    </a>
+
+  </nav>
+</aside>
+
+<!-- HEADER -->
+<header class="topbar">
+
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <div class="logo">
+    Offer<span>wax</span>
+    <small>TRACKING MANAGEMENT</small>
+  </div>
+
+  <button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+  <section class="page-head">
+    <h1>Tracking Management</h1>
+    <p>
+      Monitor offer journeys from click to final validation.
+    </p>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-icon">⌖</div>
+      <strong>1,126</strong>
+      <small>Total Tracked</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">↓</div>
+      <strong class="blue">784</strong>
+      <small>Install Tracked</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">✓</div>
+      <strong>562</strong>
+      <small>Registered</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">⚡</div>
+      <strong>391</strong>
+      <small>Required Action</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">✓</div>
+      <strong class="green">318</strong>
+      <small>Completed</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">⏳</div>
+      <strong class="orange">73</strong>
+      <small>Validation</small>
+    </div>
+
+  </section>
+
+  <!-- SEARCH -->
+  <section class="tools">
+
+    <input
+      id="searchInput"
+      class="search"
+      type="search"
+      placeholder="Search Tracking ID, User ID, offer or UPI..."
+      oninput="renderRecords()">
+
+    <div class="filters">
+
+      <button class="filter active"
+        onclick="setFilter('all',this)">All</button>
+
+      <button class="filter"
+        onclick="setFilter('progress',this)">In Progress</button>
+
+      <button class="filter"
+        onclick="setFilter('completed',this)">Completed</button>
+
+      <button class="filter"
+        onclick="setFilter('validation',this)">Validation Pending</button>
+
+      <button class="filter"
+        onclick="setFilter('failed',this)">Failed</button>
+
+    </div>
+
+  </section>
+
+  <!-- RECORDS -->
+  <section class="section">
+
+    <div class="section-head">
+      <h2 class="section-title">Tracking Records</h2>
+      <span class="count" id="recordCount"></span>
+    </div>
+
+    <div class="records" id="recordList"></div>
+
+  </section>
+
+</main>
+
+<!-- DETAIL DRAWER -->
+<section class="drawer" id="trackingDrawer">
+
+  <div class="drawer-head">
+    <h2>Tracking Details</h2>
+    <button class="close" onclick="closeDrawer()">×</button>
+  </div>
+
+  <div class="drawer-body">
+
+    <!-- HERO -->
+    <div class="detail-hero">
+
+      <div class="hero-top">
+
+        <div class="big-logo" id="detailLogo">Kotak</div>
+
+        <div class="hero-info">
+          <h3 id="detailOffer">Kotak 811</h3>
+          <p id="detailUser">Bikash • OW8473</p>
+        </div>
+
+        <span id="detailStatus" class="status status-completed">
+          Completed
+        </span>
+
+      </div>
+
+      <div class="tracking-id">
+        <small>TRACKING ID</small>
+        <strong id="detailTrackingID">OW-TRK-X92KD</strong>
+      </div>
+
+    </div>
+
+    <!-- DETAILS -->
+    <div class="detail-grid">
+
+      <div class="detail-box">
+        <small>User ID</small>
+        <strong id="detailUserID">OW8473</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Visitor ID</small>
+        <strong id="detailVisitor">OW-X92KD</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>Mobile</small>
+        <strong id="detailMobile">98XXXXXX42</strong>
+      </div>
+
+      <div class="detail-box">
+        <small>UPI</small>
+        <strong id="detailUPI">bi****@upi</strong>
+      </div>
+
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="card">
+
+      <div class="card-title">
+        Tracking Timeline
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+
+    </div>
+
+    <!-- SOURCE -->
+    <div class="card">
+
+      <div class="card-title">
+        Attribution & Source
+      </div>
+
+      <div id="sourceDetails"></div>
+
+    </div>
+
+    <!-- VALIDATION -->
+    <div class="card">
+
+      <div class="card-title">
+        Validation Details
+      </div>
+
+      <div id="validationDetails"></div>
+
+    </div>
+
+    <!-- NOTE -->
+    <div class="card">
+
+      <div class="card-title">
+        Tracking Note
+      </div>
+
+      <div class="note-box">
+        <p id="trackingNote">
+          No tracking note.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="card">
+
+      <div class="card-title">
+        Admin Controls
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="action recheck"
+          onclick="recheckTracking()">
+          ↻ Recheck Tracking
+        </button>
+
+        <button
+          class="action review"
+          onclick="openReviewModal()">
+          ⚑ Mark for Review
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEW MODAL -->
+<div class="modal" id="reviewModal">
+
+  <div class="modal-box">
+
+    <h3>Mark Tracking for Review</h3>
+
+    <p>
+      Add an internal admin note explaining why this tracking
+      record needs manual review.
+    </p>
+
+    <input
+      class="modal-input"
+      id="reviewReason"
+      placeholder="Example: Postback missing">
+
+    <button
+      class="modal-btn"
+      onclick="submitReview()">
+      Mark for Review
+    </button>
+
+    <button class="cancel" onclick="closeReviewModal()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+/*
+=========================================
+SAMPLE / DEMO TRACKING DATA
+=========================================
+This is not real affiliate tracking yet.
+*/
+
+const records = [
+
+  {
+    trackingId:"OW-TRK-X92KD",
+    visitorId:"OW-X92KD",
+    userId:"OW8473",
+    user:"Bikash",
+    mobile:"98XXXXXX42",
+    upi:"bi****@upi",
+
+    offer:"Kotak 811",
+    logo:"Kotak",
+
+    status:"completed",
+    stage:6,
+
+    source:"Share & Earn",
+    referrer:"OW9124",
+    shareLink:"OW-SHARE-81192",
+
+    network:"Affiliate Network",
+    networkEvent:"Approved",
+
+    clickTime:"28 Sep 2026 • 10:14 AM",
+    installTime:"28 Sep 2026 • 10:17 AM",
+    registrationTime:"28 Sep 2026 • 10:24 AM",
+    actionTime:"28 Sep 2026 • 10:39 AM",
+    completionTime:"28 Sep 2026 • 10:41 AM",
+    validationTime:"29 Sep 2026 • 09:10 AM",
+
+    note:"Completion validated successfully."
+  },
+
+  {
+    trackingId:"OW-TRK-A71LM",
+    visitorId:"OW-A71LM",
+    userId:"OW9217",
+    user:"Aman",
+    mobile:"86XXXXXX11",
+    upi:"am****@upi",
+
+    offer:"CoinDCX",
+    logo:"CoinDCX",
+
+    status:"progress",
+    stage:3,
+
+    source:"Refer & Earn",
+    referrer:"OW8473",
+    shareLink:"Referral Code: OW8473",
+
+    network:"Affiliate Network",
+    networkEvent:"Waiting",
+
+    clickTime:"28 Sep 2026 • 03:20 PM",
+    installTime:"28 Sep 2026 • 03:24 PM",
+    registrationTime:"28 Sep 2026 • 03:35 PM",
+    actionTime:"",
+    completionTime:"",
+    validationTime:"",
+
+    note:"Registration tracked. Required action not completed yet."
+  },
+
+  {
+    trackingId:"OW-TRK-P84ZX",
+    visitorId:"OW-P84ZX",
+    userId:"OW9234",
+    user:"Rohan",
+    mobile:"91XXXXXX27",
+    upi:"ro****@upi",
+
+    offer:"Upstox",
+    logo:"Upstox",
+
+    status:"validation",
+    stage:5,
+
+    source:"Direct Offer",
+    referrer:"Direct",
+    shareLink:"Direct",
+
+    network:"Affiliate Network",
+    networkEvent:"Validation Pending",
+
+    clickTime:"27 Sep 2026 • 01:02 PM",
+    installTime:"27 Sep 2026 • 01:05 PM",
+    registrationTime:"27 Sep 2026 • 01:16 PM",
+    actionTime:"27 Sep 2026 • 01:29 PM",
+    completionTime:"27 Sep 2026 • 01:30 PM",
+    validationTime:"",
+
+    note:"Completion received. Waiting for advertiser/network validation."
+  },
+
+  {
+    trackingId:"OW-TRK-F19QA",
+    visitorId:"OW-F19QA",
+    userId:"OW9402",
+    user:"Sameer",
+    mobile:"70XXXXXX18",
+    upi:"sa****@upi",
+
+    offer:"Kotak 811",
+    logo:"Kotak",
+
+    status:"failed",
+    stage:2,
+
+    source:"Share & Earn",
+    referrer:"OW6251",
+    shareLink:"OW-SHARE-42018",
+
+    network:"Affiliate Network",
+    networkEvent:"Tracking Missing",
+
+    clickTime:"26 Sep 2026 • 04:44 PM",
+    installTime:"26 Sep 2026 • 04:49 PM",
+    registrationTime:"",
+    actionTime:"",
+    completionTime:"",
+    validationTime:"",
+
+    note:"Install event exists, but registration event was not received."
+  }
+
+];
+
+let activeFilter="all";
+let selectedRecord=null;
+
+
+/* STATUS HELPERS */
+
+function statusText(status){
+
+  if(status==="completed") return "Completed";
+  if(status==="progress") return "In Progress";
+  if(status==="validation") return "Validation";
+  if(status==="failed") return "Failed";
+
+  return status;
+}
+
+function statusClass(status){
+
+  if(status==="completed") return "status-completed";
+  if(status==="progress") return "status-progress";
+  if(status==="validation") return "status-validation";
+  if(status==="failed") return "status-failed";
+
+  return "";
+}
+
+
+/* RENDER */
+
+function renderRecords(){
+
+  const query=
+    document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const filtered=records.filter(r=>{
+
+    const searchable=
+      (
+        r.trackingId+" "+
+        r.visitorId+" "+
+        r.userId+" "+
+        r.user+" "+
+        r.offer+" "+
+        r.upi
+      ).toLowerCase();
+
+    const searchMatch=searchable.includes(query);
+
+    const filterMatch=
+      activeFilter==="all" ||
+      r.status===activeFilter;
+
+    return searchMatch && filterMatch;
+
+  });
+
+  document.getElementById("recordCount").innerText=
+    filtered.length+
+    (filtered.length===1?" record":" records");
+
+  const list=document.getElementById("recordList");
+
+  if(!filtered.length){
+
+    list.innerHTML=
+      '<div class="empty">No tracking records found.</div>';
+
+    return;
+  }
+
+  list.innerHTML=filtered.map(r=>{
+
+    let bars="";
+
+    for(let i=1;i<=6;i++){
+
+      let cls="progress-step";
+
+      if(i<=r.stage){
+        cls+=" done";
+      }
+
+      if(r.status==="failed" && i===r.stage){
+        cls="progress-step failed";
+      }
+
+      if(r.status==="validation" && i===6){
+        cls="progress-step current";
+      }
+
+      bars+=`<div class="${cls}"></div>`;
+    }
+
+    return `
+
+      <div class="record"
+        onclick="openRecord('${r.trackingId}')">
+
+        <div class="record-top">
+
+          <div class="offer-logo">
+            ${r.logo}
+          </div>
+
+          <div class="record-info">
+
+            <h3>${r.offer}</h3>
+
+            <p>
+              ${r.user} • ${r.userId}<br>
+              ${r.trackingId}
+            </p>
+
+          </div>
+
+          <span class="status ${statusClass(r.status)}">
+            ${statusText(r.status)}
+          </span>
+
+        </div>
+
+        <div class="progress">
+          ${bars}
+        </div>
+
+        <div class="record-bottom">
+
+          <div class="mini">
+            <small>Source</small>
+            <strong>${r.source}</strong>
+          </div>
+
+          <div class="mini">
+            <small>Current Stage</small>
+            <strong>${getStageName(r)}</strong>
+          </div>
+
+          <div class="mini">
+            <small>Network</small>
+            <strong>${r.networkEvent}</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+
+/* FILTER */
+
+function setFilter(value,button){
+
+  activeFilter=value;
+
+  document.querySelectorAll(".filter")
+  .forEach(x=>x.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderRecords();
+}
+
+
+/* STAGE */
+
+function getStageName(r){
+
+  if(r.status==="validation"){
+    return "Validation";
+  }
+
+  const names=[
+    "",
+    "Click",
+    "Install",
+    "Registration",
+    "Required Action",
+    "Completion",
+    "Validated"
+  ];
+
+  return names[r.stage] || "Unknown";
+}
+
+
+/* OPEN RECORD */
+
+function openRecord(id){
+
+  selectedRecord=
+    records.find(r=>r.trackingId===id);
+
+  if(!selectedRecord)return;
+
+  document.getElementById("detailLogo").innerText=
+    selectedRecord.logo;
+
+  document.getElementById("detailOffer").innerText=
+    selectedRecord.offer;
+
+  document.getElementById("detailUser").innerText=
+    selectedRecord.user+" • "+selectedRecord.userId;
+
+  const statusEl=
+    document.getElementById("detailStatus");
+
+  statusEl.innerText=
+    statusText(selectedRecord.status);
+
+  statusEl.className=
+    "status "+statusClass(selectedRecord.status);
+
+  document.getElementById("detailTrackingID").innerText=
+    selectedRecord.trackingId;
+
+  document.getElementById("detailUserID").innerText=
+    selectedRecord.userId;
+
+  document.getElementById("detailVisitor").innerText=
+    selectedRecord.visitorId;
+
+  document.getElementById("detailMobile").innerText=
+    selectedRecord.mobile;
+
+  document.getElementById("detailUPI").innerText=
+    selectedRecord.upi;
+
+  document.getElementById("trackingNote").innerText=
+    selectedRecord.note || "No tracking note.";
+
+  renderTimeline();
+  renderSource();
+  renderValidation();
+
+  document.getElementById("trackingDrawer")
+  .classList.add("open");
+
+  document.getElementById("overlay")
+  .style.display="block";
+
+}
+
+
+/* TIMELINE */
+
+function renderTimeline(){
+
+  const r=selectedRecord;
+
+  const steps=[
+
+    {
+      number:1,
+      title:"Offer Click",
+      description:"User opened the tracked offer link.",
+      time:r.clickTime
+    },
+
+    {
+      number:2,
+      title:"Install Tracked",
+      description:"Install/open event received.",
+      time:r.installTime
+    },
+
+    {
+      number:3,
+      title:"Registration Complete",
+      description:"Registration event received.",
+      time:r.registrationTime
+    },
+
+    {
+      number:4,
+      title:"Required Action",
+      description:"Required campaign action completed.",
+      time:r.actionTime
+    },
+
+    {
+      number:5,
+      title:"Completion Tracked",
+      description:"Offer completion event received.",
+      time:r.completionTime
+    },
+
+    {
+      number:6,
+      title:"Validation",
+      description:"Final advertiser/network validation.",
+      time:r.validationTime
+    }
+
+  ];
+
+  document.getElementById("timeline").innerHTML=
+    steps.map(step=>{
+
+      let cls="";
+      let icon="•";
+      let text="Not tracked yet";
+
+      if(step.number<=r.stage){
+
+        cls="done";
+        icon="✓";
+        text=step.description;
+
+      }
+
+      if(
+        r.status==="validation" &&
+        step.number===6
+      ){
+        cls="waiting";
+        icon="…";
+        text="Waiting for final validation.";
+      }
+
+      if(
+        r.status==="failed" &&
+        step.number===r.stage+1
+      ){
+        cls="failed";
+        icon="!";
+        text="Expected event not received.";
+      }
+
+      return `
+
+        <div class="timeline-item ${cls}">
+
+          <div class="timeline-dot">
+            ${icon}
+          </div>
+
+          <h4>${step.title}</h4>
+
+          <p>${text}</p>
+
+          ${
+            step.time
+            ? `<time>${step.time}</time>`
+            : ""
+          }
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* SOURCE */
+
+function renderSource(){
+
+  const r=selectedRecord;
+
+  document.getElementById("sourceDetails").innerHTML=`
+
+    <div class="source-row">
+      <span>Source Type</span>
+      <strong>${r.source}</strong>
+    </div>
+
+    <div class="source-row">
+      <span>Referrer / Owner</span>
+      <strong>${r.referrer}</strong>
+    </div>
+
+    <div class="source-row">
+      <span>Share / Referral Reference</span>
+      <strong>${r.shareLink}</strong>
+    </div>
+
+    <div class="source-row">
+      <span>Tracking Network</span>
+      <strong>${r.network}</strong>
+    </div>
+
+  `;
+
+}
+
+
+/* VALIDATION */
+
+function renderValidation(){
+
+  const r=selectedRecord;
+
+  let finalStatus="Pending";
+
+  if(r.status==="completed"){
+    finalStatus="Validated";
+  }
+
+  if(r.status==="failed"){
+    finalStatus="Needs Review";
+  }
+
+  document.getElementById("validationDetails").innerHTML=`
+
+    <div class="source-row">
+      <span>Network Event</span>
+      <strong>${r.networkEvent}</strong>
+    </div>
+
+    <div class="source-row">
+      <span>Final Status</span>
+      <strong>${finalStatus}</strong>
+    </div>
+
+    <div class="source-row">
+      <span>Validation Time</span>
+      <strong>${r.validationTime || "Not validated yet"}</strong>
+    </div>
+
+  `;
+
+}
+
+
+/* RECHECK */
+
+function recheckTracking(){
+
+  if(!selectedRecord)return;
+
+  const ok=confirm(
+    "Recheck tracking for "+
+    selectedRecord.trackingId+
+    "?"
+  );
+
+  if(!ok)return;
+
+  alert(
+    "Demo only. No affiliate API/postback is connected yet, "+
+    "so no tracking status was changed."
+  );
+
+}
+
+
+/* REVIEW */
+
+function openReviewModal(){
+
+  if(!selectedRecord)return;
+
+  document.getElementById("reviewReason").value="";
+
+  document.getElementById("reviewModal")
+  .style.display="flex";
+
+}
+
+function closeReviewModal(){
+
+  document.getElementById("reviewModal")
+  .style.display="none";
+
+}
+
+function submitReview(){
+
+  const reason=
+    document.getElementById("reviewReason")
+    .value.trim();
+
+  if(!reason){
+
+    alert("Enter a review reason.");
+    return;
+  }
+
+  alert(
+    "Demo only. Review note was NOT permanently saved. "+
+    "Backend/database is not connected yet."
+  );
+
+  closeReviewModal();
+
+}
+
+
+/* NAV */
+
+function openSidebar(){
+
+  document.getElementById("sidebar")
+  .classList.add("open");
+
+  document.getElementById("overlay")
+  .style.display="block";
+
+}
+
+function closeDrawer(){
+
+  document.getElementById("trackingDrawer")
+  .classList.remove("open");
+
+  document.getElementById("overlay")
+  .style.display="none";
+
+}
+
+function closeEverything(){
+
+  document.getElementById("sidebar")
+  .classList.remove("open");
+
+  document.getElementById("trackingDrawer")
+  .classList.remove("open");
+
+  document.getElementById("overlay")
+  .style.display="none";
+
+}
+
+
+/*
+==================================================
+REAL TRACKING BACKEND LATER
+==================================================
+
+This page currently uses SAMPLE data.
+
+Real tracking should come from verified sources such as:
+- affiliate network postbacks
+- server-to-server callbacks
+- approved network APIs
+- Offerwax click/session records
+
+Example event chain:
+
+CLICK
+→ INSTALL
+→ REGISTRATION
+→ REQUIRED ACTION
+→ COMPLETION
+→ VALIDATION
+
+Possible protected endpoints:
+
+GET /api/admin/tracking
+GET /api/admin/tracking/:trackingId
+
+POST /api/admin/tracking/:trackingId/recheck
+POST /api/admin/tracking/:trackingId/review
+
+Important:
+Never mark a conversion completed merely because
+the frontend says it completed.
+
+Reward/payment eligibility should use verified
+server-side tracking and validation.
+
+Admin actions must require authentication,
+authorization and audit logs.
+*/
+
+renderRecords();
+
+</script>
+
+</body>
+  </html>
