@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Support | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh
+}
+
+button,input{font-family:inherit}
+
+/* TOPBAR */
+
+.topbar{
+  height:66px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#090e18;
+  border-bottom:1px solid #1d2739;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  gap:12px
+}
+
+.menu-btn,.bell{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  border:1px solid #273249;
+  background:#10182a;
+  color:#fff;
+  font-size:18px
+}
+
+.logo{
+  flex:1;
+  font-size:20px;
+  font-weight:900
+}
+
+.logo span{color:#d42df4}
+
+.logo small{
+  display:block;
+  color:#6f7b90;
+  font-size:8px;
+  margin-top:2px
+}
+
+/* SIDEBAR */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.76);
+  z-index:190
+}
+
+.sidebar{
+  position:fixed;
+  left:-285px;
+  top:0;
+  bottom:0;
+  width:275px;
+  background:#0b111d;
+  border-right:1px solid #202b40;
+  z-index:200;
+  transition:.25s;
+  overflow-y:auto
+}
+
+.sidebar.open{left:0}
+
+.sidebar-head{
+  padding:22px 18px;
+  border-bottom:1px solid #202b40
+}
+
+.sidebar-logo{
+  font-size:23px;
+  font-weight:900
+}
+
+.sidebar-logo span{color:#d42df4}
+
+.sidebar-head p{
+  color:#6f7b90;
+  font-size:9px;
+  margin-top:5px
+}
+
+.nav{padding:14px 10px 25px}
+
+.nav-title{
+  color:#536076;
+  font-size:8px;
+  font-weight:800;
+  padding:12px 11px 6px;
+  text-transform:uppercase
+}
+
+.nav-item{
+  display:flex;
+  align-items:center;
+  min-height:48px;
+  padding:8px 11px;
+  margin:3px 0;
+  border-radius:12px;
+  color:#8d98ab;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:700
+}
+
+.nav-item.active{
+  color:#fff;
+  background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+
+.nav-icon{
+  width:31px;
+  font-size:16px
+}
+
+.nav-text{flex:1}
+
+/* MAIN */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:22px 16px 50px
+}
+
+.page-head h1{
+  font-size:25px
+}
+
+.page-head p{
+  color:#788499;
+  font-size:10px;
+  margin-top:6px;
+  line-height:1.5
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px
+}
+
+.stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:16px;
+  padding:14px
+}
+
+.stat-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.stat strong{
+  display:block;
+  font-size:21px;
+  margin-top:10px
+}
+
+.stat small{
+  display:block;
+  color:#7b879b;
+  font-size:9px;
+  margin-top:5px
+}
+
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.purple{color:#d94df4!important}
+
+/* SEARCH */
+
+.tools{
+  margin-top:22px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  padding:13px
+}
+
+.search{
+  width:100%;
+  height:44px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  color:#fff;
+  padding:0 13px;
+  outline:none
+}
+
+.search:focus{
+  border-color:#d42df4
+}
+
+.filters{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  margin-top:10px;
+  scrollbar-width:none
+}
+
+.filter{
+  flex:0 0 auto;
+  border:1px solid #29364e;
+  background:#0c1321;
+  color:#8995a9;
+  border-radius:18px;
+  padding:8px 13px;
+  font-size:8px
+}
+
+.filter.active{
+  background:#d42df4;
+  border-color:#d42df4;
+  color:#fff
+}
+
+/* REQUEST LIST */
+
+.section{
+  margin-top:24px
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:11px
+}
+
+.section-title{
+  font-size:17px
+}
+
+.count{
+  color:#738096;
+  font-size:9px
+}
+
+.requests{
+  display:grid;
+  gap:10px
+}
+
+.request{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  padding:14px;
+  cursor:pointer
+}
+
+.request-top{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.avatar{
+  width:44px;
+  height:44px;
+  min-width:44px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:900
+}
+
+.request-info{
+  flex:1;
+  min-width:0
+}
+
+.request-info h3{
+  font-size:12px
+}
+
+.request-info p{
+  color:#748197;
+  font-size:8px;
+  margin-top:5px
+}
+
+.status{
+  padding:5px 8px;
+  border-radius:12px;
+  font-size:7px;
+  font-weight:800;
+  white-space:nowrap
+}
+
+.status-new{
+  color:#d94df4;
+  background:rgba(212,45,244,.1)
+}
+
+.status-review{
+  color:#ffb84d;
+  background:rgba(255,184,77,.1)
+}
+
+.status-solved{
+  color:#39dc8a;
+  background:rgba(57,220,138,.1)
+}
+
+.problem-preview{
+  background:#0b1220;
+  border-radius:11px;
+  padding:10px;
+  margin-top:11px;
+  color:#9ba6b8;
+  font-size:8px;
+  line-height:1.6
+}
+
+.request-bottom{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:10px
+}
+
+.request-bottom span{
+  color:#657287;
+  font-size:7px
+}
+
+/* DRAWER */
+
+.drawer{
+  position:fixed;
+  right:-100%;
+  top:0;
+  width:100%;
+  max-width:590px;
+  height:100vh;
+  background:#090f1a;
+  z-index:300;
+  transition:.27s;
+  overflow-y:auto;
+  border-left:1px solid #253047
+}
+
+.drawer.open{
+  right:0
+}
+
+.drawer-head{
+  height:65px;
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:#090f1a;
+  border-bottom:1px solid #202b40;
+  display:flex;
+  align-items:center;
+  padding:0 16px
+}
+
+.drawer-head h2{
+  flex:1;
+  font-size:17px
+}
+
+.close{
+  width:35px;
+  height:35px;
+  border:1px solid #29364e;
+  border-radius:10px;
+  background:#111a2a;
+  color:#fff;
+  font-size:19px
+}
+
+.drawer-body{
+  padding:17px 16px 40px
+}
+
+/* USER */
+
+.user-card{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;
+  border-radius:19px;
+  padding:17px
+}
+
+.user-top{
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.big-avatar{
+  width:55px;
+  height:55px;
+  min-width:55px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:900
+}
+
+.user-info{
+  flex:1
+}
+
+.user-info h3{
+  font-size:15px
+}
+
+.user-info p{
+  color:#78859a;
+  font-size:8px;
+  margin-top:5px
+}
+
+/* INFO */
+
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px
+}
+
+.info-box{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:12px;
+  padding:11px
+}
+
+.info-box small{
+  display:block;
+  color:#707d92;
+  font-size:7px
+}
+
+.info-box strong{
+  display:block;
+  font-size:9px;
+  margin-top:5px;
+  word-break:break-word
+}
+
+/* CARD */
+
+.card{
+  margin-top:13px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  overflow:hidden
+}
+
+.card-title{
+  padding:13px;
+  font-size:12px;
+  border-bottom:1px solid #202c43
+}
+
+.problem{
+  padding:15px;
+  color:#c1c8d4;
+  font-size:10px;
+  line-height:1.7;
+  white-space:pre-wrap
+}
+
+/* STATUS BOX */
+
+.status-area{
+  padding:13px
+}
+
+.current-status{
+  background:#0b1220;
+  border-radius:11px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.current-status span{
+  color:#778499;
+  font-size:8px
+}
+
+.current-status strong{
+  font-size:9px
+}
+
+/* ACTIONS */
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding:13px
+}
+
+.action{
+  min-height:44px;
+  border-radius:11px;
+  border:1px solid #2a354b;
+  background:#111a2a;
+  color:#fff;
+  font-size:9px;
+  font-weight:700
+}
+
+.review-btn{
+  color:#ffb84d;
+  border-color:rgba(255,184,77,.3)
+}
+
+.solved-btn{
+  color:#39dc8a;
+  border-color:rgba(57,220,138,.3)
+}
+
+/* SOLVED MESSAGE */
+
+.solved-note{
+  padding:13px;
+  border-top:1px solid #202c43
+}
+
+.solved-note p{
+  color:#778499;
+  font-size:8px;
+  line-height:1.5
+}
+
+textarea{
+  width:100%;
+  min-height:90px;
+  margin-top:10px;
+  resize:vertical;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  padding:11px;
+  color:#fff;
+  outline:none;
+  font-family:inherit;
+  font-size:9px
+}
+
+textarea:focus{
+  border-color:#d42df4
+}
+
+.save-message{
+  width:100%;
+  height:43px;
+  border:0;
+  border-radius:11px;
+  margin-top:9px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;
+  font-size:9px;
+  font-weight:800
+}
+
+.empty{
+  background:#10182a;
+  border-radius:15px;
+  padding:30px;
+  text-align:center;
+  color:#748197;
+  font-size:10px
+}
+
+@media(min-width:850px){
+
+  .menu-btn{display:none}
+
+  .sidebar{
+    left:0;
+    width:250px
+  }
+
+  .topbar{
+    margin-left:250px
+  }
+
+  .container{
+    margin-left:250px;
+    max-width:none;
+    padding:28px
+  }
+
+  .stats{
+    grid-template-columns:repeat(4,1fr)
+  }
+
+  .requests{
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeEverything()">
+</div>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-head">
+
+<div class="sidebar-logo">
+Offer<span>wax</span>
+</div>
+
+<p>Admin Control Center</p>
+
+</div>
+
+<nav class="nav">
+
+<div class="nav-title">Overview</div>
+
+<a href="admin.html" class="nav-item">
+<span class="nav-icon">⌂</span>
+<span class="nav-text">Dashboard</span>
+</a>
+
+<div class="nav-title">Management</div>
+
+<a href="admin-users.html" class="nav-item">
+<span class="nav-icon">👥</span>
+<span class="nav-text">Users</span>
+</a>
+
+<a href="admin-offers.html" class="nav-item">
+<span class="nav-icon">▣</span>
+<span class="nav-text">Offers</span>
+</a>
+
+<a href="admin-share.html" class="nav-item">
+<span class="nav-icon">↗</span>
+<span class="nav-text">Share & Earn</span>
+</a>
+
+<a href="admin-refer.html" class="nav-item">
+<span class="nav-icon">♧</span>
+<span class="nav-text">Refer & Earn</span>
+</a>
+
+<a href="admin-tracking.html" class="nav-item">
+<span class="nav-icon">⌖</span>
+<span class="nav-text">Tracking</span>
+</a>
+
+<div class="nav-title">Operations</div>
+
+<a href="admin-finance.html" class="nav-item">
+<span class="nav-icon">₹</span>
+<span class="nav-text">Finance</span>
+</a>
+
+<a href="admin-support.html" class="nav-item active">
+<span class="nav-icon">?</span>
+<span class="nav-text">Support</span>
+</a>
+
+<div class="nav-title">Controls</div>
+
+<a href="admin-content.html" class="nav-item">
+<span class="nav-icon">⚙</span>
+<span class="nav-text">App & Content</span>
+</a>
+
+</nav>
+
+</aside>
+
+<!-- TOPBAR -->
+
+<header class="topbar">
+
+<button
+  class="menu-btn"
+  onclick="openSidebar()">
+☰
+</button>
+
+<div class="logo">
+
+Offer<span>wax</span>
+
+<small>
+SUPPORT REQUESTS
+</small>
+
+</div>
+
+<button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+
+<main class="container">
+
+<section class="page-head">
+
+<h1>Support</h1>
+
+<p>
+View problems submitted by Offerwax users and update
+their request status.
+</p>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">✉</div>
+
+<strong>24</strong>
+
+<small>Total Requests</small>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">●</div>
+
+<strong class="purple">6</strong>
+
+<small>New Requests</small>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">⏳</div>
+
+<strong class="orange">4</strong>
+
+<small>In Review</small>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">✓</div>
+
+<strong class="green">14</strong>
+
+<small>Solved</small>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="tools">
+
+<input
+  id="searchInput"
+  class="search"
+  type="search"
+  placeholder="Search name, mobile or Support ID..."
+  oninput="renderRequests()">
+
+<div class="filters">
+
+<button
+  class="filter active"
+  onclick="setFilter('all',this)">
+All
+</button>
+
+<button
+  class="filter"
+  onclick="setFilter('new',this)">
+New
+</button>
+
+<button
+  class="filter"
+  onclick="setFilter('review',this)">
+In Review
+</button>
+
+<button
+  class="filter"
+  onclick="setFilter('solved',this)">
+Solved
+</button>
+
+</div>
+
+</section>
+
+<!-- REQUESTS -->
+
+<section class="section">
+
+<div class="section-head">
+
+<h2 class="section-title">
+Support Requests
+</h2>
+
+<span
+  class="count"
+  id="requestCount">
+</span>
+
+</div>
+
+<div
+  class="requests"
+  id="requestList">
+</div>
+
+</section>
+
+</main>
+
+<!-- DETAILS DRAWER -->
+
+<section
+  class="drawer"
+  id="supportDrawer">
+
+<div class="drawer-head">
+
+<h2>
+Support Request
+</h2>
+
+<button
+  class="close"
+  onclick="closeDrawer()">
+×
+</button>
+
+</div>
+
+<div class="drawer-body">
+
+<!-- USER -->
+
+<div class="user-card">
+
+<div class="user-top">
+
+<div
+  class="big-avatar"
+  id="detailAvatar">
+BK
+</div>
+
+<div class="user-info">
+
+<h3 id="detailName">
+Bikash
+</h3>
+
+<p id="detailMobile">
+Registered Mobile: 98XXXXXX42
+</p>
+
+</div>
+
+<span
+  class="status status-new"
+  id="detailStatus">
+New
+</span>
+
+</div>
+
+</div>
+
+<!-- INFO -->
+
+<div class="info-grid">
+
+<div class="info-box">
+
+<small>Support ID</small>
+
+<strong id="detailID">
+SUP-1001
+</strong>
+
+</div>
+
+<div class="info-box">
+
+<small>Submitted</small>
+
+<strong id="detailDate">
+29 Sep 2026
+</strong>
+
+</div>
+
+</div>
+
+<!-- PROBLEM -->
+
+<div class="card">
+
+<div class="card-title">
+User's Problem
+</div>
+
+<div
+  class="problem"
+  id="detailProblem">
+</div>
+
+</div>
+
+<!-- STATUS -->
+
+<div class="card">
+
+<div class="card-title">
+Request Status
+</div>
+
+<div class="status-area">
+
+<div class="current-status">
+
+<span>Current Status</span>
+
+<strong id="currentStatus">
+New
+</strong>
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button
+  class="action review-btn"
+  onclick="changeStatus('review')">
+⏳ In Review
+</button>
+
+<button
+  class="action solved-btn"
+  onclick="changeStatus('solved')">
+✓ Mark Solved
+</button>
+
+</div>
+
+</div>
+
+<!-- USER MESSAGE -->
+
+<div class="card">
+
+<div class="card-title">
+Resolution Message
+</div>
+
+<div class="solved-note">
+
+<p>
+This message can later appear on the user's Support page
+and Offerwax notification after the request is solved.
+</p>
+
+<textarea
+  id="resolutionMessage"
+  placeholder="Example: Your issue has been resolved. Please check your wallet again.">
+</textarea>
+
+<button
+  class="save-message"
+  onclick="saveResolution()">
+Save Resolution Message
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/*
+==============================================
+DEMO SUPPORT DATA
+==============================================
+
+These requests are sample data only.
+Real submissions will come from the backend.
+*/
+
+const supportRequests=[
+
+{
+ id:"SUP-1001",
+ name:"Rahul Das",
+ initials:"RD",
+ mobile:"98XXXXXX42",
+ date:"29 Sep 2026 • 08:15 AM",
+ status:"new",
+
+ problem:
+ "I completed the Kotak 811 offer but the reward is still showing pending in my wallet.",
+
+ resolution:""
+},
+
+{
+ id:"SUP-1002",
+ name:"Aman Ali",
+ initials:"AA",
+ mobile:"86XXXXXX11",
+ date:"28 Sep 2026 • 06:42 PM",
+ status:"review",
+
+ problem:
+ "My CoinDCX offer install is tracked but registration status is not updating.",
+
+ resolution:
+ "We are checking your tracking status."
+},
+
+{
+ id:"SUP-1003",
+ name:"Rohan Sharma",
+ initials:"RS",
+ mobile:"91XXXXXX27",
+ date:"28 Sep 2026 • 02:18 PM",
+ status:"solved",
+
+ problem:
+ "I was unable to see my referral reward after my friend completed the first task.",
+
+ resolution:
+ "Your referral reward has been verified and the issue has been resolved."
+},
+
+{
+ id:"SUP-1004",
+ name:"Arjun",
+ initials:"AR",
+ mobile:"70XXXXXX18",
+ date:"27 Sep 2026 • 09:21 PM",
+ status:"solved",
+
+ problem:
+ "My withdrawal was showing processing for a long time.",
+
+ resolution:
+ "Your withdrawal status has been updated. Please check your wallet."
+}
+
+];
+
+let activeFilter="all";
+let selectedRequest=null;
+
+
+/* STATUS */
+
+function statusText(status){
+
+ if(status==="new"){
+  return "New";
+ }
+
+ if(status==="review"){
+  return "In Review";
+ }
+
+ if(status==="solved"){
+  return "Solved";
+ }
+
+ return status;
+
+}
+
+function statusClass(status){
+
+ if(status==="new"){
+  return "status-new";
+ }
+
+ if(status==="review"){
+  return "status-review";
+ }
+
+ if(status==="solved"){
+  return "status-solved";
+ }
+
+ return "";
+
+}
+
+
+/* RENDER */
+
+function renderRequests(){
+
+ const query=
+ document
+ .getElementById("searchInput")
+ .value
+ .toLowerCase()
+ .trim();
+
+ const filtered=
+ supportRequests.filter(request=>{
+
+  const searchable=
+  (
+   request.id+" "+
+   request.name+" "+
+   request.mobile+" "+
+   request.problem
+  ).toLowerCase();
+
+  const searchMatch=
+  searchable.includes(query);
+
+  const filterMatch=
+  activeFilter==="all" ||
+  request.status===activeFilter;
+
+  return searchMatch && filterMatch;
+
+ });
+
+ document
+ .getElementById("requestCount")
+ .innerText=
+ filtered.length+
+ (filtered.length===1
+ ? " request"
+ : " requests");
+
+ const list=
+ document.getElementById("requestList");
+
+ if(!filtered.length){
+
+  list.innerHTML=
+  '<div class="empty">No support requests found.</div>';
+
+  return;
+
+ }
+
+ list.innerHTML=
+ filtered.map(request=>`
+
+ <div
+   class="request"
+   onclick="openRequest('${request.id}')">
+
+   <div class="request-top">
+
+     <div class="avatar">
+       ${request.initials}
+     </div>
+
+     <div class="request-info">
+
+       <h3>
+         ${request.name}
+       </h3>
+
+       <p>
+         ${request.mobile}
+       </p>
+
+     </div>
+
+     <span
+       class="status ${statusClass(request.status)}">
+
+       ${statusText(request.status)}
+
+     </span>
+
+   </div>
+
+   <div class="problem-preview">
+     ${escapeHTML(shortText(request.problem,120))}
+   </div>
+
+   <div class="request-bottom">
+
+     <span>
+       ${request.id}
+     </span>
+
+     <span>
+       ${request.date}
+     </span>
+
+   </div>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* SHORT TEXT */
+
+function shortText(text,length){
+
+ if(text.length<=length){
+  return text;
+ }
+
+ return text.substring(0,length)+"...";
+
+}
+
+
+/* FILTER */
+
+function setFilter(value,button){
+
+ activeFilter=value;
+
+ document
+ .querySelectorAll(".filter")
+ .forEach(item=>
+   item.classList.remove("active")
+ );
+
+ button.classList.add("active");
+
+ renderRequests();
+
+}
+
+
+/* OPEN REQUEST */
+
+function openRequest(id){
+
+ selectedRequest=
+ supportRequests.find(
+  request=>request.id===id
+ );
+
+ if(!selectedRequest){
+  return;
+ }
+
+ document
+ .getElementById("detailAvatar")
+ .innerText=
+ selectedRequest.initials;
+
+ document
+ .getElementById("detailName")
+ .innerText=
+ selectedRequest.name;
+
+ document
+ .getElementById("detailMobile")
+ .innerText=
+ "Registered Mobile: "+
+ selectedRequest.mobile;
+
+ document
+ .getElementById("detailID")
+ .innerText=
+ selectedRequest.id;
+
+ document
+ .getElementById("detailDate")
+ .innerText=
+ selectedRequest.date;
+
+ document
+ .getElementById("detailProblem")
+ .innerText=
+ selectedRequest.problem;
+
+ document
+ .getElementById("currentStatus")
+ .innerText=
+ statusText(selectedRequest.status);
+
+ const status=
+ document.getElementById("detailStatus");
+
+ status.innerText=
+ statusText(selectedRequest.status);
+
+ status.className=
+ "status "+
+ statusClass(selectedRequest.status);
+
+ document
+ .getElementById("resolutionMessage")
+ .value=
+ selectedRequest.resolution || "";
+
+ document
+ .getElementById("supportDrawer")
+ .classList.add("open");
+
+ document
+ .getElementById("overlay")
+ .style.display="block";
+
+}
+
+
+/* CHANGE STATUS */
+
+function changeStatus(newStatus){
+
+ if(!selectedRequest){
+  return;
+ }
+
+ if(newStatus==="solved"){
+
+  const message=
+  document
+  .getElementById("resolutionMessage")
+  .value
+  .trim();
+
+  if(!message){
+
+   alert(
+    "Please write a short resolution message before marking this request solved."
+   );
+
+   return;
+
+  }
+
+ }
+
+ const action=
+ newStatus==="solved"
+ ? "mark this request as Solved"
+ : "move this request to In Review";
+
+ const confirmAction=
+ confirm(
+  "Do you want to "+
+  action+
+  "?"
+ );
+
+ if(!confirmAction){
+  return;
+ }
+
+ /*
+ DEMO ONLY
+
+ We update browser memory here so you can
+ test the interface.
+
+ This is NOT saved to a real database.
+ */
+
+ selectedRequest.status=
+ newStatus;
+
+ if(newStatus==="solved"){
+
+  selectedRequest.resolution=
+  document
+  .getElementById("resolutionMessage")
+  .value
+  .trim();
+
+ }
+
+ openRequest(selectedRequest.id);
+
+ renderRequests();
+
+ alert(
+  "Demo status updated on this page only. "+
+  "After backend connection, this status will be saved "+
+  "and shown to the user."
+ );
+
+}
+
+
+/* RESOLUTION */
+
+function saveResolution(){
+
+ if(!selectedRequest){
+  return;
+ }
+
+ const message=
+ document
+ .getElementById("resolutionMessage")
+ .value
+ .trim();
+
+ if(!message){
+
+  alert(
+   "Write a resolution message first."
+  );
+
+  return;
+
+ }
+
+ /*
+ DEMO ONLY
+ */
+
+ selectedRequest.resolution=
+ message;
+
+ alert(
+  "Demo message saved for this browser session only. "+
+  "Backend/database is not connected yet."
+ );
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+ return String(value)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+
+}
+
+
+/* SIDEBAR */
+
+function openSidebar(){
+
+ document
+ .getElementById("sidebar")
+ .classList.add("open");
+
+ document
+ .getElementById("overlay")
+ .style.display="block";
+
+}
+
+function closeDrawer(){
+
+ document
+ .getElementById("supportDrawer")
+ .classList.remove("open");
+
+ document
+ .getElementById("overlay")
+ .style.display="none";
+
+}
+
+function closeEverything(){
+
+ document
+ .getElementById("sidebar")
+ .classList.remove("open");
+
+ document
+ .getElementById("supportDrawer")
+ .classList.remove("open");
+
+ document
+ .getElementById("overlay")
+ .style.display="none";
+
+}
+
+
+/*
+================================================
+REAL SUPPORT SYSTEM - BACKEND LATER
+================================================
+
+USER SUBMISSION:
+
+POST /api/support
+
+{
+  name,
+  registeredMobile,
+  problem
+}
+
+Server creates:
+
+supportId
+userId
+name
+registeredMobile
+problem
+status
+createdAt
+resolutionMessage
+
+
+STATUS:
+
+new
+review
+solved
+
+
+ADMIN:
+
+GET /api/admin/support
+GET /api/admin/support/:supportId
+
+POST /api/admin/support/:supportId/status
+
+When admin marks SOLVED:
+
+1. Save status = solved
+2. Save resolution message
+3. Create Offerwax notification for user
+
+Example notification:
+
+"Support Request Solved"
+
+"Your support request SUP-1001 has been resolved.
+Open Support to view the update."
+
+
+IMPORTANT:
+
+User does NOT need live chat.
+
+User submits:
+Name
+Registered Mobile Number
+Problem
+
+Admin reviews it and marks it solved.
+
+Share & Earn Contact Manager will be a separate
+feature later and should not be mixed into this
+basic support system.
+*/
+
+renderRequests();
+
+</script>
+
+</body>
+  </html>
