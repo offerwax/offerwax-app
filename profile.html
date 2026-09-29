@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070b14">
@@ -8,6 +9,7 @@
 <title>Profile | Offerwax</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -65,7 +67,7 @@ body{
 }
 
 
-/* PROFILE HERO */
+/* PROFILE */
 
 .profile-card{
   background:linear-gradient(145deg,#111a2d,#171226);
@@ -115,7 +117,7 @@ body{
 }
 
 
-/* SECTION */
+/* SECTIONS */
 
 .section{
   margin-top:25px;
@@ -289,7 +291,7 @@ body{
 }
 
 
-/* MODAL */
+/* MODALS */
 
 .modal{
   display:none;
@@ -417,11 +419,16 @@ input:focus{
   font-size:8px;
   margin-top:25px;
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
 
 <header class="header">
 
@@ -441,354 +448,373 @@ input:focus{
 <main class="container">
 
 
-  <!-- PROFILE -->
+<!-- PROFILE -->
 
-  <section class="profile-card">
+<section class="profile-card">
 
-    <div class="avatar" id="avatar">
-      ES
-    </div>
-
-    <div class="profile-name" id="profileName">
-      Earn Smart
-    </div>
-
-    <div class="profile-id">
-      User ID: <span id="userID">OW8473</span>
-    </div>
-
-    <div class="verified">
-      ✓ Account Active
-    </div>
-
-  </section>
-
-
-
-  <!-- ACCOUNT DETAILS -->
-
-  <section class="section">
-
-    <div class="section-title">
-      Account Details
-    </div>
-
-    <div class="card">
-
-
-      <div class="detail-row">
-
-        <div class="detail-icon">
-          👤
-        </div>
-
-        <div class="detail-info">
-
-          <div class="detail-label">
-            Full Name
-          </div>
-
-          <div class="detail-value" id="fullName">
-            Earn Smart
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="detail-row">
-
-        <div class="detail-icon">
-          ☎
-        </div>
-
-        <div class="detail-info">
-
-          <div class="detail-label">
-            Mobile Number
-          </div>
-
-          <div class="detail-value" id="mobile">
-            +91 98XXXXXX42
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="detail-row">
-
-        <div class="detail-icon">
-          ✉
-        </div>
-
-        <div class="detail-info">
-
-          <div class="detail-label">
-            Email Address
-          </div>
-
-          <div class="detail-value" id="email">
-            user@example.com
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="detail-row">
-
-        <div class="detail-icon">
-          ₹
-        </div>
-
-        <div class="detail-info">
-
-          <div class="detail-label">
-            Payout UPI ID
-          </div>
-
-          <div class="detail-value" id="upi">
-            ea****@upi
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- REFERRAL CODE -->
-
-  <section class="section">
-
-    <div class="section-title">
-      Your Referral
-    </div>
-
-    <div class="card referral-card">
-
-      <div class="referral-top">
-
-        <div class="referral-info">
-
-          <small>
-            Referral Code
-          </small>
-
-          <div class="referral-code" id="refCode">
-            OW8473
-          </div>
-
-        </div>
-
-        <button class="copy-btn" onclick="copyReferral()">
-          Copy Code
-        </button>
-
-      </div>
-
-      <div class="referral-note">
-        Share this code with friends when they create
-        their Offerwax account.
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ACCOUNT SETTINGS -->
-
-  <section class="section">
-
-    <div class="section-title">
-      Account Settings
-    </div>
-
-    <div class="card">
-
-
-      <div class="menu-item" onclick="openEdit()">
-
-        <div class="menu-icon">
-          ✎
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Edit Profile
-          </strong>
-
-          <small>
-            Update name, email, mobile and UPI
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-
-      <div class="menu-item" onclick="openPassword()">
-
-        <div class="menu-icon">
-          🔒
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Change Password
-          </strong>
-
-          <small>
-            Update your account password
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-
-      <a href="tracking.html" class="menu-item">
-
-        <div class="menu-icon">
-          ⌖
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Check Tracking
-          </strong>
-
-          <small>
-            Check your offer tracking status
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- SUPPORT -->
-
-  <section class="section">
-
-    <div class="section-title">
-      Help & Legal
-    </div>
-
-    <div class="card">
-
-
-      <div class="menu-item" onclick="supportInfo()">
-
-        <div class="menu-icon">
-          ?
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Help & Support
-          </strong>
-
-          <small>
-            Get help with your Offerwax account
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-
-      <div class="menu-item" onclick="termsInfo()">
-
-        <div class="menu-icon">
-          ≡
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Terms & Privacy
-          </strong>
-
-          <small>
-            Terms, conditions and privacy policy
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- LOGOUT -->
-
-  <section class="section">
-
-    <div class="card">
-
-      <div class="menu-item logout" onclick="logoutUser()">
-
-        <div class="menu-icon">
-          ↪
-        </div>
-
-        <div class="menu-text">
-
-          <strong>
-            Logout
-          </strong>
-
-          <small>
-            Sign out of your Offerwax account
-          </small>
-
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <div class="footer-note">
-    Offerwax • Share • Refer • Earn
+  <div class="avatar" id="avatar">
+    ES
   </div>
+
+  <div class="profile-name" id="profileName">
+    Earn Smart
+  </div>
+
+  <div class="profile-id">
+    User ID:
+    <span id="userID">
+      OW8473
+    </span>
+  </div>
+
+  <div class="verified">
+    ✓ Account Active
+  </div>
+
+</section>
+
+
+
+<!-- ACCOUNT DETAILS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Account Details
+  </div>
+
+  <div class="card">
+
+
+    <div class="detail-row">
+
+      <div class="detail-icon">
+        👤
+      </div>
+
+      <div class="detail-info">
+
+        <div class="detail-label">
+          Full Name
+        </div>
+
+        <div class="detail-value" id="fullName">
+          Earn Smart
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+      <div class="detail-icon">
+        ☎
+      </div>
+
+      <div class="detail-info">
+
+        <div class="detail-label">
+          Mobile Number
+        </div>
+
+        <div class="detail-value" id="mobile">
+          +91 98XXXXXX42
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+      <div class="detail-icon">
+        ✉
+      </div>
+
+      <div class="detail-info">
+
+        <div class="detail-label">
+          Email Address
+        </div>
+
+        <div class="detail-value" id="email">
+          user@example.com
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+      <div class="detail-icon">
+        ₹
+      </div>
+
+      <div class="detail-info">
+
+        <div class="detail-label">
+          Payout UPI ID
+        </div>
+
+        <div class="detail-value" id="upi">
+          ea****@upi
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- REFERRAL -->
+
+<section class="section">
+
+  <div class="section-title">
+    Your Referral
+  </div>
+
+  <div class="card referral-card">
+
+    <div class="referral-top">
+
+      <div class="referral-info">
+
+        <small>
+          Referral Code
+        </small>
+
+        <div class="referral-code" id="refCode">
+          OW8473
+        </div>
+
+      </div>
+
+
+      <button
+        class="copy-btn"
+        onclick="copyReferral()">
+
+        Copy Code
+
+      </button>
+
+    </div>
+
+
+    <div class="referral-note">
+
+      Share this code with friends when they
+      create their Offerwax account.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ACCOUNT SETTINGS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Account Settings
+  </div>
+
+  <div class="card">
+
+
+    <!-- EDIT PROFILE -->
+
+    <div
+      class="menu-item"
+      onclick="openEdit()">
+
+      <div class="menu-icon">
+        ✎
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Edit Profile
+        </strong>
+
+        <small>
+          Update name, email, mobile and UPI
+        </small>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </div>
+
+
+    <!-- CHANGE PASSWORD -->
+
+    <div
+      class="menu-item"
+      onclick="openPassword()">
+
+      <div class="menu-icon">
+        🔒
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Change Password
+        </strong>
+
+        <small>
+          Update your account password
+        </small>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- HELP & LEGAL -->
+
+<section class="section">
+
+  <div class="section-title">
+    Help & Legal
+  </div>
+
+  <div class="card">
+
+
+    <!-- SUPPORT -->
+
+    <a
+      href="support.html"
+      class="menu-item">
+
+      <div class="menu-icon">
+        ?
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Help & Support
+        </strong>
+
+        <small>
+          Get help with your Offerwax account
+        </small>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </a>
+
+
+    <!-- TERMS -->
+
+    <div
+      class="menu-item"
+      onclick="termsInfo()">
+
+      <div class="menu-icon">
+        ≡
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Terms & Privacy
+        </strong>
+
+        <small>
+          Terms, conditions and privacy policy
+        </small>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- LOGOUT -->
+
+<section class="section">
+
+  <div class="card">
+
+    <div
+      class="menu-item logout"
+      onclick="logoutUser()">
+
+      <div class="menu-icon">
+        ↪
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Logout
+        </strong>
+
+        <small>
+          Sign out of your Offerwax account
+        </small>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="footer-note">
+  Offerwax • Share • Refer • Earn
+</div>
+
 
 </main>
 
@@ -796,7 +822,10 @@ input:focus{
 
 <!-- EDIT PROFILE MODAL -->
 
-<div class="modal" id="editModal" onclick="outsideClose(event,'editModal')">
+<div
+  class="modal"
+  id="editModal"
+  onclick="outsideClose(event,'editModal')">
 
   <div class="modal-box">
 
@@ -834,8 +863,8 @@ input:focus{
       <input
         id="editMobile"
         type="tel"
-        placeholder="10-digit mobile number"
-        maxlength="10">
+        maxlength="10"
+        placeholder="10-digit mobile number">
 
     </div>
 
@@ -868,12 +897,21 @@ input:focus{
     </div>
 
 
-    <button class="save-btn" onclick="saveProfile()">
+    <button
+      class="save-btn"
+      onclick="saveProfile()">
+
       Save Changes
+
     </button>
 
-    <button class="cancel-btn" onclick="closeModal('editModal')">
+
+    <button
+      class="cancel-btn"
+      onclick="closeModal('editModal')">
+
       Cancel
+
     </button>
 
   </div>
@@ -884,7 +922,10 @@ input:focus{
 
 <!-- PASSWORD MODAL -->
 
-<div class="modal" id="passwordModal" onclick="outsideClose(event,'passwordModal')">
+<div
+  class="modal"
+  id="passwordModal"
+  onclick="outsideClose(event,'passwordModal')">
 
   <div class="modal-box">
 
@@ -895,8 +936,10 @@ input:focus{
     </div>
 
     <div class="modal-sub">
-      Password changes will be connected with
-      the Offerwax authentication system.
+
+      Password changes will be connected
+      with the Offerwax authentication system.
+
     </div>
 
 
@@ -942,12 +985,21 @@ input:focus{
     </div>
 
 
-    <button class="save-btn" onclick="changePassword()">
+    <button
+      class="save-btn"
+      onclick="changePassword()">
+
       Change Password
+
     </button>
 
-    <button class="cancel-btn" onclick="closeModal('passwordModal')">
+
+    <button
+      class="cancel-btn"
+      onclick="closeModal('passwordModal')">
+
       Cancel
+
     </button>
 
   </div>
@@ -960,29 +1012,68 @@ input:focus{
 
 <nav class="bottom-nav">
 
-  <a href="index.html" class="nav-item">
-    <span class="nav-icon">⌂</span>
+  <a
+    href="index.html"
+    class="nav-item">
+
+    <span class="nav-icon">
+      ⌂
+    </span>
+
     Home
+
   </a>
 
-  <a href="offers.html" class="nav-item">
-    <span class="nav-icon">▣</span>
+
+  <a
+    href="offers.html"
+    class="nav-item">
+
+    <span class="nav-icon">
+      ▣
+    </span>
+
     Offers
+
   </a>
 
-  <a href="refer.html" class="nav-item">
-    <span class="nav-icon">♧</span>
+
+  <a
+    href="refer.html"
+    class="nav-item">
+
+    <span class="nav-icon">
+      ♧
+    </span>
+
     Refer
+
   </a>
 
-  <a href="share.html" class="nav-item">
-    <span class="nav-icon">↗</span>
+
+  <a
+    href="share.html"
+    class="nav-item">
+
+    <span class="nav-icon">
+      ↗
+    </span>
+
     Share
+
   </a>
 
-  <a href="wallet.html" class="nav-item">
-    <span class="nav-icon">◫</span>
+
+  <a
+    href="wallet.html"
+    class="nav-item">
+
+    <span class="nav-icon">
+      ◫
+    </span>
+
     Wallet
+
   </a>
 
 </nav>
@@ -991,30 +1082,43 @@ input:focus{
 
 <script>
 
-/* COPY REFERRAL */
+
+/* ========================
+   COPY REFERRAL
+======================== */
 
 function copyReferral(){
 
   const code =
-    document.getElementById("refCode").innerText;
+    document
+    .getElementById("refCode")
+    .innerText;
+
 
   navigator.clipboard
   .writeText(code)
   .then(function(){
 
-    alert("Referral code copied: " + code);
+    alert(
+      "Referral code copied: " + code
+    );
 
   })
   .catch(function(){
 
-    alert("Referral Code: " + code);
+    alert(
+      "Referral Code: " + code
+    );
 
   });
 
 }
 
 
-/* EDIT PROFILE */
+
+/* ========================
+   EDIT PROFILE
+======================== */
 
 function openEdit(){
 
@@ -1028,25 +1132,35 @@ function openEdit(){
 function saveProfile(){
 
   const name =
-    document.getElementById("editName")
+    document
+    .getElementById("editName")
     .value.trim();
+
 
   const mobile =
-    document.getElementById("editMobile")
+    document
+    .getElementById("editMobile")
     .value.trim();
+
 
   const email =
-    document.getElementById("editEmail")
+    document
+    .getElementById("editEmail")
     .value.trim();
 
+
   const upi =
-    document.getElementById("editUPI")
+    document
+    .getElementById("editUPI")
     .value.trim();
 
 
   if(name.length < 2){
 
-    alert("Please enter your full name.");
+    alert(
+      "Please enter your full name."
+    );
+
     return;
 
   }
@@ -1057,7 +1171,10 @@ function saveProfile(){
     !/^[6-9][0-9]{9}$/.test(mobile)
   ){
 
-    alert("Please enter a valid 10-digit mobile number.");
+    alert(
+      "Please enter a valid 10-digit mobile number."
+    );
+
     return;
 
   }
@@ -1068,7 +1185,10 @@ function saveProfile(){
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   ){
 
-    alert("Please enter a valid email address.");
+    alert(
+      "Please enter a valid email address."
+    );
+
     return;
 
   }
@@ -1079,18 +1199,13 @@ function saveProfile(){
     !/^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}$/.test(upi)
   ){
 
-    alert("Please enter a valid UPI ID.");
+    alert(
+      "Please enter a valid UPI ID."
+    );
+
     return;
 
   }
-
-
-  /*
-    Backend isn't connected yet.
-
-    So we only update the visible
-    profile on this page.
-  */
 
 
   document
@@ -1139,13 +1254,16 @@ function saveProfile(){
 
 
   alert(
-    "Profile updated on this page. Permanent account saving will work after the database is connected."
+    "Profile updated on this page. Permanent saving will work after the database is connected."
   );
 
 }
 
 
-/* INITIALS */
+
+/* ========================
+   INITIALS
+======================== */
 
 function getInitials(name){
 
@@ -1162,7 +1280,7 @@ function getInitials(name){
   }
 
 
-  return (
+  return(
     parts[0][0] +
     parts[parts.length-1][0]
   ).toUpperCase();
@@ -1170,11 +1288,14 @@ function getInitials(name){
 }
 
 
-/* MASK MOBILE */
+
+/* ========================
+   MASK MOBILE
+======================== */
 
 function maskMobile(number){
 
-  return (
+  return(
     "+91 " +
     number.substring(0,2) +
     "XXXXXX" +
@@ -1184,7 +1305,10 @@ function maskMobile(number){
 }
 
 
-/* MASK UPI */
+
+/* ========================
+   MASK UPI
+======================== */
 
 function maskUPI(upi){
 
@@ -1209,7 +1333,7 @@ function maskUPI(upi){
     : name.substring(0,1);
 
 
-  return (
+  return(
     visible +
     "****@" +
     parts[1]
@@ -1218,7 +1342,10 @@ function maskUPI(upi){
 }
 
 
-/* CHANGE PASSWORD */
+
+/* ========================
+   PASSWORD
+======================== */
 
 function openPassword(){
 
@@ -1232,21 +1359,29 @@ function openPassword(){
 function changePassword(){
 
   const current =
-    document.getElementById("currentPassword")
+    document
+    .getElementById("currentPassword")
     .value;
+
 
   const password =
-    document.getElementById("newPassword")
+    document
+    .getElementById("newPassword")
     .value;
 
-  const confirm =
-    document.getElementById("confirmNewPassword")
+
+  const confirmPassword =
+    document
+    .getElementById("confirmNewPassword")
     .value;
 
 
   if(!current){
 
-    alert("Enter your current password.");
+    alert(
+      "Enter your current password."
+    );
+
     return;
 
   }
@@ -1254,27 +1389,26 @@ function changePassword(){
 
   if(password.length < 6){
 
-    alert("New password must contain at least 6 characters.");
+    alert(
+      "New password must contain at least 6 characters."
+    );
+
     return;
 
   }
 
 
-  if(password !== confirm){
+  if(
+    password !== confirmPassword
+  ){
 
-    alert("New passwords do not match.");
+    alert(
+      "New passwords do not match."
+    );
+
     return;
 
   }
-
-
-  /*
-    Do NOT save passwords in
-    localStorage/sessionStorage.
-
-    Real password update will be
-    handled by backend authentication.
-  */
 
 
   alert(
@@ -1284,29 +1418,24 @@ function changePassword(){
 }
 
 
-/* SUPPORT */
 
-function supportInfo(){
-
-  alert(
-    "Offerwax Help & Support page will be connected here."
-  );
-
-}
-
-
-/* TERMS */
+/* ========================
+   TERMS
+======================== */
 
 function termsInfo(){
 
   alert(
-    "Offerwax Terms & Privacy pages will be connected here."
+    "Offerwax Terms & Privacy pages will be added here."
   );
 
 }
 
 
-/* LOGOUT */
+
+/* ========================
+   LOGOUT
+======================== */
 
 function logoutUser(){
 
@@ -1317,23 +1446,22 @@ function logoutUser(){
 
 
   if(!confirmed){
+
     return;
+
   }
 
 
-  /*
-    Real authentication logout
-    will clear the secure session
-    after backend is connected.
-  */
-
-
-  window.location.href="login.html";
+  window.location.href=
+    "login.html";
 
 }
 
 
-/* MODALS */
+
+/* ========================
+   MODALS
+======================== */
 
 function closeModal(id){
 
@@ -1356,5 +1484,6 @@ function outsideClose(event,id){
 
 </script>
 
+
 </body>
-      </html>
+</html>
