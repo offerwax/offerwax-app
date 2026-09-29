@@ -2,24 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-<title>Offerwax — Create Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080c16">
+<title>Offerwax</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
-  padding:0
-}
-
-html,body{
-  min-height:100%;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#080b12;
+  background:#080c16;
   color:#fff;
   min-height:100vh;
 }
@@ -28,207 +24,76 @@ button,input{
   font-family:inherit;
 }
 
-/* PAGE */
-
 .page{
   width:100%;
-  max-width:460px;
-  min-height:100vh;
+  max-width:430px;
   margin:auto;
-  padding:28px 18px 32px;
-  display:flex;
-  flex-direction:column;
+  min-height:100vh;
+  padding:24px 18px 20px;
 }
 
-/* LOGO */
+/* BRAND */
 
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.brand{
+  text-align:center;
+  padding-top:8px;
 }
 
 .logo{
-  font-size:25px;
+  font-size:30px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:-1.3px;
 }
 
 .logo span{
   color:#d42df4;
 }
 
-.secure{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  color:#7e899c;
-  font-size:8px;
-}
-
-.secure-dot{
-  width:7px;
-  height:7px;
-  background:#36d98a;
-  border-radius:50%;
-  box-shadow:0 0 8px rgba(54,217,138,.45);
-}
-
-/* HERO */
-
-.hero{
-  padding:40px 2px 28px;
-}
-
-.hero-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  color:#d98bec;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:.5px;
-  text-transform:uppercase;
-}
-
-.hero-tag i{
-  width:18px;
-  height:2px;
-  background:#d42df4;
-  border-radius:5px;
-}
-
-.hero h1{
-  font-size:37px;
-  line-height:1.05;
-  letter-spacing:-1.7px;
-  margin-top:13px;
-  max-width:390px;
-}
-
-.hero h1 span{
-  background:linear-gradient(90deg,#fff,#d66be9);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.hero p{
-  color:#7c8799;
+.tagline{
+  color:#8c97aa;
   font-size:10px;
-  line-height:1.65;
-  margin-top:14px;
-  max-width:330px;
+  margin-top:8px;
 }
 
-/* SMALL FEATURES */
-
-.features{
-  display:flex;
-  gap:8px;
-  margin-top:20px;
+.tagline strong{
+  color:#d5d9e1;
+  font-weight:600;
 }
 
-.feature{
-  flex:1;
-  background:#0d121d;
-  border:1px solid #1b2535;
-  border-radius:12px;
-  padding:10px 8px;
+/* AUTH */
+
+.auth{
+  margin-top:24px;
+  background:#101725;
+  border:1px solid #202b3e;
+  border-radius:17px;
+  padding:13px;
 }
-
-.feature-icon{
-  width:26px;
-  height:26px;
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#151d2b;
-  font-size:11px;
-}
-
-.feature strong{
-  display:block;
-  font-size:7.5px;
-  margin-top:7px;
-}
-
-.feature small{
-  display:block;
-  color:#657185;
-  font-size:6px;
-  margin-top:3px;
-}
-
-/* AUTH CARD */
-
-.auth-card{
-  background:#0e1420;
-  border:1px solid #202a3c;
-  border-radius:22px;
-  padding:18px 15px;
-  box-shadow:0 25px 70px rgba(0,0,0,.3);
-}
-
-.auth-title{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:17px;
-}
-
-.auth-title h2{
-  font-size:19px;
-}
-
-.auth-title p{
-  color:#6f7b8f;
-  font-size:8px;
-  line-height:1.5;
-  margin-top:5px;
-}
-
-.step{
-  background:rgba(212,45,244,.09);
-  color:#d66bea;
-  border:1px solid rgba(212,45,244,.18);
-  border-radius:20px;
-  padding:6px 9px;
-  font-size:7px;
-  font-weight:800;
-  white-space:nowrap;
-}
-
-/* TABS */
 
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:4px;
-  background:#080d16;
+  gap:5px;
+  background:#080e18;
   padding:4px;
-  border-radius:12px;
-  margin-bottom:17px;
+  border-radius:11px;
+  margin-bottom:13px;
 }
 
 .tab{
-  height:38px;
+  height:34px;
   border:0;
-  border-radius:9px;
+  border-radius:8px;
   background:transparent;
-  color:#667286;
+  color:#69768a;
   font-size:9px;
   font-weight:800;
-  cursor:pointer;
 }
 
 .tab.active{
-  background:#171f2e;
+  background:#1b2434;
   color:#fff;
 }
-
-/* FORMS */
 
 .form{
   display:none;
@@ -239,21 +104,15 @@ button,input{
 }
 
 .field{
-  margin-bottom:12px;
+  margin-bottom:9px;
 }
 
-.field-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-}
-
-label{
+.field label{
   display:block;
-  color:#8d98aa;
-  font-size:7.5px;
+  color:#7f8a9c;
+  font-size:7px;
   font-weight:700;
-  margin:0 0 6px 2px;
+  margin:0 0 5px 2px;
 }
 
 .input-wrap{
@@ -262,168 +121,295 @@ label{
 
 .input{
   width:100%;
-  height:47px;
-  border:1px solid #273247;
-  background:#090e18;
-  border-radius:12px;
+  height:40px;
+  border:1px solid #293449;
+  border-radius:10px;
+  background:#090f19;
   color:#fff;
+  padding:0 11px;
   outline:none;
-  padding:0 12px;
-  font-size:10px;
-  transition:.2s;
+  font-size:9px;
 }
 
 .input:focus{
-  border-color:#b940d2;
-  box-shadow:0 0 0 3px rgba(212,45,244,.06);
+  border-color:#b83bd2;
 }
 
 .input::placeholder{
-  color:#465266;
+  color:#495568;
 }
 
-.password-input{
-  padding-right:55px;
+.password{
+  padding-right:52px;
 }
 
-.show-btn{
+.show{
   position:absolute;
-  right:7px;
+  right:5px;
   top:50%;
   transform:translateY(-50%);
   border:0;
   background:transparent;
-  color:#c459d8;
-  padding:8px;
+  color:#c85edd;
   font-size:7px;
   font-weight:800;
+  padding:8px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
 }
 
 .optional{
-  color:#536075;
+  color:#505d70;
   font-weight:400;
 }
-
-/* TERMS */
 
 .terms{
   display:flex;
   align-items:flex-start;
-  gap:8px;
-  margin:3px 2px 15px;
+  gap:7px;
+  color:#667286;
+  font-size:6.5px;
+  line-height:1.5;
+  margin:2px 2px 11px;
 }
 
 .terms input{
-  margin-top:2px;
+  margin-top:1px;
   accent-color:#d42df4;
 }
 
-.terms span{
-  color:#6f7b8e;
-  font-size:7px;
-  line-height:1.5;
-}
-
 .terms a{
-  color:#c45cd8;
-  text-decoration:none;
-}
-
-/* PRIMARY */
-
-.primary{
-  width:100%;
-  height:49px;
-  border:0;
-  border-radius:13px;
-  color:#fff;
-  background:linear-gradient(110deg,#7628dc,#d42df4);
-  font-size:10px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 10px 28px rgba(170,38,207,.18);
-}
-
-.primary:active{
-  transform:scale(.99);
-}
-
-/* LOGIN */
-
-.forgot{
-  display:block;
-  text-align:right;
-  margin:-2px 2px 14px;
   color:#c45bd8;
-  font-size:7.5px;
   text-decoration:none;
 }
 
-/* DIVIDER */
+.submit{
+  width:100%;
+  height:41px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(110deg,#7a29dd,#d42df4);
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+}
 
-.divider{
+/* APK */
+
+.apk{
   display:flex;
   align-items:center;
-  gap:10px;
-  margin:16px 0 0;
+  justify-content:center;
+  gap:7px;
+  width:100%;
+  height:39px;
+  margin-top:11px;
+  border:1px solid #263247;
+  border-radius:11px;
+  background:#0d1420;
+  color:#c6ccd6;
+  text-decoration:none;
+  font-size:8px;
+  font-weight:800;
 }
 
-.divider:before,
-.divider:after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:#202a3b;
+.apk span{
+  color:#d35ee8;
+  font-size:13px;
 }
 
-.divider span{
-  color:#566276;
+/* TRUST */
+
+.trust{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:11px;
+}
+
+.trust-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#0d1420;
+  border:1px solid #1d283a;
+  border-radius:11px;
+  padding:10px;
+}
+
+.trust-icon{
+  width:28px;
+  height:28px;
+  min-width:28px;
+  border-radius:8px;
+  background:#151e2d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+}
+
+.trust-info strong{
+  display:block;
+  font-size:7.5px;
+}
+
+.trust-info small{
+  display:block;
+  color:#5f6c80;
+  font-size:6px;
+  margin-top:3px;
+}
+
+/* WITHDRAWALS */
+
+.withdraw-section{
+  margin-top:20px;
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:9px;
+}
+
+.section-head h3{
+  font-size:11px;
+}
+
+.live{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#69768a;
   font-size:6.5px;
 }
 
-/* FOOT */
+.live-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#39dc8a;
+}
 
-.bottom{
-  margin-top:20px;
+.withdraw-box{
+  height:196px;
+  overflow:hidden;
+  background:#0d1420;
+  border:1px solid #202b3e;
+  border-radius:14px;
+  padding:0 12px;
+  position:relative;
+}
+
+.withdraw-list{
+  transition:transform .45s ease;
+}
+
+.withdraw-item{
+  height:65px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #1c2738;
+}
+
+.withdraw-avatar{
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:50%;
+  background:#192335;
+  color:#d56ce9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:8px;
+  font-weight:900;
+}
+
+.withdraw-info{
+  flex:1;
+}
+
+.withdraw-info strong{
+  display:block;
+  font-size:8.5px;
+}
+
+.withdraw-info small{
+  display:block;
+  color:#647185;
+  font-size:6.5px;
+  margin-top:4px;
+}
+
+.withdraw-amount{
+  text-align:right;
+}
+
+.withdraw-amount strong{
+  display:block;
+  color:#39dc8a;
+  font-size:9px;
+}
+
+.withdraw-amount small{
+  display:block;
+  color:#596679;
+  font-size:6px;
+  margin-top:4px;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:25px;
+  padding-top:17px;
+  border-top:1px solid #182334;
   text-align:center;
 }
 
-.bottom p{
-  color:#5e6a7e;
-  font-size:7.5px;
+.footer-brand{
+  font-size:13px;
+  font-weight:900;
+}
+
+.footer-brand span{
+  color:#d42df4;
+}
+
+.footer-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.footer-links a{
+  color:#6c788b;
+  text-decoration:none;
+  font-size:6.5px;
+}
+
+.copyright{
+  color:#475367;
+  font-size:6.5px;
+  margin-top:11px;
   line-height:1.6;
 }
 
-.bottom strong{
-  color:#8995a8;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:360px){
-
-  .hero h1{
-    font-size:32px;
-  }
-
-  .field-row{
+@media(max-width:350px){
+  .row{
     grid-template-columns:1fr;
     gap:0;
-  }
-}
-
-@media(min-width:700px){
-
-  body{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .page{
-    min-height:auto;
-    padding-top:40px;
-    padding-bottom:40px;
   }
 }
 </style>
@@ -433,664 +419,643 @@ label{
 
 <main class="page">
 
-<!-- HEADER -->
+  <!-- OFFERWAX -->
 
-<header class="top">
+  <section class="brand">
 
-<div class="logo">
-Offer<span>wax</span>
-</div>
+    <div class="logo">
+      Offer<span>wax</span>
+    </div>
 
-<div class="secure">
-<span class="secure-dot"></span>
-Secure access
-</div>
+    <div class="tagline">
+      <strong>Complete Tasks, Offers & Earn Rewards</strong>
+    </div>
 
-</header>
+  </section>
 
 
-<!-- HERO -->
+  <!-- LOGIN / REGISTER -->
 
-<section class="hero">
+  <section class="auth">
 
-<div class="hero-tag">
-<i></i>
-Welcome to Offerwax
-</div>
+    <div class="tabs">
 
-<h1>
-Your rewards.<br>
-<span>One simple platform.</span>
-</h1>
+      <button
+        class="tab active"
+        id="loginTab"
+        type="button"
+        onclick="showLogin()">
+        Login
+      </button>
 
-<p>
-Complete offers, refer friends and share selected
-campaigns — all from your Offerwax account.
-</p>
+      <button
+        class="tab"
+        id="registerTab"
+        type="button"
+        onclick="showRegister()">
+        Register
+      </button>
 
-<div class="features">
+    </div>
 
-<div class="feature">
 
-<div class="feature-icon">₹</div>
+    <!-- LOGIN -->
 
-<strong>Rewards</strong>
+    <form
+      class="form active"
+      id="loginForm"
+      onsubmit="loginUser(event)">
 
-<small>Earn & withdraw</small>
+      <div class="field">
 
-</div>
+        <label>MOBILE NUMBER</label>
 
-<div class="feature">
+        <input
+          class="input"
+          id="loginMobile"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="Enter mobile number"
+          required>
 
-<div class="feature-icon">↗</div>
+      </div>
 
-<strong>Share & Earn</strong>
+      <div class="field">
 
-<small>Share campaigns</small>
+        <label>PASSWORD</label>
 
-</div>
+        <div class="input-wrap">
 
-<div class="feature">
+          <input
+            class="input password"
+            id="loginPassword"
+            type="password"
+            placeholder="Enter password"
+            required>
 
-<div class="feature-icon">⌖</div>
+          <button
+            class="show"
+            type="button"
+            onclick="togglePassword('loginPassword',this)">
+            SHOW
+          </button>
 
-<strong>Tracking</strong>
+        </div>
 
-<small>Check progress</small>
+      </div>
 
-</div>
+      <button class="submit" type="submit">
+        Login
+      </button>
 
-</div>
+    </form>
 
-</section>
 
+    <!-- REGISTER -->
 
-<!-- AUTH CARD -->
+    <form
+      class="form"
+      id="registerForm"
+      onsubmit="registerUser(event)">
 
-<section class="auth-card">
+      <div class="field">
 
-<div class="auth-title">
+        <label>FULL NAME</label>
 
-<div>
+        <input
+          class="input"
+          id="fullName"
+          type="text"
+          placeholder="Enter your name"
+          required>
 
-<h2 id="formTitle">
-Create Account
-</h2>
+      </div>
 
-<p id="formSubtitle">
-It only takes a minute to get started.
-</p>
 
-</div>
+      <div class="field">
 
-<div class="step" id="stepText">
-NEW USER
-</div>
+        <label>MOBILE NUMBER</label>
 
-</div>
+        <input
+          class="input"
+          id="registerMobile"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="Enter mobile number"
+          required>
 
+      </div>
 
-<!-- TABS -->
 
-<div class="tabs">
+      <div class="row">
 
-<button
-type="button"
-class="tab active"
-id="signupTab"
-onclick="openSignup()">
-Sign Up
-</button>
+        <div class="field">
 
-<button
-type="button"
-class="tab"
-id="loginTab"
-onclick="openLogin()">
-Login
-</button>
+          <label>PASSWORD</label>
 
-</div>
+          <div class="input-wrap">
 
+            <input
+              class="input password"
+              id="registerPassword"
+              type="password"
+              placeholder="Password"
+              required>
 
-<!-- SIGNUP -->
+            <button
+              class="show"
+              type="button"
+              onclick="togglePassword('registerPassword',this)">
+              SHOW
+            </button>
 
-<form
-class="form active"
-id="signupForm"
-onsubmit="registerUser(event)">
+          </div>
 
-<div class="field">
+        </div>
 
-<label>FULL NAME</label>
 
-<input
-class="input"
-id="fullName"
-type="text"
-placeholder="Your full name"
-autocomplete="name"
-required>
+        <div class="field">
 
-</div>
+          <label>CONFIRM</label>
 
+          <div class="input-wrap">
 
-<div class="field">
+            <input
+              class="input password"
+              id="confirmPassword"
+              type="password"
+              placeholder="Again"
+              required>
 
-<label>MOBILE NUMBER</label>
+            <button
+              class="show"
+              type="button"
+              onclick="togglePassword('confirmPassword',this)">
+              SHOW
+            </button>
 
-<input
-class="input"
-id="signupMobile"
-type="tel"
-inputmode="numeric"
-maxlength="10"
-placeholder="10-digit mobile number"
-autocomplete="tel"
-required>
+          </div>
 
-</div>
+        </div>
 
+      </div>
 
-<div class="field-row">
 
-<div class="field">
+      <div class="field">
 
-<label>PASSWORD</label>
+        <label>
+          REFERRAL CODE
+          <span class="optional">— optional</span>
+        </label>
 
-<div class="input-wrap">
+        <input
+          class="input"
+          id="referralCode"
+          type="text"
+          placeholder="Example: OW8473">
 
-<input
-class="input password-input"
-id="signupPassword"
-type="password"
-placeholder="Min. 6 characters"
-autocomplete="new-password"
-required>
+      </div>
 
-<button
-type="button"
-class="show-btn"
-onclick="togglePassword('signupPassword',this)">
-SHOW
-</button>
 
-</div>
+      <label class="terms">
 
-</div>
+        <input id="terms" type="checkbox">
 
+        <span>
+          I agree to the
+          <a href="terms.html">Terms</a>
+          and
+          <a href="privacy.html">Privacy Policy</a>.
+        </span>
 
-<div class="field">
+      </label>
 
-<label>CONFIRM PASSWORD</label>
 
-<div class="input-wrap">
+      <button class="submit" type="submit">
+        Create Account
+      </button>
 
-<input
-class="input password-input"
-id="confirmPassword"
-type="password"
-placeholder="Repeat password"
-autocomplete="new-password"
-required>
+    </form>
 
-<button
-type="button"
-class="show-btn"
-onclick="togglePassword('confirmPassword',this)">
-SHOW
-</button>
+  </section>
 
-</div>
 
-</div>
+  <!-- DOWNLOAD APK -->
 
-</div>
+  <a
+    class="apk"
+    href="offerwax.apk"
+    download>
 
+    <span>↓</span>
+    Download Offerwax APK
 
-<div class="field">
+  </a>
 
-<label>
-REFERRAL CODE
-<span class="optional">— optional</span>
-</label>
 
-<input
-class="input"
-id="referralCode"
-type="text"
-placeholder="Example: OW8473">
+  <!-- FAST PAYMENT + SUPPORT -->
 
-</div>
+  <section class="trust">
 
+    <div class="trust-box">
 
-<label class="terms">
+      <div class="trust-icon">
+        ⚡
+      </div>
 
-<input
-type="checkbox"
-id="termsCheck">
+      <div class="trust-info">
+        <strong>Fast Payment</strong>
+        <small>Quick payout process</small>
+      </div>
 
-<span>
-I agree to the
-<a href="terms.html">Terms & Conditions</a>
-and
-<a href="privacy.html">Privacy Policy</a>.
-</span>
+    </div>
 
-</label>
 
+    <div class="trust-box">
 
-<button
-type="submit"
-class="primary">
-Create Account →
-</button>
+      <div class="trust-icon">
+        🎧
+      </div>
 
-<div class="divider">
-<span>ALREADY REGISTERED?</span>
-</div>
+      <div class="trust-info">
+        <strong>24 Hours Support</strong>
+        <small>We're here to help</small>
+      </div>
 
-<button
-type="button"
-style="
-width:100%;
-height:43px;
-margin-top:12px;
-border:1px solid #28344a;
-border-radius:12px;
-background:#0a101b;
-color:#aab3c1;
-font-size:9px;
-font-weight:800;
-"
-onclick="openLogin()">
-Login to your account
-</button>
+    </div>
 
-</form>
+  </section>
 
 
-<!-- LOGIN -->
+  <!-- WITHDRAWALS -->
 
-<form
-class="form"
-id="loginForm"
-onsubmit="loginUser(event)">
+  <section class="withdraw-section">
 
-<div class="field">
+    <div class="section-head">
 
-<label>REGISTERED MOBILE NUMBER</label>
+      <h3>Recent Withdrawals</h3>
 
-<input
-class="input"
-id="loginMobile"
-type="tel"
-inputmode="numeric"
-maxlength="10"
-placeholder="Enter mobile number"
-autocomplete="tel"
-required>
+      <div class="live">
+        <span class="live-dot"></span>
+        Updates
+      </div>
 
-</div>
+    </div>
 
 
-<div class="field">
+    <div class="withdraw-box">
 
-<label>PASSWORD</label>
+      <div class="withdraw-list" id="withdrawList">
 
-<div class="input-wrap">
+        <div class="withdraw-item">
 
-<input
-class="input password-input"
-id="loginPassword"
-type="password"
-placeholder="Enter your password"
-autocomplete="current-password"
-required>
+          <div class="withdraw-avatar">AM</div>
 
-<button
-type="button"
-class="show-btn"
-onclick="togglePassword('loginPassword',this)">
-SHOW
-</button>
+          <div class="withdraw-info">
+            <strong>Amit</strong>
+            <small>Withdrawal</small>
+          </div>
 
-</div>
+          <div class="withdraw-amount">
+            <strong>₹10,000</strong>
+            <small>Withdrawal</small>
+          </div>
 
-</div>
+        </div>
 
 
-<a
-href="#"
-class="forgot"
-onclick="forgotPassword(event)">
-Forgot password?
-</a>
+        <div class="withdraw-item">
 
+          <div class="withdraw-avatar">AK</div>
 
-<button
-type="submit"
-class="primary">
-Login →
-</button>
+          <div class="withdraw-info">
+            <strong>Akash</strong>
+            <small>Withdrawal</small>
+          </div>
 
+          <div class="withdraw-amount">
+            <strong>₹2,500</strong>
+            <small>Withdrawal</small>
+          </div>
 
-<div class="divider">
-<span>NEW TO OFFERWAX?</span>
-</div>
+        </div>
 
-<button
-type="button"
-style="
-width:100%;
-height:43px;
-margin-top:12px;
-border:1px solid #28344a;
-border-radius:12px;
-background:#0a101b;
-color:#aab3c1;
-font-size:9px;
-font-weight:800;
-"
-onclick="openSignup()">
-Create a new account
-</button>
 
-</form>
+        <div class="withdraw-item">
 
-</section>
+          <div class="withdraw-avatar">SH</div>
 
+          <div class="withdraw-info">
+            <strong>Shreya</strong>
+            <small>Withdrawal</small>
+          </div>
 
-<!-- FOOTER -->
+          <div class="withdraw-amount">
+            <strong>₹5,000</strong>
+            <small>Withdrawal</small>
+          </div>
 
-<footer class="bottom">
+        </div>
 
-<p>
-<strong>Offerwax</strong> • Offers • Referrals • Share & Earn
-<br>
-Rewards are subject to successful completion and validation.
-</p>
 
-</footer>
+        <div class="withdraw-item">
+
+          <div class="withdraw-avatar">RH</div>
+
+          <div class="withdraw-info">
+            <strong>Rahul</strong>
+            <small>Withdrawal</small>
+          </div>
+
+          <div class="withdraw-amount">
+            <strong>₹1,800</strong>
+            <small>Withdrawal</small>
+          </div>
+
+        </div>
+
+
+        <div class="withdraw-item">
+
+          <div class="withdraw-avatar">AN</div>
+
+          <div class="withdraw-info">
+            <strong>Ankit</strong>
+            <small>Withdrawal</small>
+          </div>
+
+          <div class="withdraw-amount">
+            <strong>₹3,200</strong>
+            <small>Withdrawal</small>
+          </div>
+
+        </div>
+
+
+        <div class="withdraw-item">
+
+          <div class="withdraw-avatar">PR</div>
+
+          <div class="withdraw-info">
+            <strong>Priya</strong>
+            <small>Withdrawal</small>
+          </div>
+
+          <div class="withdraw-amount">
+            <strong>₹4,500</strong>
+            <small>Withdrawal</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="footer-brand">
+      Offer<span>wax</span>
+    </div>
+
+    <div class="footer-links">
+
+      <a href="terms.html">Terms</a>
+
+      <a href="privacy.html">Privacy</a>
+
+      <a href="support.html">Support</a>
+
+    </div>
+
+    <div class="copyright">
+      Powered by Offerwax Rewards<br>
+      © 2026 Offerwax. All rights reserved.
+    </div>
+
+  </footer>
 
 </main>
 
 
 <script>
 
-/* =========================
-   TAB CONTROL
-========================= */
+/* LOGIN / REGISTER */
 
-function openSignup(){
+function showLogin(){
 
-document
-.getElementById("signupForm")
-.classList.add("active");
+  document
+  .getElementById("loginForm")
+  .classList.add("active");
 
-document
-.getElementById("loginForm")
-.classList.remove("active");
+  document
+  .getElementById("registerForm")
+  .classList.remove("active");
 
-document
-.getElementById("signupTab")
-.classList.add("active");
+  document
+  .getElementById("loginTab")
+  .classList.add("active");
 
-document
-.getElementById("loginTab")
-.classList.remove("active");
-
-document.getElementById("formTitle")
-.innerText="Create Account";
-
-document.getElementById("formSubtitle")
-.innerText="It only takes a minute to get started.";
-
-document.getElementById("stepText")
-.innerText="NEW USER";
+  document
+  .getElementById("registerTab")
+  .classList.remove("active");
 
 }
 
 
-function openLogin(){
+function showRegister(){
 
-document
-.getElementById("loginForm")
-.classList.add("active");
+  document
+  .getElementById("registerForm")
+  .classList.add("active");
 
-document
-.getElementById("signupForm")
-.classList.remove("active");
+  document
+  .getElementById("loginForm")
+  .classList.remove("active");
 
-document
-.getElementById("loginTab")
-.classList.add("active");
+  document
+  .getElementById("registerTab")
+  .classList.add("active");
 
-document
-.getElementById("signupTab")
-.classList.remove("active");
-
-document.getElementById("formTitle")
-.innerText="Welcome Back";
-
-document.getElementById("formSubtitle")
-.innerText="Login using your registered mobile number.";
-
-document.getElementById("stepText")
-.innerText="LOGIN";
-
-window.scrollTo({
-top:document.querySelector(".auth-card").offsetTop-15,
-behavior:"smooth"
-});
+  document
+  .getElementById("loginTab")
+  .classList.remove("active");
 
 }
 
 
-/* =========================
-   PASSWORD
-========================= */
+/* PASSWORD */
 
 function togglePassword(id,button){
 
-const input=
-document.getElementById(id);
+  const input=
+  document.getElementById(id);
 
-if(input.type==="password"){
+  if(input.type==="password"){
 
-input.type="text";
-button.innerText="HIDE";
+    input.type="text";
+    button.innerText="HIDE";
 
-}else{
+  }else{
 
-input.type="password";
-button.innerText="SHOW";
+    input.type="password";
+    button.innerText="SHOW";
 
-}
-
-}
-
-
-/* =========================
-   MOBILE VALIDATION
-========================= */
-
-function validMobile(value){
-
-return /^[6-9][0-9]{9}$/.test(value);
+  }
 
 }
 
 
-/* =========================
-   SIGNUP
-========================= */
+/* MOBILE */
 
-function registerUser(event){
+function validMobile(number){
 
-event.preventDefault();
-
-const name=
-document.getElementById("fullName")
-.value.trim();
-
-const mobile=
-document.getElementById("signupMobile")
-.value.trim();
-
-const password=
-document.getElementById("signupPassword")
-.value;
-
-const confirmPassword=
-document.getElementById("confirmPassword")
-.value;
-
-const referral=
-document.getElementById("referralCode")
-.value.trim();
-
-const accepted=
-document.getElementById("termsCheck")
-.checked;
-
-
-if(name.length<2){
-
-alert("Please enter your full name.");
-return;
+  return /^[6-9][0-9]{9}$/.test(number);
 
 }
 
 
-if(!validMobile(mobile)){
-
-alert("Enter a valid 10-digit mobile number.");
-return;
-
-}
-
-
-if(password.length<6){
-
-alert("Password must contain at least 6 characters.");
-return;
-
-}
-
-
-if(password!==confirmPassword){
-
-alert("Passwords do not match.");
-return;
-
-}
-
-
-if(!accepted){
-
-alert("Please accept the Terms & Privacy Policy.");
-return;
-
-}
-
-
-/*
-REAL BACKEND LATER:
-
-POST /api/auth/register
-
-{
- name,
- mobile,
- password,
- referralCode
-}
-
-Never store the plaintext password in
-localStorage/sessionStorage.
-*/
-
-console.log({
-name,
-mobile,
-referralCode:referral || null
-});
-
-alert(
-"Registration interface is ready. Account creation will work after the secure backend is connected."
-);
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 function loginUser(event){
 
-event.preventDefault();
+  event.preventDefault();
 
-const mobile=
-document.getElementById("loginMobile")
-.value.trim();
+  const mobile=
+  document.getElementById("loginMobile")
+  .value.trim();
 
-const password=
-document.getElementById("loginPassword")
-.value;
+  const password=
+  document.getElementById("loginPassword")
+  .value;
 
+  if(!validMobile(mobile)){
 
-if(!validMobile(mobile)){
+    alert("Enter a valid 10-digit mobile number.");
+    return;
 
-alert("Enter a valid registered mobile number.");
-return;
+  }
 
-}
+  if(!password){
 
+    alert("Enter your password.");
+    return;
 
-if(!password){
+  }
 
-alert("Enter your password.");
-return;
+  /*
+  Real backend later:
+  POST /api/auth/login
+  */
 
-}
-
-
-/*
-REAL BACKEND LATER:
-
-POST /api/auth/login
-
-After successful login:
-window.location.href="index.html";
-*/
-
-alert(
-"Login interface is ready. Authentication will work after the secure backend is connected."
-);
+  alert(
+    "Login will work after backend connection."
+  );
 
 }
 
 
-/* =========================
-   FORGOT PASSWORD
-========================= */
+/* REGISTER */
 
-function forgotPassword(event){
+function registerUser(event){
 
-event.preventDefault();
+  event.preventDefault();
 
-alert(
-"Account recovery will be connected with the authentication backend."
-);
+  const name=
+  document.getElementById("fullName")
+  .value.trim();
+
+  const mobile=
+  document.getElementById("registerMobile")
+  .value.trim();
+
+  const password=
+  document.getElementById("registerPassword")
+  .value;
+
+  const confirmPassword=
+  document.getElementById("confirmPassword")
+  .value;
+
+  const referral=
+  document.getElementById("referralCode")
+  .value.trim();
+
+  const terms=
+  document.getElementById("terms")
+  .checked;
+
+
+  if(name.length<2){
+
+    alert("Enter your full name.");
+    return;
+
+  }
+
+
+  if(!validMobile(mobile)){
+
+    alert("Enter a valid 10-digit mobile number.");
+    return;
+
+  }
+
+
+  if(password.length<6){
+
+    alert("Password must be at least 6 characters.");
+    return;
+
+  }
+
+
+  if(password!==confirmPassword){
+
+    alert("Passwords do not match.");
+    return;
+
+  }
+
+
+  if(!terms){
+
+    alert("Please accept Terms and Privacy Policy.");
+    return;
+
+  }
+
+
+  /*
+  Real backend later:
+
+  POST /api/auth/register
+
+  Never store plaintext passwords
+  in localStorage/sessionStorage.
+  */
+
+  console.log({
+    name,
+    mobile,
+    referralCode:referral || null
+  });
+
+  alert(
+    "Registration will work after backend connection."
+  );
 
 }
 
 
-/* =========================
-   REFERRAL AUTO-FILL
-========================= */
+/* REFERRAL AUTO FILL */
 
 const params=
 new URLSearchParams(window.location.search);
@@ -1100,12 +1065,39 @@ params.get("ref");
 
 if(ref){
 
-document.getElementById("referralCode")
-.value=ref;
+  document
+  .getElementById("referralCode")
+  .value=ref;
 
 }
+
+
+/* WITHDRAWAL SCROLL */
+
+const withdrawList=
+document.getElementById("withdrawList");
+
+const items=
+withdrawList.querySelectorAll(".withdraw-item");
+
+let withdrawIndex=0;
+
+setInterval(()=>{
+
+  withdrawIndex++;
+
+  if(withdrawIndex > items.length-3){
+
+    withdrawIndex=0;
+
+  }
+
+  withdrawList.style.transform=
+  "translateY(-"+(withdrawIndex*65)+"px)";
+
+},2600);
 
 </script>
 
 </body>
-  </html>
+      </html>
