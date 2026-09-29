@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Finance | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;color:#fff;min-height:100vh
+}
+button,input{font-family:inherit}
+
+/* TOPBAR */
+.topbar{
+  height:66px;position:sticky;top:0;z-index:100;
+  background:#090e18;border-bottom:1px solid #1d2739;
+  display:flex;align-items:center;padding:0 16px;gap:12px
+}
+.menu-btn,.bell{
+  width:40px;height:40px;border-radius:11px;
+  border:1px solid #273249;background:#10182a;
+  color:#fff;font-size:18px
+}
+.logo{flex:1;font-size:20px;font-weight:900}
+.logo span{color:#d42df4}
+.logo small{
+  display:block;color:#6f7b90;font-size:8px;margin-top:2px
+}
+
+/* SIDEBAR */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.76);z-index:190
+}
+.sidebar{
+  position:fixed;left:-285px;top:0;bottom:0;width:275px;
+  background:#0b111d;border-right:1px solid #202b40;
+  z-index:200;transition:.25s;overflow-y:auto
+}
+.sidebar.open{left:0}
+.sidebar-head{padding:22px 18px;border-bottom:1px solid #202b40}
+.sidebar-logo{font-size:23px;font-weight:900}
+.sidebar-logo span{color:#d42df4}
+.sidebar-head p{color:#6f7b90;font-size:9px;margin-top:5px}
+.nav{padding:14px 10px 25px}
+.nav-title{
+  color:#536076;font-size:8px;font-weight:800;
+  padding:12px 11px 6px;text-transform:uppercase
+}
+.nav-item{
+  display:flex;align-items:center;min-height:48px;
+  padding:8px 11px;margin:3px 0;border-radius:12px;
+  color:#8d98ab;text-decoration:none;font-size:11px;font-weight:700
+}
+.nav-item.active{
+  color:#fff;background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+.nav-icon{width:31px;font-size:16px}
+.nav-text{flex:1}
+
+/* MAIN */
+.container{max-width:1150px;margin:auto;padding:22px 16px 50px}
+.page-head h1{font-size:25px}
+.page-head p{
+  color:#788499;font-size:10px;margin-top:6px;line-height:1.5
+}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:20px
+}
+.stat{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:16px;padding:14px
+}
+.stat-icon{
+  width:34px;height:34px;border-radius:10px;
+  background:#172136;display:flex;
+  align-items:center;justify-content:center
+}
+.stat strong{display:block;font-size:20px;margin-top:10px}
+.stat small{display:block;color:#7b879b;font-size:9px;margin-top:5px}
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.red{color:#ff737d!important}
+.purple{color:#d94df4!important}
+.blue{color:#63a9ff!important}
+
+/* SEARCH */
+.tools{
+  margin-top:22px;background:#10182a;
+  border:1px solid #202c43;border-radius:17px;padding:13px
+}
+.search{
+  width:100%;height:44px;background:#080e19;
+  border:1px solid #29364e;border-radius:11px;
+  color:#fff;padding:0 13px;outline:none
+}
+.search:focus{border-color:#d42df4}
+.filters{
+  display:flex;gap:7px;overflow-x:auto;
+  margin-top:10px;scrollbar-width:none
+}
+.filter{
+  flex:0 0 auto;border:1px solid #29364e;
+  background:#0c1321;color:#8995a9;
+  border-radius:18px;padding:8px 12px;font-size:8px
+}
+.filter.active{
+  background:#d42df4;border-color:#d42df4;color:#fff
+}
+
+/* REQUESTS */
+.section{margin-top:24px}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:11px
+}
+.section-title{font-size:17px}
+.count{font-size:9px;color:#738096}
+.request-list{display:grid;gap:10px}
+
+.request{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:18px;padding:14px;cursor:pointer
+}
+.request-top{display:flex;align-items:center;gap:10px}
+.avatar{
+  width:44px;height:44px;min-width:44px;border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900
+}
+.request-info{flex:1;min-width:0}
+.request-info h3{font-size:12px}
+.request-info p{
+  color:#748197;font-size:8px;margin-top:5px
+}
+.amount{text-align:right}
+.amount strong{
+  display:block;font-size:14px;color:#39dc8a
+}
+.amount small{font-size:7px;color:#69768b}
+
+.status{
+  display:inline-block;padding:5px 7px;border-radius:12px;
+  font-size:7px;font-weight:800;margin-top:10px
+}
+.processing{
+  color:#ffb84d;background:rgba(255,184,77,.1)
+}
+.approved{
+  color:#63a9ff;background:rgba(99,169,255,.1)
+}
+.paid{
+  color:#39dc8a;background:rgba(57,220,138,.1)
+}
+.rejected{
+  color:#ff737d;background:rgba(255,90,103,.1)
+}
+.hold{
+  color:#d94df4;background:rgba(212,45,244,.1)
+}
+
+.request-data{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:6px;margin-top:10px
+}
+.data-box{
+  background:#0b1220;border-radius:9px;padding:8px
+}
+.data-box small{
+  display:block;color:#68758a;font-size:6.5px
+}
+.data-box strong{
+  display:block;font-size:8px;margin-top:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+
+/* TRANSACTIONS */
+.transaction{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 0;border-bottom:1px solid #202c43
+}
+.transaction:last-child{border-bottom:0}
+.tx-icon{
+  width:36px;height:36px;min-width:36px;border-radius:10px;
+  background:#172136;display:flex;align-items:center;
+  justify-content:center;font-size:13px
+}
+.tx-info{flex:1}
+.tx-info strong{font-size:9px}
+.tx-info small{
+  display:block;color:#707d92;font-size:7px;margin-top:4px
+}
+.tx-money{text-align:right}
+.tx-money strong{font-size:10px}
+.tx-money small{
+  display:block;font-size:7px;color:#707d92;margin-top:4px
+}
+
+/* DRAWER */
+.drawer{
+  position:fixed;right:-100%;top:0;width:100%;max-width:600px;
+  height:100vh;background:#090f1a;z-index:300;
+  transition:.27s;overflow-y:auto;border-left:1px solid #253047
+}
+.drawer.open{right:0}
+.drawer-head{
+  height:65px;position:sticky;top:0;z-index:5;
+  background:#090f1a;border-bottom:1px solid #202b40;
+  display:flex;align-items:center;padding:0 16px
+}
+.drawer-head h2{flex:1;font-size:17px}
+.close{
+  width:35px;height:35px;border:1px solid #29364e;
+  border-radius:10px;background:#111a2a;color:#fff;font-size:19px
+}
+.drawer-body{padding:17px 16px 40px}
+
+/* WITHDRAWAL HERO */
+.withdrawal-hero{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;border-radius:19px;padding:17px
+}
+.hero-top{display:flex;align-items:center;gap:11px}
+.big-avatar{
+  width:55px;height:55px;min-width:55px;border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900
+}
+.hero-info{flex:1}
+.hero-info h3{font-size:15px}
+.hero-info p{font-size:8px;color:#78859a;margin-top:5px}
+.hero-amount{text-align:right}
+.hero-amount small{font-size:7px;color:#78859a}
+.hero-amount strong{
+  display:block;font-size:18px;color:#39dc8a;margin-top:4px
+}
+
+/* DETAIL GRID */
+.detail-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;margin-top:12px
+}
+.detail-box{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:12px;padding:11px
+}
+.detail-box small{display:block;color:#707d92;font-size:7px}
+.detail-box strong{
+  display:block;font-size:9px;margin-top:5px;
+  word-break:break-word
+}
+
+/* CARDS */
+.card{
+  margin-top:13px;background:#10182a;
+  border:1px solid #202c43;border-radius:17px;overflow:hidden
+}
+.card-title{
+  padding:13px;font-size:12px;border-bottom:1px solid #202c43
+}
+
+/* EARNINGS */
+.earning-row{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:12px 13px;border-bottom:1px solid #202c43
+}
+.earning-row:last-child{border-bottom:0}
+.earning-row span{font-size:8px;color:#778499}
+.earning-row strong{font-size:9px}
+
+/* TRACKING VERIFY */
+.verify-item{
+  padding:13px;border-bottom:1px solid #202c43
+}
+.verify-item:last-child{border-bottom:0}
+.verify-head{
+  display:flex;align-items:center;gap:9px
+}
+.verify-icon{
+  width:34px;height:34px;min-width:34px;border-radius:10px;
+  background:#172136;display:flex;align-items:center;
+  justify-content:center;font-size:10px
+}
+.verify-info{flex:1}
+.verify-info strong{font-size:9px}
+.verify-info small{
+  display:block;color:#707d92;font-size:7px;margin-top:4px
+}
+.verify-status{
+  font-size:7px;font-weight:800;padding:5px 7px;border-radius:11px
+}
+.valid{
+  color:#39dc8a;background:rgba(57,220,138,.1)
+}
+.waiting{
+  color:#ffb84d;background:rgba(255,184,77,.1)
+}
+
+.progress{
+  display:flex;gap:4px;margin-top:10px
+}
+.stage{
+  flex:1;height:4px;border-radius:5px;background:#263044
+}
+.stage.done{background:#39dc8a}
+.stage.wait{background:#ffb84d}
+
+.verify-link{
+  display:inline-block;margin-top:9px;
+  color:#d94df4;font-size:8px;text-decoration:none
+}
+
+/* PAYMENT */
+.payment-box{padding:13px}
+.payment-row{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:10px 0;border-bottom:1px solid #202c43
+}
+.payment-row:last-child{border-bottom:0}
+.payment-row span{color:#778499;font-size:8px}
+.payment-row strong{font-size:8px;text-align:right}
+
+/* ACTIONS */
+.actions{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;padding:13px
+}
+.action{
+  min-height:43px;border-radius:11px;
+  border:1px solid #2a354b;background:#111a2a;
+  color:#fff;font-size:9px;font-weight:700
+}
+.approve-btn{
+  color:#63a9ff;border-color:rgba(99,169,255,.3)
+}
+.hold-btn{
+  color:#ffb84d;border-color:rgba(255,184,77,.3)
+}
+.reject-btn{
+  color:#ff737d;border-color:rgba(255,90,103,.3)
+}
+.paid-btn{
+  color:#39dc8a;border-color:rgba(57,220,138,.3)
+}
+
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.82);z-index:500;
+  align-items:flex-end;justify-content:center
+}
+.modal-box{
+  width:100%;max-width:560px;background:#10182a;
+  border:1px solid #29364e;border-radius:24px 24px 0 0;
+  padding:21px 17px 28px
+}
+.modal-box h3{font-size:18px}
+.modal-box p{
+  color:#78859a;font-size:9px;line-height:1.5;margin-top:6px
+}
+.modal-input{
+  width:100%;height:45px;margin-top:13px;
+  background:#080e19;border:1px solid #29364e;
+  border-radius:10px;color:#fff;padding:0 11px;outline:none
+}
+.modal-btn{
+  width:100%;height:44px;border:0;border-radius:11px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;font-size:9px;font-weight:800;margin-top:11px
+}
+.cancel{
+  width:100%;border:0;background:none;
+  color:#7b879b;padding-top:13px
+}
+
+.empty{
+  padding:30px;text-align:center;color:#748197;
+  background:#10182a;border-radius:15px;font-size:10px
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{margin-left:250px;max-width:none;padding:28px}
+  .stats{grid-template-columns:repeat(5,1fr)}
+  .request-list{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeEverything()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-head">
+  <div class="sidebar-logo">Offer<span>wax</span></div>
+  <p>Admin Control Center</p>
+</div>
+
+<nav class="nav">
+
+<div class="nav-title">Overview</div>
+
+<a href="admin.html" class="nav-item">
+  <span class="nav-icon">⌂</span>
+  <span class="nav-text">Dashboard</span>
+</a>
+
+<div class="nav-title">Management</div>
+
+<a href="admin-users.html" class="nav-item">
+  <span class="nav-icon">👥</span>
+  <span class="nav-text">Users</span>
+</a>
+
+<a href="admin-offers.html" class="nav-item">
+  <span class="nav-icon">▣</span>
+  <span class="nav-text">Offers</span>
+</a>
+
+<a href="admin-share.html" class="nav-item">
+  <span class="nav-icon">↗</span>
+  <span class="nav-text">Share & Earn</span>
+</a>
+
+<a href="admin-refer.html" class="nav-item">
+  <span class="nav-icon">♧</span>
+  <span class="nav-text">Refer & Earn</span>
+</a>
+
+<a href="admin-tracking.html" class="nav-item">
+  <span class="nav-icon">⌖</span>
+  <span class="nav-text">Tracking</span>
+</a>
+
+<div class="nav-title">Operations</div>
+
+<a href="admin-finance.html" class="nav-item active">
+  <span class="nav-icon">₹</span>
+  <span class="nav-text">Finance</span>
+</a>
+
+<a href="admin-support.html" class="nav-item">
+  <span class="nav-icon">?</span>
+  <span class="nav-text">Support</span>
+</a>
+
+<div class="nav-title">Controls</div>
+
+<a href="admin-content.html" class="nav-item">
+  <span class="nav-icon">⚙</span>
+  <span class="nav-text">App & Content</span>
+</a>
+
+</nav>
+</aside>
+
+<!-- TOP -->
+<header class="topbar">
+
+<button class="menu-btn" onclick="openSidebar()">☰</button>
+
+<div class="logo">
+  Offer<span>wax</span>
+  <small>FINANCE & WITHDRAWALS</small>
+</div>
+
+<button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+<section class="page-head">
+
+<h1>Finance</h1>
+
+<p>
+Manage withdrawal requests, verify earnings and review
+payment history.
+</p>
+
+</section>
+
+<!-- STATS -->
+<section class="stats">
+
+<div class="stat">
+  <div class="stat-icon">₹</div>
+  <strong>₹24.8K</strong>
+  <small>Total User Earnings</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">⏳</div>
+  <strong class="orange">₹3,250</strong>
+  <small>Pending Withdrawals</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">✓</div>
+  <strong class="green">₹18.5K</strong>
+  <small>Total Paid</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">↗</div>
+  <strong class="purple">₹16.4K</strong>
+  <small>Share & Earn</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">♧</div>
+  <strong>₹8.4K</strong>
+  <small>Refer & Earn</small>
+</div>
+
+</section>
+
+<!-- SEARCH -->
+<section class="tools">
+
+<input
+  class="search"
+  id="searchInput"
+  type="search"
+  placeholder="Search User ID, name, withdrawal ID or UPI..."
+  oninput="renderRequests()">
+
+<div class="filters">
+
+<button class="filter active"
+onclick="setFilter('all',this)">All</button>
+
+<button class="filter"
+onclick="setFilter('processing',this)">Processing</button>
+
+<button class="filter"
+onclick="setFilter('approved',this)">Approved</button>
+
+<button class="filter"
+onclick="setFilter('hold',this)">On Hold</button>
+
+<button class="filter"
+onclick="setFilter('paid',this)">Paid</button>
+
+<button class="filter"
+onclick="setFilter('rejected',this)">Rejected</button>
+
+</div>
+
+</section>
+
+<!-- WITHDRAWALS -->
+<section class="section">
+
+<div class="section-head">
+  <h2 class="section-title">Withdrawal Requests</h2>
+  <span class="count" id="requestCount"></span>
+</div>
+
+<div class="request-list" id="requestList"></div>
+
+</section>
+
+<!-- RECENT TRANSACTIONS -->
+<section class="section">
+
+<div class="section-head">
+  <h2 class="section-title">Recent Transactions</h2>
+</div>
+
+<div class="card">
+  <div style="padding:0 13px" id="transactions"></div>
+</div>
+
+</section>
+
+</main>
+
+<!-- DRAWER -->
+<section class="drawer" id="financeDrawer">
+
+<div class="drawer-head">
+
+<h2>Withdrawal Details</h2>
+
+<button class="close" onclick="closeDrawer()">×</button>
+
+</div>
+
+<div class="drawer-body">
+
+<!-- HERO -->
+<div class="withdrawal-hero">
+
+<div class="hero-top">
+
+<div class="big-avatar" id="detailAvatar">BK</div>
+
+<div class="hero-info">
+  <h3 id="detailName">Bikash</h3>
+  <p id="detailUserID">OW8473</p>
+</div>
+
+<div class="hero-amount">
+  <small>Withdrawal</small>
+  <strong id="detailAmount">₹500</strong>
+</div>
+
+</div>
+
+</div>
+
+<!-- DETAILS -->
+<div class="detail-grid">
+
+<div class="detail-box">
+  <small>Withdrawal ID</small>
+  <strong id="detailWithdrawalID">WD-92841</strong>
+</div>
+
+<div class="detail-box">
+  <small>Status</small>
+  <strong id="detailStatus">Processing</strong>
+</div>
+
+<div class="detail-box">
+  <small>UPI ID</small>
+  <strong id="detailUPI">bi****@upi</strong>
+</div>
+
+<div class="detail-box">
+  <small>Requested</small>
+  <strong id="detailDate">28 Sep 2026</strong>
+</div>
+
+</div>
+
+<!-- EARNING SOURCE -->
+<div class="card">
+
+<div class="card-title">
+Earning Breakdown
+</div>
+
+<div id="earningBreakdown"></div>
+
+</div>
+
+<!-- TRACKING VERIFICATION -->
+<div class="card">
+
+<div class="card-title">
+Tracking Verification
+</div>
+
+<div id="trackingVerification"></div>
+
+</div>
+
+<!-- PAYMENT DETAILS -->
+<div class="card">
+
+<div class="card-title">
+Payment Details
+</div>
+
+<div class="payment-box">
+
+<div class="payment-row">
+  <span>Payment Method</span>
+  <strong>UPI</strong>
+</div>
+
+<div class="payment-row">
+  <span>UPI ID</span>
+  <strong id="paymentUPI">bi****@upi</strong>
+</div>
+
+<div class="payment-row">
+  <span>Requested Amount</span>
+  <strong id="paymentAmount">₹500</strong>
+</div>
+
+<div class="payment-row">
+  <span>Transaction / UTR</span>
+  <strong id="paymentUTR">Not paid yet</strong>
+</div>
+
+</div>
+
+</div>
+
+<!-- ADMIN CONTROLS -->
+<div class="card">
+
+<div class="card-title">
+Admin Controls
+</div>
+
+<div class="actions">
+
+<button class="action approve-btn"
+onclick="financeAction('Approve')">
+✓ Approve
+</button>
+
+<button class="action hold-btn"
+onclick="financeAction('Hold')">
+⏳ Hold
+</button>
+
+<button class="action reject-btn"
+onclick="financeAction('Reject')">
+× Reject
+</button>
+
+<button class="action paid-btn"
+onclick="openPaidModal()">
+₹ Mark Paid
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MARK PAID MODAL -->
+<div class="modal" id="paidModal">
+
+<div class="modal-box">
+
+<h3>Mark Withdrawal Paid</h3>
+
+<p>
+Only mark a withdrawal paid after the actual payment has
+been completed. Enter the transaction/UTR reference.
+</p>
+
+<input
+  class="modal-input"
+  id="utrInput"
+  type="text"
+  placeholder="Transaction ID / UTR">
+
+<button class="modal-btn" onclick="submitPaid()">
+Confirm Paid
+</button>
+
+<button class="cancel" onclick="closePaidModal()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/*
+=========================================
+DEMO DATA ONLY
+No real money is moved by this page.
+=========================================
+*/
+
+const withdrawals=[
+
+{
+ id:"WD-92841",
+ userId:"OW8473",
+ name:"Bikash",
+ initials:"BK",
+ upi:"bi****@upi",
+ amount:500,
+ date:"28 Sep 2026 • 08:42 PM",
+ status:"processing",
+ utr:"",
+
+ earnings:{
+  offers:0,
+  share:400,
+  refer:100
+ },
+
+ tracking:[
+  {
+   id:"OW-TRK-X92KD",
+   offer:"Kotak 811",
+   source:"Share & Earn",
+   amount:300,
+   stage:6,
+   verified:true
+  },
+  {
+   id:"OW-TRK-71ABC",
+   offer:"CoinDCX",
+   source:"Share & Earn",
+   amount:100,
+   stage:6,
+   verified:true
+  },
+  {
+   id:"REF-8473-21",
+   offer:"Referral Reward",
+   source:"Refer & Earn",
+   amount:100,
+   stage:6,
+   verified:true
+  }
+ ]
+},
+
+{
+ id:"WD-92877",
+ userId:"OW9124",
+ name:"Rahul Das",
+ initials:"RD",
+ upi:"ra****@upi",
+ amount:750,
+ date:"29 Sep 2026 • 09:10 AM",
+ status:"approved",
+ utr:"",
+
+ earnings:{
+  offers:250,
+  share:400,
+  refer:100
+ },
+
+ tracking:[
+  {
+   id:"OW-TRK-K82PP",
+   offer:"Upstox",
+   source:"Regular Offer",
+   amount:250,
+   stage:6,
+   verified:true
+  },
+  {
+   id:"OW-TRK-K11AA",
+   offer:"Kotak 811",
+   source:"Share & Earn",
+   amount:400,
+   stage:6,
+   verified:true
+  },
+  {
+   id:"REF-9124-11",
+   offer:"Referral Reward",
+   source:"Refer & Earn",
+   amount:100,
+   stage:6,
+   verified:true
+  }
+ ]
+},
+
+{
+ id:"WD-92710",
+ userId:"OW6251",
+ name:"Aman Ali",
+ initials:"AA",
+ upi:"am****@upi",
+ amount:300,
+ date:"27 Sep 2026 • 04:18 PM",
+ status:"hold",
+ utr:"",
+
+ earnings:{
+  offers:0,
+  share:300,
+  refer:0
+ },
+
+ tracking:[
+  {
+   id:"OW-TRK-A19LM",
+   offer:"CoinDCX",
+   source:"Share & Earn",
+   amount:300,
+   stage:5,
+   verified:false
+  }
+ ]
+},
+
+{
+ id:"WD-92551",
+ userId:"OW4402",
+ name:"Rohan Sharma",
+ initials:"RS",
+ upi:"ro****@upi",
+ amount:500,
+ date:"25 Sep 2026 • 01:32 PM",
+ status:"paid",
+ utr:"UTR-DEMO-82921",
+
+ earnings:{
+  offers:0,
+  share:400,
+  refer:100
+ },
+
+ tracking:[
+  {
+   id:"OW-TRK-OLD12",
+   offer:"Kotak 811",
+   source:"Share & Earn",
+   amount:400,
+   stage:6,
+   verified:true
+  },
+  {
+   id:"REF-4402-08",
+   offer:"Referral Reward",
+   source:"Refer & Earn",
+   amount:100,
+   stage:6,
+   verified:true
+  }
+ ]
+}
+
+];
+
+const transactionData=[
+
+{
+ title:"UPI Withdrawal",
+ user:"Rohan Sharma • OW4402",
+ amount:"-₹500",
+ status:"Paid",
+ type:"out"
+},
+
+{
+ title:"Kotak 811 Share Reward",
+ user:"Bikash • OW8473",
+ amount:"+₹300",
+ status:"Credited",
+ type:"in"
+},
+
+{
+ title:"Referral Reward",
+ user:"Rahul Das • OW9124",
+ amount:"+₹100",
+ status:"Credited",
+ type:"in"
+},
+
+{
+ title:"CoinDCX Reward",
+ user:"Aman Ali • OW6251",
+ amount:"+₹300",
+ status:"Pending",
+ type:"pending"
+}
+
+];
+
+let activeFilter="all";
+let selectedWithdrawal=null;
+
+
+/* STATUS */
+
+function statusText(status){
+
+ if(status==="processing")return "Processing";
+ if(status==="approved")return "Approved";
+ if(status==="hold")return "On Hold";
+ if(status==="paid")return "Paid";
+ if(status==="rejected")return "Rejected";
+
+ return status;
+}
+
+
+/* RENDER WITHDRAWALS */
+
+function renderRequests(){
+
+ const query=
+ document.getElementById("searchInput")
+ .value.toLowerCase().trim();
+
+ const filtered=withdrawals.filter(w=>{
+
+  const searchable=
+  (
+   w.id+" "+
+   w.userId+" "+
+   w.name+" "+
+   w.upi
+  ).toLowerCase();
+
+  const searchMatch=searchable.includes(query);
+
+  const filterMatch=
+  activeFilter==="all" ||
+  w.status===activeFilter;
+
+  return searchMatch&&filterMatch;
+
+ });
+
+ document.getElementById("requestCount").innerText=
+ filtered.length+
+ (filtered.length===1?" request":" requests");
+
+ const list=document.getElementById("requestList");
+
+ if(!filtered.length){
+
+  list.innerHTML=
+  '<div class="empty">No withdrawal requests found.</div>';
+
+  return;
+ }
+
+ list.innerHTML=filtered.map(w=>`
+
+ <div class="request"
+ onclick="openWithdrawal('${w.id}')">
+
+   <div class="request-top">
+
+     <div class="avatar">
+       ${w.initials}
+     </div>
+
+     <div class="request-info">
+       <h3>${w.name}</h3>
+       <p>${w.userId} • ${w.id}</p>
+     </div>
+
+     <div class="amount">
+       <strong>₹${w.amount}</strong>
+       <small>Withdrawal</small>
+     </div>
+
+   </div>
+
+   <span class="status ${w.status}">
+     ${statusText(w.status)}
+   </span>
+
+   <div class="request-data">
+
+     <div class="data-box">
+       <small>UPI</small>
+       <strong>${w.upi}</strong>
+     </div>
+
+     <div class="data-box">
+       <small>Tracking</small>
+       <strong>
+         ${w.tracking.filter(x=>x.verified).length}/${w.tracking.length}
+         verified
+       </strong>
+     </div>
+
+     <div class="data-box">
+       <small>Requested</small>
+       <strong>${w.date.split("•")[0]}</strong>
+     </div>
+
+   </div>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* FILTER */
+
+function setFilter(value,button){
+
+ activeFilter=value;
+
+ document.querySelectorAll(".filter")
+ .forEach(x=>x.classList.remove("active"));
+
+ button.classList.add("active");
+
+ renderRequests();
+
+}
+
+
+/* OPEN */
+
+function openWithdrawal(id){
+
+ selectedWithdrawal=
+ withdrawals.find(w=>w.id===id);
+
+ if(!selectedWithdrawal)return;
+
+ const w=selectedWithdrawal;
+
+ document.getElementById("detailAvatar").innerText=w.initials;
+ document.getElementById("detailName").innerText=w.name;
+ document.getElementById("detailUserID").innerText="User ID: "+w.userId;
+ document.getElementById("detailAmount").innerText="₹"+w.amount;
+
+ document.getElementById("detailWithdrawalID").innerText=w.id;
+ document.getElementById("detailStatus").innerText=statusText(w.status);
+ document.getElementById("detailUPI").innerText=w.upi;
+ document.getElementById("detailDate").innerText=w.date;
+
+ document.getElementById("paymentUPI").innerText=w.upi;
+ document.getElementById("paymentAmount").innerText="₹"+w.amount;
+
+ document.getElementById("paymentUTR").innerText=
+ w.utr || "Not paid yet";
+
+ renderEarnings();
+ renderTracking();
+
+ document.getElementById("financeDrawer")
+ .classList.add("open");
+
+ document.getElementById("overlay")
+ .style.display="block";
+
+}
+
+
+/* EARNINGS */
+
+function renderEarnings(){
+
+ const e=selectedWithdrawal.earnings;
+
+ const total=
+ e.offers+e.share+e.refer;
+
+ document.getElementById("earningBreakdown").innerHTML=`
+
+ <div class="earning-row">
+   <span>Regular Offer Earnings</span>
+   <strong>₹${e.offers}</strong>
+ </div>
+
+ <div class="earning-row">
+   <span>Share & Earn</span>
+   <strong>₹${e.share}</strong>
+ </div>
+
+ <div class="earning-row">
+   <span>Refer & Earn</span>
+   <strong>₹${e.refer}</strong>
+ </div>
+
+ <div class="earning-row">
+   <span>Verified Source Total</span>
+   <strong class="green">₹${total}</strong>
+ </div>
+
+ `;
+
+}
+
+
+/* TRACKING */
+
+function renderTracking(){
+
+ const box=
+ document.getElementById("trackingVerification");
+
+ const tracking=selectedWithdrawal.tracking;
+
+ if(!tracking.length){
+
+  box.innerHTML=
+  '<div class="empty">No related tracking records.</div>';
+
+  return;
+ }
+
+ box.innerHTML=tracking.map(t=>{
+
+  let bars="";
+
+  for(let i=1;i<=6;i++){
+
+   let cls="stage";
+
+   if(i<=t.stage)cls+=" done";
+
+   if(!t.verified && i===6)cls="stage wait";
+
+   bars+=`<div class="${cls}"></div>`;
+
+  }
+
+  return `
+
+  <div class="verify-item">
+
+    <div class="verify-head">
+
+      <div class="verify-icon">
+        ⌖
+      </div>
+
+      <div class="verify-info">
+
+        <strong>${t.offer}</strong>
+
+        <small>
+          ${t.id} • ${t.source} • ₹${t.amount}
+        </small>
+
+      </div>
+
+      <span class="verify-status ${t.verified?"valid":"waiting"}">
+        ${t.verified?"Verified":"Pending"}
+      </span>
+
+    </div>
+
+    <div class="progress">
+      ${bars}
+    </div>
+
+    <a
+      class="verify-link"
+      href="admin-tracking.html">
+      Open Tracking Management →
+    </a>
+
+  </div>
+
+  `;
+
+ }).join("");
+
+}
+
+
+/* TRANSACTIONS */
+
+function renderTransactions(){
+
+ const box=document.getElementById("transactions");
+
+ box.innerHTML=transactionData.map(t=>{
+
+  let icon="₹";
+
+  if(t.type==="out")icon="↑";
+  if(t.type==="in")icon="↓";
+  if(t.type==="pending")icon="…";
+
+  return `
+
+  <div class="transaction">
+
+    <div class="tx-icon">
+      ${icon}
+    </div>
+
+    <div class="tx-info">
+      <strong>${t.title}</strong>
+      <small>${t.user}</small>
+    </div>
+
+    <div class="tx-money">
+
+      <strong class="${
+       t.type==="in"
+       ? "green"
+       : t.type==="pending"
+       ? "orange"
+       : ""
+      }">
+        ${t.amount}
+      </strong>
+
+      <small>${t.status}</small>
+
+    </div>
+
+  </div>
+
+  `;
+
+ }).join("");
+
+}
+
+
+/* FINANCE ACTIONS */
+
+function financeAction(action){
+
+ if(!selectedWithdrawal)return;
+
+ if(action==="Approve"){
+
+  const unverified=
+  selectedWithdrawal.tracking.filter(x=>!x.verified);
+
+  if(unverified.length){
+
+   const proceed=confirm(
+    "Some related tracking records are still unverified.\n\n"+
+    "Review them before approving payment.\n\n"+
+    "Continue with demo action anyway?"
+   );
+
+   if(!proceed)return;
+  }
+
+ }
+
+ const ok=confirm(
+  action+
+  " withdrawal "+
+  selectedWithdrawal.id+
+  " for ₹"+
+  selectedWithdrawal.amount+
+  "?"
+ );
+
+ if(!ok)return;
+
+ alert(
+  "Demo only. No withdrawal status or money was changed. "+
+  "Real finance actions will require protected backend authorization."
+ );
+
+}
+
+
+/* PAID */
+
+function openPaidModal(){
+
+ if(!selectedWithdrawal)return;
+
+ document.getElementById("utrInput").value="";
+
+ document.getElementById("paidModal")
+ .style.display="flex";
+
+}
+
+function closePaidModal(){
+
+ document.getElementById("paidModal")
+ .style.display="none";
+
+}
+
+function submitPaid(){
+
+ const utr=
+ document.getElementById("utrInput")
+ .value.trim();
+
+ if(utr.length<4){
+
+  alert("Enter a valid transaction ID / UTR.");
+  return;
+ }
+
+ const ok=confirm(
+  "Confirm that ₹"+
+  selectedWithdrawal.amount+
+  " has actually been paid?"
+ );
+
+ if(!ok)return;
+
+ alert(
+  "Demo only. Withdrawal was NOT actually marked paid and "+
+  "no money was transferred."
+ );
+
+ closePaidModal();
+
+}
+
+
+/* SIDEBAR */
+
+function openSidebar(){
+
+ document.getElementById("sidebar")
+ .classList.add("open");
+
+ document.getElementById("overlay")
+ .style.display="block";
+
+}
+
+function closeDrawer(){
+
+ document.getElementById("financeDrawer")
+ .classList.remove("open");
+
+ document.getElementById("overlay")
+ .style.display="none";
+
+}
+
+function closeEverything(){
+
+ document.getElementById("sidebar")
+ .classList.remove("open");
+
+ document.getElementById("financeDrawer")
+ .classList.remove("open");
+
+ document.getElementById("overlay")
+ .style.display="none";
+
+}
+
+
+/*
+====================================================
+REAL FINANCE BACKEND LATER
+====================================================
+
+Withdrawal record should contain:
+
+withdrawalId
+userId
+amount
+paymentMethod
+upiId
+requestedAt
+status
+
+status:
+- processing
+- approved
+- hold
+- rejected
+- paid
+
+Related earning records should reference:
+- offer conversion
+- Share & Earn conversion
+- Refer & Earn reward
+- tracking ID
+- validation status
+
+Before approving a withdrawal:
+1. verify eligible balance server-side
+2. verify conversion/reward status
+3. prevent duplicate withdrawal
+4. lock/reserve requested balance
+5. require admin authorization
+6. record admin action in audit log
+
+After actual payment:
+- store transaction/UTR
+- mark withdrawal paid
+- update wallet ledger atomically
+- never trust frontend balance values
+
+Possible protected endpoints:
+
+GET  /api/admin/finance
+GET  /api/admin/withdrawals
+GET  /api/admin/withdrawals/:id
+
+POST /api/admin/withdrawals/:id/approve
+POST /api/admin/withdrawals/:id/hold
+POST /api/admin/withdrawals/:id/reject
+POST /api/admin/withdrawals/:id/paid
+
+IMPORTANT:
+This static page must never be treated as a
+real payment system.
+
+All real balances, withdrawals and transaction
+records must be controlled server-side.
+*/
+
+renderRequests();
+renderTransactions();
+
+</script>
+</body>
+  </html>
