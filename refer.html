@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b14">
+
+  <title>Refer & Earn | Offerwax</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #070b14;
+      color: #ffffff;
+      min-height: 100vh;
+      padding-bottom: 105px;
+    }
+
+    /* HEADER */
+
+    .topbar {
+      height: 72px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #182133;
+      background: #070b14;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.7px;
+    }
+
+    .logo span {
+      color: #d42df4;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #263249;
+      background: #0d1422;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .profile {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* MAIN */
+
+    .page {
+      padding: 22px 20px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .page-title {
+      font-size: 29px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .subtitle {
+      color: #8e99ae;
+      font-size: 14px;
+      margin-top: 7px;
+      line-height: 1.5;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 22px;
+      padding: 25px 20px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(226,47,245,.35), transparent 40%),
+        linear-gradient(135deg, #6426e8, #a51dd2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.16);
+      padding: 7px 11px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+
+    .hero h2 {
+      font-size: 25px;
+      line-height: 1.2;
+      max-width: 280px;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      line-height: 1.5;
+      max-width: 320px;
+    }
+
+    .reward {
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat-card {
+      background: #10182a;
+      border: 1px solid #202c43;
+      border-radius: 18px;
+      padding: 17px;
+    }
+
+    .stat-label {
+      color: #8e99ae;
+      font-size: 12px;
+    }
+
+    .stat-value {
+      font-size: 23px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .earning {
+      color: #39dc8a;
+    }
+
+    /* REFERRAL LINK */
+
+    .section {
+      margin-top: 29px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .ref-card {
+      background: #10182a;
+      border: 1px solid #202c43;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .ref-label {
+      font-size: 12px;
+      color: #8e99ae;
+      margin-bottom: 10px;
+    }
+
+    .link-box {
+      display: flex;
+      align-items: center;
+      background: #080e19;
+      border: 1px solid #263249;
+      border-radius: 13px;
+      overflow: hidden;
+    }
+
+    .link-box input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      color: #d8dfeb;
+      background: transparent;
+      padding: 14px;
+      font-size: 12px;
+    }
+
+    .copy-btn {
+      border: 0;
+      color: #ffffff;
+      background: #8c27e8;
+      padding: 14px 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* SHARE BUTTONS */
+
+    .share-title {
+      color: #8e99ae;
+      font-size: 12px;
+      margin-top: 18px;
+      margin-bottom: 13px;
+    }
+
+    .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9px;
+    }
+
+    .share-btn {
+      background: #0b1220;
+      border: 1px solid #202c43;
+      border-radius: 14px;
+      padding: 12px 4px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .share-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin: auto;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .whatsapp {
+      background: #20b85a;
+    }
+
+    .instagram {
+      background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+    }
+
+    .telegram {
+      background: #229ed9;
+    }
+
+    .more {
+      background: #343f54;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      background: #10182a;
+      border: 1px solid #202c43;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid #202c43;
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+    }
+
+    .step-number {
+      width: 35px;
+      height: 35px;
+      min-width: 35px;
+      border-radius: 50%;
+      background: rgba(181,41,237,.14);
+      color: #d94bf4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+      margin-right: 13px;
+    }
+
+    .step h4 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      color: #8e99ae;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    /* YOUR REFERRALS */
+
+    .referral-list {
+      background: #10182a;
+      border: 1px solid #202c43;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #202c43;
+    }
+
+    .person:last-child {
+      border-bottom: 0;
+    }
+
+    .avatar {
+      width: 43px;
+      height: 43px;
+      min-width: 43px;
+      border-radius: 50%;
+      background: #242e43;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      margin-right: 12px;
+    }
+
+    .person-info {
+      flex: 1;
+    }
+
+    .person-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .person-status {
+      color: #8e99ae;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    .completed {
+      color: #39dc8a;
+    }
+
+    .pending {
+      color: #a6afbf;
+    }
+
+    .cashback {
+      text-align: right;
+      font-size: 13px;
+      font-weight: 800;
+      color: #39dc8a;
+    }
+
+    .cashback small {
+      display: block;
+      color: #8e99ae;
+      font-size: 9px;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    .terms {
+      color: #69758a;
+      font-size: 10px;
+      line-height: 1.5;
+      text-align: center;
+      margin: 20px 10px 5px;
+    }
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(5,9,20,.97);
+      border-top: 1px solid #202a3e;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 100;
+    }
+
+    .nav-item {
+      color: #7e899d;
+      text-decoration: none;
+      text-align: center;
+      font-size: 11px;
+      min-width: 58px;
+    }
+
+    .nav-icon {
+      display: block;
+      font-size: 21px;
+      margin-bottom: 5px;
+    }
+
+    .nav-item.active {
+      color: #d42df4;
+      font-weight: 700;
+    }
+
+    @media (min-width: 650px) {
+      .bottom-nav {
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 1px solid #202a3e;
+        border-right: 1px solid #202a3e;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="logo">Offer<span>wax</span></div>
+
+    <div class="header-right">
+      <div class="circle">♢</div>
+      <div class="circle profile">ES</div>
+    </div>
+  </header>
+
+
+  <main class="page">
+
+    <h1 class="page-title">Refer & Earn</h1>
+
+    <p class="subtitle">
+      Invite your friends to Offerwax and earn rewards.
+    </p>
+
+
+    <section class="hero">
+
+      <div class="hero-badge">🎁 REFERRAL REWARD</div>
+
+      <h2>
+        Refer Friends & Earn Up to ₹100
+      </h2>
+
+      <p>
+        Get <span class="reward">up to ₹100</span> when your referred friend
+        completes their first eligible task successfully.
+      </p>
+
+    </section>
+
+
+    <div class="stats">
+
+      <div class="stat-card">
+        <div class="stat-label">Total Referrals</div>
+        <div class="stat-value" id="totalReferrals">12</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Referral Earnings</div>
+        <div class="stat-value earning" id="referralEarnings">₹450</div>
+      </div>
+
+    </div>
+
+
+    <section class="section">
+
+      <h3 class="section-title">Your Referral Link</h3>
+
+      <div class="ref-card">
+
+        <div class="ref-label">
+          Share this link with your friends
+        </div>
+
+        <div class="link-box">
+
+          <input
+            id="referralLink"
+            value="https://offerwax-app.pages.dev/?ref=ES8473"
+            readonly
+          >
+
+          <button class="copy-btn" onclick="copyReferralLink()">
+            Copy
+          </button>
+
+        </div>
+
+
+        <div class="share-title">Share via</div>
+
+        <div class="share-buttons">
+
+          <div class="share-btn" onclick="shareWhatsApp()">
+            <div class="share-icon whatsapp">W</div>
+            WhatsApp
+          </div>
+
+          <div class="share-btn" onclick="shareInstagram()">
+            <div class="share-icon instagram">◎</div>
+            Instagram
+          </div>
+
+          <div class="share-btn" onclick="shareTelegram()">
+            <div class="share-icon telegram">➤</div>
+            Telegram
+          </div>
+
+          <div class="share-btn" onclick="shareMore()">
+            <div class="share-icon more">•••</div>
+            More
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h3 class="section-title">How It Works</h3>
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">1</div>
+
+          <div>
+            <h4>Share your referral link</h4>
+            <p>Invite your friends using your unique Offerwax link.</p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">2</div>
+
+          <div>
+            <h4>Your friend joins Offerwax</h4>
+            <p>The referral is linked to your account after joining.</p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">3</div>
+
+          <div>
+            <h4>Friend completes first task</h4>
+            <p>Your friend completes their first eligible task successfully.</p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">4</div>
+
+          <div>
+            <h4>Get your referral reward</h4>
+            <p>After successful validation, earn up to ₹100.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h3 class="section-title">Your Referrals</h3>
+
+      <div class="referral-list">
+
+
+        <div class="person">
+
+          <div class="avatar">RS</div>
+
+          <div class="person-info">
+            <div class="person-name">Rahul S.</div>
+            <div class="person-status completed">
+              ✓ First task completed
+            </div>
+          </div>
+
+          <div class="cashback">
+            +₹100
+            <small>Reward earned</small>
+          </div>
+
+        </div>
+
+
+        <div class="person">
+
+          <div class="avatar">AK</div>
+
+          <div class="person-info">
+            <div class="person-name">Aman K.</div>
+            <div class="person-status pending">
+              ⏳ First task pending
+            </div>
+          </div>
+
+          <div class="cashback" style="color:#8e99ae;">
+            ₹0
+            <small>Pending</small>
+          </div>
+
+        </div>
+
+
+        <div class="person">
+
+          <div class="avatar">PS</div>
+
+          <div class="person-info">
+            <div class="person-name">Priya S.</div>
+            <div class="person-status completed">
+              ✓ First task completed
+            </div>
+          </div>
+
+          <div class="cashback">
+            +₹50
+            <small>Reward earned</small>
+          </div>
+
+        </div>
+
+
+        <div class="person">
+
+          <div class="avatar">RM</div>
+
+          <div class="person-info">
+            <div class="person-name">Rohit M.</div>
+            <div class="person-status pending">
+              ⏳ First task pending
+            </div>
+          </div>
+
+          <div class="cashback" style="color:#8e99ae;">
+            ₹0
+            <small>Pending</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <p class="terms">
+      Referral rewards may vary by campaign and are credited only after
+      successful task validation. Maximum referral reward is ₹100.
+    </p>
+
+  </main>
+
+
+  <nav class="bottom-nav">
+
+    <a href="index.html" class="nav-item">
+      <span class="nav-icon">⌂</span>
+      Home
+    </a>
+
+    <a href="offers.html" class="nav-item">
+      <span class="nav-icon">▣</span>
+      Offers
+    </a>
+
+    <a href="refer.html" class="nav-item active">
+      <span class="nav-icon">♧</span>
+      Refer
+    </a>
+
+    <a href="share.html" class="nav-item">
+      <span class="nav-icon">↗</span>
+      Share
+    </a>
+
+    <a href="wallet.html" class="nav-item">
+      <span class="nav-icon">▤</span>
+      Wallet
+    </a>
+
+  </nav>
+
+
+  <script>
+
+    const referralLink =
+      document.getElementById("referralLink").value;
+
+    const shareText =
+      "Join Offerwax and complete tasks to earn rewards! ";
+
+
+    function copyReferralLink() {
+
+      navigator.clipboard.writeText(referralLink);
+
+      const button =
+        document.querySelector(".copy-btn");
+
+      button.innerText = "Copied ✓";
+
+      setTimeout(() => {
+        button.innerText = "Copy";
+      }, 1800);
+
+    }
+
+
+    function shareWhatsApp() {
+
+      const url =
+        "https://wa.me/?text=" +
+        encodeURIComponent(shareText + referralLink);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    function shareTelegram() {
+
+      const url =
+        "https://t.me/share/url?url=" +
+        encodeURIComponent(referralLink) +
+        "&text=" +
+        encodeURIComponent(shareText);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    function shareInstagram() {
+
+      navigator.clipboard.writeText(referralLink);
+
+      alert(
+        "Referral link copied! Open Instagram and share it with your friends."
+      );
+
+      window.location.href =
+        "https://www.instagram.com/";
+
+    }
+
+
+    async function shareMore() {
+
+      if (navigator.share) {
+
+        try {
+
+          await navigator.share({
+            title: "Offerwax",
+            text: shareText,
+            url: referralLink
+          });
+
+        } catch (error) {}
+
+      } else {
+
+        copyReferralLink();
+
+        alert(
+          "Referral link copied. You can now share it anywhere."
+        );
+
+      }
+
+    }
+
+  </script>
+
+</body>
+        </html>
