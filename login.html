@@ -2,22 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080c16">
-<title>Offerwax</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#060b16">
+<title>Offerwax | Register</title>
 
 <style>
+:root{
+  --bg:#060b16;
+  --bg2:#091120;
+  --card:#0b1424;
+  --card2:#0d1728;
+  --border:#263653;
+  --text:#f7f8fc;
+  --muted:#8c98ad;
+  --purple:#8528ff;
+  --pink:#e72be8;
+  --green:#29df8b;
+}
+
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#080c16;
-  color:#fff;
   min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 82% 7%,rgba(136,35,255,.15),transparent 26%),
+    radial-gradient(circle at 10% 45%,rgba(34,99,255,.06),transparent 25%),
+    linear-gradient(180deg,#060a14,#07101d 55%,#060b15);
+  color:var(--text);
 }
 
 button,input{
@@ -26,73 +46,177 @@ button,input{
 
 .page{
   width:100%;
-  max-width:430px;
+  max-width:470px;
   margin:auto;
-  min-height:100vh;
-  padding:24px 18px 20px;
+  padding:23px 18px 28px;
 }
 
-/* BRAND */
 
-.brand{
-  text-align:center;
-  padding-top:8px;
+/* =========================
+   TOP
+========================= */
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-  font-size:30px;
+  font-size:27px;
+  line-height:1;
   font-weight:900;
-  letter-spacing:-1.3px;
+  letter-spacing:-1.4px;
 }
 
 .logo span{
-  color:#d42df4;
+  color:#dd2ee9;
 }
 
-.tagline{
-  color:#8c97aa;
+.safe{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  border:1px solid #2c3a54;
+  background:rgba(14,23,39,.75);
+  border-radius:10px;
+  padding:7px 9px;
+  font-size:8px;
+  font-weight:700;
+  color:#dce2ec;
+}
+
+.shield{
+  color:#24e48b;
+  font-size:12px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding:31px 2px 23px;
+}
+
+.hero h1{
+  max-width:390px;
+  font-size:35px;
+  line-height:1.06;
+  letter-spacing:-1.6px;
+  font-weight:900;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#f1d7ff,#d433ee);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-desc{
+  max-width:360px;
+  color:#a5aec0;
+  font-size:11px;
+  line-height:1.55;
+  margin-top:12px;
+}
+
+.trusted{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:17px;
+}
+
+.people{
+  display:flex;
+  padding-left:4px;
+}
+
+.person{
+  width:27px;
+  height:27px;
+  margin-left:-5px;
+  border-radius:50%;
+  border:2px solid #09101c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:7px;
+  font-weight:900;
+  color:#fff;
+  background:linear-gradient(135deg,#7547e9,#d632de);
+}
+
+.person:nth-child(2){
+  background:linear-gradient(135deg,#235dc8,#633be7);
+}
+
+.person:nth-child(3){
+  background:linear-gradient(135deg,#a3532d,#d431b9);
+}
+
+.person:nth-child(4){
+  background:linear-gradient(135deg,#147d68,#7850dc);
+}
+
+.trusted-text strong{
+  display:block;
   font-size:10px;
-  margin-top:8px;
 }
 
-.tagline strong{
-  color:#d5d9e1;
-  font-weight:600;
+.trusted-text strong b{
+  color:#e037ed;
 }
 
-/* AUTH */
+.trusted-text small{
+  display:block;
+  margin-top:3px;
+  color:#7d899d;
+  font-size:8px;
+}
 
-.auth{
-  margin-top:24px;
-  background:#101725;
-  border:1px solid #202b3e;
+
+/* =========================
+   AUTH CARD
+========================= */
+
+.auth-card{
+  padding:15px;
+  border:1px solid #273751;
   border-radius:17px;
-  padding:13px;
+  background:
+    linear-gradient(145deg,rgba(15,27,47,.96),rgba(8,16,29,.96));
+  box-shadow:0 22px 55px rgba(0,0,0,.25);
 }
 
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:5px;
-  background:#080e18;
   padding:4px;
   border-radius:11px;
-  margin-bottom:13px;
+  background:#060d18;
+  margin-bottom:14px;
 }
 
 .tab{
-  height:34px;
   border:0;
-  border-radius:8px;
+  height:43px;
+  border-radius:9px;
   background:transparent;
-  color:#69768a;
-  font-size:9px;
+  color:#717c90;
+  font-size:10px;
   font-weight:800;
+  cursor:pointer;
 }
 
 .tab.active{
-  background:#1b2434;
   color:#fff;
+  background:linear-gradient(100deg,#7928f6,#df2ce8);
+  box-shadow:0 7px 20px rgba(188,38,231,.18);
 }
 
 .form{
@@ -104,66 +228,82 @@ button,input{
 }
 
 .field{
-  margin-bottom:9px;
+  margin-bottom:10px;
 }
 
 .field label{
   display:block;
-  color:#7f8a9c;
+  margin:0 0 5px 3px;
+  color:#8d98aa;
   font-size:7px;
-  font-weight:700;
-  margin:0 0 5px 2px;
+  font-weight:800;
 }
 
 .input-wrap{
   position:relative;
 }
 
+.input-icon{
+  position:absolute;
+  left:13px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#a6b0c2;
+  font-size:12px;
+}
+
 .input{
   width:100%;
-  height:40px;
-  border:1px solid #293449;
-  border-radius:10px;
-  background:#090f19;
-  color:#fff;
-  padding:0 11px;
+  height:46px;
   outline:none;
-  font-size:9px;
+  border:1px solid #31415f;
+  border-radius:11px;
+  background:#07101d;
+  color:#fff;
+  padding:0 13px 0 38px;
+  font-size:9.5px;
+  transition:.2s;
+}
+
+.input.no-icon{
+  padding-left:13px;
+}
+
+.input.password-input{
+  padding-right:57px;
 }
 
 .input:focus{
-  border-color:#b83bd2;
+  border-color:#a63de2;
+  box-shadow:0 0 0 3px rgba(184,47,228,.06);
 }
 
 .input::placeholder{
-  color:#495568;
-}
-
-.password{
-  padding-right:52px;
+  color:#5d687d;
 }
 
 .show{
   position:absolute;
-  right:5px;
+  right:7px;
   top:50%;
   transform:translateY(-50%);
   border:0;
   background:transparent;
-  color:#c85edd;
-  font-size:7px;
-  font-weight:800;
+  color:#dd43e8;
   padding:8px;
+  font-size:7px;
+  font-weight:900;
+  cursor:pointer;
 }
 
-.row{
+.two{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:7px;
+  gap:8px;
 }
 
 .optional{
-  color:#505d70;
+  color:#59667a;
   font-weight:400;
 }
 
@@ -171,247 +311,333 @@ button,input{
   display:flex;
   align-items:flex-start;
   gap:7px;
-  color:#667286;
-  font-size:6.5px;
-  line-height:1.5;
-  margin:2px 2px 11px;
+  margin:4px 2px 12px;
+  color:#758196;
+  font-size:7px;
+  line-height:1.45;
 }
 
 .terms input{
   margin-top:1px;
-  accent-color:#d42df4;
+  accent-color:#b72ce5;
 }
 
 .terms a{
-  color:#c45bd8;
+  color:#db43e5;
   text-decoration:none;
 }
 
-.submit{
+.main-btn{
   width:100%;
-  height:41px;
+  height:45px;
   border:0;
   border-radius:10px;
-  background:linear-gradient(110deg,#7a29dd,#d42df4);
   color:#fff;
-  font-size:9px;
+  background:linear-gradient(100deg,#7628f2,#df2be9);
+  font-size:10px;
   font-weight:900;
+  cursor:pointer;
+  box-shadow:0 9px 24px rgba(183,35,227,.2);
 }
 
-/* APK */
+.main-btn:active{
+  transform:scale(.99);
+}
+
+.login-options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+  color:#768297;
+  font-size:7px;
+}
+
+.remember{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.remember input{
+  accent-color:#9e2ee7;
+}
+
+.forgot{
+  color:#db43e5;
+  text-decoration:none;
+  font-weight:700;
+}
+
+
+/* =========================
+   APK
+========================= */
 
 .apk{
+  margin-top:11px;
+  min-height:62px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:7px;
-  width:100%;
-  height:39px;
-  margin-top:11px;
-  border:1px solid #263247;
-  border-radius:11px;
-  background:#0d1420;
-  color:#c6ccd6;
+  gap:12px;
+  padding:11px 13px;
+  border:1px solid #8c32e3;
+  border-radius:14px;
+  background:
+    linear-gradient(100deg,rgba(83,30,146,.23),rgba(32,20,65,.48));
   text-decoration:none;
-  font-size:8px;
-  font-weight:800;
+  color:#fff;
 }
 
-.apk span{
-  color:#d35ee8;
-  font-size:13px;
-}
-
-/* TRUST */
-
-.trust{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:11px;
-}
-
-.trust-box{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:#0d1420;
-  border:1px solid #1d283a;
-  border-radius:11px;
-  padding:10px;
-}
-
-.trust-icon{
-  width:28px;
-  height:28px;
-  min-width:28px;
-  border-radius:8px;
-  background:#151e2d;
+.apk-icon{
+  width:39px;
+  height:39px;
+  min-width:39px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:11px;
+  background:#22173c;
+  color:#df42ed;
+  font-size:19px;
 }
 
-.trust-info strong{
+.apk-info{
+  flex:1;
+}
+
+.apk-info strong{
   display:block;
+  font-size:10px;
+}
+
+.apk-info small{
+  display:block;
+  color:#909aab;
+  margin-top:4px;
   font-size:7.5px;
 }
 
-.trust-info small{
-  display:block;
-  color:#5f6c80;
-  font-size:6px;
-  margin-top:3px;
+.apk-arrow{
+  color:#bd4ce2;
+  font-size:21px;
 }
 
-/* WITHDRAWALS */
 
-.withdraw-section{
+/* =========================
+   FEATURES
+========================= */
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:10px;
+}
+
+.feature{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #273751;
+  border-radius:13px;
+  background:#0b1422;
+  padding:10px;
+}
+
+.feature-icon{
+  width:35px;
+  height:35px;
+  min-width:35px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#141f31;
+  font-size:16px;
+}
+
+.feature strong{
+  display:block;
+  font-size:8.5px;
+}
+
+.feature small{
+  display:block;
+  margin-top:4px;
+  color:#6e7b8f;
+  font-size:6.5px;
+}
+
+
+/* =========================
+   WITHDRAWALS
+========================= */
+
+.withdrawals{
   margin-top:20px;
 }
 
-.section-head{
+.section-title{
   display:flex;
   align-items:center;
   justify-content:space-between;
   margin-bottom:9px;
 }
 
-.section-head h3{
-  font-size:11px;
+.section-title h2{
+  font-size:13px;
 }
 
 .live{
   display:flex;
   align-items:center;
   gap:5px;
-  color:#69768a;
-  font-size:6.5px;
+  color:#7a8699;
+  font-size:7px;
 }
 
 .live-dot{
-  width:6px;
-  height:6px;
+  width:7px;
+  height:7px;
   border-radius:50%;
-  background:#39dc8a;
+  background:var(--green);
+  box-shadow:0 0 8px rgba(41,223,139,.45);
 }
 
 .withdraw-box{
-  height:196px;
+  height:219px;
   overflow:hidden;
-  background:#0d1420;
-  border:1px solid #202b3e;
-  border-radius:14px;
-  padding:0 12px;
-  position:relative;
+  border:1px solid #293952;
+  border-radius:15px;
+  background:#0a1321;
+  padding:0 13px;
 }
 
 .withdraw-list{
   transition:transform .45s ease;
 }
 
-.withdraw-item{
-  height:65px;
+.withdraw-row{
+  height:54px;
   display:flex;
   align-items:center;
-  gap:10px;
-  border-bottom:1px solid #1c2738;
+  border-bottom:1px solid #202e42;
 }
 
-.withdraw-avatar{
-  width:34px;
-  height:34px;
-  min-width:34px;
+.avatar{
+  width:31px;
+  height:31px;
+  min-width:31px;
   border-radius:50%;
-  background:#192335;
-  color:#d56ce9;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:8px;
+  background:linear-gradient(135deg,#29346a,#8a28d8);
+  color:#fff;
+  font-size:7px;
   font-weight:900;
 }
 
-.withdraw-info{
+.withdraw-user{
+  margin-left:10px;
   flex:1;
 }
 
-.withdraw-info strong{
+.withdraw-user strong{
   display:block;
   font-size:8.5px;
 }
 
-.withdraw-info small{
+.withdraw-user small{
   display:block;
-  color:#647185;
+  color:#6d798d;
   font-size:6.5px;
-  margin-top:4px;
+  margin-top:3px;
 }
 
-.withdraw-amount{
-  text-align:right;
+.withdraw-time{
+  color:#7a879a;
+  font-size:6.5px;
+  margin-right:15px;
 }
 
-.withdraw-amount strong{
-  display:block;
-  color:#39dc8a;
+.amount{
+  color:#2ce08b;
   font-size:9px;
-}
-
-.withdraw-amount small{
-  display:block;
-  color:#596679;
-  font-size:6px;
-  margin-top:4px;
-}
-
-/* FOOTER */
-
-.footer{
-  margin-top:25px;
-  padding-top:17px;
-  border-top:1px solid #182334;
-  text-align:center;
-}
-
-.footer-brand{
-  font-size:13px;
   font-weight:900;
 }
 
-.footer-brand span{
-  color:#d42df4;
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  margin-top:22px;
+  padding-top:16px;
+  border-top:1px solid #29354a;
+  text-align:center;
+}
+
+.footer-logo{
+  font-size:17px;
+  font-weight:900;
+}
+
+.footer-logo span{
+  color:#dc2fe8;
 }
 
 .footer-links{
+  margin-top:9px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:10px;
+  gap:14px;
 }
 
 .footer-links a{
-  color:#6c788b;
+  color:#929caf;
   text-decoration:none;
-  font-size:6.5px;
+  font-size:7.5px;
+}
+
+.contact{
+  margin-top:11px;
+  color:#7f8b9f;
+  font-size:7px;
+  min-height:8px;
 }
 
 .copyright{
-  color:#475367;
+  margin-top:9px;
+  color:#606c80;
   font-size:6.5px;
-  margin-top:11px;
-  line-height:1.6;
 }
 
-@media(max-width:350px){
-  .row{
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:360px){
+
+  .hero h1{
+    font-size:31px;
+  }
+
+  .two{
     grid-template-columns:1fr;
     gap:0;
   }
+
+  .withdraw-time{
+    display:none;
+  }
+
 }
+
 </style>
 </head>
 
@@ -419,103 +645,86 @@ button,input{
 
 <main class="page">
 
-  <!-- OFFERWAX -->
+  <!-- TOP -->
 
-  <section class="brand">
+  <header class="top">
 
     <div class="logo">
       Offer<span>wax</span>
     </div>
 
-    <div class="tagline">
-      <strong>Complete Tasks, Offers & Earn Rewards</strong>
+    <div class="safe">
+      <span class="shield">♢</span>
+      Secure & Safe
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>
+      Complete Offers.<br>
+      <span>Earn Real Rewards.</span>
+    </h1>
+
+    <p class="hero-desc">
+      Join Offerwax and earn rewards by completing offers,
+      sharing deals and referring friends.
+    </p>
+
+    <div class="trusted">
+
+      <div class="people">
+        <div class="person">A</div>
+        <div class="person">R</div>
+        <div class="person">S</div>
+        <div class="person">K</div>
+      </div>
+
+      <div class="trusted-text">
+        <strong>Trusted by <b>10,000+</b> users</strong>
+        <small>India's Earning Platform 🇮🇳</small>
+      </div>
+
     </div>
 
   </section>
 
 
-  <!-- LOGIN / REGISTER -->
+  <!-- AUTH -->
 
-  <section class="auth">
+  <section class="auth-card">
+
+    <!-- REGISTER FIRST -->
 
     <div class="tabs">
 
       <button
-        class="tab active"
-        id="loginTab"
         type="button"
-        onclick="showLogin()">
-        Login
+        class="tab active"
+        id="registerTab"
+        onclick="showRegister()">
+        Register
       </button>
 
       <button
-        class="tab"
-        id="registerTab"
         type="button"
-        onclick="showRegister()">
-        Register
+        class="tab"
+        id="loginTab"
+        onclick="showLogin()">
+        Login
       </button>
 
     </div>
 
 
-    <!-- LOGIN -->
+    <!-- REGISTER FORM -->
 
     <form
       class="form active"
-      id="loginForm"
-      onsubmit="loginUser(event)">
-
-      <div class="field">
-
-        <label>MOBILE NUMBER</label>
-
-        <input
-          class="input"
-          id="loginMobile"
-          type="tel"
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="Enter mobile number"
-          required>
-
-      </div>
-
-      <div class="field">
-
-        <label>PASSWORD</label>
-
-        <div class="input-wrap">
-
-          <input
-            class="input password"
-            id="loginPassword"
-            type="password"
-            placeholder="Enter password"
-            required>
-
-          <button
-            class="show"
-            type="button"
-            onclick="togglePassword('loginPassword',this)">
-            SHOW
-          </button>
-
-        </div>
-
-      </div>
-
-      <button class="submit" type="submit">
-        Login
-      </button>
-
-    </form>
-
-
-    <!-- REGISTER -->
-
-    <form
-      class="form"
       id="registerForm"
       onsubmit="registerUser(event)">
 
@@ -523,12 +732,19 @@ button,input{
 
         <label>FULL NAME</label>
 
-        <input
-          class="input"
-          id="fullName"
-          type="text"
-          placeholder="Enter your name"
-          required>
+        <div class="input-wrap">
+
+          <span class="input-icon">♙</span>
+
+          <input
+            class="input"
+            id="fullName"
+            type="text"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required>
+
+        </div>
 
       </div>
 
@@ -537,19 +753,26 @@ button,input{
 
         <label>MOBILE NUMBER</label>
 
-        <input
-          class="input"
-          id="registerMobile"
-          type="tel"
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="Enter mobile number"
-          required>
+        <div class="input-wrap">
+
+          <span class="input-icon">▯</span>
+
+          <input
+            class="input"
+            id="registerMobile"
+            type="tel"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="Enter mobile number"
+            autocomplete="tel"
+            required>
+
+        </div>
 
       </div>
 
 
-      <div class="row">
+      <div class="two">
 
         <div class="field">
 
@@ -558,10 +781,11 @@ button,input{
           <div class="input-wrap">
 
             <input
-              class="input password"
+              class="input no-icon password-input"
               id="registerPassword"
               type="password"
-              placeholder="Password"
+              placeholder="Create password"
+              autocomplete="new-password"
               required>
 
             <button
@@ -578,15 +802,16 @@ button,input{
 
         <div class="field">
 
-          <label>CONFIRM</label>
+          <label>CONFIRM PASSWORD</label>
 
           <div class="input-wrap">
 
             <input
-              class="input password"
+              class="input no-icon password-input"
               id="confirmPassword"
               type="password"
-              placeholder="Again"
+              placeholder="Confirm"
+              autocomplete="new-password"
               required>
 
             <button
@@ -607,24 +832,26 @@ button,input{
 
         <label>
           REFERRAL CODE
-          <span class="optional">— optional</span>
+          <span class="optional">(OPTIONAL)</span>
         </label>
 
         <input
-          class="input"
+          class="input no-icon"
           id="referralCode"
           type="text"
-          placeholder="Example: OW8473">
+          placeholder="Enter referral code">
 
       </div>
 
 
       <label class="terms">
 
-        <input id="terms" type="checkbox">
+        <input
+          id="terms"
+          type="checkbox">
 
         <span>
-          I agree to the
+          I agree to Offerwax
           <a href="terms.html">Terms</a>
           and
           <a href="privacy.html">Privacy Policy</a>.
@@ -633,55 +860,151 @@ button,input{
       </label>
 
 
-      <button class="submit" type="submit">
-        Create Account
+      <button
+        type="submit"
+        class="main-btn">
+        Create Account →
       </button>
+
+    </form>
+
+
+    <!-- LOGIN FORM -->
+
+    <form
+      class="form"
+      id="loginForm"
+      onsubmit="loginUser(event)">
+
+      <div class="field">
+
+        <label>MOBILE NUMBER</label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">▯</span>
+
+          <input
+            class="input"
+            id="loginMobile"
+            type="tel"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="Enter mobile number"
+            autocomplete="tel"
+            required>
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>PASSWORD</label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">♙</span>
+
+          <input
+            class="input password-input"
+            id="loginPassword"
+            type="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required>
+
+          <button
+            class="show"
+            type="button"
+            onclick="togglePassword('loginPassword',this)">
+            SHOW
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="main-btn">
+        Login →
+      </button>
+
+
+      <div class="login-options">
+
+        <label class="remember">
+          <input type="checkbox">
+          Remember me
+        </label>
+
+        <a
+          href="#"
+          class="forgot"
+          onclick="forgotPassword(event)">
+          Forgot password?
+        </a>
+
+      </div>
 
     </form>
 
   </section>
 
 
-  <!-- DOWNLOAD APK -->
+  <!-- APK -->
 
   <a
-    class="apk"
     href="offerwax.apk"
-    download>
+    download
+    class="apk">
 
-    <span>↓</span>
-    Download Offerwax APK
+    <div class="apk-icon">
+      ♟
+    </div>
+
+    <div class="apk-info">
+      <strong>Download Offerwax APK</strong>
+      <small>Get the app for a better experience</small>
+    </div>
+
+    <div class="apk-arrow">
+      ›
+    </div>
 
   </a>
 
 
-  <!-- FAST PAYMENT + SUPPORT -->
+  <!-- FEATURES -->
 
-  <section class="trust">
+  <section class="features">
 
-    <div class="trust-box">
+    <div class="feature">
 
-      <div class="trust-icon">
+      <div class="feature-icon">
         ⚡
       </div>
 
-      <div class="trust-info">
+      <div>
         <strong>Fast Payment</strong>
-        <small>Quick payout process</small>
+        <small>Quick & secure payouts</small>
       </div>
 
     </div>
 
 
-    <div class="trust-box">
+    <div class="feature">
 
-      <div class="trust-icon">
+      <div class="feature-icon">
         🎧
       </div>
 
-      <div class="trust-info">
+      <div>
         <strong>24 Hours Support</strong>
-        <small>We're here to help</small>
+        <small>We're here to help you</small>
       </div>
 
     </div>
@@ -691,15 +1014,15 @@ button,input{
 
   <!-- WITHDRAWALS -->
 
-  <section class="withdraw-section">
+  <section class="withdrawals">
 
-    <div class="section-head">
+    <div class="section-title">
 
-      <h3>Recent Withdrawals</h3>
+      <h2>Recent Withdrawals</h2>
 
       <div class="live">
         <span class="live-dot"></span>
-        Updates
+        Live Updates
       </div>
 
     </div>
@@ -707,105 +1030,126 @@ button,input{
 
     <div class="withdraw-box">
 
-      <div class="withdraw-list" id="withdrawList">
+      <div
+        class="withdraw-list"
+        id="withdrawList">
 
-        <div class="withdraw-item">
 
-          <div class="withdraw-avatar">AM</div>
+        <div class="withdraw-row">
 
-          <div class="withdraw-info">
+          <div class="avatar">AM</div>
+
+          <div class="withdraw-user">
             <strong>Amit</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹10,000</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            2 min ago
+          </div>
+
+          <div class="amount">
+            ₹10,000
           </div>
 
         </div>
 
 
-        <div class="withdraw-item">
+        <div class="withdraw-row">
 
-          <div class="withdraw-avatar">AK</div>
+          <div class="avatar">AK</div>
 
-          <div class="withdraw-info">
+          <div class="withdraw-user">
             <strong>Akash</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹2,500</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            8 min ago
+          </div>
+
+          <div class="amount">
+            ₹2,500
           </div>
 
         </div>
 
 
-        <div class="withdraw-item">
+        <div class="withdraw-row">
 
-          <div class="withdraw-avatar">SH</div>
+          <div class="avatar">SH</div>
 
-          <div class="withdraw-info">
+          <div class="withdraw-user">
             <strong>Shreya</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹5,000</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            15 min ago
+          </div>
+
+          <div class="amount">
+            ₹5,000
           </div>
 
         </div>
 
 
-        <div class="withdraw-item">
+        <div class="withdraw-row">
 
-          <div class="withdraw-avatar">RH</div>
+          <div class="avatar">RA</div>
 
-          <div class="withdraw-info">
+          <div class="withdraw-user">
             <strong>Rahul</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹1,800</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            27 min ago
+          </div>
+
+          <div class="amount">
+            ₹1,800
           </div>
 
         </div>
 
 
-        <div class="withdraw-item">
+        <div class="withdraw-row">
 
-          <div class="withdraw-avatar">AN</div>
+          <div class="avatar">AN</div>
 
-          <div class="withdraw-info">
+          <div class="withdraw-user">
             <strong>Ankit</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹3,200</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            36 min ago
+          </div>
+
+          <div class="amount">
+            ₹3,200
           </div>
 
         </div>
 
 
-        <div class="withdraw-item">
+        <div class="withdraw-row">
 
-          <div class="withdraw-avatar">PR</div>
+          <div class="avatar">PR</div>
 
-          <div class="withdraw-info">
+          <div class="withdraw-user">
             <strong>Priya</strong>
             <small>Withdrawal</small>
           </div>
 
-          <div class="withdraw-amount">
-            <strong>₹4,500</strong>
-            <small>Withdrawal</small>
+          <div class="withdraw-time">
+            42 min ago
+          </div>
+
+          <div class="amount">
+            ₹4,500
           </div>
 
         </div>
@@ -821,22 +1165,36 @@ button,input{
 
   <footer class="footer">
 
-    <div class="footer-brand">
+    <div class="footer-logo">
       Offer<span>wax</span>
     </div>
 
     <div class="footer-links">
 
-      <a href="terms.html">Terms</a>
+      <a href="terms.html">
+        Terms
+      </a>
 
-      <a href="privacy.html">Privacy</a>
+      <a href="privacy.html">
+        Privacy
+      </a>
 
-      <a href="support.html">Support</a>
+      <a href="support.html">
+        Support
+      </a>
 
     </div>
 
+
+    <!-- CONTACT EMAIL WILL GO HERE LATER -->
+
+    <div
+      class="contact"
+      id="contactEmail">
+    </div>
+
+
     <div class="copyright">
-      Powered by Offerwax Rewards<br>
       © 2026 Offerwax. All rights reserved.
     </div>
 
@@ -847,28 +1205,9 @@ button,input{
 
 <script>
 
-/* LOGIN / REGISTER */
-
-function showLogin(){
-
-  document
-  .getElementById("loginForm")
-  .classList.add("active");
-
-  document
-  .getElementById("registerForm")
-  .classList.remove("active");
-
-  document
-  .getElementById("loginTab")
-  .classList.add("active");
-
-  document
-  .getElementById("registerTab")
-  .classList.remove("active");
-
-}
-
+/* ==========================
+   REGISTER / LOGIN TABS
+========================== */
 
 function showRegister(){
 
@@ -891,7 +1230,30 @@ function showRegister(){
 }
 
 
-/* PASSWORD */
+function showLogin(){
+
+  document
+  .getElementById("loginForm")
+  .classList.add("active");
+
+  document
+  .getElementById("registerForm")
+  .classList.remove("active");
+
+  document
+  .getElementById("loginTab")
+  .classList.add("active");
+
+  document
+  .getElementById("registerTab")
+  .classList.remove("active");
+
+}
+
+
+/* ==========================
+   SHOW PASSWORD
+========================== */
 
 function togglePassword(id,button){
 
@@ -913,7 +1275,9 @@ function togglePassword(id,button){
 }
 
 
-/* MOBILE */
+/* ==========================
+   MOBILE VALIDATION
+========================== */
 
 function validMobile(number){
 
@@ -922,47 +1286,9 @@ function validMobile(number){
 }
 
 
-/* LOGIN */
-
-function loginUser(event){
-
-  event.preventDefault();
-
-  const mobile=
-  document.getElementById("loginMobile")
-  .value.trim();
-
-  const password=
-  document.getElementById("loginPassword")
-  .value;
-
-  if(!validMobile(mobile)){
-
-    alert("Enter a valid 10-digit mobile number.");
-    return;
-
-  }
-
-  if(!password){
-
-    alert("Enter your password.");
-    return;
-
-  }
-
-  /*
-  Real backend later:
-  POST /api/auth/login
-  */
-
-  alert(
-    "Login will work after backend connection."
-  );
-
-}
-
-
-/* REGISTER */
+/* ==========================
+   REGISTER
+========================== */
 
 function registerUser(event){
 
@@ -980,7 +1306,7 @@ function registerUser(event){
   document.getElementById("registerPassword")
   .value;
 
-  const confirmPassword=
+  const confirm=
   document.getElementById("confirmPassword")
   .value;
 
@@ -995,7 +1321,7 @@ function registerUser(event){
 
   if(name.length<2){
 
-    alert("Enter your full name.");
+    alert("Please enter your full name.");
     return;
 
   }
@@ -1003,7 +1329,7 @@ function registerUser(event){
 
   if(!validMobile(mobile)){
 
-    alert("Enter a valid 10-digit mobile number.");
+    alert("Please enter a valid 10-digit mobile number.");
     return;
 
   }
@@ -1011,13 +1337,13 @@ function registerUser(event){
 
   if(password.length<6){
 
-    alert("Password must be at least 6 characters.");
+    alert("Password must contain at least 6 characters.");
     return;
 
   }
 
 
-  if(password!==confirmPassword){
+  if(password!==confirm){
 
     alert("Passwords do not match.");
     return;
@@ -1034,31 +1360,105 @@ function registerUser(event){
 
 
   /*
-  Real backend later:
+     BACKEND LATER:
 
-  POST /api/auth/register
+     POST /api/auth/register
 
-  Never store plaintext passwords
-  in localStorage/sessionStorage.
+     {
+       name,
+       mobile,
+       password,
+       referralCode
+     }
+
+     Password must be hashed on server.
   */
 
   console.log({
-    name,
-    mobile,
+    name:name,
+    mobile:mobile,
     referralCode:referral || null
   });
 
   alert(
-    "Registration will work after backend connection."
+    "Registration will work after the secure backend is connected."
   );
 
 }
 
 
-/* REFERRAL AUTO FILL */
+/* ==========================
+   LOGIN
+========================== */
+
+function loginUser(event){
+
+  event.preventDefault();
+
+  const mobile=
+  document.getElementById("loginMobile")
+  .value.trim();
+
+  const password=
+  document.getElementById("loginPassword")
+  .value;
+
+
+  if(!validMobile(mobile)){
+
+    alert("Please enter a valid mobile number.");
+    return;
+
+  }
+
+
+  if(!password){
+
+    alert("Please enter your password.");
+    return;
+
+  }
+
+
+  /*
+     BACKEND LATER:
+
+     POST /api/auth/login
+
+     Successful login:
+     window.location.href="index.html";
+  */
+
+  alert(
+    "Login will work after the secure backend is connected."
+  );
+
+}
+
+
+/* ==========================
+   FORGOT PASSWORD
+========================== */
+
+function forgotPassword(event){
+
+  event.preventDefault();
+
+  alert(
+    "Password recovery will be connected with the authentication backend."
+  );
+
+}
+
+
+/* ==========================
+   REFERRAL LINK
+========================== */
 
 const params=
-new URLSearchParams(window.location.search);
+new URLSearchParams(
+  window.location.search
+);
 
 const ref=
 params.get("ref");
@@ -1072,32 +1472,41 @@ if(ref){
 }
 
 
-/* WITHDRAWAL SCROLL */
+/* ==========================
+   WITHDRAWAL MOVEMENT
+========================== */
 
 const withdrawList=
 document.getElementById("withdrawList");
 
-const items=
-withdrawList.querySelectorAll(".withdraw-item");
+const withdrawRows=
+withdrawList.querySelectorAll(
+  ".withdraw-row"
+);
 
-let withdrawIndex=0;
+let currentWithdraw=0;
 
-setInterval(()=>{
+setInterval(function(){
 
-  withdrawIndex++;
+  currentWithdraw++;
 
-  if(withdrawIndex > items.length-3){
+  if(
+    currentWithdraw >
+    withdrawRows.length-4
+  ){
 
-    withdrawIndex=0;
+    currentWithdraw=0;
 
   }
 
   withdrawList.style.transform=
-  "translateY(-"+(withdrawIndex*65)+"px)";
+  "translateY(-"+
+  (currentWithdraw*54)+
+  "px)";
 
-},2600);
+},2800);
 
 </script>
 
 </body>
-      </html>
+            </html>
