@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Share & Earn | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input,select{font-family:inherit}
+
+/* TOP BAR */
+
+.topbar{
+  height:66px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#090e18;
+  border-bottom:1px solid #1d2739;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  gap:12px;
+}
+
+.menu-btn,.bell{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  border:1px solid #273249;
+  background:#10182a;
+  color:#fff;
+  font-size:18px;
+}
+
+.logo{
+  flex:1;
+  font-size:20px;
+  font-weight:900;
+}
+
+.logo span{color:#d42df4}
+
+.logo small{
+  display:block;
+  color:#6f7b90;
+  font-size:8px;
+  margin-top:2px;
+}
+
+/* SIDEBAR */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:190;
+}
+
+.sidebar{
+  position:fixed;
+  left:-285px;
+  top:0;
+  bottom:0;
+  width:275px;
+  background:#0b111d;
+  border-right:1px solid #202b40;
+  z-index:200;
+  transition:.25s;
+  overflow-y:auto;
+}
+
+.sidebar.open{left:0}
+
+.sidebar-head{
+  padding:22px 18px;
+  border-bottom:1px solid #202b40;
+}
+
+.sidebar-logo{
+  font-size:23px;
+  font-weight:900;
+}
+
+.sidebar-logo span{color:#d42df4}
+
+.sidebar-head p{
+  color:#6f7b90;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.nav{padding:14px 10px 25px}
+
+.nav-title{
+  color:#536076;
+  font-size:8px;
+  font-weight:800;
+  padding:12px 11px 6px;
+  text-transform:uppercase;
+}
+
+.nav-item{
+  display:flex;
+  align-items:center;
+  min-height:48px;
+  padding:8px 11px;
+  margin:3px 0;
+  border-radius:12px;
+  color:#8d98ab;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:700;
+}
+
+.nav-item.active{
+  color:#fff;
+  background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2);
+}
+
+.nav-icon{
+  width:31px;
+  font-size:16px;
+}
+
+.nav-text{flex:1}
+
+/* MAIN */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:22px 16px 50px;
+}
+
+.page-head h1{
+  font-size:25px;
+}
+
+.page-head p{
+  color:#788499;
+  font-size:10px;
+  margin-top:6px;
+  line-height:1.5;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:16px;
+  padding:14px;
+}
+
+.stat-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:21px;
+  margin-top:10px;
+}
+
+.stat small{
+  display:block;
+  color:#7b879b;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.purple{color:#d94df4!important}
+
+/* SEARCH */
+
+.tools{
+  margin-top:22px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  padding:13px;
+}
+
+.search{
+  width:100%;
+  height:44px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  color:#fff;
+  padding:0 13px;
+  outline:none;
+}
+
+.search:focus{border-color:#d42df4}
+
+.filters{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  margin-top:10px;
+  scrollbar-width:none;
+}
+
+.filter{
+  flex:0 0 auto;
+  border:1px solid #29364e;
+  background:#0c1321;
+  color:#8995a9;
+  border-radius:18px;
+  padding:8px 12px;
+  font-size:8px;
+}
+
+.filter.active{
+  background:#d42df4;
+  border-color:#d42df4;
+  color:#fff;
+}
+
+/* SECTION */
+
+.section{
+  margin-top:24px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:11px;
+}
+
+.section-title{
+  font-size:17px;
+}
+
+.count{
+  color:#738096;
+  font-size:9px;
+}
+
+/* SHARER CARD */
+
+.sharer-list{
+  display:grid;
+  gap:10px;
+}
+
+.sharer-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  padding:14px;
+  cursor:pointer;
+}
+
+.sharer-top{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.avatar{
+  width:45px;
+  height:45px;
+  min-width:45px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:900;
+}
+
+.sharer-info{
+  flex:1;
+  min-width:0;
+}
+
+.sharer-info h3{
+  font-size:12px;
+}
+
+.sharer-info p{
+  color:#748197;
+  font-size:8px;
+  margin-top:5px;
+}
+
+.earning{
+  text-align:right;
+}
+
+.earning strong{
+  display:block;
+  color:#39dc8a;
+  font-size:12px;
+}
+
+.earning small{
+  color:#69768b;
+  font-size:7px;
+}
+
+.offer-label{
+  margin-top:12px;
+  padding:9px 10px;
+  background:#0b1220;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.offer-label span{
+  font-size:9px;
+}
+
+.offer-label strong{
+  font-size:9px;
+  color:#d94df4;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-top:8px;
+}
+
+.metric{
+  background:#0b1220;
+  border-radius:9px;
+  padding:8px 5px;
+  text-align:center;
+}
+
+.metric strong{
+  display:block;
+  font-size:10px;
+}
+
+.metric small{
+  display:block;
+  color:#68758a;
+  font-size:7px;
+  margin-top:4px;
+}
+
+/* DRAWER */
+
+.drawer{
+  position:fixed;
+  right:-100%;
+  top:0;
+  width:100%;
+  max-width:590px;
+  height:100vh;
+  background:#090f1a;
+  z-index:300;
+  transition:.27s;
+  overflow-y:auto;
+  border-left:1px solid #253047;
+}
+
+.drawer.open{right:0}
+
+.drawer-head{
+  position:sticky;
+  top:0;
+  z-index:5;
+  height:65px;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  background:#090f1a;
+  border-bottom:1px solid #202b40;
+}
+
+.drawer-head h2{
+  flex:1;
+  font-size:17px;
+}
+
+.close{
+  width:35px;
+  height:35px;
+  border:1px solid #29364e;
+  border-radius:10px;
+  background:#111a2a;
+  color:#fff;
+  font-size:19px;
+}
+
+.drawer-body{
+  padding:17px 16px 40px;
+}
+
+/* PROFILE */
+
+.profile{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;
+  border-radius:19px;
+  padding:17px;
+}
+
+.profile-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.big-avatar{
+  width:57px;
+  height:57px;
+  min-width:57px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+  font-weight:900;
+}
+
+.profile-info{
+  flex:1;
+}
+
+.profile-info h3{
+  font-size:16px;
+}
+
+.profile-info p{
+  color:#78859a;
+  font-size:8px;
+  margin-top:5px;
+}
+
+.total-earning{
+  text-align:right;
+}
+
+.total-earning small{
+  display:block;
+  color:#78859a;
+  font-size:7px;
+}
+
+.total-earning strong{
+  display:block;
+  color:#39dc8a;
+  font-size:16px;
+  margin-top:4px;
+}
+
+/* DETAIL STATS */
+
+.detail-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-top:12px;
+}
+
+.detail-stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+}
+
+.detail-stat strong{
+  display:block;
+  font-size:12px;
+}
+
+.detail-stat small{
+  display:block;
+  color:#707d92;
+  font-size:7px;
+  margin-top:4px;
+}
+
+/* OFFER PERFORMANCE */
+
+.card{
+  margin-top:13px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  overflow:hidden;
+}
+
+.card-title{
+  padding:13px;
+  font-size:12px;
+  border-bottom:1px solid #202c43;
+}
+
+.performance{
+  padding:13px;
+}
+
+.performance-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.performance-head h4{
+  font-size:11px;
+}
+
+.performance-head p{
+  color:#748197;
+  font-size:8px;
+  margin-top:4px;
+}
+
+.performance-head strong{
+  color:#39dc8a;
+  font-size:12px;
+}
+
+.performance-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-top:11px;
+}
+
+.performance-box{
+  background:#0b1220;
+  border-radius:9px;
+  padding:8px 4px;
+  text-align:center;
+}
+
+.performance-box strong{
+  display:block;
+  font-size:9px;
+}
+
+.performance-box small{
+  display:block;
+  color:#68758a;
+  font-size:6.5px;
+  margin-top:4px;
+}
+
+/* TRACKED USERS */
+
+.tracked-user{
+  padding:13px;
+  border-bottom:1px solid #202c43;
+}
+
+.tracked-user:last-child{
+  border-bottom:0;
+}
+
+.tracked-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.small-avatar{
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:50%;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:800;
+}
+
+.tracked-info{
+  flex:1;
+}
+
+.tracked-info strong{
+  display:block;
+  font-size:10px;
+}
+
+.tracked-info small{
+  display:block;
+  color:#707d92;
+  font-size:7px;
+  margin-top:4px;
+}
+
+.status{
+  padding:5px 7px;
+  border-radius:12px;
+  font-size:7px;
+  font-weight:800;
+}
+
+.completed{
+  color:#39dc8a;
+  background:rgba(57,220,138,.1);
+}
+
+.pending{
+  color:#ffb84d;
+  background:rgba(255,184,77,.1);
+}
+
+.progress{
+  display:flex;
+  gap:4px;
+  margin-top:10px;
+}
+
+.stage{
+  flex:1;
+  height:4px;
+  border-radius:4px;
+  background:#263044;
+}
+
+.stage.done{
+  background:#39dc8a;
+}
+
+.stage.current{
+  background:#ffb84d;
+}
+
+.stage-label{
+  color:#657187;
+  font-size:7px;
+  margin-top:6px;
+}
+
+/* PAYOUT */
+
+.payout-box{
+  padding:13px;
+}
+
+.payout-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:11px 0;
+  border-bottom:1px solid #202c43;
+}
+
+.payout-row:last-child{
+  border-bottom:0;
+}
+
+.payout-row span{
+  color:#778499;
+  font-size:9px;
+}
+
+.payout-row strong{
+  font-size:9px;
+}
+
+.admin-actions{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.action-btn{
+  min-height:43px;
+  border-radius:11px;
+  border:1px solid #2a354b;
+  background:#111a2a;
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+}
+
+.approve{
+  color:#39dc8a;
+  border-color:rgba(57,220,138,.3);
+}
+
+.hold{
+  color:#ffb84d;
+  border-color:rgba(255,184,77,.3);
+}
+
+.reject{
+  color:#ff737d;
+  border-color:rgba(255,90,103,.3);
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  z-index:500;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:550px;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:24px 24px 0 0;
+  padding:21px 17px 28px;
+}
+
+.modal-box h3{
+  font-size:18px;
+}
+
+.modal-box p{
+  color:#78859a;
+  font-size:9px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.modal-input{
+  width:100%;
+  height:45px;
+  margin-top:13px;
+  border:1px solid #29364e;
+  border-radius:10px;
+  background:#080e19;
+  color:#fff;
+  padding:0 11px;
+}
+
+.modal-btn{
+  width:100%;
+  height:44px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  margin-top:12px;
+}
+
+.cancel{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7b879b;
+  padding-top:13px;
+}
+
+.empty{
+  padding:30px;
+  text-align:center;
+  color:#748197;
+  background:#10182a;
+  border-radius:15px;
+  font-size:10px;
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{
+    margin-left:250px;
+    max-width:none;
+    padding:28px;
+  }
+  .stats{grid-template-columns:repeat(5,1fr)}
+  .sharer-list{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeEverything()"></div>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+  <div class="sidebar-head">
+    <div class="sidebar-logo">Offer<span>wax</span></div>
+    <p>Admin Control Center</p>
+  </div>
+
+  <nav class="nav">
+
+    <div class="nav-title">Overview</div>
+
+    <a href="admin.html" class="nav-item">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <div class="nav-title">Management</div>
+
+    <a href="admin-users.html" class="nav-item">
+      <span class="nav-icon">👥</span>
+      <span class="nav-text">Users</span>
+    </a>
+
+    <a href="admin-offers.html" class="nav-item">
+      <span class="nav-icon">▣</span>
+      <span class="nav-text">Offers</span>
+    </a>
+
+    <a href="admin-share.html" class="nav-item active">
+      <span class="nav-icon">↗</span>
+      <span class="nav-text">Share & Earn</span>
+    </a>
+
+    <a href="admin-refer.html" class="nav-item">
+      <span class="nav-icon">♧</span>
+      <span class="nav-text">Refer & Earn</span>
+    </a>
+
+    <a href="admin-tracking.html" class="nav-item">
+      <span class="nav-icon">⌖</span>
+      <span class="nav-text">Tracking</span>
+    </a>
+
+    <div class="nav-title">Operations</div>
+
+    <a href="admin-finance.html" class="nav-item">
+      <span class="nav-icon">₹</span>
+      <span class="nav-text">Finance</span>
+    </a>
+
+    <a href="admin-support.html" class="nav-item">
+      <span class="nav-icon">?</span>
+      <span class="nav-text">Support</span>
+    </a>
+
+    <div class="nav-title">Controls</div>
+
+    <a href="admin-content.html" class="nav-item">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">App & Content</span>
+    </a>
+
+  </nav>
+
+</aside>
+
+<!-- TOP -->
+
+<header class="topbar">
+
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <div class="logo">
+    Offer<span>wax</span>
+    <small>SHARE & EARN MANAGEMENT</small>
+  </div>
+
+  <button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+
+<main class="container">
+
+  <section class="page-head">
+
+    <h1>Share & Earn</h1>
+
+    <p>
+      Monitor users who share offers, their tracked users,
+      conversions and earnings.
+    </p>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-icon">↗</div>
+      <strong>84</strong>
+      <small>Active Sharers</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">👆</div>
+      <strong>2,840</strong>
+      <small>Total Clicks</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">⌖</div>
+      <strong class="purple">1,126</strong>
+      <small>Tracked Users</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">✓</div>
+      <strong class="green">318</strong>
+      <small>Completed</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">₹</div>
+      <strong class="green">₹16.4K</strong>
+      <small>Share Earnings</small>
+    </div>
+
+  </section>
+
+  <!-- SEARCH -->
+
+  <section class="tools">
+
+    <input
+      class="search"
+      id="searchInput"
+      type="search"
+      placeholder="Search user, User ID or offer..."
+      oninput="renderSharers()">
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        onclick="setFilter('all',this)">
+        All
+      </button>
+
+      <button
+        class="filter"
+        onclick="setFilter('completed',this)">
+        Has Completions
+      </button>
+
+      <button
+        class="filter"
+        onclick="setFilter('pending',this)">
+        Pending
+      </button>
+
+      <button
+        class="filter"
+        onclick="setFilter('high',this)">
+        High Earners
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- USERS -->
+
+  <section class="section">
+
+    <div class="section-head">
+      <h2 class="section-title">Sharers</h2>
+      <span class="count" id="resultCount"></span>
+    </div>
+
+    <div class="sharer-list" id="sharerList"></div>
+
+  </section>
+
+</main>
+
+<!-- USER DETAIL DRAWER -->
+
+<section class="drawer" id="shareDrawer">
+
+  <div class="drawer-head">
+
+    <h2>Share Details</h2>
+
+    <button class="close" onclick="closeDrawer()">
+      ×
+    </button>
+
+  </div>
+
+  <div class="drawer-body">
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+
+      <div class="profile-top">
+
+        <div class="big-avatar" id="detailAvatar">
+          BK
+        </div>
+
+        <div class="profile-info">
+          <h3 id="detailName">Bikash</h3>
+          <p id="detailID">OW8473</p>
+        </div>
+
+        <div class="total-earning">
+          <small>Total Share Earnings</small>
+          <strong id="detailEarning">₹3,000</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- USER TOTALS -->
+
+    <div class="detail-stats">
+
+      <div class="detail-stat">
+        <strong id="detailShares">12</strong>
+        <small>Shared Offers</small>
+      </div>
+
+      <div class="detail-stat">
+        <strong id="detailClicks">148</strong>
+        <small>Clicks</small>
+      </div>
+
+      <div class="detail-stat">
+        <strong id="detailTracked">63</strong>
+        <small>Tracked</small>
+      </div>
+
+      <div class="detail-stat">
+        <strong class="green" id="detailCompleted">17</strong>
+        <small>Completed</small>
+      </div>
+
+      <div class="detail-stat">
+        <strong class="orange" id="detailPending">9</strong>
+        <small>Pending</small>
+      </div>
+
+      <div class="detail-stat">
+        <strong id="detailConversion">11.5%</strong>
+        <small>Conversion</small>
+      </div>
+
+    </div>
+
+    <!-- OFFER PERFORMANCE -->
+
+    <div class="card">
+
+      <div class="card-title">
+        Offer Performance
+      </div>
+
+      <div id="offerPerformance"></div>
+
+    </div>
+
+    <!-- TRACKED USERS -->
+
+    <div class="card">
+
+      <div class="card-title">
+        Tracked Users
+      </div>
+
+      <div id="trackedUsers"></div>
+
+    </div>
+
+    <!-- PAYOUT -->
+
+    <div class="card">
+
+      <div class="card-title">
+        Earnings & Payout
+      </div>
+
+      <div class="payout-box">
+
+        <div class="payout-row">
+          <span>Total Share Earnings</span>
+          <strong class="green" id="payoutTotal">₹3,000</strong>
+        </div>
+
+        <div class="payout-row">
+          <span>Approved</span>
+          <strong class="green" id="payoutApproved">₹2,000</strong>
+        </div>
+
+        <div class="payout-row">
+          <span>Pending Validation</span>
+          <strong class="orange" id="payoutPending">₹1,000</strong>
+        </div>
+
+        <div class="payout-row">
+          <span>Paid</span>
+          <strong id="payoutPaid">₹1,500</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ADMIN CONTROLS -->
+
+    <div class="card">
+
+      <div class="card-title">
+        Admin Controls
+      </div>
+
+      <div style="padding:13px">
+
+        <div class="admin-actions">
+
+          <button
+            class="action-btn approve"
+            onclick="adminAction('Approve Share Reward')">
+            ✓ Approve Reward
+          </button>
+
+          <button
+            class="action-btn hold"
+            onclick="adminAction('Hold Share Reward')">
+            ⏳ Hold Reward
+          </button>
+
+          <button
+            class="action-btn reject"
+            onclick="adminAction('Reject Share Reward')">
+            × Reject Reward
+          </button>
+
+          <button
+            class="action-btn"
+            onclick="openAdjustment()">
+            ₹ Adjust Earning
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ADJUST MODAL -->
+
+<div class="modal" id="adjustModal">
+
+  <div class="modal-box">
+
+    <h3>Adjust Share Earning</h3>
+
+    <p>
+      Enter an amount and admin reason. Real balance changes
+      will require backend authorization and an audit log.
+    </p>
+
+    <input
+      class="modal-input"
+      id="adjustAmount"
+      type="number"
+      placeholder="Amount ₹">
+
+    <input
+      class="modal-input"
+      id="adjustReason"
+      type="text"
+      placeholder="Reason / admin note">
+
+    <button
+      class="modal-btn"
+      onclick="submitAdjustment()">
+      Continue
+    </button>
+
+    <button
+      class="cancel"
+      onclick="closeAdjustment()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+/*
+=====================================
+SAMPLE DATA ONLY
+=====================================
+Real data will later come from backend.
+*/
+
+const sharers = [
+
+  {
+    id:"OW8473",
+    name:"Bikash",
+    initials:"BK",
+    shared:12,
+    clicks:148,
+    tracked:63,
+    completed:17,
+    pending:9,
+    earning:3000,
+    approved:2000,
+    pendingMoney:1000,
+    paid:1500,
+
+    offers:[
+      {
+        name:"Kotak 811",
+        shares:1,
+        clicks:82,
+        tracked:36,
+        completed:10,
+        pending:5,
+        earning:2000
+      },
+      {
+        name:"CoinDCX",
+        shares:1,
+        clicks:41,
+        tracked:18,
+        completed:5,
+        pending:3,
+        earning:750
+      },
+      {
+        name:"Upstox",
+        shares:1,
+        clicks:25,
+        tracked:9,
+        completed:2,
+        pending:1,
+        earning:250
+      }
+    ],
+
+    trackedUsers:[
+      {
+        name:"Rahul",
+        id:"TRK-9281",
+        offer:"Kotak 811",
+        stage:5,
+        status:"Completed"
+      },
+      {
+        name:"Aman",
+        id:"TRK-7712",
+        offer:"Kotak 811",
+        stage:3,
+        status:"Pending"
+      },
+      {
+        name:"Rohan",
+        id:"TRK-6204",
+        offer:"CoinDCX",
+        stage:2,
+        status:"Pending"
+      },
+      {
+        name:"Arjun",
+        id:"TRK-5138",
+        offer:"Upstox",
+        stage:5,
+        status:"Completed"
+      }
+    ]
+  },
+
+  {
+    id:"OW9124",
+    name:"Rahul Das",
+    initials:"RD",
+    shared:8,
+    clicks:104,
+    tracked:42,
+    completed:11,
+    pending:7,
+    earning:1850,
+    approved:1350,
+    pendingMoney:500,
+    paid:1000,
+
+    offers:[
+      {
+        name:"Kotak 811",
+        shares:1,
+        clicks:67,
+        tracked:28,
+        completed:8,
+        pending:4,
+        earning:1400
+      },
+      {
+        name:"CoinDCX",
+        shares:1,
+        clicks:37,
+        tracked:14,
+        completed:3,
+        pending:3,
+        earning:450
+      }
+    ],
+
+    trackedUsers:[
+      {
+        name:"Karan",
+        id:"TRK-4421",
+        offer:"Kotak 811",
+        stage:5,
+        status:"Completed"
+      },
+      {
+        name:"Ravi",
+        id:"TRK-3372",
+        offer:"CoinDCX",
+        stage:3,
+        status:"Pending"
+      }
+    ]
+  },
+
+  {
+    id:"OW6251",
+    name:"Aman Ali",
+    initials:"AA",
+    shared:5,
+    clicks:62,
+    tracked:21,
+    completed:4,
+    pending:8,
+    earning:750,
+    approved:500,
+    pendingMoney:250,
+    paid:500,
+
+    offers:[
+      {
+        name:"CoinDCX",
+        shares:1,
+        clicks:62,
+        tracked:21,
+        completed:4,
+        pending:8,
+        earning:750
+      }
+    ],
+
+    trackedUsers:[
+      {
+        name:"Sameer",
+        id:"TRK-2291",
+        offer:"CoinDCX",
+        stage:2,
+        status:"Pending"
+      }
+    ]
+  }
+
+];
+
+let currentFilter="all";
+let selectedSharer=null;
+
+
+/* RENDER LIST */
+
+function renderSharers(){
+
+  const search=
+    document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const filtered=sharers.filter(user=>{
+
+    const offerNames=
+      user.offers.map(x=>x.name).join(" ");
+
+    const searchMatch=
+      (
+        user.name+" "+
+        user.id+" "+
+        offerNames
+      ).toLowerCase().includes(search);
+
+    let filterMatch=true;
+
+    if(currentFilter==="completed"){
+      filterMatch=user.completed>0;
+    }
+
+    if(currentFilter==="pending"){
+      filterMatch=user.pending>0;
+    }
+
+    if(currentFilter==="high"){
+      filterMatch=user.earning>=1500;
+    }
+
+    return searchMatch && filterMatch;
+
+  });
+
+
+  document.getElementById("resultCount").innerText=
+    filtered.length+
+    (filtered.length===1?" user":" users");
+
+
+  const list=document.getElementById("sharerList");
+
+
+  if(!filtered.length){
+
+    list.innerHTML=
+      '<div class="empty">No Share & Earn users found.</div>';
+
+    return;
+
+  }
+
+
+  list.innerHTML=filtered.map(user=>{
+
+    const mainOffer=user.offers[0];
+
+    return `
+      <div
+        class="sharer-card"
+        onclick="openSharer('${user.id}')">
+
+        <div class="sharer-top">
+
+          <div class="avatar">
+            ${user.initials}
+          </div>
+
+          <div class="sharer-info">
+            <h3>${user.name}</h3>
+            <p>${user.id} • ${user.shared} shared offers</p>
+          </div>
+
+          <div class="earning">
+            <strong>₹${user.earning}</strong>
+            <small>Total earning</small>
+          </div>
+
+        </div>
+
+        <div class="offer-label">
+          <span>${mainOffer.name}</span>
+          <strong>₹${mainOffer.earning}</strong>
+        </div>
+
+        <div class="metrics">
+
+          <div class="metric">
+            <strong>${user.clicks}</strong>
+            <small>Clicks</small>
+          </div>
+
+          <div class="metric">
+            <strong>${user.tracked}</strong>
+            <small>Tracked</small>
+          </div>
+
+          <div class="metric">
+            <strong class="green">${user.completed}</strong>
+            <small>Completed</small>
+          </div>
+
+          <div class="metric">
+            <strong class="orange">${user.pending}</strong>
+            <small>Pending</small>
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+
+}
+
+
+/* FILTER */
+
+function setFilter(filter,button){
+
+  currentFilter=filter;
+
+  document.querySelectorAll(".filter")
+  .forEach(x=>x.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderSharers();
+
+}
+
+
+/* OPEN USER */
+
+function openSharer(id){
+
+  selectedSharer=
+    sharers.find(user=>user.id===id);
+
+  if(!selectedSharer)return;
+
+
+  document.getElementById("detailAvatar").innerText=
+    selectedSharer.initials;
+
+  document.getElementById("detailName").innerText=
+    selectedSharer.name;
+
+  document.getElementById("detailID").innerText=
+    "User ID: "+selectedSharer.id;
+
+  document.getElementById("detailEarning").innerText=
+    "₹"+selectedSharer.earning;
+
+  document.getElementById("detailShares").innerText=
+    selectedSharer.shared;
+
+  document.getElementById("detailClicks").innerText=
+    selectedSharer.clicks;
+
+  document.getElementById("detailTracked").innerText=
+    selectedSharer.tracked;
+
+  document.getElementById("detailCompleted").innerText=
+    selectedSharer.completed;
+
+  document.getElementById("detailPending").innerText=
+    selectedSharer.pending;
+
+
+  const conversion=
+    selectedSharer.clicks
+    ? (
+        selectedSharer.completed /
+        selectedSharer.clicks *
+        100
+      ).toFixed(1)
+    : 0;
+
+  document.getElementById("detailConversion").innerText=
+    conversion+"%";
+
+
+  document.getElementById("payoutTotal").innerText=
+    "₹"+selectedSharer.earning;
+
+  document.getElementById("payoutApproved").innerText=
+    "₹"+selectedSharer.approved;
+
+  document.getElementById("payoutPending").innerText=
+    "₹"+selectedSharer.pendingMoney;
+
+  document.getElementById("payoutPaid").innerText=
+    "₹"+selectedSharer.paid;
+
+
+  renderOfferPerformance();
+  renderTrackedUsers();
+
+
+  document.getElementById("shareDrawer")
+  .classList.add("open");
+
+  document.getElementById("overlay")
+  .style.display="block";
+
+}
+
+
+/* OFFER PERFORMANCE */
+
+function renderOfferPerformance(){
+
+  const container=
+    document.getElementById("offerPerformance");
+
+
+  container.innerHTML=
+    selectedSharer.offers.map(offer=>`
+
+      <div class="performance">
+
+        <div class="performance-head">
+
+          <div>
+            <h4>${offer.name}</h4>
+            <p>Shared offer performance</p>
+          </div>
+
+          <strong>₹${offer.earning}</strong>
+
+        </div>
+
+        <div class="performance-grid">
+
+          <div class="performance-box">
+            <strong>${offer.clicks}</strong>
+            <small>Clicks</small>
+          </div>
+
+          <div class="performance-box">
+            <strong>${offer.tracked}</strong>
+            <small>Tracked</small>
+          </div>
+
+          <div class="performance-box">
+            <strong class="green">${offer.completed}</strong>
+            <small>Complete</small>
+          </div>
+
+          <div class="performance-box">
+            <strong class="orange">${offer.pending}</strong>
+            <small>Pending</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* TRACKED USERS */
+
+function renderTrackedUsers(){
+
+  const container=
+    document.getElementById("trackedUsers");
+
+
+  if(!selectedSharer.trackedUsers.length){
+
+    container.innerHTML=
+      '<div class="empty">No tracked users.</div>';
+
+    return;
+
+  }
+
+
+  container.innerHTML=
+    selectedSharer.trackedUsers.map(user=>{
+
+      const completed=
+        user.status==="Completed";
+
+      let stages="";
+
+      for(let i=1;i<=5;i++){
+
+        let cls="stage";
+
+        if(i<=user.stage){
+          cls+=" done";
+        }
+
+        stages+=`<div class="${cls}"></div>`;
+
+      }
+
+      const stageNames=[
+        "",
+        "Offer clicked",
+        "Install tracked",
+        "Registration completed",
+        "Required action completed",
+        "Completion tracked"
+      ];
+
+      return `
+
+        <div class="tracked-user">
+
+          <div class="tracked-head">
+
+            <div class="small-avatar">
+              ${user.name.substring(0,2).toUpperCase()}
+            </div>
+
+            <div class="tracked-info">
+
+              <strong>${user.name}</strong>
+
+              <small>
+                ${user.id} • ${user.offer}
+              </small>
+
+            </div>
+
+            <span class="status ${completed?"completed":"pending"}">
+              ${user.status}
+            </span>
+
+          </div>
+
+          <div class="progress">
+            ${stages}
+          </div>
+
+          <div class="stage-label">
+            Current: ${stageNames[user.stage]}
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* ADMIN ACTIONS */
+
+function adminAction(action){
+
+  if(!selectedSharer)return;
+
+  const ok=confirm(
+    action+
+    " for "+
+    selectedSharer.name+
+    "?"
+  );
+
+  if(!ok)return;
+
+
+  alert(
+    "Demo only. No real earning or payout was changed. "+
+    "This action will work after the protected admin backend is connected."
+  );
+
+}
+
+
+/* ADJUSTMENT */
+
+function openAdjustment(){
+
+  document.getElementById("adjustModal")
+  .style.display="flex";
+
+}
+
+function closeAdjustment(){
+
+  document.getElementById("adjustModal")
+  .style.display="none";
+
+}
+
+function submitAdjustment(){
+
+  const amount=
+    Number(
+      document.getElementById("adjustAmount").value
+    );
+
+  const reason=
+    document.getElementById("adjustReason")
+    .value.trim();
+
+
+  if(!amount){
+
+    alert("Enter a valid amount.");
+    return;
+
+  }
+
+
+  if(!reason){
+
+    alert("Enter an admin reason.");
+    return;
+
+  }
+
+
+  alert(
+    "Demo only. ₹"+
+    amount+
+    " was NOT added or deducted. "+
+    "Real adjustments will require backend authorization."
+  );
+
+  closeAdjustment();
+
+}
+
+
+/* SIDEBAR / DRAWER */
+
+function openSidebar(){
+
+  document.getElementById("sidebar")
+  .classList.add("open");
+
+  document.getElementById("overlay")
+  .style.display="block";
+
+}
+
+function closeDrawer(){
+
+  document.getElementById("shareDrawer")
+  .classList.remove("open");
+
+  document.getElementById("overlay")
+  .style.display="none";
+
+}
+
+function closeEverything(){
+
+  document.getElementById("sidebar")
+  .classList.remove("open");
+
+  document.getElementById("shareDrawer")
+  .classList.remove("open");
+
+  document.getElementById("overlay")
+  .style.display="none";
+
+}
+
+
+/*
+=================================================
+BACKEND CONNECTION LATER
+=================================================
+
+Real backend will provide:
+
+- sharer/user ID
+- shared offer
+- unique share link
+- clicks
+- tracked users
+- install events
+- registrations
+- required actions
+- completed conversions
+- validation status
+- reward/cashback
+- approved amount
+- paid amount
+- pending amount
+
+Possible protected endpoints:
+
+GET /api/admin/share
+GET /api/admin/share/:userId
+GET /api/admin/share/:userId/tracked-users
+
+POST /api/admin/share/:conversionId/approve
+POST /api/admin/share/:conversionId/hold
+POST /api/admin/share/:conversionId/reject
+
+IMPORTANT:
+A click alone must never be treated as a completed
+conversion. Real completion should come from verified
+tracking/postback/API data.
+
+All payout changes must be authorized and logged
+server-side.
+*/
+
+renderSharers();
+
+</script>
+
+</body>
+  </html>
