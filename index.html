@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
+
   <title>Offerwax - Earn Rewards</title>
 
   <style>
@@ -53,6 +55,8 @@
       border-radius: 20px;
       font-size: 13px;
       font-weight: bold;
+      text-decoration: none;
+      color: white;
     }
 
     .icon {
@@ -64,6 +68,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      text-decoration: none;
+      color: white;
     }
 
     /* MAIN */
@@ -134,6 +140,7 @@
       height: 6px;
       border-radius: 50%;
       background: #48536a;
+      cursor: pointer;
     }
 
     .dot.active {
@@ -173,6 +180,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      cursor: pointer;
     }
 
     .high-left {
@@ -263,9 +271,52 @@
       margin-top: 5px;
     }
 
-    /* INFO */
+    /* QUICK ACCESS */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .quick-card {
+      text-decoration: none;
+      color: white;
+      background: #0e1626;
+      border: 1px solid #1e2b43;
+      border-radius: 16px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 72px;
+    }
+
+    .quick-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 12px;
+      background: #171f34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .quick-card h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .quick-card p {
+      color: #7f8ca2;
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    /* NOTICE */
     .notice {
-      margin-top: 20px;
+      margin-top: 16px;
       background: #0c1423;
       border: 1px solid #1d2940;
       border-radius: 16px;
@@ -322,22 +373,51 @@
 
 <body>
 
+  <!-- HEADER -->
   <header class="header">
-    <div class="logo">Offer<span>wax</span></div>
+
+    <div class="logo">
+      Offer<span>wax</span>
+    </div>
 
     <div class="header-right">
-      <div class="balance">🔥 ₹0</div>
-      <div class="icon" title="Notifications">🔔</div>
-      <div class="icon" title="Profile">👤</div>
+
+      <!-- WALLET -->
+      <a class="balance" href="wallet.html">
+        🔥 ₹0
+      </a>
+
+      <!-- NOTIFICATIONS -->
+      <div
+        class="icon"
+        title="Notifications"
+        onclick="showNotifications()">
+        🔔
+      </div>
+
+      <!-- PROFILE -->
+      <a
+        class="icon"
+        href="profile.html"
+        title="Profile">
+        👤
+      </a>
+
     </div>
+
   </header>
+
 
   <main class="container">
 
     <!-- AUTO BANNER -->
     <section>
+
       <div class="banner" id="banner">
-        <div class="banner-tag" id="bannerTag">
+
+        <div
+          class="banner-tag"
+          id="bannerTag">
           START EARNING
         </div>
 
@@ -349,16 +429,36 @@
           Choose an offer, follow the required steps and earn rewards after successful tracking.
         </p>
 
-        <button id="bannerButton">
+        <button
+          id="bannerButton"
+          onclick="openBanner()">
           Watch Guide ▶
         </button>
+
       </div>
 
       <div class="dots">
-        <div class="dot active" id="dot0"></div>
-        <div class="dot" id="dot1"></div>
-        <div class="dot" id="dot2"></div>
+
+        <div
+          class="dot active"
+          id="dot0"
+          onclick="setBanner(0)">
+        </div>
+
+        <div
+          class="dot"
+          id="dot1"
+          onclick="setBanner(1)">
+        </div>
+
+        <div
+          class="dot"
+          id="dot2"
+          onclick="setBanner(2)">
+        </div>
+
       </div>
+
     </section>
 
 
@@ -366,22 +466,37 @@
     <section class="section">
 
       <div class="section-title">
-        <h2>🔥 High Paying Offers</h2>
-        <a href="offers.html">View All →</a>
+
+        <h2>
+          🔥 High Paying Offers
+        </h2>
+
+        <a href="offers.html">
+          View All →
+        </a>
+
       </div>
 
-      <div class="high-card" onclick="location.href='offer.html'">
+      <div
+        class="high-card"
+        onclick="location.href='offer.html'">
 
         <div class="high-left">
-          <div class="offer-logo">Kotak</div>
+
+          <div class="offer-logo">
+            Kotak
+          </div>
 
           <div class="offer-info">
             <h3>Kotak 811</h3>
             <p>Complete required steps</p>
           </div>
+
         </div>
 
-        <div class="reward">₹1,250</div>
+        <div class="reward">
+          ₹1,250
+        </div>
 
       </div>
 
@@ -392,38 +507,88 @@
     <section class="section">
 
       <div class="section-title">
-        <h2>⚡ Trending Offers</h2>
-        <a href="offers.html">View All →</a>
+
+        <h2>
+          ⚡ Trending Offers
+        </h2>
+
+        <a href="offers.html">
+          View All →
+        </a>
+
       </div>
 
       <div class="offers-scroll">
 
-        <div class="small-card" onclick="location.href='offer.html'">
-          <div class="small-logo">CoinDCX</div>
+        <div
+          class="small-card"
+          onclick="location.href='offer.html'">
+
+          <div class="small-logo">
+            CoinDCX
+          </div>
+
           <h3>CoinDCX</h3>
           <p>₹500</p>
-          <div class="type">Trending</div>
+
+          <div class="type">
+            Trending
+          </div>
+
         </div>
 
-        <div class="small-card" onclick="location.href='offer.html'">
-          <div class="small-logo">Angel</div>
+
+        <div
+          class="small-card"
+          onclick="location.href='offer.html'">
+
+          <div class="small-logo">
+            Angel
+          </div>
+
           <h3>Angel One</h3>
           <p>₹400</p>
-          <div class="type">Popular</div>
+
+          <div class="type">
+            Popular
+          </div>
+
         </div>
 
-        <div class="small-card" onclick="location.href='offer.html'">
-          <div class="small-logo">Upstox</div>
+
+        <div
+          class="small-card"
+          onclick="location.href='offer.html'">
+
+          <div class="small-logo">
+            Upstox
+          </div>
+
           <h3>Upstox</h3>
           <p>₹350</p>
-          <div class="type">Hot</div>
+
+          <div class="type">
+            Hot
+          </div>
+
         </div>
 
-        <div class="small-card" onclick="location.href='offer.html'">
-          <div class="small-logo">Groww</div>
+
+        <div
+          class="small-card"
+          onclick="location.href='offer.html'">
+
+          <div class="small-logo">
+            Groww
+          </div>
+
           <h3>Groww</h3>
           <p>₹200</p>
-          <div class="type">Popular</div>
+
+          <div class="type">
+            Popular
+          </div>
+
         </div>
 
       </div>
@@ -431,9 +596,57 @@
     </section>
 
 
+    <!-- QUICK ACCESS -->
+    <section class="section">
+
+      <div class="section-title">
+        <h2>Quick Access</h2>
+      </div>
+
+      <div class="quick-grid">
+
+        <a
+          class="quick-card"
+          href="tracking.html">
+
+          <div class="quick-icon">
+            ◎
+          </div>
+
+          <div>
+            <h3>Check Tracking</h3>
+            <p>Check your offer progress</p>
+          </div>
+
+        </a>
+
+
+        <a
+          class="quick-card"
+          href="support.html">
+
+          <div class="quick-icon">
+            🎧
+          </div>
+
+          <div>
+            <h3>Support</h3>
+            <p>Get help with your account</p>
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- SAFETY NOTICE -->
     <div class="notice">
+
       🔒 Complete every offer only according to its instructions.
       Your progress and reward status will be shown inside the offer page.
+
     </div>
 
   </main>
@@ -442,91 +655,255 @@
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
 
-    <a class="nav-item active" href="index.html">
-      <span class="nav-icon">⌂</span>
+    <a
+      class="nav-item active"
+      href="index.html">
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
       Home
+
     </a>
 
-    <a class="nav-item" href="offers.html">
-      <span class="nav-icon">▣</span>
+
+    <a
+      class="nav-item"
+      href="offers.html">
+
+      <span class="nav-icon">
+        ▣
+      </span>
+
       Offers
+
     </a>
 
-    <a class="nav-item" href="refer.html">
-      <span class="nav-icon">♧</span>
+
+    <a
+      class="nav-item"
+      href="refer.html">
+
+      <span class="nav-icon">
+        ♧
+      </span>
+
       Refer
+
     </a>
 
-    <a class="nav-item" href="share.html">
-      <span class="nav-icon">↗</span>
+
+    <a
+      class="nav-item"
+      href="share.html">
+
+      <span class="nav-icon">
+        ↗
+      </span>
+
       Share
+
     </a>
 
-    <a class="nav-item" href="wallet.html">
-      <span class="nav-icon">▤</span>
+
+    <a
+      class="nav-item"
+      href="wallet.html">
+
+      <span class="nav-icon">
+        ▤
+      </span>
+
       Wallet
+
     </a>
 
   </nav>
 
 
   <script>
+
+    /* =========================
+       BANNERS
+    ========================= */
+
     const banners = [
+
       {
         tag: "START EARNING",
-        title: "How to Use Offerwax & Earn Money",
-        text: "Choose an offer, follow the required steps and earn rewards after successful tracking.",
-        button: "Watch Guide ▶",
+
+        title:
+          "How to Use Offerwax & Earn Money",
+
+        text:
+          "Choose an offer, follow the required steps and earn rewards after successful tracking.",
+
+        button:
+          "Watch Guide ▶",
+
+        link:
+          "offers.html",
+
         background:
           "radial-gradient(circle at 85% 20%, #ec39ff 0%, transparent 30%), linear-gradient(135deg, #6414d9, #132cbb)"
       },
 
+
       {
-        tag: "HIGH PAYOUT",
-        title: "Complete Offers. Earn Rewards.",
-        text: "Explore high-paying offers and track your progress directly from Offerwax.",
-        button: "Explore Offers →",
+        tag:
+          "HIGH PAYOUT",
+
+        title:
+          "Complete Offers. Earn Rewards.",
+
+        text:
+          "Explore high-paying offers and track your progress directly from Offerwax.",
+
+        button:
+          "Explore Offers →",
+
+        link:
+          "offers.html",
+
         background:
           "radial-gradient(circle at 80% 20%, #17e9d2 0%, transparent 28%), linear-gradient(135deg, #071e68, #4e13b7)"
       },
 
+
       {
-        tag: "REFER & EARN",
-        title: "Invite Friends & Earn Up To ₹100",
-        text: "Share your referral link and earn when your friend successfully completes the required task.",
-        button: "Refer Now →",
+        tag:
+          "REFER & EARN",
+
+        title:
+          "Invite Friends & Earn Up To ₹100",
+
+        text:
+          "Share your referral link and earn when your friend successfully completes the required task.",
+
+        button:
+          "Refer Now →",
+
+        link:
+          "refer.html",
+
         background:
           "radial-gradient(circle at 85% 20%, #ffb12b 0%, transparent 30%), linear-gradient(135deg, #6e0ad8, #d1199e)"
       }
+
     ];
+
 
     let currentBanner = 0;
 
-    function changeBanner() {
 
-      currentBanner = (currentBanner + 1) % banners.length;
+    function renderBanner() {
 
-      const data = banners[currentBanner];
+      const data =
+        banners[currentBanner];
 
-      document.getElementById("bannerTag").innerText = data.tag;
-      document.getElementById("bannerTitle").innerText = data.title;
-      document.getElementById("bannerText").innerText = data.text;
-      document.getElementById("bannerButton").innerText = data.button;
-      document.getElementById("banner").style.background = data.background;
 
-      for (let i = 0; i < banners.length; i++) {
+      document
+        .getElementById("bannerTag")
+        .innerText =
+        data.tag;
+
+
+      document
+        .getElementById("bannerTitle")
+        .innerText =
+        data.title;
+
+
+      document
+        .getElementById("bannerText")
+        .innerText =
+        data.text;
+
+
+      document
+        .getElementById("bannerButton")
+        .innerText =
+        data.button;
+
+
+      document
+        .getElementById("banner")
+        .style.background =
+        data.background;
+
+
+      for (
+        let i = 0;
+        i < banners.length;
+        i++
+      ) {
+
         document
           .getElementById("dot" + i)
           .classList.remove("active");
+
       }
 
+
       document
-        .getElementById("dot" + currentBanner)
+        .getElementById(
+          "dot" + currentBanner
+        )
         .classList.add("active");
+
     }
 
-    setInterval(changeBanner, 3500);
+
+    function changeBanner() {
+
+      currentBanner =
+        (currentBanner + 1)
+        % banners.length;
+
+      renderBanner();
+
+    }
+
+
+    function setBanner(index) {
+
+      currentBanner = index;
+
+      renderBanner();
+
+    }
+
+
+    function openBanner() {
+
+      const link =
+        banners[currentBanner].link;
+
+      location.href = link;
+
+    }
+
+
+    setInterval(
+      changeBanner,
+      3500
+    );
+
+
+    /* =========================
+       NOTIFICATIONS
+    ========================= */
+
+    function showNotifications() {
+
+      alert(
+        "You don't have any new notifications."
+      );
+
+    }
+
   </script>
 
 </body>
-                                 </html>
+            </html>
