@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Refer & Earn | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;color:#fff;min-height:100vh
+}
+button,input{font-family:inherit}
+
+/* HEADER */
+.topbar{
+  height:66px;position:sticky;top:0;z-index:100;
+  background:#090e18;border-bottom:1px solid #1d2739;
+  display:flex;align-items:center;padding:0 16px;gap:12px
+}
+.menu-btn,.bell{
+  width:40px;height:40px;border-radius:11px;
+  border:1px solid #273249;background:#10182a;color:#fff;font-size:18px
+}
+.logo{font-size:20px;font-weight:900;flex:1}
+.logo span{color:#d42df4}
+.logo small{display:block;color:#6f7b90;font-size:8px;margin-top:2px}
+
+/* SIDEBAR */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.75);z-index:190
+}
+.sidebar{
+  position:fixed;left:-285px;top:0;bottom:0;width:275px;
+  background:#0b111d;border-right:1px solid #202b40;
+  z-index:200;transition:.25s;overflow-y:auto
+}
+.sidebar.open{left:0}
+.sidebar-head{padding:22px 18px;border-bottom:1px solid #202b40}
+.sidebar-logo{font-size:23px;font-weight:900}
+.sidebar-logo span{color:#d42df4}
+.sidebar-head p{color:#6f7b90;font-size:9px;margin-top:5px}
+.nav{padding:14px 10px 25px}
+.nav-title{
+  color:#536076;font-size:8px;font-weight:800;
+  padding:12px 11px 6px;text-transform:uppercase
+}
+.nav-item{
+  display:flex;align-items:center;min-height:48px;
+  padding:8px 11px;margin:3px 0;border-radius:12px;
+  color:#8d98ab;text-decoration:none;font-size:11px;font-weight:700
+}
+.nav-item.active{
+  color:#fff;background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+.nav-icon{width:31px;font-size:16px}
+.nav-text{flex:1}
+
+/* MAIN */
+.container{max-width:1100px;margin:auto;padding:22px 16px 50px}
+.page-head h1{font-size:25px}
+.page-head p{
+  color:#788499;font-size:10px;margin-top:6px;line-height:1.5
+}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:20px
+}
+.stat{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:16px;padding:14px
+}
+.stat-icon{
+  width:34px;height:34px;border-radius:10px;background:#172136;
+  display:flex;align-items:center;justify-content:center
+}
+.stat strong{display:block;font-size:21px;margin-top:10px}
+.stat small{display:block;color:#7b879b;font-size:9px;margin-top:5px}
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.red{color:#ff737d!important}
+.purple{color:#d94df4!important}
+
+/* SEARCH */
+.tools{
+  margin-top:22px;background:#10182a;border:1px solid #202c43;
+  border-radius:17px;padding:13px
+}
+.search{
+  width:100%;height:44px;background:#080e19;
+  border:1px solid #29364e;border-radius:11px;
+  color:#fff;padding:0 13px;outline:none
+}
+.search:focus{border-color:#d42df4}
+.filters{
+  display:flex;gap:7px;overflow-x:auto;
+  margin-top:10px;scrollbar-width:none
+}
+.filter{
+  flex:0 0 auto;border:1px solid #29364e;
+  background:#0c1321;color:#8995a9;border-radius:18px;
+  padding:8px 12px;font-size:8px
+}
+.filter.active{background:#d42df4;border-color:#d42df4;color:#fff}
+
+/* REFERRERS */
+.section{margin-top:24px}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:11px
+}
+.section-title{font-size:17px}
+.count{color:#738096;font-size:9px}
+.referrer-list{display:grid;gap:10px}
+
+.referrer{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:18px;padding:14px;cursor:pointer
+}
+.ref-top{display:flex;align-items:center;gap:11px}
+.avatar{
+  width:45px;height:45px;min-width:45px;border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:900
+}
+.ref-info{flex:1}
+.ref-info h3{font-size:12px}
+.ref-info p{color:#748197;font-size:8px;margin-top:5px}
+.ref-earning{text-align:right}
+.ref-earning strong{display:block;color:#39dc8a;font-size:12px}
+.ref-earning small{font-size:7px;color:#69768b}
+
+.metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:6px;margin-top:12px
+}
+.metric{
+  background:#0b1220;border-radius:9px;
+  padding:8px 4px;text-align:center
+}
+.metric strong{display:block;font-size:10px}
+.metric small{
+  display:block;color:#68758a;font-size:7px;margin-top:4px
+}
+
+/* DRAWER */
+.drawer{
+  position:fixed;right:-100%;top:0;width:100%;max-width:590px;
+  height:100vh;background:#090f1a;z-index:300;
+  transition:.27s;overflow-y:auto;border-left:1px solid #253047
+}
+.drawer.open{right:0}
+.drawer-head{
+  position:sticky;top:0;z-index:5;height:65px;
+  display:flex;align-items:center;padding:0 16px;
+  background:#090f1a;border-bottom:1px solid #202b40
+}
+.drawer-head h2{flex:1;font-size:17px}
+.close{
+  width:35px;height:35px;border:1px solid #29364e;
+  border-radius:10px;background:#111a2a;color:#fff;font-size:19px
+}
+.drawer-body{padding:17px 16px 40px}
+
+.profile{
+  background:linear-gradient(145deg,#111a2c,#171225);
+  border:1px solid #29233c;border-radius:19px;padding:17px
+}
+.profile-top{display:flex;align-items:center;gap:12px}
+.big-avatar{
+  width:57px;height:57px;min-width:57px;border-radius:50%;
+  background:linear-gradient(135deg,#6d27df,#d42df4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900
+}
+.profile-info{flex:1}
+.profile-info h3{font-size:16px}
+.profile-info p{color:#78859a;font-size:8px;margin-top:5px}
+.profile-money{text-align:right}
+.profile-money small{display:block;color:#78859a;font-size:7px}
+.profile-money strong{
+  display:block;color:#39dc8a;font-size:16px;margin-top:4px
+}
+
+/* SUMMARY */
+.detail-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:7px;margin-top:12px
+}
+.detail-stat{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:12px;padding:10px;text-align:center
+}
+.detail-stat strong{display:block;font-size:12px}
+.detail-stat small{
+  display:block;color:#707d92;font-size:7px;margin-top:4px
+}
+
+/* CARD */
+.card{
+  margin-top:13px;background:#10182a;
+  border:1px solid #202c43;border-radius:17px;overflow:hidden
+}
+.card-title{
+  padding:13px;font-size:12px;border-bottom:1px solid #202c43
+}
+
+/* REFERRED USER */
+.referred{
+  padding:13px;border-bottom:1px solid #202c43
+}
+.referred:last-child{border-bottom:0}
+.referred-head{display:flex;align-items:center;gap:9px}
+.small-avatar{
+  width:36px;height:36px;min-width:36px;border-radius:50%;
+  background:#172136;display:flex;align-items:center;
+  justify-content:center;font-size:9px;font-weight:800
+}
+.referred-info{flex:1}
+.referred-info strong{display:block;font-size:10px}
+.referred-info small{
+  display:block;color:#707d92;font-size:7px;margin-top:4px
+}
+.status{
+  padding:5px 7px;border-radius:12px;
+  font-size:7px;font-weight:800
+}
+.completed{
+  color:#39dc8a;background:rgba(57,220,138,.1)
+}
+.pending{
+  color:#ffb84d;background:rgba(255,184,77,.1)
+}
+.rejected{
+  color:#ff737d;background:rgba(255,90,103,.1)
+}
+
+.task-box{
+  margin-top:10px;background:#0b1220;
+  border-radius:10px;padding:10px
+}
+.task-row{
+  display:flex;justify-content:space-between;
+  gap:10px;margin-bottom:7px
+}
+.task-row:last-child{margin-bottom:0}
+.task-row span{font-size:8px;color:#748197}
+.task-row strong{font-size:8px}
+
+/* TRACKING */
+.progress{
+  display:flex;gap:4px;margin-top:10px
+}
+.stage{
+  flex:1;height:4px;border-radius:4px;background:#263044
+}
+.stage.done{background:#39dc8a}
+.stage.current{background:#ffb84d}
+.stage-label{
+  color:#657187;font-size:7px;margin-top:6px;line-height:1.4
+}
+
+/* PAYOUT */
+.payout{
+  padding:13px
+}
+.payout-row{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:11px 0;border-bottom:1px solid #202c43
+}
+.payout-row:last-child{border-bottom:0}
+.payout-row span{color:#778499;font-size:9px}
+.payout-row strong{font-size:9px}
+
+.actions{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:8px;padding:13px
+}
+.action{
+  min-height:43px;border-radius:11px;border:1px solid #2a354b;
+  background:#111a2a;color:#fff;font-size:9px;font-weight:700
+}
+.approve{color:#39dc8a;border-color:rgba(57,220,138,.3)}
+.hold{color:#ffb84d;border-color:rgba(255,184,77,.3)}
+.reject-btn{color:#ff737d;border-color:rgba(255,90,103,.3)}
+
+/* CUSTOM PAYOUT */
+.custom-box{
+  padding:13px
+}
+.custom-box p{
+  color:#778499;font-size:8px;line-height:1.5
+}
+.input{
+  width:100%;height:44px;background:#080e19;
+  border:1px solid #29364e;border-radius:10px;
+  color:#fff;padding:0 11px;margin-top:11px;outline:none
+}
+.save{
+  width:100%;height:44px;border:0;border-radius:11px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;font-size:9px;font-weight:800;margin-top:9px
+}
+
+.empty{
+  padding:30px;text-align:center;color:#748197;font-size:10px
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{margin-left:250px;max-width:none;padding:28px}
+  .stats{grid-template-columns:repeat(5,1fr)}
+  .referrer-list{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeEverything()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-head">
+  <div class="sidebar-logo">Offer<span>wax</span></div>
+  <p>Admin Control Center</p>
+</div>
+
+<nav class="nav">
+
+<div class="nav-title">Overview</div>
+
+<a href="admin.html" class="nav-item">
+  <span class="nav-icon">⌂</span>
+  <span class="nav-text">Dashboard</span>
+</a>
+
+<div class="nav-title">Management</div>
+
+<a href="admin-users.html" class="nav-item">
+  <span class="nav-icon">👥</span>
+  <span class="nav-text">Users</span>
+</a>
+
+<a href="admin-offers.html" class="nav-item">
+  <span class="nav-icon">▣</span>
+  <span class="nav-text">Offers</span>
+</a>
+
+<a href="admin-share.html" class="nav-item">
+  <span class="nav-icon">↗</span>
+  <span class="nav-text">Share & Earn</span>
+</a>
+
+<a href="admin-refer.html" class="nav-item active">
+  <span class="nav-icon">♧</span>
+  <span class="nav-text">Refer & Earn</span>
+</a>
+
+<a href="admin-tracking.html" class="nav-item">
+  <span class="nav-icon">⌖</span>
+  <span class="nav-text">Tracking</span>
+</a>
+
+<div class="nav-title">Operations</div>
+
+<a href="admin-finance.html" class="nav-item">
+  <span class="nav-icon">₹</span>
+  <span class="nav-text">Finance</span>
+</a>
+
+<a href="admin-support.html" class="nav-item">
+  <span class="nav-icon">?</span>
+  <span class="nav-text">Support</span>
+</a>
+
+<div class="nav-title">Controls</div>
+
+<a href="admin-content.html" class="nav-item">
+  <span class="nav-icon">⚙</span>
+  <span class="nav-text">App & Content</span>
+</a>
+
+</nav>
+</aside>
+
+<!-- HEADER -->
+<header class="topbar">
+
+<button class="menu-btn" onclick="openSidebar()">☰</button>
+
+<div class="logo">
+  Offer<span>wax</span>
+  <small>REFER & EARN MANAGEMENT</small>
+</div>
+
+<button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+<section class="page-head">
+  <h1>Refer & Earn</h1>
+  <p>
+    Track referrers, referred users, first eligible tasks,
+    validation and referral rewards.
+  </p>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+
+<div class="stat">
+  <div class="stat-icon">♧</div>
+  <strong>126</strong>
+  <small>Total Referrals</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">👥</div>
+  <strong>54</strong>
+  <small>Active Referrers</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">✓</div>
+  <strong class="green">68</strong>
+  <small>First Task Completed</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">⏳</div>
+  <strong class="orange">41</strong>
+  <small>Pending Task</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">₹</div>
+  <strong class="green">₹8.4K</strong>
+  <small>Referral Earnings</small>
+</div>
+
+</section>
+
+<!-- SEARCH -->
+<section class="tools">
+
+<input
+  id="searchInput"
+  class="search"
+  type="search"
+  placeholder="Search referrer, User ID or referred user..."
+  oninput="renderReferrers()">
+
+<div class="filters">
+
+<button class="filter active"
+onclick="setFilter('all',this)">All</button>
+
+<button class="filter"
+onclick="setFilter('completed',this)">Completed</button>
+
+<button class="filter"
+onclick="setFilter('pending',this)">Pending</button>
+
+<button class="filter"
+onclick="setFilter('high',this)">Top Referrers</button>
+
+</div>
+</section>
+
+<!-- REFERRERS -->
+<section class="section">
+
+<div class="section-head">
+  <h2 class="section-title">Referrers</h2>
+  <span class="count" id="resultCount"></span>
+</div>
+
+<div class="referrer-list" id="referrerList"></div>
+
+</section>
+
+</main>
+
+<!-- DETAIL DRAWER -->
+<section class="drawer" id="drawer">
+
+<div class="drawer-head">
+  <h2>Referral Details</h2>
+  <button class="close" onclick="closeDrawer()">×</button>
+</div>
+
+<div class="drawer-body">
+
+<!-- PROFILE -->
+<div class="profile">
+
+<div class="profile-top">
+
+<div class="big-avatar" id="detailAvatar">BK</div>
+
+<div class="profile-info">
+  <h3 id="detailName">Bikash</h3>
+  <p id="detailID">OW8473</p>
+</div>
+
+<div class="profile-money">
+  <small>Referral Earnings</small>
+  <strong id="detailEarning">₹450</strong>
+</div>
+
+</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="detail-stats">
+
+<div class="detail-stat">
+  <strong id="detailTotal">9</strong>
+  <small>Referred</small>
+</div>
+
+<div class="detail-stat">
+  <strong class="green" id="detailCompleted">5</strong>
+  <small>Completed</small>
+</div>
+
+<div class="detail-stat">
+  <strong class="orange" id="detailPending">4</strong>
+  <small>Pending</small>
+</div>
+
+</div>
+
+<!-- REFERRED USERS -->
+<div class="card">
+
+<div class="card-title">
+  Referred Users & First Tasks
+</div>
+
+<div id="referredUsers"></div>
+
+</div>
+
+<!-- PAYOUT SUMMARY -->
+<div class="card">
+
+<div class="card-title">
+  Referral Payout
+</div>
+
+<div class="payout">
+
+<div class="payout-row">
+  <span>Total Earned</span>
+  <strong class="green" id="totalEarned">₹450</strong>
+</div>
+
+<div class="payout-row">
+  <span>Approved</span>
+  <strong class="green" id="approvedAmount">₹350</strong>
+</div>
+
+<div class="payout-row">
+  <span>Pending Validation</span>
+  <strong class="orange" id="pendingAmount">₹100</strong>
+</div>
+
+<div class="payout-row">
+  <span>Paid</span>
+  <strong id="paidAmount">₹300</strong>
+</div>
+
+</div>
+</div>
+
+<!-- CUSTOM PAYOUT -->
+<div class="card">
+
+<div class="card-title">
+  Custom Referral Reward
+</div>
+
+<div class="custom-box">
+
+<p>
+Set a custom referral reward for this referrer.
+This can override the normal reward after backend connection.
+</p>
+
+<input
+  class="input"
+  id="customReward"
+  type="number"
+  placeholder="Custom reward ₹">
+
+<button class="save" onclick="saveCustomReward()">
+  Save Custom Reward
+</button>
+
+</div>
+</div>
+
+<!-- ADMIN CONTROLS -->
+<div class="card">
+
+<div class="card-title">
+  Admin Controls
+</div>
+
+<div class="actions">
+
+<button class="action approve"
+onclick="adminAction('Approve Referral Reward')">
+✓ Approve Reward
+</button>
+
+<button class="action hold"
+onclick="adminAction('Hold Referral Reward')">
+⏳ Hold Reward
+</button>
+
+<button class="action reject-btn"
+onclick="adminAction('Reject Referral Reward')">
+× Reject Reward
+</button>
+
+<button class="action"
+onclick="adminAction('Recheck Tracking')">
+⌖ Recheck Tracking
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<script>
+
+/* SAMPLE DATA */
+
+const referrers=[
+
+{
+ id:"OW8473",
+ name:"Bikash",
+ initials:"BK",
+ total:9,
+ completed:5,
+ pending:4,
+ earning:450,
+ approved:350,
+ pendingMoney:100,
+ paid:300,
+
+ users:[
+  {
+   name:"Rahul",
+   id:"OW9201",
+   joined:"22 Sep 2026",
+   task:"Kotak 811",
+   stage:5,
+   reward:100,
+   status:"Completed"
+  },
+
+  {
+   name:"Aman",
+   id:"OW9217",
+   joined:"23 Sep 2026",
+   task:"CoinDCX",
+   stage:3,
+   reward:100,
+   status:"Pending"
+  },
+
+  {
+   name:"Rohan",
+   id:"OW9234",
+   joined:"24 Sep 2026",
+   task:"Upstox",
+   stage:5,
+   reward:50,
+   status:"Completed"
+  },
+
+  {
+   name:"Arjun",
+   id:"OW9262",
+   joined:"25 Sep 2026",
+   task:"No first task yet",
+   stage:1,
+   reward:0,
+   status:"Pending"
+  }
+ ]
+},
+
+{
+ id:"OW9124",
+ name:"Rahul Das",
+ initials:"RD",
+ total:7,
+ completed:4,
+ pending:3,
+ earning:350,
+ approved:300,
+ pendingMoney:50,
+ paid:250,
+
+ users:[
+  {
+   name:"Karan",
+   id:"OW9311",
+   joined:"25 Sep 2026",
+   task:"Kotak 811",
+   stage:5,
+   reward:100,
+   status:"Completed"
+  },
+
+  {
+   name:"Ravi",
+   id:"OW9328",
+   joined:"26 Sep 2026",
+   task:"CoinDCX",
+   stage:2,
+   reward:100,
+   status:"Pending"
+  }
+ ]
+},
+
+{
+ id:"OW6251",
+ name:"Aman Ali",
+ initials:"AA",
+ total:3,
+ completed:1,
+ pending:2,
+ earning:100,
+ approved:100,
+ pendingMoney:0,
+ paid:100,
+
+ users:[
+  {
+   name:"Sameer",
+   id:"OW9402",
+   joined:"27 Sep 2026",
+   task:"Kotak 811",
+   stage:5,
+   reward:100,
+   status:"Completed"
+  },
+
+  {
+   name:"Kabir",
+   id:"OW9414",
+   joined:"28 Sep 2026",
+   task:"No first task yet",
+   stage:1,
+   reward:0,
+   status:"Pending"
+  }
+ ]
+}
+
+];
+
+let filter="all";
+let selected=null;
+
+
+/* LIST */
+
+function renderReferrers(){
+
+const query=
+document.getElementById("searchInput")
+.value.toLowerCase().trim();
+
+const filtered=referrers.filter(r=>{
+
+ const referredNames=
+ r.users.map(u=>u.name+" "+u.id).join(" ");
+
+ const searchMatch=
+ (r.name+" "+r.id+" "+referredNames)
+ .toLowerCase().includes(query);
+
+ let filterMatch=true;
+
+ if(filter==="completed") filterMatch=r.completed>0;
+ if(filter==="pending") filterMatch=r.pending>0;
+ if(filter==="high") filterMatch=r.total>=7;
+
+ return searchMatch&&filterMatch;
+
+});
+
+document.getElementById("resultCount").innerText=
+filtered.length+(filtered.length===1?" user":" users");
+
+const list=document.getElementById("referrerList");
+
+if(!filtered.length){
+ list.innerHTML='<div class="empty">No referrers found.</div>';
+ return;
+}
+
+list.innerHTML=filtered.map(r=>`
+
+<div class="referrer" onclick="openReferrer('${r.id}')">
+
+<div class="ref-top">
+
+<div class="avatar">
+${r.initials}
+</div>
+
+<div class="ref-info">
+<h3>${r.name}</h3>
+<p>${r.id} • ${r.total} referrals</p>
+</div>
+
+<div class="ref-earning">
+<strong>₹${r.earning}</strong>
+<small>Total earning</small>
+</div>
+
+</div>
+
+<div class="metrics">
+
+<div class="metric">
+<strong>${r.total}</strong>
+<small>Referred</small>
+</div>
+
+<div class="metric">
+<strong class="green">${r.completed}</strong>
+<small>Completed</small>
+</div>
+
+<div class="metric">
+<strong class="orange">${r.pending}</strong>
+<small>Pending</small>
+</div>
+
+<div class="metric">
+<strong>₹${r.paid}</strong>
+<small>Paid</small>
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* FILTER */
+
+function setFilter(value,button){
+
+filter=value;
+
+document.querySelectorAll(".filter")
+.forEach(x=>x.classList.remove("active"));
+
+button.classList.add("active");
+
+renderReferrers();
+
+}
+
+
+/* OPEN REFERRER */
+
+function openReferrer(id){
+
+selected=referrers.find(r=>r.id===id);
+
+if(!selected)return;
+
+document.getElementById("detailAvatar").innerText=
+selected.initials;
+
+document.getElementById("detailName").innerText=
+selected.name;
+
+document.getElementById("detailID").innerText=
+"User ID: "+selected.id;
+
+document.getElementById("detailEarning").innerText=
+"₹"+selected.earning;
+
+document.getElementById("detailTotal").innerText=
+selected.total;
+
+document.getElementById("detailCompleted").innerText=
+selected.completed;
+
+document.getElementById("detailPending").innerText=
+selected.pending;
+
+document.getElementById("totalEarned").innerText=
+"₹"+selected.earning;
+
+document.getElementById("approvedAmount").innerText=
+"₹"+selected.approved;
+
+document.getElementById("pendingAmount").innerText=
+"₹"+selected.pendingMoney;
+
+document.getElementById("paidAmount").innerText=
+"₹"+selected.paid;
+
+renderReferredUsers();
+
+document.getElementById("drawer")
+.classList.add("open");
+
+document.getElementById("overlay")
+.style.display="block";
+
+}
+
+
+/* REFERRED USERS */
+
+function renderReferredUsers(){
+
+const box=document.getElementById("referredUsers");
+
+box.innerHTML=selected.users.map(user=>{
+
+const completed=user.status==="Completed";
+
+let stages="";
+
+for(let i=1;i<=5;i++){
+
+ let cls="stage";
+
+ if(i<=user.stage){
+   cls+=" done";
+ }
+
+ stages+=`<div class="${cls}"></div>`;
+
+}
+
+const stageText=[
+ "",
+ "Referral joined",
+ "Offer clicked / install",
+ "Registration completed",
+ "Required action completed",
+ "Completion validated"
+];
+
+return `
+
+<div class="referred">
+
+<div class="referred-head">
+
+<div class="small-avatar">
+${user.name.substring(0,2).toUpperCase()}
+</div>
+
+<div class="referred-info">
+<strong>${user.name}</strong>
+<small>${user.id} • Joined ${user.joined}</small>
+</div>
+
+<span class="status ${completed?"completed":"pending"}">
+${user.status}
+</span>
+
+</div>
+
+<div class="task-box">
+
+<div class="task-row">
+<span>First Eligible Task</span>
+<strong>${user.task}</strong>
+</div>
+
+<div class="task-row">
+<span>Referral Reward</span>
+<strong class="${completed?"green":"orange"}">
+₹${user.reward}
+</strong>
+</div>
+
+</div>
+
+<div class="progress">
+${stages}
+</div>
+
+<div class="stage-label">
+Current: ${stageText[user.stage]}
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* CUSTOM REWARD */
+
+function saveCustomReward(){
+
+if(!selected)return;
+
+const amount=
+Number(document.getElementById("customReward").value);
+
+if(amount<0 || !Number.isFinite(amount)){
+ alert("Enter a valid reward amount.");
+ return;
+}
+
+if(amount>100){
+ const ok=confirm(
+  "The normal referral reward is up to ₹100. Continue with custom ₹"+
+  amount+"?"
+ );
+
+ if(!ok)return;
+}
+
+alert(
+ "Demo only. Custom reward ₹"+
+ amount+
+ " was NOT permanently saved. Backend is not connected yet."
+);
+
+}
+
+
+/* ADMIN ACTION */
+
+function adminAction(action){
+
+if(!selected)return;
+
+const ok=confirm(
+ action+" for "+selected.name+"?"
+);
+
+if(!ok)return;
+
+alert(
+ "Demo only. No real referral reward or tracking status was changed. "+
+ "This action will work after the protected backend is connected."
+);
+
+}
+
+
+/* SIDEBAR */
+
+function openSidebar(){
+
+document.getElementById("sidebar")
+.classList.add("open");
+
+document.getElementById("overlay")
+.style.display="block";
+
+}
+
+function closeDrawer(){
+
+document.getElementById("drawer")
+.classList.remove("open");
+
+document.getElementById("overlay")
+.style.display="none";
+
+}
+
+function closeEverything(){
+
+document.getElementById("sidebar")
+.classList.remove("open");
+
+document.getElementById("drawer")
+.classList.remove("open");
+
+document.getElementById("overlay")
+.style.display="none";
+
+}
+
+
+/*
+=============================================
+BACKEND LATER
+=============================================
+
+Real referral records should contain:
+
+referrerUserId
+referredUserId
+referralCode
+joinedAt
+
+firstEligibleTask:
+- offerId
+- offerName
+- click
+- install
+- registration
+- requiredAction
+- completion
+- validation
+
+reward:
+- amount
+- status: pending / approved / paid / rejected
+- approvedAt
+- paidAt
+
+Admin can later:
+- inspect referral relationship
+- inspect first-task tracking
+- approve/hold/reject reward
+- set custom reward
+- recheck tracking
+
+Reward should only become eligible from verified
+tracking/conversion data, not merely because a
+referred user created an account.
+
+All finance changes must be protected and logged
+server-side.
+*/
+
+renderReferrers();
+
+</script>
+</body>
+  </html>
