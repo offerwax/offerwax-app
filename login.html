@@ -3,183 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#070b14">
-<title>Join Offerwax</title>
+<meta name="theme-color" content="#080b12">
+<title>Offerwax — Create Account</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+html,body{
+  min-height:100%;
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 50% -10%,#251342 0,#0b101c 35%,#070b14 70%);
+  background:#080b12;
   color:#fff;
-  min-height:100vh
+  min-height:100vh;
 }
 
-button,input{font-family:inherit}
+button,input{
+  font-family:inherit;
+}
+
+/* PAGE */
 
 .page{
   width:100%;
-  max-width:470px;
+  max-width:460px;
+  min-height:100vh;
   margin:auto;
-  padding:25px 18px 40px
+  padding:28px 18px 32px;
+  display:flex;
+  flex-direction:column;
 }
 
-/* BRAND */
+/* LOGO */
 
-.brand{
-  text-align:center;
-  margin-top:7px
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-  font-size:30px;
+  font-size:25px;
   font-weight:900;
-  letter-spacing:-1px
+  letter-spacing:-1px;
 }
 
-.logo span{color:#d42df4}
+.logo span{
+  color:#d42df4;
+}
 
-.brand-badge{
-  display:inline-block;
-  margin-top:8px;
-  padding:6px 10px;
-  border:1px solid rgba(212,45,244,.22);
-  background:rgba(212,45,244,.08);
-  color:#d98cec;
-  border-radius:20px;
+.secure{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#7e899c;
   font-size:8px;
-  font-weight:700
 }
+
+.secure-dot{
+  width:7px;
+  height:7px;
+  background:#36d98a;
+  border-radius:50%;
+  box-shadow:0 0 8px rgba(54,217,138,.45);
+}
+
+/* HERO */
 
 .hero{
-  text-align:center;
-  margin-top:22px
+  padding:40px 2px 28px;
+}
+
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:#d98bec;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+.hero-tag i{
+  width:18px;
+  height:2px;
+  background:#d42df4;
+  border-radius:5px;
 }
 
 .hero h1{
-  font-size:29px;
-  line-height:1.12;
-  letter-spacing:-.8px
+  font-size:37px;
+  line-height:1.05;
+  letter-spacing:-1.7px;
+  margin-top:13px;
+  max-width:390px;
 }
 
 .hero h1 span{
-  color:#d94df4
+  background:linear-gradient(90deg,#fff,#d66be9);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-  max-width:340px;
-  margin:11px auto 0;
-  color:#8490a4;
+  color:#7c8799;
   font-size:10px;
-  line-height:1.65
+  line-height:1.65;
+  margin-top:14px;
+  max-width:330px;
 }
 
-/* ACTIVITY */
+/* SMALL FEATURES */
 
-.activity-wrap{
-  margin-top:21px
-}
-
-.activity-label{
+.features{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:7px;
-  padding:0 3px
+  gap:8px;
+  margin-top:20px;
 }
 
-.activity-label span:first-child{
-  font-size:8px;
-  color:#8d99ad;
-  font-weight:700
-}
-
-.demo-label{
-  font-size:6.5px;
-  color:#68758a;
-  border:1px solid #253149;
-  padding:4px 7px;
-  border-radius:10px
-}
-
-.activity{
-  min-height:64px;
-  display:flex;
-  align-items:center;
-  gap:11px;
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:16px;
-  padding:11px 13px;
-  transition:.35s ease
-}
-
-.activity.hide{
-  opacity:0;
-  transform:translateY(8px)
-}
-
-.activity-icon{
-  width:39px;
-  height:39px;
-  min-width:39px;
+.feature{
+  flex:1;
+  background:#0d121d;
+  border:1px solid #1b2535;
   border-radius:12px;
-  background:rgba(57,220,138,.1);
-  color:#39dc8a;
+  padding:10px 8px;
+}
+
+.feature-icon{
+  width:26px;
+  height:26px;
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:900
+  background:#151d2b;
+  font-size:11px;
 }
 
-.activity-info{
-  flex:1
-}
-
-.activity-info strong{
+.feature strong{
   display:block;
-  font-size:9.5px
-}
-
-.activity-info small{
-  display:block;
-  color:#6f7c91;
   font-size:7.5px;
-  margin-top:5px
+  margin-top:7px;
 }
 
-.activity-money{
-  color:#39dc8a;
-  font-size:10px;
-  font-weight:900
+.feature small{
+  display:block;
+  color:#657185;
+  font-size:6px;
+  margin-top:3px;
 }
 
-/* FORM CARD */
+/* AUTH CARD */
 
 .auth-card{
-  margin-top:17px;
-  background:rgba(16,24,42,.95);
-  border:1px solid #222e45;
-  border-radius:23px;
-  padding:19px 16px;
-  box-shadow:0 18px 55px rgba(0,0,0,.28)
+  background:#0e1420;
+  border:1px solid #202a3c;
+  border-radius:22px;
+  padding:18px 15px;
+  box-shadow:0 25px 70px rgba(0,0,0,.3);
 }
 
-.auth-head{
-  margin-bottom:17px
+.auth-title{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:17px;
 }
 
-.auth-head h2{
-  font-size:20px
+.auth-title h2{
+  font-size:19px;
 }
 
-.auth-head p{
-  color:#778499;
-  font-size:8.5px;
-  margin-top:6px;
-  line-height:1.5
+.auth-title p{
+  color:#6f7b8f;
+  font-size:8px;
+  line-height:1.5;
+  margin-top:5px;
+}
+
+.step{
+  background:rgba(212,45,244,.09);
+  color:#d66bea;
+  border:1px solid rgba(212,45,244,.18);
+  border-radius:20px;
+  padding:6px 9px;
+  font-size:7px;
+  font-weight:800;
+  white-space:nowrap;
 }
 
 /* TABS */
@@ -187,11 +205,11 @@ button,input{font-family:inherit}
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:5px;
-  background:#090f1b;
-  padding:5px;
-  border-radius:13px;
-  margin-bottom:17px
+  gap:4px;
+  background:#080d16;
+  padding:4px;
+  border-radius:12px;
+  margin-bottom:17px;
 }
 
 .tab{
@@ -199,86 +217,91 @@ button,input{font-family:inherit}
   border:0;
   border-radius:9px;
   background:transparent;
-  color:#778499;
+  color:#667286;
   font-size:9px;
-  font-weight:800
+  font-weight:800;
+  cursor:pointer;
 }
 
 .tab.active{
-  background:#1a2235;
+  background:#171f2e;
   color:#fff;
-  box-shadow:0 3px 12px rgba(0,0,0,.2)
 }
 
-/* FORM */
+/* FORMS */
 
 .form{
-  display:none
+  display:none;
 }
 
 .form.active{
-  display:block
+  display:block;
 }
 
 .field{
-  margin-bottom:12px
+  margin-bottom:12px;
+}
+
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
 }
 
 label{
   display:block;
-  color:#9aa5b7;
-  font-size:8px;
+  color:#8d98aa;
+  font-size:7.5px;
   font-weight:700;
-  margin:0 0 6px 3px
+  margin:0 0 6px 2px;
 }
 
 .input-wrap{
-  position:relative
+  position:relative;
 }
 
 .input{
   width:100%;
   height:47px;
-  background:#080e19;
-  border:1px solid #29364e;
+  border:1px solid #273247;
+  background:#090e18;
   border-radius:12px;
   color:#fff;
-  padding:0 13px;
   outline:none;
-  font-size:10px
-}
-
-.input.password{
-  padding-right:58px
+  padding:0 12px;
+  font-size:10px;
+  transition:.2s;
 }
 
 .input:focus{
-  border-color:#b83ad5;
-  box-shadow:0 0 0 3px rgba(212,45,244,.06)
+  border-color:#b940d2;
+  box-shadow:0 0 0 3px rgba(212,45,244,.06);
 }
 
 .input::placeholder{
-  color:#4f5b6e
+  color:#465266;
 }
 
-.show{
+.password-input{
+  padding-right:55px;
+}
+
+.show-btn{
   position:absolute;
-  right:8px;
+  right:7px;
   top:50%;
   transform:translateY(-50%);
   border:0;
-  background:none;
-  color:#b959d0;
-  font-size:8px;
+  background:transparent;
+  color:#c459d8;
+  padding:8px;
+  font-size:7px;
   font-weight:800;
-  padding:8px
 }
 
-.ref-note{
-  color:#647187;
-  font-size:7px;
-  line-height:1.5;
-  margin:-4px 3px 12px
+.optional{
+  color:#536075;
+  font-weight:400;
 }
 
 /* TERMS */
@@ -287,131 +310,120 @@ label{
   display:flex;
   align-items:flex-start;
   gap:8px;
-  margin:5px 2px 14px
+  margin:3px 2px 15px;
 }
 
 .terms input{
   margin-top:2px;
-  accent-color:#d42df4
+  accent-color:#d42df4;
 }
 
 .terms span{
-  color:#778499;
-  font-size:7.5px;
-  line-height:1.5
+  color:#6f7b8e;
+  font-size:7px;
+  line-height:1.5;
 }
 
 .terms a{
-  color:#d06ee4;
-  text-decoration:none
+  color:#c45cd8;
+  text-decoration:none;
 }
 
-/* BUTTON */
+/* PRIMARY */
 
 .primary{
   width:100%;
-  height:48px;
+  height:49px;
   border:0;
   border-radius:13px;
-  background:linear-gradient(135deg,#7026e1,#d42df4);
   color:#fff;
+  background:linear-gradient(110deg,#7628dc,#d42df4);
   font-size:10px;
   font-weight:900;
-  box-shadow:0 10px 25px rgba(147,39,196,.22)
+  cursor:pointer;
+  box-shadow:0 10px 28px rgba(170,38,207,.18);
 }
 
 .primary:active{
-  transform:scale(.99)
+  transform:scale(.99);
 }
+
+/* LOGIN */
 
 .forgot{
   display:block;
   text-align:right;
-  color:#c760dc;
-  font-size:8px;
-  text-decoration:none;
-  margin:-2px 3px 13px
-}
-
-/* SWITCH TEXT */
-
-.switch-text{
-  text-align:center;
-  margin-top:15px;
-  color:#707d92;
-  font-size:8px
-}
-
-.switch-text button{
-  border:0;
-  background:none;
-  color:#d868ec;
-  font-weight:800;
-  font-size:8px
-}
-
-/* TRUST */
-
-.trust{
-  margin-top:21px;
-  text-align:center
-}
-
-.trust h3{
-  font-size:13px
-}
-
-.trust > p{
-  color:#69768b;
-  font-size:8px;
-  margin-top:5px
-}
-
-.trust-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  margin-top:12px
-}
-
-.trust-box{
-  background:#0d1422;
-  border:1px solid #1e293d;
-  border-radius:13px;
-  padding:11px 5px
-}
-
-.trust-box span{
-  display:block;
-  font-size:16px
-}
-
-.trust-box strong{
-  display:block;
+  margin:-2px 2px 14px;
+  color:#c45bd8;
   font-size:7.5px;
-  margin-top:7px
+  text-decoration:none;
 }
 
-.trust-box small{
-  display:block;
-  color:#647187;
-  font-size:6px;
-  margin-top:4px
+/* DIVIDER */
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:16px 0 0;
 }
 
-/* FOOTER */
+.divider:before,
+.divider:after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#202a3b;
+}
 
-.footer{
+.divider span{
+  color:#566276;
+  font-size:6.5px;
+}
+
+/* FOOT */
+
+.bottom{
+  margin-top:20px;
   text-align:center;
-  color:#4f5c70;
-  font-size:7px;
+}
+
+.bottom p{
+  color:#5e6a7e;
+  font-size:7.5px;
   line-height:1.6;
-  margin-top:23px
+}
+
+.bottom strong{
+  color:#8995a8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:360px){
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .field-row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
 }
 
 @media(min-width:700px){
+
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
   .page{
-    padding-top:35px
+    min-height:auto;
+    padding-top:40px;
+    padding-bottom:40px;
   }
 }
 </style>
@@ -421,134 +433,151 @@ label{
 
 <main class="page">
 
-<!-- BRAND -->
+<!-- HEADER -->
 
-<section class="brand">
+<header class="top">
 
 <div class="logo">
 Offer<span>wax</span>
 </div>
 
-<div class="brand-badge">
-SHARE • COMPLETE • EARN
+<div class="secure">
+<span class="secure-dot"></span>
+Secure access
 </div>
 
-</section>
+</header>
+
 
 <!-- HERO -->
 
 <section class="hero">
 
+<div class="hero-tag">
+<i></i>
+Welcome to Offerwax
+</div>
+
 <h1>
-Earn More.<br>
-<span>Share More.</span>
+Your rewards.<br>
+<span>One simple platform.</span>
 </h1>
 
 <p>
-Discover earning offers, share opportunities with friends
-and manage your rewards from one place.
+Complete offers, refer friends and share selected
+campaigns — all from your Offerwax account.
 </p>
 
-</section>
+<div class="features">
 
-<!-- ROTATING ACTIVITY -->
+<div class="feature">
 
-<section class="activity-wrap">
+<div class="feature-icon">₹</div>
 
-<div class="activity-label">
+<strong>Rewards</strong>
 
-<span>Recent Activity</span>
-
-<span class="demo-label">
-Demo activity
-</span>
+<small>Earn & withdraw</small>
 
 </div>
 
-<div class="activity" id="activityBox">
+<div class="feature">
 
-<div class="activity-icon" id="activityIcon">
-₹
-</div>
+<div class="feature-icon">↗</div>
 
-<div class="activity-info">
+<strong>Share & Earn</strong>
 
-<strong id="activityTitle">
-Amit received a withdrawal
-</strong>
-
-<small id="activitySub">
-Recently completed
-</small>
+<small>Share campaigns</small>
 
 </div>
 
-<div class="activity-money" id="activityMoney">
-₹10,000
+<div class="feature">
+
+<div class="feature-icon">⌖</div>
+
+<strong>Tracking</strong>
+
+<small>Check progress</small>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- AUTH -->
+
+<!-- AUTH CARD -->
 
 <section class="auth-card">
 
-<div class="auth-head">
+<div class="auth-title">
 
-<h2 id="authTitle">
-Create Your Account
+<div>
+
+<h2 id="formTitle">
+Create Account
 </h2>
 
-<p id="authSubtitle">
-Join Offerwax and start exploring earning opportunities.
+<p id="formSubtitle">
+It only takes a minute to get started.
 </p>
 
 </div>
+
+<div class="step" id="stepText">
+NEW USER
+</div>
+
+</div>
+
+
+<!-- TABS -->
 
 <div class="tabs">
 
 <button
+type="button"
 class="tab active"
 id="signupTab"
-onclick="showSignup()">
-Create Account
+onclick="openSignup()">
+Sign Up
 </button>
 
 <button
+type="button"
 class="tab"
 id="loginTab"
-onclick="showLogin()">
+onclick="openLogin()">
 Login
 </button>
 
 </div>
 
-<!-- SIGNUP FORM -->
+
+<!-- SIGNUP -->
 
 <form
 class="form active"
 id="signupForm"
-onsubmit="signup(event)">
+onsubmit="registerUser(event)">
 
 <div class="field">
 
-<label>Full Name</label>
+<label>FULL NAME</label>
 
 <input
 class="input"
 id="fullName"
 type="text"
-placeholder="Enter your full name"
+placeholder="Your full name"
 autocomplete="name"
 required>
 
 </div>
 
+
 <div class="field">
 
-<label>Mobile Number</label>
+<label>MOBILE NUMBER</label>
 
 <input
 class="input"
@@ -556,29 +585,32 @@ id="signupMobile"
 type="tel"
 inputmode="numeric"
 maxlength="10"
-placeholder="Enter 10-digit mobile number"
+placeholder="10-digit mobile number"
 autocomplete="tel"
 required>
 
 </div>
 
+
+<div class="field-row">
+
 <div class="field">
 
-<label>Create Password</label>
+<label>PASSWORD</label>
 
 <div class="input-wrap">
 
 <input
-class="input password"
+class="input password-input"
 id="signupPassword"
 type="password"
-placeholder="Create a password"
+placeholder="Min. 6 characters"
 autocomplete="new-password"
 required>
 
 <button
 type="button"
-class="show"
+class="show-btn"
 onclick="togglePassword('signupPassword',this)">
 SHOW
 </button>
@@ -587,23 +619,24 @@ SHOW
 
 </div>
 
+
 <div class="field">
 
-<label>Confirm Password</label>
+<label>CONFIRM PASSWORD</label>
 
 <div class="input-wrap">
 
 <input
-class="input password"
+class="input password-input"
 id="confirmPassword"
 type="password"
-placeholder="Enter password again"
+placeholder="Repeat password"
 autocomplete="new-password"
 required>
 
 <button
 type="button"
-class="show"
+class="show-btn"
 onclick="togglePassword('confirmPassword',this)">
 SHOW
 </button>
@@ -612,31 +645,33 @@ SHOW
 
 </div>
 
+</div>
+
+
 <div class="field">
 
-<label>Referral Code <span style="color:#59677b">(Optional)</span></label>
+<label>
+REFERRAL CODE
+<span class="optional">— optional</span>
+</label>
 
 <input
 class="input"
 id="referralCode"
 type="text"
-placeholder="Enter referral code">
+placeholder="Example: OW8473">
 
 </div>
 
-<p class="ref-note">
-If you joined through someone's referral link, the code can
-be filled automatically.
-</p>
 
 <label class="terms">
 
 <input
-id="signupTerms"
-type="checkbox">
+type="checkbox"
+id="termsCheck">
 
 <span>
-I agree to Offerwax
+I agree to the
 <a href="terms.html">Terms & Conditions</a>
 and
 <a href="privacy.html">Privacy Policy</a>.
@@ -644,36 +679,47 @@ and
 
 </label>
 
+
 <button
-class="primary"
-type="submit">
-Create My Account
+type="submit"
+class="primary">
+Create Account →
 </button>
 
-<div class="switch-text">
-
-Already have an account?
+<div class="divider">
+<span>ALREADY REGISTERED?</span>
+</div>
 
 <button
 type="button"
-onclick="showLogin()">
-Login
+style="
+width:100%;
+height:43px;
+margin-top:12px;
+border:1px solid #28344a;
+border-radius:12px;
+background:#0a101b;
+color:#aab3c1;
+font-size:9px;
+font-weight:800;
+"
+onclick="openLogin()">
+Login to your account
 </button>
-
-</div>
 
 </form>
 
-<!-- LOGIN FORM -->
+
+<!-- LOGIN -->
 
 <form
 class="form"
 id="loginForm"
-onsubmit="login(event)">
+onsubmit="loginUser(event)">
 
 <div class="field">
 
-<label>Mobile Number</label>
+<label>REGISTERED MOBILE NUMBER</label>
 
 <input
 class="input"
@@ -681,20 +727,21 @@ id="loginMobile"
 type="tel"
 inputmode="numeric"
 maxlength="10"
-placeholder="Enter registered mobile number"
+placeholder="Enter mobile number"
 autocomplete="tel"
 required>
 
 </div>
 
+
 <div class="field">
 
-<label>Password</label>
+<label>PASSWORD</label>
 
 <div class="input-wrap">
 
 <input
-class="input password"
+class="input password-input"
 id="loginPassword"
 type="password"
 placeholder="Enter your password"
@@ -703,7 +750,7 @@ required>
 
 <button
 type="button"
-class="show"
+class="show-btn"
 onclick="togglePassword('loginPassword',this)">
 SHOW
 </button>
@@ -712,236 +759,137 @@ SHOW
 
 </div>
 
+
 <a
 href="#"
 class="forgot"
 onclick="forgotPassword(event)">
-Forgot Password?
+Forgot password?
 </a>
 
+
 <button
-class="primary"
-type="submit">
-Login to Offerwax
+type="submit"
+class="primary">
+Login →
 </button>
 
-<div class="switch-text">
 
-New to Offerwax?
+<div class="divider">
+<span>NEW TO OFFERWAX?</span>
+</div>
 
 <button
 type="button"
-onclick="showSignup()">
-Create Account
+style="
+width:100%;
+height:43px;
+margin-top:12px;
+border:1px solid #28344a;
+border-radius:12px;
+background:#0a101b;
+color:#aab3c1;
+font-size:9px;
+font-weight:800;
+"
+onclick="openSignup()">
+Create a new account
 </button>
-
-</div>
 
 </form>
 
 </section>
 
-<!-- TRUST -->
 
-<section class="trust">
+<!-- FOOTER -->
 
-<h3>Why Offerwax?</h3>
+<footer class="bottom">
 
 <p>
-A simple platform built for offers, referrals and rewards.
+<strong>Offerwax</strong> • Offers • Referrals • Share & Earn
+<br>
+Rewards are subject to successful completion and validation.
 </p>
 
-<div class="trust-grid">
-
-<div class="trust-box">
-
-<span>⌖</span>
-
-<strong>Tracking</strong>
-
-<small>Check progress</small>
-
-</div>
-
-<div class="trust-box">
-
-<span>₹</span>
-
-<strong>UPI Payout</strong>
-
-<small>Simple withdrawals</small>
-
-</div>
-
-<div class="trust-box">
-
-<span>?</span>
-
-<strong>Support</strong>
-
-<small>Submit an issue</small>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="footer">
-
-By using Offerwax, you agree to the platform's terms and policies.<br>
-Rewards depend on successful offer completion and validation.
-
-</div>
+</footer>
 
 </main>
 
+
 <script>
 
-/*
-============================================
-ROTATING DEMO ACTIVITY
-============================================
+/* =========================
+   TAB CONTROL
+========================= */
 
-Replace this array with verified backend activity
-once real user/payment data is available.
-*/
+function openSignup(){
 
-const activities = [
+document
+.getElementById("signupForm")
+.classList.add("active");
 
-{
-title:"Amit received a withdrawal",
-sub:"Withdrawal completed",
-money:"₹10,000",
-icon:"₹"
-},
+document
+.getElementById("loginForm")
+.classList.remove("active");
 
-{
-title:"Akash earned from Share & Earn",
-sub:"Offer completion reward",
-money:"+₹500",
-icon:"↗"
-},
+document
+.getElementById("signupTab")
+.classList.add("active");
 
-{
-title:"Shreya received a withdrawal",
-sub:"Withdrawal completed",
-money:"₹2,500",
-icon:"₹"
-},
+document
+.getElementById("loginTab")
+.classList.remove("active");
 
-{
-title:"Rahul completed an offer",
-sub:"Reward credited",
-money:"+₹300",
-icon:"✓"
-},
+document.getElementById("formTitle")
+.innerText="Create Account";
 
-{
-title:"Arjun earned a referral reward",
-sub:"First eligible task completed",
-money:"+₹100",
-icon:"♧"
-}
+document.getElementById("formSubtitle")
+.innerText="It only takes a minute to get started.";
 
-];
-
-let activityIndex=0;
-
-const activityBox=
-document.getElementById("activityBox");
-
-function rotateActivity(){
-
-activityBox.classList.add("hide");
-
-setTimeout(()=>{
-
-activityIndex=
-(activityIndex+1)%activities.length;
-
-const item=
-activities[activityIndex];
-
-document.getElementById("activityTitle")
-.innerText=item.title;
-
-document.getElementById("activitySub")
-.innerText=item.sub;
-
-document.getElementById("activityMoney")
-.innerText=item.money;
-
-document.getElementById("activityIcon")
-.innerText=item.icon;
-
-activityBox.classList.remove("hide");
-
-},350);
+document.getElementById("stepText")
+.innerText="NEW USER";
 
 }
 
-setInterval(rotateActivity,3200);
 
+function openLogin(){
 
-/*
-============================================
-TABS
-============================================
-*/
-
-function showSignup(){
-
-document.getElementById("signupForm")
+document
+.getElementById("loginForm")
 .classList.add("active");
 
-document.getElementById("loginForm")
+document
+.getElementById("signupForm")
 .classList.remove("active");
 
-document.getElementById("signupTab")
+document
+.getElementById("loginTab")
 .classList.add("active");
 
-document.getElementById("loginTab")
+document
+.getElementById("signupTab")
 .classList.remove("active");
 
-document.getElementById("authTitle")
-.innerText="Create Your Account";
-
-document.getElementById("authSubtitle")
-.innerText=
-"Join Offerwax and start exploring earning opportunities.";
-
-}
-
-function showLogin(){
-
-document.getElementById("loginForm")
-.classList.add("active");
-
-document.getElementById("signupForm")
-.classList.remove("active");
-
-document.getElementById("loginTab")
-.classList.add("active");
-
-document.getElementById("signupTab")
-.classList.remove("active");
-
-document.getElementById("authTitle")
+document.getElementById("formTitle")
 .innerText="Welcome Back";
 
-document.getElementById("authSubtitle")
-.innerText=
-"Login using your registered mobile number.";
+document.getElementById("formSubtitle")
+.innerText="Login using your registered mobile number.";
+
+document.getElementById("stepText")
+.innerText="LOGIN";
+
+window.scrollTo({
+top:document.querySelector(".auth-card").offsetTop-15,
+behavior:"smooth"
+});
 
 }
 
 
-/*
-============================================
-PASSWORD
-============================================
-*/
+/* =========================
+   PASSWORD
+========================= */
 
 function togglePassword(id,button){
 
@@ -963,26 +911,22 @@ button.innerText="SHOW";
 }
 
 
-/*
-============================================
-VALIDATION
-============================================
-*/
+/* =========================
+   MOBILE VALIDATION
+========================= */
 
-function validMobile(mobile){
+function validMobile(value){
 
-return /^[6-9][0-9]{9}$/.test(mobile);
+return /^[6-9][0-9]{9}$/.test(value);
 
 }
 
 
-/*
-============================================
-SIGNUP
-============================================
-*/
+/* =========================
+   SIGNUP
+========================= */
 
-function signup(event){
+function registerUser(event){
 
 event.preventDefault();
 
@@ -1006,9 +950,10 @@ const referral=
 document.getElementById("referralCode")
 .value.trim();
 
-const terms=
-document.getElementById("signupTerms")
+const accepted=
+document.getElementById("termsCheck")
 .checked;
+
 
 if(name.length<2){
 
@@ -1017,19 +962,22 @@ return;
 
 }
 
+
 if(!validMobile(mobile)){
 
-alert("Please enter a valid 10-digit Indian mobile number.");
+alert("Enter a valid 10-digit mobile number.");
 return;
 
 }
+
 
 if(password.length<6){
 
-alert("Password must be at least 6 characters.");
+alert("Password must contain at least 6 characters.");
 return;
 
 }
+
 
 if(password!==confirmPassword){
 
@@ -1038,46 +986,49 @@ return;
 
 }
 
-if(!terms){
+
+if(!accepted){
 
 alert("Please accept the Terms & Privacy Policy.");
 return;
 
 }
 
+
 /*
-IMPORTANT:
+REAL BACKEND LATER:
 
-Do NOT store real passwords in localStorage
-or sessionStorage.
+POST /api/auth/register
 
-Real signup will later send these details
-securely to the backend over HTTPS.
+{
+ name,
+ mobile,
+ password,
+ referralCode
+}
 
-The backend should hash the password before
-saving it.
+Never store the plaintext password in
+localStorage/sessionStorage.
 */
 
 console.log({
-name:name,
-mobile:mobile,
+name,
+mobile,
 referralCode:referral || null
 });
 
 alert(
-"Signup page is ready, but account creation is not connected to the backend yet."
+"Registration interface is ready. Account creation will work after the secure backend is connected."
 );
 
 }
 
 
-/*
-============================================
-LOGIN
-============================================
-*/
+/* =========================
+   LOGIN
+========================= */
 
-function login(event){
+function loginUser(event){
 
 event.preventDefault();
 
@@ -1089,64 +1040,57 @@ const password=
 document.getElementById("loginPassword")
 .value;
 
+
 if(!validMobile(mobile)){
 
-alert("Please enter a valid registered mobile number.");
+alert("Enter a valid registered mobile number.");
 return;
 
 }
+
 
 if(!password){
 
-alert("Please enter your password.");
+alert("Enter your password.");
 return;
 
 }
 
+
 /*
-Real login later:
+REAL BACKEND LATER:
 
 POST /api/auth/login
 
-Backend validates:
-mobile + password hash
-
-Then create a secure authenticated session.
+After successful login:
+window.location.href="index.html";
 */
 
 alert(
-"Login interface is ready, but authentication is not connected yet."
+"Login interface is ready. Authentication will work after the secure backend is connected."
 );
 
 }
 
 
-/*
-============================================
-FORGOT PASSWORD
-============================================
-*/
+/* =========================
+   FORGOT PASSWORD
+========================= */
 
 function forgotPassword(event){
 
 event.preventDefault();
 
 alert(
-"Password recovery will be connected when the authentication backend is ready."
+"Account recovery will be connected with the authentication backend."
 );
 
 }
 
 
-/*
-============================================
-REFERRAL AUTO-FILL
-============================================
-
-Example:
-
-login.html?ref=OW8473
-*/
+/* =========================
+   REFERRAL AUTO-FILL
+========================= */
 
 const params=
 new URLSearchParams(window.location.search);
@@ -1160,66 +1104,6 @@ document.getElementById("referralCode")
 .value=ref;
 
 }
-
-
-/*
-============================================
-REAL BACKEND LATER
-============================================
-
-SIGNUP:
-
-POST /api/auth/register
-
-{
-  name,
-  mobile,
-  password,
-  referralCode
-}
-
-Server:
-
-1. Validate mobile
-2. Check duplicate account
-3. Hash password
-4. Generate Offerwax User ID
-5. Store referral relationship if valid
-6. Create authenticated session
-7. Redirect to index.html
-
-
-LOGIN:
-
-POST /api/auth/login
-
-{
-  mobile,
-  password
-}
-
-After successful authentication:
-→ index.html
-
-
-SECURITY:
-
-Never store plaintext passwords.
-
-Use:
-- HTTPS
-- password hashing
-- secure session cookies
-- rate limiting
-- server-side validation
-
-Since OTP is not being used, account recovery
-must later use another secure verification method.
-
-The rotating activity above is DEMO content.
-Once real verified activity exists, replace it
-with backend-provided activity.
-*/
 
 </script>
 
