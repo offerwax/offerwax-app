@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Share & Earn | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+  padding-bottom:100px;
+}
+
+.topbar{
+  height:72px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #182133;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:-.7px;
+}
+
+.logo span{color:#d42df4;}
+
+.header-right{
+  display:flex;
+  gap:10px;
+}
+
+.circle{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid #263249;
+  background:#0d1422;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.profile{
+  font-size:12px;
+  font-weight:800;
+}
+
+.page{
+  padding:22px 20px;
+  max-width:600px;
+  margin:auto;
+}
+
+.title{
+  font-size:29px;
+  font-weight:800;
+}
+
+.subtitle{
+  margin-top:7px;
+  color:#8e99ae;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  background:#10182a;
+  border:1px solid #202c43;
+  padding:5px;
+  border-radius:15px;
+  margin-top:22px;
+}
+
+.tab{
+  flex:1;
+  border:0;
+  background:transparent;
+  color:#8e99ae;
+  padding:12px;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tab.active{
+  color:#fff;
+  background:linear-gradient(135deg,#7629ec,#c326e8);
+}
+
+.tab-content{
+  display:none;
+}
+
+.tab-content.active{
+  display:block;
+}
+
+/* HERO */
+
+.hero{
+  margin-top:20px;
+  padding:22px;
+  border-radius:21px;
+  background:
+  radial-gradient(circle at top right,rgba(224,46,245,.35),transparent 42%),
+  linear-gradient(135deg,#4820bc,#951ed3);
+}
+
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,.14);
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.hero h2{
+  font-size:23px;
+  margin-top:13px;
+}
+
+.hero p{
+  font-size:13px;
+  color:rgba(255,255,255,.82);
+  line-height:1.5;
+  margin-top:8px;
+}
+
+/* SECTION */
+
+.section{
+  margin-top:27px;
+}
+
+.section-title{
+  font-size:19px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+/* OFFER */
+
+.offer-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:20px;
+  padding:17px;
+  margin-bottom:14px;
+}
+
+.offer-top{
+  display:flex;
+  align-items:center;
+}
+
+.offer-logo{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:#fff;
+  color:#172036;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:800;
+  margin-right:13px;
+}
+
+.offer-info{
+  flex:1;
+}
+
+.offer-name{
+  font-size:16px;
+  font-weight:800;
+}
+
+.offer-desc{
+  font-size:11px;
+  color:#8e99ae;
+  margin-top:5px;
+}
+
+.cashback{
+  text-align:right;
+}
+
+.cashback small{
+  display:block;
+  color:#8e99ae;
+  font-size:9px;
+  margin-bottom:3px;
+}
+
+.cashback strong{
+  color:#39dc8a;
+  font-size:18px;
+}
+
+.share-offer-btn{
+  width:100%;
+  border:0;
+  margin-top:15px;
+  padding:13px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7927e9,#c525e7);
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* SHARE BOX */
+
+.share-panel{
+  display:none;
+  margin-top:13px;
+  border-top:1px solid #202c43;
+  padding-top:14px;
+}
+
+.share-panel.open{
+  display:block;
+}
+
+.share-label{
+  color:#8e99ae;
+  font-size:11px;
+  margin-bottom:9px;
+}
+
+.link-box{
+  display:flex;
+  background:#080e19;
+  border:1px solid #263249;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.link-box input{
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#d8dfeb;
+  font-size:11px;
+}
+
+.copy-btn{
+  border:0;
+  padding:0 15px;
+  background:#8d27e8;
+  color:#fff;
+  font-weight:700;
+}
+
+.share-icons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:11px;
+}
+
+.social{
+  background:#0b1220;
+  border:1px solid #202c43;
+  border-radius:11px;
+  padding:10px 3px;
+  text-align:center;
+  font-size:9px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+  margin-top:20px;
+}
+
+.stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:17px;
+  padding:16px;
+}
+
+.stat-label{
+  color:#8e99ae;
+  font-size:11px;
+}
+
+.stat-value{
+  font-size:22px;
+  font-weight:800;
+  margin-top:7px;
+}
+
+.green{color:#39dc8a;}
+.orange{color:#ffb64c;}
+.purple{color:#d42df4;}
+
+/* TRACKING OFFER */
+
+.track-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:20px;
+  margin-bottom:15px;
+  overflow:hidden;
+}
+
+.track-head{
+  padding:16px;
+}
+
+.track-title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.track-name{
+  font-size:16px;
+  font-weight:800;
+}
+
+.track-earning{
+  color:#39dc8a;
+  font-weight:800;
+}
+
+.mini-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:15px;
+  background:#080e19;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.mini{
+  text-align:center;
+  padding:11px 3px;
+  border-right:1px solid #202c43;
+}
+
+.mini:last-child{
+  border-right:0;
+}
+
+.mini strong{
+  display:block;
+  font-size:14px;
+}
+
+.mini span{
+  display:block;
+  color:#778297;
+  font-size:8px;
+  margin-top:4px;
+}
+
+.view-users{
+  width:100%;
+  background:transparent;
+  color:#c934ef;
+  border:0;
+  border-top:1px solid #202c43;
+  padding:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.users{
+  display:none;
+  border-top:1px solid #202c43;
+}
+
+.users.open{
+  display:block;
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  padding:14px 16px;
+  border-bottom:1px solid #202c43;
+}
+
+.user:last-child{
+  border-bottom:0;
+}
+
+.user-avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#202c43;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:800;
+  margin-right:11px;
+}
+
+.user-info{
+  flex:1;
+}
+
+.user-name{
+  font-size:12px;
+  font-weight:700;
+}
+
+.user-stage{
+  color:#8e99ae;
+  font-size:10px;
+  margin-top:5px;
+}
+
+.status{
+  font-size:10px;
+  font-weight:700;
+  padding:6px 8px;
+  border-radius:20px;
+}
+
+.status.pending{
+  color:#ffb64c;
+  background:rgba(255,182,76,.1);
+}
+
+.status.complete{
+  color:#39dc8a;
+  background:rgba(57,220,138,.1);
+}
+
+.status.tracked{
+  color:#c934ef;
+  background:rgba(201,52,239,.1);
+}
+
+.note{
+  color:#68748a;
+  font-size:10px;
+  line-height:1.5;
+  text-align:center;
+  margin-top:18px;
+}
+
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:76px;
+  background:rgba(5,9,20,.97);
+  border-top:1px solid #202a3e;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:100;
+}
+
+.nav-item{
+  color:#7e899d;
+  text-decoration:none;
+  text-align:center;
+  font-size:11px;
+  min-width:58px;
+}
+
+.nav-icon{
+  display:block;
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.nav-item.active{
+  color:#d42df4;
+  font-weight:700;
+}
+
+@media(min-width:650px){
+  .bottom-nav{
+    max-width:600px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="logo">Offer<span>wax</span></div>
+
+  <div class="header-right">
+    <div class="circle">♢</div>
+    <div class="circle profile">ES</div>
+  </div>
+</header>
+
+<main class="page">
+
+<h1 class="title">Share & Earn</h1>
+<p class="subtitle">
+  Share offers with your friends and earn when they successfully complete them.
+</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="openTab('offers',this)">Offers</button>
+  <button class="tab" onclick="openTab('earnings',this)">Earnings</button>
+</div>
+
+
+<!-- OFFERS TAB -->
+
+<div id="offers" class="tab-content active">
+
+  <div class="hero">
+    <div class="hero-badge">↗ SHARE & EARN</div>
+
+    <h2>Share Offers. Earn Cashback.</h2>
+
+    <p>
+      Choose an offer, share your unique link and earn the displayed
+      cashback after a successful validated completion.
+    </p>
+  </div>
+
+
+  <section class="section">
+
+    <h3 class="section-title">Offers to Share</h3>
+
+
+    <!-- KOTAK -->
+
+    <div class="offer-card">
+
+      <div class="offer-top">
+
+        <div class="offer-logo">Kotak</div>
+
+        <div class="offer-info">
+          <div class="offer-name">Kotak 811</div>
+          <div class="offer-desc">Bank Account Offer</div>
+        </div>
+
+        <div class="cashback">
+          <small>Cashback</small>
+          <strong>₹500</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="share-offer-btn"
+        onclick="toggleShare('kotakShare')">
+        Share Offer
+      </button>
+
+      <div id="kotakShare" class="share-panel">
+
+        <div class="share-label">Your unique offer link</div>
+
+        <div class="link-box">
+
+          <input
+            id="kotakLink"
+            value="https://offerwax-app.pages.dev/go.html?offer=kotak&ref=ES8473"
+            readonly>
+
+          <button
+            class="copy-btn"
+            onclick="copyLink('kotakLink',this)">
+            Copy
+          </button>
+
+        </div>
+
+        <div class="share-icons">
+
+          <div class="social"
+          onclick="whatsapp('kotakLink')">
+          WhatsApp
+          </div>
+
+          <div class="social"
+          onclick="instagram('kotakLink')">
+          Instagram
+          </div>
+
+          <div class="social"
+          onclick="telegram('kotakLink')">
+          Telegram
+          </div>
+
+          <div class="social"
+          onclick="moreShare('kotakLink','Kotak 811')">
+          More
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- COINDCX -->
+
+    <div class="offer-card">
+
+      <div class="offer-top">
+
+        <div class="offer-logo">CoinDCX</div>
+
+        <div class="offer-info">
+          <div class="offer-name">CoinDCX</div>
+          <div class="offer-desc">Crypto Account Offer</div>
+        </div>
+
+        <div class="cashback">
+          <small>Cashback</small>
+          <strong>₹300</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="share-offer-btn"
+        onclick="toggleShare('coinShare')">
+        Share Offer
+      </button>
+
+      <div id="coinShare" class="share-panel">
+
+        <div class="share-label">Your unique offer link</div>
+
+        <div class="link-box">
+
+          <input
+            id="coinLink"
+            value="https://offerwax-app.pages.dev/go.html?offer=coindcx&ref=ES8473"
+            readonly>
+
+          <button
+            class="copy-btn"
+            onclick="copyLink('coinLink',this)">
+            Copy
+          </button>
+
+        </div>
+
+        <div class="share-icons">
+
+          <div class="social"
+          onclick="whatsapp('coinLink')">
+          WhatsApp
+          </div>
+
+          <div class="social"
+          onclick="instagram('coinLink')">
+          Instagram
+          </div>
+
+          <div class="social"
+          onclick="telegram('coinLink')">
+          Telegram
+          </div>
+
+          <div class="social"
+          onclick="moreShare('coinLink','CoinDCX')">
+          More
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- UPSTOX -->
+
+    <div class="offer-card">
+
+      <div class="offer-top">
+
+        <div class="offer-logo">Upstox</div>
+
+        <div class="offer-info">
+          <div class="offer-name">Upstox</div>
+          <div class="offer-desc">Demat Account Offer</div>
+        </div>
+
+        <div class="cashback">
+          <small>Cashback</small>
+          <strong>₹250</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="share-offer-btn"
+        onclick="toggleShare('upstoxShare')">
+        Share Offer
+      </button>
+
+      <div id="upstoxShare" class="share-panel">
+
+        <div class="share-label">Your unique offer link</div>
+
+        <div class="link-box">
+
+          <input
+            id="upstoxLink"
+            value="https://offerwax-app.pages.dev/go.html?offer=upstox&ref=ES8473"
+            readonly>
+
+          <button
+            class="copy-btn"
+            onclick="copyLink('upstoxLink',this)">
+            Copy
+          </button>
+
+        </div>
+
+        <div class="share-icons">
+
+          <div class="social"
+          onclick="whatsapp('upstoxLink')">
+          WhatsApp
+          </div>
+
+          <div class="social"
+          onclick="instagram('upstoxLink')">
+          Instagram
+          </div>
+
+          <div class="social"
+          onclick="telegram('upstoxLink')">
+          Telegram
+          </div>
+
+          <div class="social"
+          onclick="moreShare('upstoxLink','Upstox')">
+          More
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+
+<!-- EARNINGS TAB -->
+
+<div id="earnings" class="tab-content">
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-label">Total Clicks</div>
+      <div class="stat-value">148</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Tracked Users</div>
+      <div class="stat-value purple">63</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Pending</div>
+      <div class="stat-value orange">21</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Completed</div>
+      <div class="stat-value green">18</div>
+    </div>
+
+  </div>
+
+
+  <div class="stat" style="margin-top:11px;">
+    <div class="stat-label">Total Share Earnings</div>
+    <div class="stat-value green">₹7,250</div>
+  </div>
+
+
+  <section class="section">
+
+    <h3 class="section-title">Offer Performance</h3>
+
+
+    <!-- KOTAK TRACKING -->
+
+    <div class="track-card">
+
+      <div class="track-head">
+
+        <div class="track-title-row">
+          <div class="track-name">Kotak 811</div>
+          <div class="track-earning">₹5,000</div>
+        </div>
+
+        <div class="mini-stats">
+
+          <div class="mini">
+            <strong>82</strong>
+            <span>CLICKS</span>
+          </div>
+
+          <div class="mini">
+            <strong>31</strong>
+            <span>TRACKED</span>
+          </div>
+
+          <div class="mini">
+            <strong>12</strong>
+            <span>PENDING</span>
+          </div>
+
+          <div class="mini">
+            <strong>10</strong>
+            <span>COMPLETE</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="view-users"
+        onclick="toggleUsers('kotakUsers',this)">
+        View Tracked Users ↓
+      </button>
+
+
+      <div id="kotakUsers" class="users">
+
+        <div class="user">
+
+          <div class="user-avatar">RS</div>
+
+          <div class="user-info">
+            <div class="user-name">Rahul S.</div>
+            <div class="user-stage">
+              Install tracked
+            </div>
+          </div>
+
+          <div class="status tracked">
+            Tracked
+          </div>
+
+        </div>
+
+
+        <div class="user">
+
+          <div class="user-avatar">AK</div>
+
+          <div class="user-info">
+            <div class="user-name">Aman K.</div>
+            <div class="user-stage">
+              Registration completed
+            </div>
+          </div>
+
+          <div class="status pending">
+            Pending
+          </div>
+
+        </div>
+
+
+        <div class="user">
+
+          <div class="user-avatar">PS</div>
+
+          <div class="user-info">
+            <div class="user-name">Priya S.</div>
+            <div class="user-stage">
+              Required action completed
+            </div>
+          </div>
+
+          <div class="status complete">
+            Completed
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- COINDCX TRACKING -->
+
+    <div class="track-card">
+
+      <div class="track-head">
+
+        <div class="track-title-row">
+          <div class="track-name">CoinDCX</div>
+          <div class="track-earning">₹1,500</div>
+        </div>
+
+        <div class="mini-stats">
+
+          <div class="mini">
+            <strong>43</strong>
+            <span>CLICKS</span>
+          </div>
+
+          <div class="mini">
+            <strong>20</strong>
+            <span>TRACKED</span>
+          </div>
+
+          <div class="mini">
+            <strong>6</strong>
+            <span>PENDING</span>
+          </div>
+
+          <div class="mini">
+            <strong>5</strong>
+            <span>COMPLETE</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="view-users"
+        onclick="toggleUsers('coinUsers',this)">
+        View Tracked Users ↓
+      </button>
+
+
+      <div id="coinUsers" class="users">
+
+        <div class="user">
+
+          <div class="user-avatar">RM</div>
+
+          <div class="user-info">
+            <div class="user-name">Rohit M.</div>
+            <div class="user-stage">
+              Offer started
+            </div>
+          </div>
+
+          <div class="status tracked">
+            Tracked
+          </div>
+
+        </div>
+
+
+        <div class="user">
+
+          <div class="user-avatar">SK</div>
+
+          <div class="user-info">
+            <div class="user-name">Sahil K.</div>
+            <div class="user-stage">
+              Registration completed
+            </div>
+          </div>
+
+          <div class="status pending">
+            Pending
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- UPSTOX TRACKING -->
+
+    <div class="track-card">
+
+      <div class="track-head">
+
+        <div class="track-title-row">
+          <div class="track-name">Upstox</div>
+          <div class="track-earning">₹750</div>
+        </div>
+
+        <div class="mini-stats">
+
+          <div class="mini">
+            <strong>23</strong>
+            <span>CLICKS</span>
+          </div>
+
+          <div class="mini">
+            <strong>12</strong>
+            <span>TRACKED</span>
+          </div>
+
+          <div class="mini">
+            <strong>3</strong>
+            <span>PENDING</span>
+          </div>
+
+          <div class="mini">
+            <strong>3</strong>
+            <span>COMPLETE</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="view-users"
+        onclick="toggleUsers('upstoxUsers',this)">
+        View Tracked Users ↓
+      </button>
+
+
+      <div id="upstoxUsers" class="users">
+
+        <div class="user">
+
+          <div class="user-avatar">AR</div>
+
+          <div class="user-info">
+            <div class="user-name">Arjun R.</div>
+            <div class="user-stage">
+              Required action completed
+            </div>
+          </div>
+
+          <div class="status complete">
+            Completed
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <p class="note">
+    Tracking and earnings shown here are sample data.
+    Real statuses will update after tracking and validation are connected.
+  </p>
+
+</div>
+
+</main>
+
+
+
+<nav class="bottom-nav">
+
+<a href="index.html" class="nav-item">
+<span class="nav-icon">⌂</span>
+Home
+</a>
+
+<a href="offers.html" class="nav-item">
+<span class="nav-icon">▣</span>
+Offers
+</a>
+
+<a href="refer.html" class="nav-item">
+<span class="nav-icon">♧</span>
+Refer
+</a>
+
+<a href="share.html" class="nav-item active">
+<span class="nav-icon">↗</span>
+Share
+</a>
+
+<a href="wallet.html" class="nav-item">
+<span class="nav-icon">▤</span>
+Wallet
+</a>
+
+</nav>
+
+
+<script>
+
+function openTab(id,button){
+
+  document
+  .querySelectorAll(".tab-content")
+  .forEach(x=>x.classList.remove("active"));
+
+  document
+  .querySelectorAll(".tab")
+  .forEach(x=>x.classList.remove("active"));
+
+  document
+  .getElementById(id)
+  .classList.add("active");
+
+  button.classList.add("active");
+}
+
+
+function toggleShare(id){
+
+  document
+  .getElementById(id)
+  .classList.toggle("open");
+}
+
+
+function copyLink(id,button){
+
+  const link=
+  document.getElementById(id).value;
+
+  navigator.clipboard.writeText(link);
+
+  const old=button.innerText;
+
+  button.innerText="Copied ✓";
+
+  setTimeout(()=>{
+    button.innerText=old;
+  },1500);
+}
+
+
+function whatsapp(id){
+
+  const link=
+  document.getElementById(id).value;
+
+  const text=
+  "Complete this offer on Offerwax and get cashback: ";
+
+  window.open(
+    "https://wa.me/?text="+
+    encodeURIComponent(text+link),
+    "_blank"
+  );
+}
+
+
+function telegram(id){
+
+  const link=
+  document.getElementById(id).value;
+
+  window.open(
+    "https://t.me/share/url?url="+
+    encodeURIComponent(link)+
+    "&text="+
+    encodeURIComponent("Complete this Offerwax offer and get cashback."),
+    "_blank"
+  );
+}
+
+
+function instagram(id){
+
+  const link=
+  document.getElementById(id).value;
+
+  navigator.clipboard.writeText(link);
+
+  alert(
+    "Offer link copied. You can now share it on Instagram."
+  );
+
+  window.location.href=
+  "https://www.instagram.com/";
+}
+
+
+async function moreShare(id,offer){
+
+  const link=
+  document.getElementById(id).value;
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share({
+        title:offer+" | Offerwax",
+        text:"Complete this offer and get cashback.",
+        url:link
+      });
+
+    }catch(e){}
+
+  }else{
+
+    navigator.clipboard.writeText(link);
+
+    alert("Offer link copied.");
+
+  }
+}
+
+
+function toggleUsers(id,button){
+
+  const box=
+  document.getElementById(id);
+
+  box.classList.toggle("open");
+
+  if(box.classList.contains("open")){
+    button.innerText="Hide Tracked Users ↑";
+  }else{
+    button.innerText="View Tracked Users ↓";
+  }
+}
+
+</script>
+
+</body>
+          </html>
