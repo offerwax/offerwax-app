@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+
+<title>Profile | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+  padding-bottom:95px;
+}
+
+.header{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border-bottom:1px solid #182133;
+}
+
+.back{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#10182a;
+  border:1px solid #202c43;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:19px;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#d42df4;
+}
+
+.header-space{
+  width:38px;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:22px 20px;
+}
+
+
+/* PROFILE HERO */
+
+.profile-card{
+  background:linear-gradient(145deg,#111a2d,#171226);
+  border:1px solid #29233c;
+  border-radius:23px;
+  padding:22px;
+  text-align:center;
+}
+
+.avatar{
+  width:76px;
+  height:76px;
+  margin:auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  font-weight:900;
+  background:linear-gradient(135deg,#7027e8,#d42df4);
+  border:3px solid rgba(255,255,255,.12);
+}
+
+.profile-name{
+  font-size:21px;
+  font-weight:800;
+  margin-top:13px;
+}
+
+.profile-id{
+  color:#8490a4;
+  font-size:10px;
+  margin-top:6px;
+}
+
+.verified{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:11px;
+  padding:6px 10px;
+  border-radius:20px;
+  color:#39dc8a;
+  background:rgba(57,220,138,.09);
+  font-size:9px;
+  font-weight:700;
+}
+
+
+/* SECTION */
+
+.section{
+  margin-top:25px;
+}
+
+.section-title{
+  font-size:14px;
+  color:#8e99ad;
+  font-weight:700;
+  margin:0 4px 10px;
+}
+
+.card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:19px;
+  overflow:hidden;
+}
+
+
+/* DETAILS */
+
+.detail-row{
+  display:flex;
+  align-items:center;
+  padding:15px;
+  border-bottom:1px solid #202c43;
+}
+
+.detail-row:last-child{
+  border-bottom:0;
+}
+
+.detail-icon{
+  width:39px;
+  height:39px;
+  min-width:39px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#172136;
+  margin-right:12px;
+  font-size:15px;
+}
+
+.detail-info{
+  flex:1;
+  min-width:0;
+}
+
+.detail-label{
+  color:#758197;
+  font-size:9px;
+}
+
+.detail-value{
+  margin-top:5px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* REFERRAL */
+
+.referral-card{
+  padding:17px;
+}
+
+.referral-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.referral-info small{
+  color:#7e899d;
+  font-size:9px;
+}
+
+.referral-code{
+  font-size:19px;
+  font-weight:900;
+  margin-top:6px;
+  letter-spacing:1px;
+}
+
+.copy-btn{
+  border:1px solid #74359b;
+  color:#dc4df3;
+  background:rgba(212,45,244,.08);
+  padding:9px 13px;
+  border-radius:10px;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.referral-note{
+  color:#6f7b90;
+  font-size:9px;
+  line-height:1.5;
+  margin-top:12px;
+}
+
+
+/* MENU */
+
+.menu-item{
+  min-height:57px;
+  display:flex;
+  align-items:center;
+  padding:10px 15px;
+  border-bottom:1px solid #202c43;
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.menu-item:last-child{
+  border-bottom:0;
+}
+
+.menu-icon{
+  width:37px;
+  height:37px;
+  min-width:37px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#172136;
+  margin-right:12px;
+  font-size:15px;
+}
+
+.menu-text{
+  flex:1;
+}
+
+.menu-text strong{
+  display:block;
+  font-size:12px;
+}
+
+.menu-text small{
+  display:block;
+  color:#727f94;
+  font-size:8px;
+  margin-top:4px;
+}
+
+.arrow{
+  color:#647086;
+  font-size:17px;
+}
+
+
+/* LOGOUT */
+
+.logout{
+  color:#ff6f79;
+}
+
+.logout .menu-icon{
+  background:rgba(255,89,101,.08);
+}
+
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.76);
+  z-index:500;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:600px;
+  max-height:90vh;
+  overflow:auto;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:25px 25px 0 0;
+  padding:22px 20px 30px;
+}
+
+.modal-line{
+  width:45px;
+  height:4px;
+  background:#455168;
+  border-radius:10px;
+  margin:0 auto 20px;
+}
+
+.modal-title{
+  font-size:20px;
+}
+
+.modal-sub{
+  color:#7f8ba0;
+  font-size:10px;
+  line-height:1.5;
+  margin-top:7px;
+  margin-bottom:19px;
+}
+
+.field{
+  margin-top:14px;
+}
+
+label{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input{
+  width:100%;
+  height:47px;
+  border-radius:12px;
+  border:1px solid #29364e;
+  background:#080e19;
+  color:#fff;
+  padding:0 13px;
+  outline:none;
+  font-size:12px;
+}
+
+input:focus{
+  border-color:#c22ee7;
+}
+
+.save-btn{
+  width:100%;
+  height:48px;
+  margin-top:19px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  font-weight:800;
+  background:linear-gradient(135deg,#7227e7,#d42df4);
+  cursor:pointer;
+}
+
+.cancel-btn{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7e899d;
+  padding:14px 0 0;
+  cursor:pointer;
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:76px;
+  background:#090e18;
+  border-top:1px solid #1c2639;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:100;
+}
+
+.nav-item{
+  color:#7e899d;
+  text-decoration:none;
+  text-align:center;
+  font-size:11px;
+  min-width:58px;
+}
+
+.nav-icon{
+  display:block;
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.footer-note{
+  text-align:center;
+  color:#515d71;
+  font-size:8px;
+  margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+
+
+<header class="header">
+
+  <a href="index.html" class="back">
+    ‹
+  </a>
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+
+  <div class="header-space"></div>
+
+</header>
+
+
+<main class="container">
+
+
+  <!-- PROFILE -->
+
+  <section class="profile-card">
+
+    <div class="avatar" id="avatar">
+      ES
+    </div>
+
+    <div class="profile-name" id="profileName">
+      Earn Smart
+    </div>
+
+    <div class="profile-id">
+      User ID: <span id="userID">OW8473</span>
+    </div>
+
+    <div class="verified">
+      ✓ Account Active
+    </div>
+
+  </section>
+
+
+
+  <!-- ACCOUNT DETAILS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Account Details
+    </div>
+
+    <div class="card">
+
+
+      <div class="detail-row">
+
+        <div class="detail-icon">
+          👤
+        </div>
+
+        <div class="detail-info">
+
+          <div class="detail-label">
+            Full Name
+          </div>
+
+          <div class="detail-value" id="fullName">
+            Earn Smart
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <div class="detail-icon">
+          ☎
+        </div>
+
+        <div class="detail-info">
+
+          <div class="detail-label">
+            Mobile Number
+          </div>
+
+          <div class="detail-value" id="mobile">
+            +91 98XXXXXX42
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <div class="detail-icon">
+          ✉
+        </div>
+
+        <div class="detail-info">
+
+          <div class="detail-label">
+            Email Address
+          </div>
+
+          <div class="detail-value" id="email">
+            user@example.com
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <div class="detail-icon">
+          ₹
+        </div>
+
+        <div class="detail-info">
+
+          <div class="detail-label">
+            Payout UPI ID
+          </div>
+
+          <div class="detail-value" id="upi">
+            ea****@upi
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- REFERRAL CODE -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Your Referral
+    </div>
+
+    <div class="card referral-card">
+
+      <div class="referral-top">
+
+        <div class="referral-info">
+
+          <small>
+            Referral Code
+          </small>
+
+          <div class="referral-code" id="refCode">
+            OW8473
+          </div>
+
+        </div>
+
+        <button class="copy-btn" onclick="copyReferral()">
+          Copy Code
+        </button>
+
+      </div>
+
+      <div class="referral-note">
+        Share this code with friends when they create
+        their Offerwax account.
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ACCOUNT SETTINGS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Account Settings
+    </div>
+
+    <div class="card">
+
+
+      <div class="menu-item" onclick="openEdit()">
+
+        <div class="menu-icon">
+          ✎
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Edit Profile
+          </strong>
+
+          <small>
+            Update name, email, mobile and UPI
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </div>
+
+
+      <div class="menu-item" onclick="openPassword()">
+
+        <div class="menu-icon">
+          🔒
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Change Password
+          </strong>
+
+          <small>
+            Update your account password
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </div>
+
+
+      <a href="tracking.html" class="menu-item">
+
+        <div class="menu-icon">
+          ⌖
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Check Tracking
+          </strong>
+
+          <small>
+            Check your offer tracking status
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- SUPPORT -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Help & Legal
+    </div>
+
+    <div class="card">
+
+
+      <div class="menu-item" onclick="supportInfo()">
+
+        <div class="menu-icon">
+          ?
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Help & Support
+          </strong>
+
+          <small>
+            Get help with your Offerwax account
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </div>
+
+
+      <div class="menu-item" onclick="termsInfo()">
+
+        <div class="menu-icon">
+          ≡
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Terms & Privacy
+          </strong>
+
+          <small>
+            Terms, conditions and privacy policy
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- LOGOUT -->
+
+  <section class="section">
+
+    <div class="card">
+
+      <div class="menu-item logout" onclick="logoutUser()">
+
+        <div class="menu-icon">
+          ↪
+        </div>
+
+        <div class="menu-text">
+
+          <strong>
+            Logout
+          </strong>
+
+          <small>
+            Sign out of your Offerwax account
+          </small>
+
+        </div>
+
+        <div class="arrow">›</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="footer-note">
+    Offerwax • Share • Refer • Earn
+  </div>
+
+</main>
+
+
+
+<!-- EDIT PROFILE MODAL -->
+
+<div class="modal" id="editModal" onclick="outsideClose(event,'editModal')">
+
+  <div class="modal-box">
+
+    <div class="modal-line"></div>
+
+    <div class="modal-title">
+      Edit Profile
+    </div>
+
+    <div class="modal-sub">
+      Update your Offerwax account information.
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Full Name
+      </label>
+
+      <input
+        id="editName"
+        type="text"
+        value="Earn Smart">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Mobile Number
+      </label>
+
+      <input
+        id="editMobile"
+        type="tel"
+        placeholder="10-digit mobile number"
+        maxlength="10">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Email Address
+      </label>
+
+      <input
+        id="editEmail"
+        type="email"
+        value="user@example.com">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        UPI ID
+      </label>
+
+      <input
+        id="editUPI"
+        type="text"
+        placeholder="example@upi">
+
+    </div>
+
+
+    <button class="save-btn" onclick="saveProfile()">
+      Save Changes
+    </button>
+
+    <button class="cancel-btn" onclick="closeModal('editModal')">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- PASSWORD MODAL -->
+
+<div class="modal" id="passwordModal" onclick="outsideClose(event,'passwordModal')">
+
+  <div class="modal-box">
+
+    <div class="modal-line"></div>
+
+    <div class="modal-title">
+      Change Password
+    </div>
+
+    <div class="modal-sub">
+      Password changes will be connected with
+      the Offerwax authentication system.
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Current Password
+      </label>
+
+      <input
+        id="currentPassword"
+        type="password"
+        placeholder="Enter current password">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        New Password
+      </label>
+
+      <input
+        id="newPassword"
+        type="password"
+        placeholder="Minimum 6 characters">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Confirm New Password
+      </label>
+
+      <input
+        id="confirmNewPassword"
+        type="password"
+        placeholder="Enter new password again">
+
+    </div>
+
+
+    <button class="save-btn" onclick="changePassword()">
+      Change Password
+    </button>
+
+    <button class="cancel-btn" onclick="closeModal('passwordModal')">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+  <a href="index.html" class="nav-item">
+    <span class="nav-icon">⌂</span>
+    Home
+  </a>
+
+  <a href="offers.html" class="nav-item">
+    <span class="nav-icon">▣</span>
+    Offers
+  </a>
+
+  <a href="refer.html" class="nav-item">
+    <span class="nav-icon">♧</span>
+    Refer
+  </a>
+
+  <a href="share.html" class="nav-item">
+    <span class="nav-icon">↗</span>
+    Share
+  </a>
+
+  <a href="wallet.html" class="nav-item">
+    <span class="nav-icon">◫</span>
+    Wallet
+  </a>
+
+</nav>
+
+
+
+<script>
+
+/* COPY REFERRAL */
+
+function copyReferral(){
+
+  const code =
+    document.getElementById("refCode").innerText;
+
+  navigator.clipboard
+  .writeText(code)
+  .then(function(){
+
+    alert("Referral code copied: " + code);
+
+  })
+  .catch(function(){
+
+    alert("Referral Code: " + code);
+
+  });
+
+}
+
+
+/* EDIT PROFILE */
+
+function openEdit(){
+
+  document
+  .getElementById("editModal")
+  .style.display="flex";
+
+}
+
+
+function saveProfile(){
+
+  const name =
+    document.getElementById("editName")
+    .value.trim();
+
+  const mobile =
+    document.getElementById("editMobile")
+    .value.trim();
+
+  const email =
+    document.getElementById("editEmail")
+    .value.trim();
+
+  const upi =
+    document.getElementById("editUPI")
+    .value.trim();
+
+
+  if(name.length < 2){
+
+    alert("Please enter your full name.");
+    return;
+
+  }
+
+
+  if(
+    mobile &&
+    !/^[6-9][0-9]{9}$/.test(mobile)
+  ){
+
+    alert("Please enter a valid 10-digit mobile number.");
+    return;
+
+  }
+
+
+  if(
+    email &&
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ){
+
+    alert("Please enter a valid email address.");
+    return;
+
+  }
+
+
+  if(
+    upi &&
+    !/^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}$/.test(upi)
+  ){
+
+    alert("Please enter a valid UPI ID.");
+    return;
+
+  }
+
+
+  /*
+    Backend isn't connected yet.
+
+    So we only update the visible
+    profile on this page.
+  */
+
+
+  document
+  .getElementById("profileName")
+  .innerText=name;
+
+
+  document
+  .getElementById("fullName")
+  .innerText=name;
+
+
+  document
+  .getElementById("avatar")
+  .innerText=getInitials(name);
+
+
+  if(mobile){
+
+    document
+    .getElementById("mobile")
+    .innerText=maskMobile(mobile);
+
+  }
+
+
+  if(email){
+
+    document
+    .getElementById("email")
+    .innerText=email;
+
+  }
+
+
+  if(upi){
+
+    document
+    .getElementById("upi")
+    .innerText=maskUPI(upi);
+
+  }
+
+
+  closeModal("editModal");
+
+
+  alert(
+    "Profile updated on this page. Permanent account saving will work after the database is connected."
+  );
+
+}
+
+
+/* INITIALS */
+
+function getInitials(name){
+
+  const parts =
+    name.trim().split(/\s+/);
+
+
+  if(parts.length === 1){
+
+    return parts[0]
+    .substring(0,2)
+    .toUpperCase();
+
+  }
+
+
+  return (
+    parts[0][0] +
+    parts[parts.length-1][0]
+  ).toUpperCase();
+
+}
+
+
+/* MASK MOBILE */
+
+function maskMobile(number){
+
+  return (
+    "+91 " +
+    number.substring(0,2) +
+    "XXXXXX" +
+    number.substring(8)
+  );
+
+}
+
+
+/* MASK UPI */
+
+function maskUPI(upi){
+
+  const parts =
+    upi.split("@");
+
+
+  if(parts.length !== 2){
+
+    return "****";
+
+  }
+
+
+  const name =
+    parts[0];
+
+
+  const visible =
+    name.length >= 2
+    ? name.substring(0,2)
+    : name.substring(0,1);
+
+
+  return (
+    visible +
+    "****@" +
+    parts[1]
+  );
+
+}
+
+
+/* CHANGE PASSWORD */
+
+function openPassword(){
+
+  document
+  .getElementById("passwordModal")
+  .style.display="flex";
+
+}
+
+
+function changePassword(){
+
+  const current =
+    document.getElementById("currentPassword")
+    .value;
+
+  const password =
+    document.getElementById("newPassword")
+    .value;
+
+  const confirm =
+    document.getElementById("confirmNewPassword")
+    .value;
+
+
+  if(!current){
+
+    alert("Enter your current password.");
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    alert("New password must contain at least 6 characters.");
+    return;
+
+  }
+
+
+  if(password !== confirm){
+
+    alert("New passwords do not match.");
+    return;
+
+  }
+
+
+  /*
+    Do NOT save passwords in
+    localStorage/sessionStorage.
+
+    Real password update will be
+    handled by backend authentication.
+  */
+
+
+  alert(
+    "Password service is not connected yet. Your password has not been changed."
+  );
+
+}
+
+
+/* SUPPORT */
+
+function supportInfo(){
+
+  alert(
+    "Offerwax Help & Support page will be connected here."
+  );
+
+}
+
+
+/* TERMS */
+
+function termsInfo(){
+
+  alert(
+    "Offerwax Terms & Privacy pages will be connected here."
+  );
+
+}
+
+
+/* LOGOUT */
+
+function logoutUser(){
+
+  const confirmed =
+    confirm(
+      "Do you want to logout from Offerwax?"
+    );
+
+
+  if(!confirmed){
+    return;
+  }
+
+
+  /*
+    Real authentication logout
+    will clear the secure session
+    after backend is connected.
+  */
+
+
+  window.location.href="login.html";
+
+}
+
+
+/* MODALS */
+
+function closeModal(id){
+
+  document
+  .getElementById(id)
+  .style.display="none";
+
+}
+
+
+function outsideClose(event,id){
+
+  if(event.target.id === id){
+
+    closeModal(id);
+
+  }
+
+}
+
+</script>
+
+</body>
+      </html>
