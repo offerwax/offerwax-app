@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Offer Management | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;color:#fff;min-height:100vh
+}
+button,input,select,textarea{font-family:inherit}
+
+/* TOP */
+.topbar{
+  height:66px;position:sticky;top:0;z-index:100;
+  background:#090e18;border-bottom:1px solid #1d2739;
+  display:flex;align-items:center;padding:0 16px;gap:12px
+}
+.menu-btn,.bell{
+  width:40px;height:40px;border-radius:11px;
+  border:1px solid #273249;background:#10182a;color:#fff;
+  font-size:18px
+}
+.logo{font-size:20px;font-weight:900;flex:1}
+.logo span{color:#d42df4}
+.logo small{
+  display:block;color:#6f7b90;font-size:8px;margin-top:2px
+}
+
+/* SIDEBAR */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.72);z-index:190
+}
+.sidebar{
+  position:fixed;left:-285px;top:0;bottom:0;width:275px;
+  background:#0b111d;border-right:1px solid #202b40;
+  z-index:200;transition:.25s;overflow-y:auto
+}
+.sidebar.open{left:0}
+.sidebar-head{padding:22px 18px;border-bottom:1px solid #202b40}
+.sidebar-logo{font-size:23px;font-weight:900}
+.sidebar-logo span{color:#d42df4}
+.sidebar-head p{color:#6f7b90;font-size:9px;margin-top:5px}
+.nav{padding:14px 10px 25px}
+.nav-title{
+  color:#536076;font-size:8px;font-weight:800;
+  padding:12px 11px 6px;text-transform:uppercase
+}
+.nav-item{
+  display:flex;align-items:center;min-height:48px;
+  padding:8px 11px;margin:3px 0;border-radius:12px;
+  color:#8d98ab;text-decoration:none;font-size:11px;font-weight:700
+}
+.nav-item.active{
+  color:#fff;background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+.nav-icon{width:31px;font-size:16px}
+.nav-text{flex:1}
+
+/* MAIN */
+.container{max-width:1100px;margin:auto;padding:22px 16px 50px}
+.page-head{display:flex;align-items:flex-start;gap:12px}
+.page-title{flex:1}
+.page-title h1{font-size:25px}
+.page-title p{color:#788499;font-size:10px;margin-top:6px;line-height:1.5}
+.add-btn{
+  border:0;border-radius:11px;padding:11px 13px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;font-size:9px;font-weight:800;white-space:nowrap
+}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:20px
+}
+.stat{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:16px;padding:14px
+}
+.stat-icon{
+  width:34px;height:34px;border-radius:10px;background:#172136;
+  display:flex;align-items:center;justify-content:center
+}
+.stat strong{display:block;font-size:21px;margin-top:10px}
+.stat small{display:block;color:#7b879b;font-size:9px;margin-top:5px}
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+
+/* TOOLS */
+.tools{
+  margin-top:22px;background:#10182a;border:1px solid #202c43;
+  border-radius:17px;padding:13px
+}
+.search{
+  width:100%;height:44px;background:#080e19;
+  border:1px solid #29364e;border-radius:11px;color:#fff;
+  padding:0 13px;outline:none
+}
+.search:focus{border-color:#d42df4}
+.filters{
+  display:flex;gap:7px;overflow-x:auto;margin-top:10px;
+  scrollbar-width:none
+}
+.filter{
+  flex:0 0 auto;border:1px solid #29364e;background:#0c1321;
+  color:#8995a9;border-radius:18px;padding:8px 12px;font-size:8px
+}
+.filter.active{background:#d42df4;border-color:#d42df4;color:#fff}
+
+/* LIST */
+.section{margin-top:23px}
+.section-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:11px
+}
+.section-title{font-size:17px}
+.count{font-size:9px;color:#727f94}
+.offer-list{display:grid;gap:10px}
+.offer-card{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:17px;padding:14px;cursor:pointer
+}
+.offer-top{display:flex;align-items:center;gap:11px}
+.offer-logo{
+  width:48px;height:48px;min-width:48px;border-radius:13px;
+  background:#fff;color:#1b2740;display:flex;align-items:center;
+  justify-content:center;font-size:9px;font-weight:900;text-align:center;
+  padding:5px
+}
+.offer-info{flex:1;min-width:0}
+.offer-info h3{font-size:13px}
+.offer-info p{font-size:8px;color:#748197;margin-top:5px}
+.status{
+  padding:5px 8px;border-radius:13px;font-size:8px;font-weight:800
+}
+.live-status{color:#39dc8a;background:rgba(57,220,138,.1)}
+.paused-status{color:#ffb84d;background:rgba(255,184,77,.1)}
+.draft-status{color:#9aa5b7;background:#1a2333}
+
+.offer-data{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:7px;margin-top:13px
+}
+.data-box{
+  background:#0b1220;border-radius:10px;padding:9px
+}
+.data-box small{font-size:7px;color:#68758a}
+.data-box strong{display:block;font-size:9px;margin-top:4px}
+.tag{
+  display:inline-block;margin-top:10px;margin-right:5px;
+  padding:5px 8px;border-radius:12px;background:rgba(212,45,244,.1);
+  color:#dc4df4;font-size:7px
+}
+
+/* DRAWER */
+.drawer{
+  position:fixed;right:-100%;top:0;width:100%;max-width:580px;
+  height:100vh;background:#090f1a;z-index:300;
+  transition:.27s;overflow-y:auto;border-left:1px solid #253047
+}
+.drawer.open{right:0}
+.drawer-head{
+  height:65px;position:sticky;top:0;z-index:4;
+  display:flex;align-items:center;padding:0 16px;
+  background:#090f1a;border-bottom:1px solid #202b40
+}
+.drawer-head h2{font-size:17px;flex:1}
+.close{
+  width:35px;height:35px;border:1px solid #29364e;
+  border-radius:10px;background:#111a2a;color:#fff;font-size:19px
+}
+.drawer-body{padding:17px 16px 40px}
+
+.editor-card{
+  background:#10182a;border:1px solid #202c43;
+  border-radius:18px;padding:15px;margin-bottom:12px
+}
+.editor-title{font-size:13px;margin-bottom:13px}
+.field{margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.field label{
+  display:block;color:#8793a7;font-size:8px;
+  margin:0 0 6px 2px
+}
+.input,.select,.textarea{
+  width:100%;border:1px solid #29364e;background:#080e19;
+  color:#fff;border-radius:10px;padding:0 11px;outline:none;font-size:10px
+}
+.input,.select{height:44px}
+.textarea{
+  min-height:92px;padding:11px;resize:vertical;line-height:1.5
+}
+.input:focus,.select:focus,.textarea:focus{border-color:#d42df4}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+
+.switch-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:12px 0;border-bottom:1px solid #202c43
+}
+.switch-row:last-child{border-bottom:0}
+.switch-info strong{font-size:10px;display:block}
+.switch-info small{
+  color:#707d92;font-size:8px;display:block;margin-top:4px
+}
+.switch{
+  width:45px;height:25px;border-radius:20px;background:#30394a;
+  position:relative;cursor:pointer;flex:0 0 auto
+}
+.switch::after{
+  content:"";position:absolute;width:19px;height:19px;
+  border-radius:50%;background:#fff;top:3px;left:3px;transition:.2s
+}
+.switch.on{background:#a52ccd}
+.switch.on::after{left:23px}
+
+.save-btn{
+  width:100%;height:47px;border:0;border-radius:12px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;font-weight:800;font-size:10px
+}
+.actions{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px
+}
+.action-btn{
+  min-height:43px;border-radius:11px;border:1px solid #2b374e;
+  background:#111a2a;color:#fff;font-size:9px;font-weight:700
+}
+.danger{
+  color:#ff737d;border-color:rgba(255,90,103,.3)
+}
+.warning{
+  color:#ffb84d;border-color:rgba(255,184,77,.3)
+}
+
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);
+  z-index:500;align-items:flex-end;justify-content:center
+}
+.modal-box{
+  width:100%;max-width:580px;background:#10182a;
+  border:1px solid #29364e;border-radius:24px 24px 0 0;
+  padding:21px 17px 28px;max-height:92vh;overflow-y:auto
+}
+.modal-box h2{font-size:19px}
+.modal-box>p{
+  color:#778499;font-size:9px;line-height:1.5;margin-top:6px
+}
+.modal-fields{margin-top:17px}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.cancel-btn{
+  height:45px;border:1px solid #2a354b;background:#111a2a;
+  color:#a0aabc;border-radius:11px;font-size:9px;font-weight:700
+}
+.create-btn{
+  height:45px;border:0;background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;border-radius:11px;font-size:9px;font-weight:800
+}
+.empty{
+  padding:30px;text-align:center;color:#748197;
+  background:#10182a;border-radius:15px;font-size:10px
+}
+
+@media(min-width:850px){
+  .menu-btn{display:none}
+  .sidebar{left:0;width:250px}
+  .topbar{margin-left:250px}
+  .container{margin-left:250px;max-width:none;padding:28px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .offer-list{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeEverything()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="sidebar-logo">Offer<span>wax</span></div>
+    <p>Admin Control Center</p>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-title">Overview</div>
+
+    <a href="admin.html" class="nav-item">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <div class="nav-title">Management</div>
+
+    <a href="admin-users.html" class="nav-item">
+      <span class="nav-icon">👥</span>
+      <span class="nav-text">Users</span>
+    </a>
+
+    <a href="admin-offers.html" class="nav-item active">
+      <span class="nav-icon">▣</span>
+      <span class="nav-text">Offers</span>
+    </a>
+
+    <a href="admin-share.html" class="nav-item">
+      <span class="nav-icon">↗</span>
+      <span class="nav-text">Share & Earn</span>
+    </a>
+
+    <a href="admin-refer.html" class="nav-item">
+      <span class="nav-icon">♧</span>
+      <span class="nav-text">Refer & Earn</span>
+    </a>
+
+    <a href="admin-tracking.html" class="nav-item">
+      <span class="nav-icon">⌖</span>
+      <span class="nav-text">Tracking</span>
+    </a>
+
+    <div class="nav-title">Operations</div>
+
+    <a href="admin-finance.html" class="nav-item">
+      <span class="nav-icon">₹</span>
+      <span class="nav-text">Finance</span>
+    </a>
+
+    <a href="admin-support.html" class="nav-item">
+      <span class="nav-icon">?</span>
+      <span class="nav-text">Support</span>
+    </a>
+
+    <div class="nav-title">Controls</div>
+
+    <a href="admin-content.html" class="nav-item">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">App & Content</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- TOP -->
+<header class="topbar">
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <div class="logo">
+    Offer<span>wax</span>
+    <small>OFFER MANAGEMENT</small>
+  </div>
+
+  <button class="bell">🔔</button>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <div class="page-title">
+      <h1>Offer Management</h1>
+      <p>Add, edit and control all Offerwax offers.</p>
+    </div>
+
+    <button class="add-btn" onclick="openAddModal()">
+      + Add Offer
+    </button>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-icon">▣</div>
+      <strong>18</strong>
+      <small>Total Offers</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">✓</div>
+      <strong class="green">14</strong>
+      <small>Live Offers</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">Ⅱ</div>
+      <strong class="orange">3</strong>
+      <small>Paused</small>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">✎</div>
+      <strong>1</strong>
+      <small>Draft</small>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="tools">
+    <input
+      id="searchInput"
+      class="search"
+      type="search"
+      placeholder="Search offer name or category..."
+      oninput="renderOffers()">
+
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('all',this)">All</button>
+      <button class="filter" onclick="setFilter('live',this)">Live</button>
+      <button class="filter" onclick="setFilter('paused',this)">Paused</button>
+      <button class="filter" onclick="setFilter('draft',this)">Draft</button>
+      <button class="filter" onclick="setFilter('hyping',this)">Hyping</button>
+      <button class="filter" onclick="setFilter('small',this)">Small Offers</button>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">All Offers</h2>
+      <span class="count" id="offerCount"></span>
+    </div>
+
+    <div class="offer-list" id="offerList"></div>
+  </section>
+
+</main>
+
+<!-- EDIT DRAWER -->
+<section class="drawer" id="offerDrawer">
+
+  <div class="drawer-head">
+    <h2>Edit Offer</h2>
+    <button class="close" onclick="closeDrawer()">×</button>
+  </div>
+
+  <div class="drawer-body">
+
+    <div class="editor-card">
+      <h3 class="editor-title">Basic Details</h3>
+
+      <div class="field">
+        <label>Offer Name</label>
+        <input class="input" id="editName">
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label>Category</label>
+          <select class="select" id="editCategory">
+            <option>Banking</option>
+            <option>Crypto</option>
+            <option>Demat</option>
+            <option>Finance</option>
+            <option>Shopping</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Status</label>
+          <select class="select" id="editStatus">
+            <option value="live">Live</option>
+            <option value="paused">Paused</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Logo URL / File Path</label>
+        <input class="input" id="editLogo" placeholder="images/kotak.png">
+      </div>
+    </div>
+
+    <div class="editor-card">
+      <h3 class="editor-title">Rewards & Payout</h3>
+
+      <div class="two">
+        <div class="field">
+          <label>Regular Offer Reward ₹</label>
+          <input class="input" type="number" id="editReward">
+        </div>
+
+        <div class="field">
+          <label>Share & Earn Cashback ₹</label>
+          <input class="input" type="number" id="editCashback">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Referral First-Task Reward ₹</label>
+        <input class="input" type="number" id="editReferralReward">
+      </div>
+    </div>
+
+    <div class="editor-card">
+      <h3 class="editor-title">Tracking & Links</h3>
+
+      <div class="field">
+        <label>Affiliate / Tracking URL</label>
+        <input
+          class="input"
+          id="editTracking"
+          placeholder="https://tracking-link...">
+      </div>
+
+      <div class="field">
+        <label>Video / Tutorial File</label>
+        <input
+          class="input"
+          id="editVideo"
+          placeholder="kotak-guide.mp4">
+      </div>
+    </div>
+
+    <div class="editor-card">
+      <h3 class="editor-title">Instructions</h3>
+
+      <div class="field">
+        <label>Offer Instructions</label>
+        <textarea
+          class="textarea"
+          id="editInstructions"
+          placeholder="Enter each important instruction..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Terms & Conditions</label>
+        <textarea
+          class="textarea"
+          id="editTerms"
+          placeholder="Offer terms..."></textarea>
+      </div>
+    </div>
+
+    <div class="editor-card">
+      <h3 class="editor-title">Placement & Visibility</h3>
+
+      <div class="switch-row">
+        <div class="switch-info">
+          <strong>Hyping Offer</strong>
+          <small>Show in high-paying/hyping section</small>
+        </div>
+        <div class="switch" id="hypingSwitch" onclick="toggleSwitch(this)"></div>
+      </div>
+
+      <div class="switch-row">
+        <div class="switch-info">
+          <strong>Small Offer</strong>
+          <small>Show in small offers section</small>
+        </div>
+        <div class="switch" id="smallSwitch" onclick="toggleSwitch(this)"></div>
+      </div>
+
+      <div class="switch-row">
+        <div class="switch-info">
+          <strong>Share & Earn Enabled</strong>
+          <small>Allow users to share this offer</small>
+        </div>
+        <div class="switch" id="shareSwitch" onclick="toggleSwitch(this)"></div>
+      </div>
+
+      <div class="field" style="margin-top:12px">
+        <label>Display Order</label>
+        <input class="input" type="number" id="editOrder">
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveOffer()">
+      Save Changes
+    </button>
+
+    <div class="actions">
+      <button class="action-btn warning" onclick="toggleOfferStatus()">
+        Pause / Activate
+      </button>
+
+      <button class="action-btn danger" onclick="deleteOffer()">
+        Delete Offer
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD OFFER MODAL -->
+<div class="modal" id="addModal">
+
+  <div class="modal-box">
+
+    <h2>Add New Offer</h2>
+    <p>Create a new Offerwax offer. More settings can be edited after creation.</p>
+
+    <div class="modal-fields">
+
+      <div class="field">
+        <label>Offer Name</label>
+        <input class="input" id="newName" placeholder="Example: Kotak 811">
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label>Category</label>
+          <select class="select" id="newCategory">
+            <option>Banking</option>
+            <option>Crypto</option>
+            <option>Demat</option>
+            <option>Finance</option>
+            <option>Shopping</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Status</label>
+          <select class="select" id="newStatus">
+            <option value="draft">Draft</option>
+            <option value="live">Live</option>
+            <option value="paused">Paused</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label>Regular Reward ₹</label>
+          <input class="input" type="number" id="newReward" placeholder="1250">
+        </div>
+
+        <div class="field">
+          <label>Share Cashback ₹</label>
+          <input class="input" type="number" id="newCashback" placeholder="500">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Tracking URL</label>
+        <input class="input" id="newTracking" placeholder="https://...">
+      </div>
+
+      <div class="field">
+        <label>Video File</label>
+        <input class="input" id="newVideo" placeholder="offer-guide.mp4">
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeAddModal()">Cancel</button>
+      <button class="create-btn" onclick="createOffer()">Create Offer</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+/* SAMPLE DATA — backend later */
+
+let offers = [
+  {
+    id:"kotak",
+    name:"Kotak 811",
+    logo:"Kotak",
+    logoPath:"images/kotak.png",
+    category:"Banking",
+    status:"live",
+    reward:1250,
+    cashback:500,
+    referralReward:100,
+    tracking:"#",
+    video:"kotak-guide.mp4",
+    instructions:
+      "1. Start the offer from Offerwax.\n2. Complete registration with genuine details.\n3. Complete the required action.\n4. Wait for validation.",
+    terms:
+      "New users only. Duplicate accounts or invalid activity may be rejected.",
+    hyping:true,
+    small:false,
+    share:true,
+    order:1
+  },
+
+  {
+    id:"coindcx",
+    name:"CoinDCX",
+    logo:"CoinDCX",
+    logoPath:"images/coindcx.png",
+    category:"Crypto",
+    status:"live",
+    reward:500,
+    cashback:300,
+    referralReward:100,
+    tracking:"#",
+    video:"coindcx-guide.mp4",
+    instructions:
+      "Start through Offerwax and complete the required registration/action.",
+    terms:"Offer validation is subject to tracking and campaign rules.",
+    hyping:true,
+    small:false,
+    share:true,
+    order:2
+  },
+
+  {
+    id:"upstox",
+    name:"Upstox",
+    logo:"Upstox",
+    logoPath:"images/upstox.png",
+    category:"Demat",
+    status:"paused",
+    reward:350,
+    cashback:250,
+    referralReward:50,
+    tracking:"#",
+    video:"upstox-guide.mp4",
+    instructions:
+      "Start through the tracking link and complete the required steps.",
+    terms:"Eligible users only.",
+    hyping:false,
+    small:true,
+    share:true,
+    order:3
+  },
+
+  {
+    id:"review",
+    name:"Google Review",
+    logo:"Review",
+    logoPath:"",
+    category:"Other",
+    status:"draft",
+    reward:20,
+    cashback:20,
+    referralReward:0,
+    tracking:"#",
+    video:"",
+    instructions:"Follow the offer instructions.",
+    terms:"Subject to verification.",
+    hyping:false,
+    small:true,
+    share:false,
+    order:4
+  }
+];
+
+let currentFilter="all";
+let selectedOffer=null;
+
+
+/* RENDER */
+
+function renderOffers(){
+
+  const query =
+    document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const filtered = offers.filter(o=>{
+
+    const searchMatch =
+      (o.name+" "+o.category).toLowerCase().includes(query);
+
+    let filterMatch=true;
+
+    if(currentFilter==="live") filterMatch=o.status==="live";
+    if(currentFilter==="paused") filterMatch=o.status==="paused";
+    if(currentFilter==="draft") filterMatch=o.status==="draft";
+    if(currentFilter==="hyping") filterMatch=o.hyping;
+    if(currentFilter==="small") filterMatch=o.small;
+
+    return searchMatch && filterMatch;
+  });
+
+  document.getElementById("offerCount").innerText =
+    filtered.length+" offer"+(filtered.length===1?"":"s");
+
+  const list=document.getElementById("offerList");
+
+  if(!filtered.length){
+    list.innerHTML='<div class="empty">No offers found.</div>';
+    return;
+  }
+
+  list.innerHTML=filtered.map(o=>{
+
+    const statusClass =
+      o.status==="live"
+      ? "live-status"
+      : o.status==="paused"
+      ? "paused-status"
+      : "draft-status";
+
+    const statusText =
+      o.status.charAt(0).toUpperCase()+o.status.slice(1);
+
+    return `
+      <div class="offer-card" onclick="openOffer('${o.id}')">
+
+        <div class="offer-top">
+
+          <div class="offer-logo">
+            ${o.logo}
+          </div>
+
+          <div class="offer-info">
+            <h3>${o.name}</h3>
+            <p>${o.category} • Order ${o.order}</p>
+          </div>
+
+          <span class="status ${statusClass}">
+            ${statusText}
+          </span>
+
+        </div>
+
+        <div class="offer-data">
+
+          <div class="data-box">
+            <small>Regular Reward</small>
+            <strong class="green">₹${o.reward}</strong>
+          </div>
+
+          <div class="data-box">
+            <small>Share Cashback</small>
+            <strong>₹${o.cashback}</strong>
+          </div>
+
+          <div class="data-box">
+            <small>Referral Reward</small>
+            <strong>₹${o.referralReward}</strong>
+          </div>
+
+        </div>
+
+        ${o.hyping?'<span class="tag">Hyping Offer</span>':""}
+        ${o.small?'<span class="tag">Small Offer</span>':""}
+        ${o.share?'<span class="tag">Share & Earn</span>':""}
+
+      </div>
+    `;
+  }).join("");
+}
+
+
+/* FILTER */
+
+function setFilter(filter,button){
+  currentFilter=filter;
+
+  document.querySelectorAll(".filter")
+  .forEach(x=>x.classList.remove("active"));
+
+  button.classList.add("active");
+  renderOffers();
+}
+
+
+/* OPEN OFFER */
+
+function openOffer(id){
+
+  selectedOffer=offers.find(o=>o.id===id);
+  if(!selectedOffer)return;
+
+  document.getElementById("editName").value=selectedOffer.name;
+  document.getElementById("editCategory").value=selectedOffer.category;
+  document.getElementById("editStatus").value=selectedOffer.status;
+  document.getElementById("editLogo").value=selectedOffer.logoPath;
+  document.getElementById("editReward").value=selectedOffer.reward;
+  document.getElementById("editCashback").value=selectedOffer.cashback;
+  document.getElementById("editReferralReward").value=selectedOffer.referralReward;
+  document.getElementById("editTracking").value=selectedOffer.tracking;
+  document.getElementById("editVideo").value=selectedOffer.video;
+  document.getElementById("editInstructions").value=selectedOffer.instructions;
+  document.getElementById("editTerms").value=selectedOffer.terms;
+  document.getElementById("editOrder").value=selectedOffer.order;
+
+  setSwitch("hypingSwitch",selectedOffer.hyping);
+  setSwitch("smallSwitch",selectedOffer.small);
+  setSwitch("shareSwitch",selectedOffer.share);
+
+  document.getElementById("offerDrawer").classList.add("open");
+  document.getElementById("overlay").style.display="block";
+}
+
+
+/* SWITCHES */
+
+function toggleSwitch(el){
+  el.classList.toggle("on");
+}
+
+function setSwitch(id,on){
+  const el=document.getElementById(id);
+  el.classList.toggle("on",!!on);
+}
+
+function switchValue(id){
+  return document.getElementById(id).classList.contains("on");
+}
+
+
+/* SAVE */
+
+function saveOffer(){
+
+  if(!selectedOffer)return;
+
+  const name=document.getElementById("editName").value.trim();
+
+  if(!name){
+    alert("Offer name is required.");
+    return;
+  }
+
+  selectedOffer.name=name;
+  selectedOffer.logo=name.split(" ")[0];
+  selectedOffer.category=document.getElementById("editCategory").value;
+  selectedOffer.status=document.getElementById("editStatus").value;
+  selectedOffer.logoPath=document.getElementById("editLogo").value.trim();
+  selectedOffer.reward=Number(document.getElementById("editReward").value)||0;
+  selectedOffer.cashback=Number(document.getElementById("editCashback").value)||0;
+  selectedOffer.referralReward=
+    Number(document.getElementById("editReferralReward").value)||0;
+  selectedOffer.tracking=document.getElementById("editTracking").value.trim();
+  selectedOffer.video=document.getElementById("editVideo").value.trim();
+  selectedOffer.instructions=
+    document.getElementById("editInstructions").value.trim();
+  selectedOffer.terms=
+    document.getElementById("editTerms").value.trim();
+  selectedOffer.order=
+    Number(document.getElementById("editOrder").value)||1;
+
+  selectedOffer.hyping=switchValue("hypingSwitch");
+  selectedOffer.small=switchValue("smallSwitch");
+  selectedOffer.share=switchValue("shareSwitch");
+
+  renderOffers();
+
+  alert(
+    "Demo UI updated. Permanent offer changes will work after the backend/database is connected."
+  );
+}
+
+
+/* STATUS */
+
+function toggleOfferStatus(){
+
+  if(!selectedOffer)return;
+
+  if(selectedOffer.status==="live"){
+    selectedOffer.status="paused";
+  }else{
+    selectedOffer.status="live";
+  }
+
+  document.getElementById("editStatus").value=selectedOffer.status;
+
+  renderOffers();
+
+  alert(
+    "Status changed in this demo session only. Backend is not connected yet."
+  );
+}
+
+
+/* DELETE */
+
+function deleteOffer(){
+
+  if(!selectedOffer)return;
+
+  const ok=confirm(
+    "Delete "+selectedOffer.name+"?\n\nThis demo will only remove it from the current page session."
+  );
+
+  if(!ok)return;
+
+  offers=offers.filter(o=>o.id!==selectedOffer.id);
+
+  closeDrawer();
+  renderOffers();
+
+  alert("Demo offer removed from this page session only.");
+}
+
+
+/* ADD OFFER */
+
+function openAddModal(){
+  document.getElementById("addModal").style.display="flex";
+}
+
+function closeAddModal(){
+  document.getElementById("addModal").style.display="none";
+}
+
+function createOffer(){
+
+  const name=document.getElementById("newName").value.trim();
+
+  if(!name){
+    alert("Enter offer name.");
+    return;
+  }
+
+  const id =
+    name.toLowerCase()
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-|-$/g,"")
+    +"-"+Date.now().toString().slice(-4);
+
+  offers.unshift({
+    id:id,
+    name:name,
+    logo:name.split(" ")[0],
+    logoPath:"",
+    category:document.getElementById("newCategory").value,
+    status:document.getElementById("newStatus").value,
+    reward:Number(document.getElementById("newReward").value)||0,
+    cashback:Number(document.getElementById("newCashback").value)||0,
+    referralReward:0,
+    tracking:document.getElementById("newTracking").value.trim()||"#",
+    video:document.getElementById("newVideo").value.trim(),
+    instructions:"",
+    terms:"",
+    hyping:false,
+    small:false,
+    share:false,
+    order:offers.length+1
+  });
+
+  closeAddModal();
+  clearAddForm();
+  renderOffers();
+
+  alert(
+    "Offer added to this demo session. Permanent creation will work after backend/database connection."
+  );
+}
+
+function clearAddForm(){
+  document.getElementById("newName").value="";
+  document.getElementById("newReward").value="";
+  document.getElementById("newCashback").value="";
+  document.getElementById("newTracking").value="";
+  document.getElementById("newVideo").value="";
+}
+
+
+/* CLOSE */
+
+function closeDrawer(){
+  document.getElementById("offerDrawer").classList.remove("open");
+  document.getElementById("overlay").style.display="none";
+}
+
+function openSidebar(){
+  document.getElementById("sidebar").classList.add("open");
+  document.getElementById("overlay").style.display="block";
+}
+
+function closeEverything(){
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("offerDrawer").classList.remove("open");
+  document.getElementById("overlay").style.display="none";
+}
+
+
+/*
+==================================================
+REAL BACKEND LATER
+==================================================
+
+This page currently contains sample/demo data.
+
+When backend is connected:
+
+GET    /api/admin/offers
+POST   /api/admin/offers
+PATCH  /api/admin/offers/:id
+DELETE /api/admin/offers/:id
+
+The database can control:
+- offer name/logo
+- regular user reward
+- Share & Earn cashback
+- referral reward
+- category
+- tracking URL
+- video/tutorial
+- instructions
+- terms
+- live/paused/draft
+- Hyping/Small placement
+- Share & Earn availability
+- display order
+
+Real admin actions must require authenticated
+server-side admin authorization.
+*/
+
+renderOffers();
+
+</script>
+</body>
+  </html>
