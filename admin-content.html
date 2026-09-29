@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>App & Content | Offerwax Admin</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh
+}
+
+button,input,textarea,select{
+  font-family:inherit
+}
+
+/* TOPBAR */
+.topbar{
+  height:66px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#090e18;
+  border-bottom:1px solid #1d2739;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  gap:12px
+}
+
+.menu-btn,.bell{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  border:1px solid #273249;
+  background:#10182a;
+  color:#fff;
+  font-size:18px
+}
+
+.logo{
+  flex:1;
+  font-size:20px;
+  font-weight:900
+}
+
+.logo span{color:#d42df4}
+
+.logo small{
+  display:block;
+  color:#6f7b90;
+  font-size:8px;
+  margin-top:2px
+}
+
+/* SIDEBAR */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.76);
+  z-index:190
+}
+
+.sidebar{
+  position:fixed;
+  left:-285px;
+  top:0;
+  bottom:0;
+  width:275px;
+  background:#0b111d;
+  border-right:1px solid #202b40;
+  z-index:200;
+  transition:.25s;
+  overflow-y:auto
+}
+
+.sidebar.open{left:0}
+
+.sidebar-head{
+  padding:22px 18px;
+  border-bottom:1px solid #202b40
+}
+
+.sidebar-logo{
+  font-size:23px;
+  font-weight:900
+}
+
+.sidebar-logo span{color:#d42df4}
+
+.sidebar-head p{
+  color:#6f7b90;
+  font-size:9px;
+  margin-top:5px
+}
+
+.nav{
+  padding:14px 10px 25px
+}
+
+.nav-title{
+  color:#536076;
+  font-size:8px;
+  font-weight:800;
+  padding:12px 11px 6px;
+  text-transform:uppercase
+}
+
+.nav-item{
+  display:flex;
+  align-items:center;
+  min-height:48px;
+  padding:8px 11px;
+  margin:3px 0;
+  border-radius:12px;
+  color:#8d98ab;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:700
+}
+
+.nav-item.active{
+  color:#fff;
+  background:rgba(212,45,244,.12);
+  border:1px solid rgba(212,45,244,.2)
+}
+
+.nav-icon{
+  width:31px;
+  font-size:16px
+}
+
+.nav-text{flex:1}
+
+/* MAIN */
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:22px 16px 50px
+}
+
+.page-head h1{
+  font-size:25px
+}
+
+.page-head p{
+  color:#788499;
+  font-size:10px;
+  line-height:1.6;
+  margin-top:6px
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px
+}
+
+.stat{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:16px;
+  padding:14px
+}
+
+.stat-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.stat strong{
+  display:block;
+  font-size:19px;
+  margin-top:10px
+}
+
+.stat small{
+  display:block;
+  color:#7b879b;
+  font-size:8px;
+  margin-top:5px
+}
+
+.green{color:#39dc8a!important}
+.orange{color:#ffb84d!important}
+.purple{color:#d94df4!important}
+
+/* SECTION */
+.section{
+  margin-top:24px
+}
+
+.section-title{
+  font-size:17px;
+  margin-bottom:11px
+}
+
+.grid{
+  display:grid;
+  gap:11px
+}
+
+/* CARD */
+.card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  overflow:hidden
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px;
+  border-bottom:1px solid #202c43
+}
+
+.card-icon{
+  width:37px;
+  height:37px;
+  min-width:37px;
+  border-radius:11px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px
+}
+
+.card-title{
+  flex:1
+}
+
+.card-title h3{
+  font-size:12px
+}
+
+.card-title p{
+  color:#707d92;
+  font-size:7.5px;
+  margin-top:4px;
+  line-height:1.4
+}
+
+.card-body{
+  padding:14px
+}
+
+/* FORM */
+.field{
+  margin-bottom:13px
+}
+
+.field:last-child{
+  margin-bottom:0
+}
+
+label{
+  display:block;
+  color:#8995a9;
+  font-size:8px;
+  font-weight:700;
+  margin-bottom:6px
+}
+
+.input,
+.textarea,
+.select{
+  width:100%;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  color:#fff;
+  outline:none
+}
+
+.input,
+.select{
+  height:44px;
+  padding:0 11px
+}
+
+.textarea{
+  min-height:88px;
+  resize:vertical;
+  padding:11px;
+  line-height:1.5
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus{
+  border-color:#d42df4
+}
+
+.hint{
+  color:#59677c;
+  font-size:7px;
+  line-height:1.5;
+  margin-top:6px
+}
+
+/* SWITCH */
+.switch-row{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid #202c43
+}
+
+.switch-row:last-child{
+  border-bottom:0
+}
+
+.switch-info strong{
+  display:block;
+  font-size:9px
+}
+
+.switch-info small{
+  display:block;
+  color:#69768b;
+  font-size:7px;
+  margin-top:4px;
+  line-height:1.4
+}
+
+.switch{
+  position:relative;
+  width:42px;
+  height:24px;
+  min-width:42px
+}
+
+.switch input{
+  display:none
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#263044;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.2s
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  left:3px;
+  top:3px;
+  border-radius:50%;
+  background:#fff;
+  transition:.2s
+}
+
+.switch input:checked + .slider{
+  background:#d42df4
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(18px)
+}
+
+/* BUTTONS */
+.save{
+  width:100%;
+  height:44px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#7427e7,#d42df4);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  margin-top:13px
+}
+
+.secondary{
+  width:100%;
+  height:42px;
+  border-radius:11px;
+  border:1px solid #2a354b;
+  background:#111a2a;
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+  margin-top:8px
+}
+
+/* BANNER PREVIEW */
+.banner-preview{
+  min-height:130px;
+  border-radius:15px;
+  padding:18px;
+  background:linear-gradient(135deg,#5422c7,#c52de7);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin-bottom:14px;
+  overflow:hidden
+}
+
+.banner-preview small{
+  font-size:8px;
+  opacity:.8
+}
+
+.banner-preview h3{
+  font-size:20px;
+  margin-top:6px
+}
+
+.banner-preview p{
+  font-size:9px;
+  margin-top:7px;
+  line-height:1.5;
+  max-width:340px
+}
+
+.banner-preview span{
+  display:inline-block;
+  width:max-content;
+  background:#fff;
+  color:#171221;
+  border-radius:9px;
+  padding:7px 11px;
+  font-size:8px;
+  font-weight:800;
+  margin-top:11px
+}
+
+/* ANNOUNCEMENT PREVIEW */
+.notice-preview{
+  background:#0b1220;
+  border:1px solid #26344b;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:13px
+}
+
+.notice-preview strong{
+  font-size:9px
+}
+
+.notice-preview p{
+  color:#8d99ac;
+  font-size:8px;
+  margin-top:6px;
+  line-height:1.5
+}
+
+/* APP */
+.app-preview{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  background:#0b1220;
+  border-radius:13px;
+  padding:12px;
+  margin-bottom:13px
+}
+
+.app-icon{
+  width:47px;
+  height:47px;
+  min-width:47px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#7026e1,#d42df4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:900
+}
+
+.app-info{
+  flex:1
+}
+
+.app-info strong{
+  font-size:10px
+}
+
+.app-info small{
+  display:block;
+  color:#718096;
+  font-size:7px;
+  margin-top:4px
+}
+
+/* QUICK LINKS */
+.link-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 0;
+  border-bottom:1px solid #202c43
+}
+
+.link-item:last-child{
+  border-bottom:0
+}
+
+.link-icon{
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:10px;
+  background:#172136;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.link-info{
+  flex:1
+}
+
+.link-info strong{
+  display:block;
+  font-size:9px
+}
+
+.link-info small{
+  display:block;
+  color:#69768b;
+  font-size:7px;
+  margin-top:4px
+}
+
+.edit-link{
+  border:0;
+  background:none;
+  color:#d94df4;
+  font-size:8px
+}
+
+/* SAVE ALL */
+.save-all{
+  position:sticky;
+  bottom:12px;
+  margin-top:24px;
+  z-index:30
+}
+
+.save-all button{
+  width:100%;
+  height:50px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#7026e1,#d42df4);
+  color:#fff;
+  font-weight:900;
+  box-shadow:0 10px 35px rgba(0,0,0,.35)
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(0,0,0,.82);
+  align-items:flex-end;
+  justify-content:center
+}
+
+.modal-box{
+  width:100%;
+  max-width:560px;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:24px 24px 0 0;
+  padding:21px 17px 28px
+}
+
+.modal-box h3{
+  font-size:18px
+}
+
+.modal-box p{
+  color:#78859a;
+  font-size:9px;
+  line-height:1.5;
+  margin-top:6px
+}
+
+.cancel{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7b879b;
+  padding-top:13px
+}
+
+@media(min-width:850px){
+
+  .menu-btn{display:none}
+
+  .sidebar{
+    left:0;
+    width:250px
+  }
+
+  .topbar{
+    margin-left:250px
+  }
+
+  .container{
+    margin-left:250px;
+    max-width:none;
+    padding:28px
+  }
+
+  .stats{
+    grid-template-columns:repeat(4,1fr)
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .save-all{
+    max-width:500px;
+    margin-left:auto
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeSidebar()">
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-head">
+  <div class="sidebar-logo">
+    Offer<span>wax</span>
+  </div>
+  <p>Admin Control Center</p>
+</div>
+
+<nav class="nav">
+
+<div class="nav-title">Overview</div>
+
+<a href="admin.html" class="nav-item">
+  <span class="nav-icon">⌂</span>
+  <span class="nav-text">Dashboard</span>
+</a>
+
+<div class="nav-title">Management</div>
+
+<a href="admin-users.html" class="nav-item">
+  <span class="nav-icon">👥</span>
+  <span class="nav-text">Users</span>
+</a>
+
+<a href="admin-offers.html" class="nav-item">
+  <span class="nav-icon">▣</span>
+  <span class="nav-text">Offers</span>
+</a>
+
+<a href="admin-share.html" class="nav-item">
+  <span class="nav-icon">↗</span>
+  <span class="nav-text">Share & Earn</span>
+</a>
+
+<a href="admin-refer.html" class="nav-item">
+  <span class="nav-icon">♧</span>
+  <span class="nav-text">Refer & Earn</span>
+</a>
+
+<a href="admin-tracking.html" class="nav-item">
+  <span class="nav-icon">⌖</span>
+  <span class="nav-text">Tracking</span>
+</a>
+
+<div class="nav-title">Operations</div>
+
+<a href="admin-finance.html" class="nav-item">
+  <span class="nav-icon">₹</span>
+  <span class="nav-text">Finance</span>
+</a>
+
+<a href="admin-support.html" class="nav-item">
+  <span class="nav-icon">?</span>
+  <span class="nav-text">Support</span>
+</a>
+
+<div class="nav-title">Controls</div>
+
+<a href="admin-content.html" class="nav-item active">
+  <span class="nav-icon">⚙</span>
+  <span class="nav-text">App & Content</span>
+</a>
+
+<a href="index.html" class="nav-item">
+  <span class="nav-icon">↗</span>
+  <span class="nav-text">View Website</span>
+</a>
+
+</nav>
+
+</aside>
+
+<!-- TOPBAR -->
+<header class="topbar">
+
+<button
+  class="menu-btn"
+  onclick="openSidebar()">
+☰
+</button>
+
+<div class="logo">
+  Offer<span>wax</span>
+  <small>APP & CONTENT CONTROLS</small>
+</div>
+
+<button class="bell">🔔</button>
+
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+<section class="page-head">
+
+<h1>App & Content</h1>
+
+<p>
+Manage frequently changing Offerwax content without
+mixing it with offer, finance or tracking controls.
+</p>
+
+</section>
+
+<!-- STATS -->
+<section class="stats">
+
+<div class="stat">
+  <div class="stat-icon">▣</div>
+  <strong>3</strong>
+  <small>Home Banners</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">▶</div>
+  <strong>4</strong>
+  <small>Tutorial Videos</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">🔔</div>
+  <strong class="purple">1</strong>
+  <small>Active Notice</small>
+</div>
+
+<div class="stat">
+  <div class="stat-icon">✓</div>
+  <strong class="green">Live</strong>
+  <small>App Status</small>
+</div>
+
+</section>
+
+<!-- HOME CONTENT -->
+<section class="section">
+
+<h2 class="section-title">
+Home Page Controls
+</h2>
+
+<div class="grid">
+
+<!-- BANNER -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">▣</div>
+
+<div class="card-title">
+  <h3>Main Home Banner</h3>
+  <p>Edit the main banner shown on the Offerwax home page.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="banner-preview" id="bannerPreview">
+
+<small>OFFERWAX</small>
+
+<h3 id="previewBannerTitle">
+Earn More with Offerwax
+</h3>
+
+<p id="previewBannerText">
+Complete offers, share with friends and earn rewards.
+</p>
+
+<span id="previewButton">
+Explore Offers
+</span>
+
+</div>
+
+<div class="field">
+
+<label>Banner Title</label>
+
+<input
+  class="input"
+  id="bannerTitle"
+  value="Earn More with Offerwax"
+  oninput="updateBannerPreview()">
+
+</div>
+
+<div class="field">
+
+<label>Banner Subtitle</label>
+
+<textarea
+  class="textarea"
+  id="bannerText"
+  oninput="updateBannerPreview()">Complete offers, share with friends and earn rewards.</textarea>
+
+</div>
+
+<div class="field">
+
+<label>Button Text</label>
+
+<input
+  class="input"
+  id="bannerButton"
+  value="Explore Offers"
+  oninput="updateBannerPreview()">
+
+</div>
+
+<div class="field">
+
+<label>Banner Action Link</label>
+
+<input
+  class="input"
+  id="bannerLink"
+  value="offers.html"
+  placeholder="offers.html">
+
+<p class="hint">
+Example: offers.html, share.html or a tutorial page.
+</p>
+
+</div>
+
+<div class="field">
+
+<label>Banner Image / File Path</label>
+
+<input
+  class="input"
+  id="bannerImage"
+  placeholder="images/banner1.jpg">
+
+<p class="hint">
+Can later be connected to uploaded banner images.
+</p>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Show Banner</strong>
+  <small>Enable or hide this banner on Home.</small>
+</div>
+
+<label class="switch">
+  <input id="bannerEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button class="save" onclick="saveSection('Home banner')">
+Save Banner
+</button>
+
+</div>
+</div>
+
+<!-- ANNOUNCEMENT -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">🔔</div>
+
+<div class="card-title">
+  <h3>Announcement / Notice</h3>
+  <p>Show an important short notice to users.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="notice-preview">
+
+<strong id="previewNoticeTitle">
+Important Update
+</strong>
+
+<p id="previewNoticeText">
+New earning offers are now available.
+</p>
+
+</div>
+
+<div class="field">
+
+<label>Notice Title</label>
+
+<input
+  class="input"
+  id="noticeTitle"
+  value="Important Update"
+  oninput="updateNoticePreview()">
+
+</div>
+
+<div class="field">
+
+<label>Notice Message</label>
+
+<textarea
+  class="textarea"
+  id="noticeText"
+  oninput="updateNoticePreview()">New earning offers are now available.</textarea>
+
+</div>
+
+<div class="field">
+
+<label>Notice Link</label>
+
+<input
+  class="input"
+  id="noticeLink"
+  value="offers.html"
+  placeholder="offers.html">
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Show Announcement</strong>
+  <small>Turn the notice on or off.</small>
+</div>
+
+<label class="switch">
+  <input id="noticeEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Announcement')">
+Save Announcement
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+
+<h2 class="section-title">
+Home Features
+</h2>
+
+<div class="grid">
+
+<!-- HOME SHORTCUTS -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">⌂</div>
+
+<div class="card-title">
+  <h3>Home Shortcuts</h3>
+  <p>Control useful shortcuts shown on the home page.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Offers Shortcut</strong>
+  <small>Quick access to earning offers.</small>
+</div>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Refer & Earn Shortcut</strong>
+  <small>Quick access to referral program.</small>
+</div>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Share & Earn Shortcut</strong>
+  <small>Quick access to Share & Earn.</small>
+</div>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Support Shortcut</strong>
+  <small>Allow users to submit their problem quickly.</small>
+</div>
+
+<label class="switch">
+  <input id="supportShortcut" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Home shortcuts')">
+Save Shortcuts
+</button>
+
+</div>
+</div>
+
+<!-- SUPPORT SETTINGS -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">?</div>
+
+<div class="card-title">
+  <h3>Support Settings</h3>
+  <p>Basic user support form configuration.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="field">
+
+<label>Support Card Title</label>
+
+<input
+  class="input"
+  value="Need Help?"
+  id="supportTitle">
+
+</div>
+
+<div class="field">
+
+<label>Support Card Text</label>
+
+<textarea
+  class="textarea"
+  id="supportText">Tell us your problem and our team will review it.</textarea>
+
+</div>
+
+<div class="field">
+
+<label>Support Page</label>
+
+<input
+  class="input"
+  value="support.html"
+  id="supportPage">
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Support Form Enabled</strong>
+  <small>User can submit Name, Registered Mobile and Problem.</small>
+</div>
+
+<label class="switch">
+  <input id="supportEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Support settings')">
+Save Support Settings
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section">
+
+<h2 class="section-title">
+Tutorial & Video Controls
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">▶</div>
+
+<div class="card-title">
+  <h3>How to Use Offerwax</h3>
+  <p>Main tutorial shown to new users.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="field">
+
+<label>Video Title</label>
+
+<input
+  class="input"
+  value="How to Use Offerwax"
+  id="mainVideoTitle">
+
+</div>
+
+<div class="field">
+
+<label>Video File / URL</label>
+
+<input
+  class="input"
+  value="offerwax-guide.mp4"
+  id="mainVideoURL">
+
+</div>
+
+<div class="field">
+
+<label>Thumbnail</label>
+
+<input
+  class="input"
+  placeholder="images/offerwax-guide.jpg"
+  id="mainVideoThumbnail">
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Show Tutorial</strong>
+  <small>Display tutorial on the app.</small>
+</div>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Main tutorial')">
+Save Tutorial
+</button>
+
+</div>
+</div>
+
+<!-- QUICK VIDEO LINKS -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">🎬</div>
+
+<div class="card-title">
+  <h3>Video Links</h3>
+  <p>Common tutorial locations.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="link-item">
+
+<div class="link-icon">▶</div>
+
+<div class="link-info">
+  <strong>Main Offerwax Guide</strong>
+  <small>offerwax-guide.mp4</small>
+</div>
+
+<button
+  class="edit-link"
+  onclick="openLinkModal('Main Offerwax Guide','offerwax-guide.mp4')">
+Edit
+</button>
+
+</div>
+
+<div class="link-item">
+
+<div class="link-icon">↗</div>
+
+<div class="link-info">
+  <strong>Share & Earn Guide</strong>
+  <small>share-guide.mp4</small>
+</div>
+
+<button
+  class="edit-link"
+  onclick="openLinkModal('Share & Earn Guide','share-guide.mp4')">
+Edit
+</button>
+
+</div>
+
+<div class="link-item">
+
+<div class="link-icon">♧</div>
+
+<div class="link-info">
+  <strong>Refer & Earn Guide</strong>
+  <small>refer-guide.mp4</small>
+</div>
+
+<button
+  class="edit-link"
+  onclick="openLinkModal('Refer & Earn Guide','refer-guide.mp4')">
+Edit
+</button>
+
+</div>
+
+<p class="hint">
+Individual offer videos remain controlled from Offer Management.
+</p>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- APK -->
+<section class="section">
+
+<h2 class="section-title">
+Android App
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">📱</div>
+
+<div class="card-title">
+  <h3>Offerwax Android App</h3>
+  <p>Control the APK download information shown to users.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="app-preview">
+
+<div class="app-icon">
+OW
+</div>
+
+<div class="app-info">
+  <strong>Offerwax – Share & Earn</strong>
+  <small id="versionPreview">Version 1.0.0</small>
+</div>
+
+</div>
+
+<div class="field">
+
+<label>App Version</label>
+
+<input
+  class="input"
+  id="appVersion"
+  value="1.0.0"
+  oninput="updateVersion()">
+
+</div>
+
+<div class="field">
+
+<label>APK File / Download URL</label>
+
+<input
+  class="input"
+  id="apkURL"
+  value="offerwax.apk">
+
+<p class="hint">
+Keep this disabled until the real APK file is ready.
+</p>
+
+</div>
+
+<div class="field">
+
+<label>Update Message</label>
+
+<textarea
+  class="textarea"
+  id="updateMessage">Download the latest version of Offerwax.</textarea>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>APK Download Enabled</strong>
+  <small>Show Android download option to users.</small>
+</div>
+
+<label class="switch">
+  <input id="apkEnabled" type="checkbox">
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Android app settings')">
+Save App Settings
+</button>
+
+</div>
+</div>
+
+<!-- APP STATUS -->
+<div class="card">
+
+<div class="card-head">
+
+<div class="card-icon">⚙</div>
+
+<div class="card-title">
+  <h3>App Status</h3>
+  <p>Basic global application controls.</p>
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Offerwax Live</strong>
+  <small>Main application availability.</small>
+</div>
+
+<label class="switch">
+  <input id="appLive" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>New Registrations</strong>
+  <small>Allow new users to create accounts.</small>
+</div>
+
+<label class="switch">
+  <input id="registrationEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Withdrawals</strong>
+  <small>Allow users to submit withdrawal requests.</small>
+</div>
+
+<label class="switch">
+  <input id="withdrawalsEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Share & Earn</strong>
+  <small>Enable Share & Earn section.</small>
+</div>
+
+<label class="switch">
+  <input id="shareEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<div class="switch-row">
+
+<div class="switch-info">
+  <strong>Refer & Earn</strong>
+  <small>Enable referral program.</small>
+</div>
+
+<label class="switch">
+  <input id="referEnabled" type="checkbox" checked>
+  <span class="slider"></span>
+</label>
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('App status')">
+Save App Status
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- IMPORTANT LINKS -->
+<section class="section">
+
+<h2 class="section-title">
+Important Links
+</h2>
+
+<div class="card">
+
+<div class="card-body">
+
+<div class="field">
+
+<label>Terms & Conditions Page</label>
+
+<input
+  class="input"
+  id="termsLink"
+  value="terms.html">
+
+</div>
+
+<div class="field">
+
+<label>Privacy Policy Page</label>
+
+<input
+  class="input"
+  id="privacyLink"
+  value="privacy.html">
+
+</div>
+
+<div class="field">
+
+<label>Support Page</label>
+
+<input
+  class="input"
+  id="globalSupportLink"
+  value="support.html">
+
+</div>
+
+<div class="field">
+
+<label>Tracking Check Page</label>
+
+<input
+  class="input"
+  id="trackingLink"
+  value="tracking.html">
+
+</div>
+
+<button
+  class="save"
+  onclick="saveSection('Important links')">
+Save Links
+</button>
+
+</div>
+</div>
+
+</section>
+
+<!-- SAVE ALL -->
+<div class="save-all">
+
+<button onclick="saveAll()">
+Save All App & Content Settings
+</button>
+
+</div>
+
+</main>
+
+<!-- EDIT LINK MODAL -->
+<div class="modal" id="linkModal">
+
+<div class="modal-box">
+
+<h3 id="linkModalTitle">
+Edit Video Link
+</h3>
+
+<p>
+Update the file path or URL for this tutorial.
+</p>
+
+<div class="field" style="margin-top:15px">
+
+<label>File / URL</label>
+
+<input
+  class="input"
+  id="linkModalInput">
+
+</div>
+
+<button
+  class="save"
+  onclick="saveLinkModal()">
+Save Link
+</button>
+
+<button
+  class="cancel"
+  onclick="closeLinkModal()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/*
+=========================================
+DEMO CONTENT MANAGEMENT
+=========================================
+
+This page currently changes UI values only.
+Nothing is saved to a real database.
+*/
+
+
+/* BANNER PREVIEW */
+
+function updateBannerPreview(){
+
+  const title=
+  document.getElementById("bannerTitle").value.trim();
+
+  const text=
+  document.getElementById("bannerText").value.trim();
+
+  const button=
+  document.getElementById("bannerButton").value.trim();
+
+  document.getElementById("previewBannerTitle").innerText=
+  title || "Banner Title";
+
+  document.getElementById("previewBannerText").innerText=
+  text || "Banner subtitle";
+
+  document.getElementById("previewButton").innerText=
+  button || "Open";
+
+}
+
+
+/* NOTICE */
+
+function updateNoticePreview(){
+
+  const title=
+  document.getElementById("noticeTitle").value.trim();
+
+  const text=
+  document.getElementById("noticeText").value.trim();
+
+  document.getElementById("previewNoticeTitle").innerText=
+  title || "Announcement";
+
+  document.getElementById("previewNoticeText").innerText=
+  text || "Notice message";
+
+}
+
+
+/* VERSION */
+
+function updateVersion(){
+
+  const version=
+  document.getElementById("appVersion").value.trim();
+
+  document.getElementById("versionPreview").innerText=
+  "Version "+(version || "1.0.0");
+
+}
+
+
+/* SAVE SECTION */
+
+function saveSection(section){
+
+  alert(
+    section+
+    " updated for demo only. "+
+    "A backend/database is required to publish this change "+
+    "to all Offerwax users."
+  );
+
+}
+
+
+/* SAVE ALL */
+
+function saveAll(){
+
+  const confirmed=
+  confirm(
+    "Save all App & Content settings?"
+  );
+
+  if(!confirmed){
+    return;
+  }
+
+  /*
+  Demo object showing what could later be sent
+  to the backend.
+  */
+
+  const settings={
+
+    homeBanner:{
+      enabled:
+        document.getElementById("bannerEnabled").checked,
+
+      title:
+        document.getElementById("bannerTitle").value.trim(),
+
+      subtitle:
+        document.getElementById("bannerText").value.trim(),
+
+      buttonText:
+        document.getElementById("bannerButton").value.trim(),
+
+      link:
+        document.getElementById("bannerLink").value.trim(),
+
+      image:
+        document.getElementById("bannerImage").value.trim()
+    },
+
+    announcement:{
+      enabled:
+        document.getElementById("noticeEnabled").checked,
+
+      title:
+        document.getElementById("noticeTitle").value.trim(),
+
+      message:
+        document.getElementById("noticeText").value.trim(),
+
+      link:
+        document.getElementById("noticeLink").value.trim()
+    },
+
+    support:{
+      enabled:
+        document.getElementById("supportEnabled").checked,
+
+      shortcut:
+        document.getElementById("supportShortcut").checked,
+
+      title:
+        document.getElementById("supportTitle").value.trim(),
+
+      text:
+        document.getElementById("supportText").value.trim(),
+
+      page:
+        document.getElementById("supportPage").value.trim()
+    },
+
+    androidApp:{
+      downloadEnabled:
+        document.getElementById("apkEnabled").checked,
+
+      version:
+        document.getElementById("appVersion").value.trim(),
+
+      apk:
+        document.getElementById("apkURL").value.trim(),
+
+      updateMessage:
+        document.getElementById("updateMessage").value.trim()
+    },
+
+    appStatus:{
+      live:
+        document.getElementById("appLive").checked,
+
+      registrations:
+        document.getElementById("registrationEnabled").checked,
+
+      withdrawals:
+        document.getElementById("withdrawalsEnabled").checked,
+
+      share:
+        document.getElementById("shareEnabled").checked,
+
+      refer:
+        document.getElementById("referEnabled").checked
+    }
+
+  };
+
+  console.log("DEMO SETTINGS:",settings);
+
+  alert(
+    "Demo only: settings collected successfully, "+
+    "but they were NOT published or permanently saved."
+  );
+
+}
+
+
+/* VIDEO LINK MODAL */
+
+let editingLinkName="";
+
+function openLinkModal(name,url){
+
+  editingLinkName=name;
+
+  document.getElementById("linkModalTitle").innerText=
+  name;
+
+  document.getElementById("linkModalInput").value=
+  url;
+
+  document.getElementById("linkModal").style.display=
+  "flex";
+
+}
+
+function closeLinkModal(){
+
+  document.getElementById("linkModal").style.display=
+  "none";
+
+}
+
+function saveLinkModal(){
+
+  const url=
+  document.getElementById("linkModalInput")
+  .value.trim();
+
+  if(!url){
+
+    alert("Enter a file path or URL.");
+    return;
+
+  }
+
+  alert(
+    "Demo only. "+
+    editingLinkName+
+    " was not permanently changed."
+  );
+
+  closeLinkModal();
+
+}
+
+
+/* SIDEBAR */
+
+function openSidebar(){
+
+  document.getElementById("sidebar")
+  .classList.add("open");
+
+  document.getElementById("overlay")
+  .style.display="block";
+
+}
+
+function closeSidebar(){
+
+  document.getElementById("sidebar")
+  .classList.remove("open");
+
+  document.getElementById("overlay")
+  .style.display="none";
+
+}
+
+
+/*
+================================================
+REAL CONTENT BACKEND LATER
+================================================
+
+Recommended structure:
+
+GET /api/app-config
+
+Public app can receive:
+
+{
+  homeBanner,
+  announcement,
+  support,
+  tutorials,
+  androidApp,
+  appStatus,
+  importantLinks
+}
+
+Admin:
+
+GET /api/admin/app-config
+PATCH /api/admin/app-config
+
+Possible content tables:
+
+app_settings
+banners
+announcements
+tutorials
+notifications
+
+------------------------------------------------
+
+IMPORTANT SEPARATION
+
+OFFER MANAGEMENT:
+- offer name
+- payout
+- Share cashback
+- referral reward
+- affiliate URL
+- individual offer video
+- instructions
+- offer status
+
+APP & CONTENT:
+- home banners
+- announcements
+- general tutorials
+- support shortcut/content
+- APK information
+- global app availability
+- important links
+
+This avoids duplicate controls.
+
+------------------------------------------------
+
+SECURITY
+
+Do NOT rely on this static admin page for
+real administrative access.
+
+When backend is added:
+
+- admin login required
+- server checks admin role
+- protected admin API
+- validation/sanitization
+- audit log for changes
+
+The public frontend should only receive settings
+that are safe for users to see.
+
+Never expose:
+- affiliate secrets
+- API keys
+- admin credentials
+- private user information
+- payment credentials
+*/
+
+</script>
+
+</body>
+  </html>
