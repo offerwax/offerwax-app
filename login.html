@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Login | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+.page{
+  max-width:500px;
+  margin:auto;
+  min-height:100vh;
+  padding:35px 20px 45px;
+}
+
+/* LOGO */
+
+.logo{
+  text-align:center;
+  font-size:29px;
+  font-weight:900;
+  margin-top:10px;
+}
+
+.logo span{
+  color:#d42df4;
+}
+
+.tagline{
+  text-align:center;
+  color:#778399;
+  font-size:11px;
+  margin-top:7px;
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  margin-top:32px;
+}
+
+.hero-icon{
+  width:65px;
+  height:65px;
+  border-radius:20px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  background:linear-gradient(135deg,#7227e8,#d42df4);
+  box-shadow:0 10px 30px rgba(190,45,244,.18);
+}
+
+.hero h1{
+  font-size:26px;
+  margin-top:17px;
+}
+
+.hero p{
+  color:#7f8ba0;
+  font-size:11px;
+  line-height:1.5;
+  margin-top:7px;
+}
+
+/* AUTH CARD */
+
+.auth-card{
+  margin-top:25px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:22px;
+  padding:18px;
+}
+
+/* TABS */
+
+.tabs{
+  background:#080e19;
+  border-radius:13px;
+  padding:4px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  margin-bottom:20px;
+}
+
+.tab{
+  height:41px;
+  border:0;
+  border-radius:10px;
+  color:#7f8ba0;
+  background:transparent;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tab.active{
+  color:#fff;
+  background:linear-gradient(135deg,#7028df,#c52ce8);
+}
+
+/* FORMS */
+
+.form{
+  display:none;
+}
+
+.form.active{
+  display:block;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+label{
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.input-wrap{
+  position:relative;
+}
+
+input{
+  width:100%;
+  height:48px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:12px;
+  color:#fff;
+  padding:0 14px;
+  font-size:13px;
+  outline:none;
+}
+
+.password-input{
+  padding-right:55px;
+}
+
+input:focus{
+  border-color:#c12ee7;
+}
+
+input::placeholder{
+  color:#536077;
+}
+
+.show-password{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:none;
+  color:#a68bb1;
+  font-size:10px;
+  cursor:pointer;
+  padding:8px 4px;
+}
+
+.forgot{
+  display:block;
+  text-align:right;
+  color:#d64ef0;
+  font-size:10px;
+  text-decoration:none;
+  margin-top:-4px;
+  margin-bottom:16px;
+}
+
+.main-btn{
+  width:100%;
+  height:49px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(135deg,#7027e6,#d42df4);
+}
+
+.error{
+  display:none;
+  color:#ff7373;
+  font-size:9px;
+  margin-top:6px;
+}
+
+.message{
+  display:none;
+  padding:12px;
+  border-radius:11px;
+  margin-bottom:15px;
+  font-size:10px;
+  line-height:1.5;
+}
+
+.message-info{
+  display:block;
+  background:rgba(212,45,244,.08);
+  border:1px solid rgba(212,45,244,.22);
+  color:#dca7e6;
+}
+
+/* DIVIDER */
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px 0;
+  color:#5e6a7f;
+  font-size:9px;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#273147;
+}
+
+/* BENEFITS */
+
+.benefits{
+  margin-top:25px;
+}
+
+.benefit{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:12px;
+  color:#8d98ab;
+  font-size:10px;
+}
+
+.check{
+  width:22px;
+  height:22px;
+  min-width:22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#39dc8a;
+  background:rgba(57,220,138,.1);
+  font-size:10px;
+}
+
+/* TERMS */
+
+.terms{
+  text-align:center;
+  color:#59667b;
+  font-size:9px;
+  line-height:1.55;
+  margin-top:25px;
+}
+
+.terms a{
+  color:#a98bb1;
+  text-decoration:none;
+}
+
+/* FORGOT MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.76);
+  z-index:500;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:500px;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:25px 25px 0 0;
+  padding:24px 20px 30px;
+}
+
+.modal-line{
+  width:44px;
+  height:4px;
+  background:#465168;
+  border-radius:10px;
+  margin:0 auto 20px;
+}
+
+.modal h2{
+  font-size:20px;
+}
+
+.modal p{
+  color:#7f8ba0;
+  font-size:10px;
+  line-height:1.5;
+  margin-top:7px;
+  margin-bottom:18px;
+}
+
+.cancel{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7f8ba0;
+  margin-top:14px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+
+  <div class="tagline">
+    Share • Refer • Earn
+  </div>
+
+
+  <section class="hero">
+
+    <div class="hero-icon">
+      ₹
+    </div>
+
+    <h1 id="heroTitle">
+      Welcome Back
+    </h1>
+
+    <p id="heroText">
+      Login to access your offers, referrals and earnings.
+    </p>
+
+  </section>
+
+
+  <section class="auth-card">
+
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        id="loginTab"
+        onclick="showLogin()">
+        Login
+      </button>
+
+      <button
+        class="tab"
+        id="signupTab"
+        onclick="showSignup()">
+        Create Account
+      </button>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <form
+      class="form active"
+      id="loginForm"
+      onsubmit="loginUser(event)">
+
+      <div
+        class="message"
+        id="loginMessage">
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Mobile Number or Email
+        </label>
+
+        <input
+          id="loginIdentity"
+          type="text"
+          placeholder="Enter mobile number or email"
+          autocomplete="username">
+
+        <div
+          class="error"
+          id="loginIdentityError">
+          Please enter your mobile number or email.
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Password
+        </label>
+
+        <div class="input-wrap">
+
+          <input
+            id="loginPassword"
+            class="password-input"
+            type="password"
+            placeholder="Enter your password"
+            autocomplete="current-password">
+
+          <button
+            type="button"
+            class="show-password"
+            onclick="togglePassword('loginPassword',this)">
+            Show
+          </button>
+
+        </div>
+
+        <div
+          class="error"
+          id="loginPasswordError">
+          Please enter your password.
+        </div>
+
+      </div>
+
+
+      <a
+        href="#"
+        class="forgot"
+        onclick="openForgot(event)">
+        Forgot Password?
+      </a>
+
+
+      <button
+        type="submit"
+        class="main-btn">
+        Login to Offerwax
+      </button>
+
+    </form>
+
+
+    <!-- SIGNUP -->
+
+    <form
+      class="form"
+      id="signupForm"
+      onsubmit="signupUser(event)">
+
+      <div
+        class="message"
+        id="signupMessage">
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+          id="signupName"
+          type="text"
+          placeholder="Enter your full name"
+          autocomplete="name">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Mobile Number
+        </label>
+
+        <input
+          id="signupMobile"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="10-digit mobile number"
+          autocomplete="tel">
+
+        <div
+          class="error"
+          id="mobileError">
+          Enter a valid 10-digit Indian mobile number.
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Email Address
+        </label>
+
+        <input
+          id="signupEmail"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Password
+        </label>
+
+        <div class="input-wrap">
+
+          <input
+            id="signupPassword"
+            class="password-input"
+            type="password"
+            placeholder="Minimum 6 characters"
+            autocomplete="new-password">
+
+          <button
+            type="button"
+            class="show-password"
+            onclick="togglePassword('signupPassword',this)">
+            Show
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Confirm Password
+        </label>
+
+        <div class="input-wrap">
+
+          <input
+            id="confirmPassword"
+            class="password-input"
+            type="password"
+            placeholder="Enter password again"
+            autocomplete="new-password">
+
+          <button
+            type="button"
+            class="show-password"
+            onclick="togglePassword('confirmPassword',this)">
+            Show
+          </button>
+
+        </div>
+
+        <div
+          class="error"
+          id="passwordError">
+          Passwords do not match.
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Referral Code
+          <span style="color:#657187;font-weight:400;">
+            (Optional)
+          </span>
+        </label>
+
+        <input
+          id="referralCode"
+          type="text"
+          placeholder="Enter referral code">
+      </div>
+
+
+      <button
+        type="submit"
+        class="main-btn">
+        Create Offerwax Account
+      </button>
+
+    </form>
+
+  </section>
+
+
+  <section class="benefits">
+
+    <div class="benefit">
+      <div class="check">✓</div>
+      Discover earning offers in one place
+    </div>
+
+    <div class="benefit">
+      <div class="check">✓</div>
+      Refer friends and track your rewards
+    </div>
+
+    <div class="benefit">
+      <div class="check">✓</div>
+      Share offers and manage your earnings
+    </div>
+
+  </section>
+
+
+  <div class="terms">
+    By creating an account, you agree to Offerwax
+    <a href="#">Terms & Conditions</a>
+    and
+    <a href="#">Privacy Policy</a>.
+  </div>
+
+</main>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div
+  class="modal"
+  id="forgotModal"
+  onclick="outsideClose(event)">
+
+  <div class="modal-box">
+
+    <div class="modal-line"></div>
+
+    <h2>
+      Reset Password
+    </h2>
+
+    <p>
+      Enter your registered mobile number or email.
+      Password recovery will be connected with the
+      Offerwax authentication system.
+    </p>
+
+    <div class="field">
+
+      <label>
+        Mobile Number or Email
+      </label>
+
+      <input
+        id="forgotIdentity"
+        type="text"
+        placeholder="Enter mobile number or email">
+
+    </div>
+
+
+    <button
+      class="main-btn"
+      onclick="sendReset()">
+      Continue
+    </button>
+
+
+    <button
+      class="cancel"
+      onclick="closeForgot()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* SWITCH LOGIN */
+
+function showLogin(){
+
+  document
+  .getElementById("loginForm")
+  .classList.add("active");
+
+  document
+  .getElementById("signupForm")
+  .classList.remove("active");
+
+  document
+  .getElementById("loginTab")
+  .classList.add("active");
+
+  document
+  .getElementById("signupTab")
+  .classList.remove("active");
+
+  document
+  .getElementById("heroTitle")
+  .innerText="Welcome Back";
+
+  document
+  .getElementById("heroText")
+  .innerText=
+  "Login to access your offers, referrals and earnings.";
+
+}
+
+
+/* SWITCH SIGNUP */
+
+function showSignup(){
+
+  document
+  .getElementById("signupForm")
+  .classList.add("active");
+
+  document
+  .getElementById("loginForm")
+  .classList.remove("active");
+
+  document
+  .getElementById("signupTab")
+  .classList.add("active");
+
+  document
+  .getElementById("loginTab")
+  .classList.remove("active");
+
+  document
+  .getElementById("heroTitle")
+  .innerText="Create Account";
+
+  document
+  .getElementById("heroText")
+  .innerText=
+  "Join Offerwax and start earning through offers and referrals.";
+
+}
+
+
+/* PASSWORD SHOW/HIDE */
+
+function togglePassword(id,button){
+
+  const input =
+    document.getElementById(id);
+
+  if(input.type === "password"){
+
+    input.type="text";
+    button.innerText="Hide";
+
+  }else{
+
+    input.type="password";
+    button.innerText="Show";
+
+  }
+
+}
+
+
+/* LOGIN */
+
+function loginUser(event){
+
+  event.preventDefault();
+
+  const identity =
+    document
+    .getElementById("loginIdentity")
+    .value
+    .trim();
+
+  const password =
+    document
+    .getElementById("loginPassword")
+    .value;
+
+  const identityError =
+    document
+    .getElementById("loginIdentityError");
+
+  const passwordError =
+    document
+    .getElementById("loginPasswordError");
+
+  const message =
+    document
+    .getElementById("loginMessage");
+
+
+  identityError.style.display="none";
+  passwordError.style.display="none";
+  message.style.display="none";
+
+
+  let valid=true;
+
+
+  if(!identity){
+
+    identityError.style.display="block";
+    valid=false;
+
+  }
+
+
+  if(!password){
+
+    passwordError.style.display="block";
+    valid=false;
+
+  }
+
+
+  if(!valid){
+    return;
+  }
+
+
+  /*
+    REAL LOGIN WILL BE CONNECTED HERE.
+
+    Later:
+    POST /api/auth/login
+
+    Do not redirect until the server
+    confirms the login.
+  */
+
+
+  message.className=
+    "message message-info";
+
+  message.innerText=
+    "Offerwax login service is not connected yet. No account login has been performed.";
+
+}
+
+
+/* SIGNUP */
+
+function signupUser(event){
+
+  event.preventDefault();
+
+
+  const name =
+    document
+    .getElementById("signupName")
+    .value
+    .trim();
+
+  const mobile =
+    document
+    .getElementById("signupMobile")
+    .value
+    .trim();
+
+  const email =
+    document
+    .getElementById("signupEmail")
+    .value
+    .trim();
+
+  const password =
+    document
+    .getElementById("signupPassword")
+    .value;
+
+  const confirm =
+    document
+    .getElementById("confirmPassword")
+    .value;
+
+  const mobileError =
+    document
+    .getElementById("mobileError");
+
+  const passwordError =
+    document
+    .getElementById("passwordError");
+
+  const message =
+    document
+    .getElementById("signupMessage");
+
+
+  mobileError.style.display="none";
+  passwordError.style.display="none";
+  message.style.display="none";
+
+
+  if(name.length < 2){
+
+    alert(
+      "Please enter your full name."
+    );
+
+    return;
+
+  }
+
+
+  if(!/^[6-9][0-9]{9}$/.test(mobile)){
+
+    mobileError.style.display="block";
+    return;
+
+  }
+
+
+  if(
+    !email ||
+    !email.includes("@")
+  ){
+
+    alert(
+      "Please enter a valid email address."
+    );
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    alert(
+      "Password must contain at least 6 characters."
+    );
+
+    return;
+
+  }
+
+
+  if(password !== confirm){
+
+    passwordError.style.display="block";
+    return;
+
+  }
+
+
+  /*
+    REAL SIGNUP WILL BE CONNECTED HERE.
+
+    Later:
+    POST /api/auth/signup
+
+    Password must be hashed securely
+    on the server. Never store the
+    raw password in localStorage.
+  */
+
+
+  message.className=
+    "message message-info";
+
+  message.innerText=
+    "Account details are valid. Offerwax registration service is not connected yet, so no account has been created.";
+
+}
+
+
+/* FORGOT PASSWORD */
+
+function openForgot(event){
+
+  event.preventDefault();
+
+  document
+  .getElementById("forgotModal")
+  .style.display="flex";
+
+}
+
+
+function closeForgot(){
+
+  document
+  .getElementById("forgotModal")
+  .style.display="none";
+
+}
+
+
+function outsideClose(event){
+
+  if(
+    event.target.id ===
+    "forgotModal"
+  ){
+
+    closeForgot();
+
+  }
+
+}
+
+
+function sendReset(){
+
+  const identity =
+    document
+    .getElementById("forgotIdentity")
+    .value
+    .trim();
+
+
+  if(!identity){
+
+    alert(
+      "Please enter your registered mobile number or email."
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "Password recovery service is not connected yet. No reset request has been sent."
+  );
+
+}
+
+
+/* REFERRAL CODE FROM LINK
+
+Example:
+login.html?ref=OW8473
+
+*/
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const ref =
+  params.get("ref");
+
+
+if(ref){
+
+  document
+  .getElementById("referralCode")
+  .value=ref;
+
+}
+
+</script>
+
+</body>
+</html>
