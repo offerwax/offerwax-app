@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070b14">
-
 <title>Offer | Offerwax</title>
 
 <style>
@@ -22,8 +21,7 @@ body{
 }
 
 .topbar{
-  height:72px;
-  padding:0 20px;
+  height:68px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -35,45 +33,46 @@ body{
   font-weight:800;
 }
 
-.logo span{
-  color:#d42df4;
-}
+.logo span{color:#d42df4;}
 
 .page{
+  width:100%;
   max-width:600px;
   margin:auto;
-  padding:24px 20px 50px;
+  padding:20px 20px 50px;
 }
 
 .secure{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:6px;
+  text-align:center;
   color:#7f8ba0;
   font-size:11px;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
-.offer-head{
+/* OFFER HEADER */
+
+.offer-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  padding:15px;
   display:flex;
   align-items:center;
-  margin-bottom:24px;
 }
 
 .offer-logo{
-  width:60px;
-  height:60px;
-  min-width:60px;
-  border-radius:16px;
+  width:52px;
+  height:52px;
+  min-width:52px;
+  border-radius:13px;
   background:#fff;
   color:#172036;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
-  margin-right:14px;
+  margin-right:12px;
 }
 
 .offer-info{
@@ -81,13 +80,13 @@ body{
 }
 
 .offer-name{
-  font-size:20px;
+  font-size:18px;
   font-weight:800;
 }
 
 .offer-type{
   color:#8e99ae;
-  font-size:12px;
+  font-size:11px;
   margin-top:5px;
 }
 
@@ -98,176 +97,64 @@ body{
 .reward small{
   display:block;
   color:#8e99ae;
-  font-size:10px;
+  font-size:9px;
   margin-bottom:4px;
 }
 
 .reward strong{
   color:#39dc8a;
-  font-size:21px;
+  font-size:19px;
 }
 
-.hero{
-  background:
-  radial-gradient(circle at top right,rgba(220,45,245,.35),transparent 40%),
-  linear-gradient(135deg,#4820bd,#9d20d8);
-  border-radius:22px;
-  padding:24px 20px;
-  margin-bottom:24px;
-}
-
-.hero-badge{
-  display:inline-block;
-  background:rgba(255,255,255,.15);
-  padding:7px 11px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:700;
-}
-
-.hero h1{
-  font-size:26px;
-  line-height:1.25;
-  margin-top:14px;
-}
-
-.hero p{
-  font-size:13px;
-  color:rgba(255,255,255,.82);
-  line-height:1.55;
-  margin-top:9px;
-}
-
-.card{
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:20px;
-  padding:18px;
-}
-
-.form-title{
-  font-size:20px;
-  font-weight:800;
-}
-
-.form-subtitle{
-  color:#8e99ae;
-  font-size:12px;
-  line-height:1.5;
-  margin-top:7px;
-  margin-bottom:20px;
-}
-
-.field{
-  margin-bottom:16px;
-}
-
-.field label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-
-.field input{
-  width:100%;
-  background:#080e19;
-  border:1px solid #29364e;
-  border-radius:13px;
-  padding:14px;
-  outline:none;
-  color:#fff;
-  font-size:14px;
-}
-
-.field input:focus{
-  border-color:#b52bea;
-}
-
-.field input::placeholder{
-  color:#58657a;
-}
-
-.error{
-  display:none;
-  color:#ff7070;
-  font-size:11px;
-  margin-top:6px;
-}
-
-.privacy{
-  background:#0b1220;
-  border-radius:12px;
-  padding:12px;
-  color:#7f8ba0;
-  font-size:10px;
-  line-height:1.5;
-  margin-bottom:16px;
-}
-
-.primary{
-  width:100%;
-  border:0;
-  border-radius:13px;
-  padding:15px;
-  background:linear-gradient(135deg,#7927ea,#cf25e7);
-  color:#fff;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-#offerContent{
-  display:none;
-}
+/* SECTION */
 
 .section{
-  margin-top:28px;
+  margin-top:25px;
 }
 
 .section-title{
   font-size:19px;
   font-weight:800;
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 /* VIDEO */
 
 .video-card{
-  height:210px;
+  height:190px;
   border-radius:20px;
   background:
-  radial-gradient(circle at top right,rgba(228,48,245,.42),transparent 38%),
-  linear-gradient(135deg,#4023c4,#a620d8);
+    radial-gradient(circle at top right,rgba(229,46,246,.42),transparent 40%),
+    linear-gradient(135deg,#4823c5,#aa20da);
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
   text-align:center;
   padding:20px;
   cursor:pointer;
 }
 
 .play{
-  width:62px;
-  height:62px;
+  width:58px;
+  height:58px;
   border-radius:50%;
   background:#fff;
-  color:#8128e7;
+  color:#9226e5;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:23px;
   padding-left:4px;
-  margin-bottom:13px;
+  font-size:21px;
 }
 
 .video-card h3{
   font-size:16px;
+  margin-top:13px;
 }
 
 .video-card p{
-  color:rgba(255,255,255,.75);
+  color:rgba(255,255,255,.76);
   font-size:11px;
   margin-top:6px;
 }
@@ -275,11 +162,11 @@ body{
 /* VIDEO MODAL */
 
 .video-modal{
+  display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.9);
-  z-index:999;
-  display:none;
+  z-index:9999;
+  background:rgba(0,0,0,.92);
   align-items:center;
   justify-content:center;
   padding:18px;
@@ -296,7 +183,9 @@ body{
 }
 
 .video-box video{
+  display:block;
   width:100%;
+  max-height:75vh;
   border-radius:16px;
   background:#000;
 }
@@ -307,8 +196,8 @@ body{
   top:-48px;
   width:38px;
   height:38px;
-  border-radius:50%;
   border:0;
+  border-radius:50%;
   background:#202a3d;
   color:#fff;
   font-size:22px;
@@ -319,13 +208,13 @@ body{
 .instructions{
   background:#10182a;
   border:1px solid #202c43;
-  border-radius:20px;
+  border-radius:18px;
   overflow:hidden;
 }
 
 .instruction{
   display:flex;
-  padding:16px;
+  padding:14px;
   border-bottom:1px solid #202c43;
 }
 
@@ -334,23 +223,23 @@ body{
 }
 
 .number{
-  width:35px;
-  height:35px;
-  min-width:35px;
+  width:32px;
+  height:32px;
+  min-width:32px;
   border-radius:50%;
-  background:rgba(190,42,238,.13);
-  color:#d540f4;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
+  background:rgba(194,42,238,.13);
+  color:#d33ef2;
+  font-size:11px;
   font-weight:800;
-  margin-right:13px;
+  margin-right:12px;
 }
 
 .instruction h4{
   font-size:13px;
-  margin-bottom:5px;
+  margin-bottom:4px;
 }
 
 .instruction p{
@@ -359,84 +248,136 @@ body{
   line-height:1.45;
 }
 
-/* TERMS */
+/* FORM */
 
-.terms{
+.form-card{
   background:#10182a;
   border:1px solid #202c43;
-  border-radius:20px;
-  padding:17px;
+  border-radius:18px;
+  padding:16px;
 }
 
-.terms ul{
+.form-heading{
+  font-size:16px;
+  font-weight:800;
+}
+
+.form-description{
+  color:#8e99ae;
+  font-size:10px;
+  line-height:1.45;
+  margin-top:5px;
+  margin-bottom:15px;
+}
+
+.field{
+  margin-bottom:12px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.field input{
+  width:100%;
+  height:46px;
+  background:#080e19;
+  border:1px solid #29364e;
+  border-radius:11px;
+  outline:none;
+  padding:0 13px;
+  color:#fff;
+  font-size:13px;
+}
+
+.field input:focus{
+  border-color:#b62bea;
+}
+
+.field input::placeholder{
+  color:#58657a;
+}
+
+.error{
+  display:none;
+  color:#ff7474;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.privacy{
+  background:#0a111e;
+  border-radius:10px;
+  padding:10px;
+  color:#78859a;
+  font-size:9px;
+  line-height:1.45;
+}
+
+/* TERMS */
+
+.terms-box{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  padding:16px;
+}
+
+.terms-box ul{
   padding-left:18px;
 }
 
-.terms li{
+.terms-box li{
   color:#8e99ae;
-  font-size:11px;
-  line-height:1.55;
-  margin-bottom:9px;
+  font-size:10px;
+  line-height:1.5;
+  margin-bottom:7px;
 }
 
-.terms li:last-child{
-  margin-bottom:0;
-}
-
-.checkbox{
+.agree{
   display:flex;
   align-items:flex-start;
-  gap:10px;
-  margin-top:16px;
-  color:#a3adbd;
-  font-size:11px;
-  line-height:1.5;
+  gap:9px;
+  margin-top:14px;
+  color:#a4adbd;
+  font-size:10px;
+  line-height:1.45;
 }
 
-.checkbox input{
+.agree input{
   width:17px;
   height:17px;
   min-width:17px;
-  margin-top:1px;
-  accent-color:#c22ce8;
+  accent-color:#c32be9;
 }
 
 .start{
   width:100%;
   border:0;
-  margin-top:18px;
-  padding:16px;
-  border-radius:14px;
-  color:#fff;
+  border-radius:12px;
+  padding:14px;
+  margin-top:15px;
   background:linear-gradient(135deg,#7927e9,#cf25e7);
-  font-size:14px;
+  color:#fff;
+  font-size:13px;
   font-weight:800;
   cursor:pointer;
 }
 
 .start:disabled{
-  opacity:.45;
+  opacity:.42;
   cursor:not-allowed;
 }
 
-.tracking-note{
-  color:#69758a;
+.note{
   text-align:center;
-  font-size:10px;
-  line-height:1.5;
-  margin-top:12px;
-}
-
-.success{
-  display:none;
-  background:rgba(57,220,138,.08);
-  border:1px solid rgba(57,220,138,.25);
-  color:#39dc8a;
-  border-radius:12px;
-  padding:12px;
-  font-size:11px;
-  line-height:1.5;
-  margin-bottom:15px;
+  color:#69758a;
+  font-size:9px;
+  line-height:1.45;
+  margin-top:10px;
 }
 </style>
 </head>
@@ -449,147 +390,40 @@ body{
 
 <main class="page">
 
-<div class="secure">
-  🔒 Secure Offerwax offer
-</div>
-
-<div class="offer-head">
-
-  <div class="offer-logo" id="offerLogo">
-    Kotak
+  <div class="secure">
+    🔒 Secure Offerwax Offer
   </div>
 
-  <div class="offer-info">
-    <div class="offer-name" id="offerName">
-      Kotak 811
+
+  <!-- COMPACT OFFER INFO -->
+
+  <div class="offer-card">
+
+    <div class="offer-logo" id="offerLogo">
+      Kotak
     </div>
 
-    <div class="offer-type" id="offerType">
-      Bank Account Offer
+    <div class="offer-info">
+
+      <div class="offer-name" id="offerName">
+        Kotak 811
+      </div>
+
+      <div class="offer-type" id="offerType">
+        Bank Account Offer
+      </div>
+
     </div>
-  </div>
 
-  <div class="reward">
-    <small>Cashback</small>
-    <strong id="offerReward">₹500</strong>
-  </div>
-
-</div>
-
-
-<section class="hero">
-
-  <div class="hero-badge">
-    🎁 CASHBACK OFFER
-  </div>
-
-  <h1 id="heroTitle">
-    Complete Kotak 811 & Get ₹500
-  </h1>
-
-  <p>
-    Enter your details below before starting.
-    This helps Offerwax identify and track your cashback.
-  </p>
-
-</section>
-
-
-<!-- DETAILS FORM -->
-
-<section id="detailsSection">
-
-<div class="card">
-
-  <div class="form-title">
-    Enter Your Details
-  </div>
-
-  <div class="form-subtitle">
-    Make sure your information is correct so your offer
-    progress and cashback can be identified.
-  </div>
-
-
-  <div class="success" id="savedMessage">
-    ✓ Details saved successfully.
-  </div>
-
-
-  <div class="field">
-
-    <label>Full Name</label>
-
-    <input
-      type="text"
-      id="fullName"
-      placeholder="Enter your full name"
-      autocomplete="name">
-
-    <div class="error" id="nameError">
-      Please enter your name.
+    <div class="reward">
+      <small>Cashback</small>
+      <strong id="offerReward">₹500</strong>
     </div>
 
   </div>
 
 
-  <div class="field">
-
-    <label>Mobile Number</label>
-
-    <input
-      type="tel"
-      id="mobile"
-      maxlength="10"
-      inputmode="numeric"
-      placeholder="10-digit mobile number"
-      autocomplete="tel">
-
-    <div class="error" id="mobileError">
-      Enter a valid 10-digit mobile number.
-    </div>
-
-  </div>
-
-
-  <div class="field">
-
-    <label>UPI ID</label>
-
-    <input
-      type="text"
-      id="upi"
-      placeholder="example@upi"
-      autocomplete="off">
-
-    <div class="error" id="upiError">
-      Enter a valid UPI ID.
-    </div>
-
-  </div>
-
-
-  <div class="privacy">
-    🔒 Your details are collected for offer tracking and
-    cashback processing. Payment information should only be
-    accessible to authorized Offerwax systems/admins.
-  </div>
-
-
-  <button class="primary" onclick="continueOffer()">
-    Continue →
-  </button>
-
-</div>
-
-</section>
-
-
-
-<!-- OFFER CONTENT -->
-
-<section id="offerContent">
-
+  <!-- VIDEO FIRST -->
 
   <section class="section">
 
@@ -612,6 +446,7 @@ body{
   </section>
 
 
+  <!-- INSTRUCTIONS -->
 
   <section class="section">
 
@@ -621,16 +456,15 @@ body{
 
     <div class="instructions">
 
-
       <div class="instruction">
 
         <div class="number">1</div>
 
         <div>
-          <h4>Tap Start Offer</h4>
+          <h4>Enter your details</h4>
           <p>
-            Always start using the button on this page so
-            your offer can be associated with your tracking session.
+            Enter your correct name, mobile number and UPI ID
+            before starting the offer.
           </p>
         </div>
 
@@ -642,10 +476,10 @@ body{
         <div class="number">2</div>
 
         <div>
-          <h4>Complete the registration</h4>
+          <h4>Start from Offerwax</h4>
           <p>
-            Use genuine information and complete the required
-            registration steps on the advertiser's platform.
+            Tap the Start Offer button below and continue using
+            the provided tracking link.
           </p>
         </div>
 
@@ -657,10 +491,10 @@ body{
         <div class="number">3</div>
 
         <div>
-          <h4>Complete required actions</h4>
+          <h4>Complete registration</h4>
           <p>
-            Complete all conditions shown for this offer.
-            Requirements may vary by campaign.
+            Complete the required registration and campaign
+            conditions using genuine information.
           </p>
         </div>
 
@@ -674,8 +508,8 @@ body{
         <div>
           <h4>Wait for validation</h4>
           <p>
-            Cashback becomes eligible only after the required
-            completion is successfully tracked and validated.
+            Cashback is processed after the required completion
+            is tracked and successfully validated.
           </p>
         </div>
 
@@ -686,6 +520,90 @@ body{
   </section>
 
 
+  <!-- COMPACT DETAILS -->
+
+  <section class="section">
+
+    <h2 class="section-title">
+      Enter Your Details
+    </h2>
+
+    <div class="form-card">
+
+      <div class="form-heading">
+        Cashback Details
+      </div>
+
+      <div class="form-description">
+        Enter the correct details you want associated with
+        this offer and cashback.
+      </div>
+
+
+      <div class="field">
+
+        <label>Full Name</label>
+
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Enter your name"
+          autocomplete="name">
+
+        <div id="nameError" class="error">
+          Please enter your name.
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Mobile Number</label>
+
+        <input
+          id="mobile"
+          type="tel"
+          maxlength="10"
+          inputmode="numeric"
+          placeholder="10-digit mobile number"
+          autocomplete="tel">
+
+        <div id="mobileError" class="error">
+          Enter a valid 10-digit mobile number.
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>UPI ID</label>
+
+        <input
+          id="upi"
+          type="text"
+          placeholder="example@upi"
+          autocomplete="off">
+
+        <div id="upiError" class="error">
+          Enter a valid UPI ID.
+        </div>
+
+      </div>
+
+
+      <div class="privacy">
+        🔒 Your details are used for offer tracking and
+        cashback processing.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TERMS -->
 
   <section class="section">
 
@@ -693,13 +611,13 @@ body{
       Terms & Conditions
     </h2>
 
-    <div class="terms">
+    <div class="terms-box">
 
       <ul>
 
         <li>
-          Complete the offer through the Start Offer button
-          provided on this page.
+          Start the offer only through the button provided
+          on this page.
         </li>
 
         <li>
@@ -713,28 +631,28 @@ body{
         </li>
 
         <li>
-          The required actions and validation time can vary
-          depending on the offer.
+          Offer requirements and validation time may vary
+          depending on the campaign.
         </li>
 
         <li>
-          Cashback will be processed to the eligible payout
-          details after successful validation.
+          Eligible cashback is processed after successful
+          validation.
         </li>
 
       </ul>
 
 
-      <label class="checkbox">
+      <label class="agree">
 
         <input
           type="checkbox"
           id="agree"
-          onchange="updateStartButton()">
+          onchange="updateButton()">
 
         <span>
-          I have read and agree to the offer instructions
-          and terms & conditions.
+          I have read and agree to the instructions and
+          terms & conditions.
         </span>
 
       </label>
@@ -751,21 +669,18 @@ body{
       </button>
 
 
-      <div class="tracking-note">
-        Keep this page open until you are redirected to the offer.
+      <div class="note">
+        Make sure your details are correct before starting.
       </div>
 
     </div>
 
   </section>
 
-</section>
-
 </main>
 
 
-
-<!-- VIDEO MODAL -->
+<!-- VIDEO -->
 
 <div class="video-modal" id="videoModal">
 
@@ -787,8 +702,6 @@ body{
         src="kotak-guide.mp4"
         type="video/mp4">
 
-      Your browser does not support video playback.
-
     </video>
 
   </div>
@@ -796,12 +709,11 @@ body{
 </div>
 
 
-
 <script>
 
-/* ---------------------------
-   OFFER CONFIGURATION
---------------------------- */
+/* ==============================
+   OFFER SETTINGS
+============================== */
 
 const offers = {
 
@@ -811,10 +723,7 @@ const offers = {
     type:"Bank Account Offer",
     cashback:"₹500",
 
-    /*
-      Replace # with the REAL affiliate tracking URL
-      before live testing.
-    */
+    /* Add real affiliate URL later */
     trackingUrl:"#",
 
     video:"kotak-guide.mp4"
@@ -841,9 +750,7 @@ const offers = {
 };
 
 
-/* ---------------------------
-   READ SHARED LINK
---------------------------- */
+/* READ LINK */
 
 const params =
   new URLSearchParams(window.location.search);
@@ -858,9 +765,7 @@ const offer =
   offers[offerID] || offers.kotak;
 
 
-/* ---------------------------
-   LOAD OFFER
---------------------------- */
+/* LOAD OFFER */
 
 document.getElementById("offerLogo").innerText =
   offer.logo;
@@ -874,28 +779,20 @@ document.getElementById("offerType").innerText =
 document.getElementById("offerReward").innerText =
   offer.cashback;
 
-document.getElementById("heroTitle").innerText =
-  "Complete " +
-  offer.name +
-  " & Get " +
-  offer.cashback;
-
 document.getElementById("startButton").innerText =
-  "Start Offer • Earn " +
-  offer.cashback;
-
-document
-  .querySelector("#guideVideo source")
-  .src = offer.video;
-
-document
-  .getElementById("guideVideo")
-  .load();
+  "Start Offer • Earn " + offer.cashback;
 
 
-/* ---------------------------
-   CREATE VISITOR ID
---------------------------- */
+const video =
+  document.getElementById("guideVideo");
+
+video.querySelector("source").src =
+  offer.video;
+
+video.load();
+
+
+/* VISITOR / CLICK ID */
 
 let visitorID =
   sessionStorage.getItem("offerwaxVisitor");
@@ -907,42 +804,74 @@ if(!visitorID){
     Date.now().toString(36).toUpperCase() +
     "-" +
     Math.random()
-      .toString(36)
-      .substring(2,7)
-      .toUpperCase();
+    .toString(36)
+    .substring(2,7)
+    .toUpperCase();
 
   sessionStorage.setItem(
     "offerwaxVisitor",
     visitorID
   );
+
 }
 
 
-/* ---------------------------
-   SAVE CLICK LOCALLY
---------------------------- */
-
-const clickData = {
-
-  visitorID:visitorID,
-  offer:offerID,
-  referrer:referrer,
-  stage:"link_clicked",
-  clickedAt:new Date().toISOString()
-
-};
+/*
+ TEMPORARY LOCAL CLICK DATA.
+ Real tracking will be sent to backend later.
+*/
 
 sessionStorage.setItem(
   "offerwaxClick",
-  JSON.stringify(clickData)
+  JSON.stringify({
+    visitorID:visitorID,
+    offer:offerID,
+    referrer:referrer,
+    stage:"link_clicked",
+    clickedAt:new Date().toISOString()
+  })
 );
 
 
-/* ---------------------------
-   VALIDATE DETAILS
---------------------------- */
+/* VIDEO */
 
-function continueOffer(){
+function openVideo(){
+
+  document
+  .getElementById("videoModal")
+  .classList.add("open");
+
+}
+
+
+function closeVideo(){
+
+  video.pause();
+
+  document
+  .getElementById("videoModal")
+  .classList.remove("open");
+
+}
+
+
+/* TERMS BUTTON */
+
+function updateButton(){
+
+  document
+  .getElementById("startButton")
+  .disabled =
+  !document
+  .getElementById("agree")
+  .checked;
+
+}
+
+
+/* VALIDATE + START */
+
+function startOffer(){
 
   const name =
     document
@@ -963,14 +892,14 @@ function continueOffer(){
     .trim();
 
 
-  let valid = true;
-
-
   document
   .querySelectorAll(".error")
-  .forEach(error=>{
-    error.style.display="none";
+  .forEach(x=>{
+    x.style.display="none";
   });
+
+
+  let valid=true;
 
 
   if(name.length < 2){
@@ -1007,26 +936,31 @@ function continueOffer(){
 
 
   if(!valid){
+
+    document
+    .querySelector(".form-card")
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
     return;
   }
 
 
   /*
-    TEMPORARY FRONT-END STORAGE ONLY.
+    TEMPORARY LOCAL STORAGE.
 
-    This is NOT the final database.
-    When backend is connected,
-    this information should be sent
-    securely to the server instead.
+    Backend connection will replace this.
   */
 
   const userData = {
 
     visitorID:visitorID,
 
-    referrer:referrer,
-
     offer:offerID,
+
+    referrer:referrer,
 
     name:name,
 
@@ -1034,9 +968,9 @@ function continueOffer(){
 
     upi:upi,
 
-    stage:"details_submitted",
+    stage:"offer_started",
 
-    submittedAt:
+    startedAt:
       new Date().toISOString()
 
   };
@@ -1048,107 +982,11 @@ function continueOffer(){
   );
 
 
-  document
-  .getElementById("detailsSection")
-  .style.display="none";
-
-
-  document
-  .getElementById("offerContent")
-  .style.display="block";
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ---------------------------
-   VIDEO
---------------------------- */
-
-function openVideo(){
-
-  document
-  .getElementById("videoModal")
-  .classList.add("open");
-
-}
-
-
-function closeVideo(){
-
-  const video =
-    document.getElementById("guideVideo");
-
-  video.pause();
-
-  document
-  .getElementById("videoModal")
-  .classList.remove("open");
-
-}
-
-
-/* ---------------------------
-   TERMS
---------------------------- */
-
-function updateStartButton(){
-
-  document
-  .getElementById("startButton")
-  .disabled =
-  !document
-  .getElementById("agree")
-  .checked;
-
-}
-
-
-/* ---------------------------
-   START OFFER
---------------------------- */
-
-function startOffer(){
-
-  const saved =
-    sessionStorage.getItem("offerwaxUser");
-
-
-  if(!saved){
-
-    alert(
-      "Please enter your details first."
-    );
-
-    return;
-  }
-
-
-  const data =
-    JSON.parse(saved);
-
-
-  data.stage =
-    "offer_started";
-
-  data.startedAt =
-    new Date().toISOString();
-
-
-  sessionStorage.setItem(
-    "offerwaxUser",
-    JSON.stringify(data)
-  );
-
-
   /*
-    Real tracking URL must be added
-    in the offer configuration above.
+    Don't fake tracking.
+
+    Real affiliate tracking URL will
+    be connected here.
   */
 
   if(
@@ -1157,23 +995,11 @@ function startOffer(){
   ){
 
     alert(
-      "Offer tracking link has not been connected yet."
+      "Details saved. Tracking link is not connected yet."
     );
 
     return;
   }
-
-
-  /*
-    IMPORTANT:
-    Do not invent the affiliate network's
-    SubID parameter.
-
-    When we know whether the network uses
-    sub1, click_id, af_sub1, etc.,
-    visitorID/referrer can be passed using
-    its correct parameter.
-  */
 
 
   window.location.href =
@@ -1184,4 +1010,4 @@ function startOffer(){
 </script>
 
 </body>
-          </html>
+      </html>
