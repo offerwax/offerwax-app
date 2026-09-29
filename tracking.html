@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>Check Tracking | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+.topbar{
+  height:72px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-bottom:1px solid #182133;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#d42df4;
+}
+
+.page{
+  max-width:600px;
+  margin:auto;
+  padding:28px 20px 60px;
+}
+
+.hero{
+  text-align:center;
+  padding:10px 5px 25px;
+}
+
+.track-icon{
+  width:64px;
+  height:64px;
+  margin:0 auto 17px;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:27px;
+  background:linear-gradient(135deg,#7227ec,#d42df4);
+}
+
+.hero h1{
+  font-size:28px;
+  font-weight:800;
+}
+
+.hero p{
+  color:#8e99ae;
+  font-size:13px;
+  line-height:1.55;
+  margin-top:9px;
+}
+
+/* SEARCH CARD */
+
+.search-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:20px;
+  padding:18px;
+}
+
+.search-card h2{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.search-card > p{
+  color:#8e99ae;
+  font-size:11px;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input{
+  width:100%;
+  height:48px;
+  background:#080e19;
+  color:#fff;
+  border:1px solid #29364e;
+  border-radius:12px;
+  padding:0 14px;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#bd2bec;
+}
+
+input::placeholder{
+  color:#58657a;
+}
+
+.error{
+  display:none;
+  color:#ff7373;
+  font-size:10px;
+  margin-top:7px;
+}
+
+.check-btn{
+  width:100%;
+  height:49px;
+  border:0;
+  border-radius:12px;
+  margin-top:14px;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(135deg,#7827eb,#d62be9);
+}
+
+.secure{
+  text-align:center;
+  color:#6f7b90;
+  font-size:10px;
+  margin-top:12px;
+}
+
+/* LOADER */
+
+.loading{
+  display:none;
+  text-align:center;
+  padding:25px;
+  margin-top:20px;
+  color:#8e99ae;
+  font-size:12px;
+}
+
+.spinner{
+  width:31px;
+  height:31px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  border:3px solid #202b40;
+  border-top-color:#d42df4;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+/* EMPTY */
+
+.empty{
+  display:none;
+  margin-top:20px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:20px;
+  padding:25px 18px;
+  text-align:center;
+}
+
+.empty-icon{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.empty h3{
+  font-size:17px;
+}
+
+.empty p{
+  color:#8e99ae;
+  font-size:11px;
+  line-height:1.55;
+  margin-top:8px;
+}
+
+/* RESULT */
+
+.result{
+  display:none;
+  margin-top:25px;
+}
+
+.result-title{
+  font-size:21px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.offer-card{
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.offer-head{
+  display:flex;
+  align-items:center;
+  padding:16px;
+  border-bottom:1px solid #202c43;
+}
+
+.offer-logo{
+  width:48px;
+  height:48px;
+  min-width:48px;
+  border-radius:12px;
+  background:#fff;
+  color:#172036;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:800;
+  margin-right:12px;
+}
+
+.offer-info{
+  flex:1;
+}
+
+.offer-info h3{
+  font-size:17px;
+}
+
+.offer-info p{
+  color:#8e99ae;
+  font-size:10px;
+  margin-top:5px;
+}
+
+.cashback{
+  text-align:right;
+}
+
+.cashback small{
+  color:#8e99ae;
+  font-size:9px;
+  display:block;
+}
+
+.cashback strong{
+  color:#39dc8a;
+  font-size:18px;
+  display:block;
+  margin-top:4px;
+}
+
+/* TRACKING ID */
+
+.tracking-info{
+  padding:13px 16px;
+  background:#0b1220;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.tracking-info span{
+  color:#78859a;
+  font-size:10px;
+}
+
+.tracking-info strong{
+  font-size:10px;
+  color:#c7cfdd;
+}
+
+/* TIMELINE */
+
+.timeline{
+  padding:5px 16px;
+}
+
+.step{
+  position:relative;
+  display:flex;
+  gap:13px;
+  padding:16px 0;
+  border-bottom:1px solid #202c43;
+}
+
+.step:last-child{
+  border-bottom:0;
+}
+
+.step-icon{
+  width:35px;
+  height:35px;
+  min-width:35px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:13px;
+  font-weight:800;
+}
+
+.done{
+  background:rgba(54,220,138,.14);
+  color:#39dc8a;
+}
+
+.waiting{
+  background:rgba(212,45,244,.12);
+  color:#d42df4;
+}
+
+.step-content{
+  flex:1;
+}
+
+.step-content h4{
+  font-size:13px;
+}
+
+.step-content p{
+  color:#7f8ba0;
+  font-size:10px;
+  line-height:1.45;
+  margin-top:4px;
+}
+
+.status{
+  align-self:center;
+  font-size:9px;
+  font-weight:700;
+  border-radius:20px;
+  padding:6px 9px;
+  white-space:nowrap;
+}
+
+.status-done{
+  background:rgba(54,220,138,.12);
+  color:#39dc8a;
+}
+
+.status-waiting{
+  background:rgba(212,45,244,.1);
+  color:#d42df4;
+}
+
+/* CASHBACK BOX */
+
+.cashback-status{
+  margin-top:18px;
+  background:#10182a;
+  border:1px solid #202c43;
+  border-radius:18px;
+  padding:16px;
+}
+
+.cashback-status h3{
+  font-size:15px;
+}
+
+.cashback-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:13px;
+}
+
+.cashback-row span{
+  color:#8e99ae;
+  font-size:11px;
+}
+
+.pending-badge{
+  padding:7px 11px;
+  border-radius:20px;
+  background:rgba(255,184,77,.1);
+  color:#ffb84d;
+  font-size:10px;
+  font-weight:700;
+}
+
+.help{
+  text-align:center;
+  color:#69758a;
+  font-size:10px;
+  line-height:1.5;
+  margin-top:24px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero">
+
+    <div class="track-icon">⌖</div>
+
+    <h1>Check Tracking</h1>
+
+    <p>
+      Enter the UPI ID used while starting the offer
+      to check your latest tracking status.
+    </p>
+
+  </section>
+
+
+  <section class="search-card">
+
+    <h2>Find Your Offer</h2>
+
+    <p>
+      Use the same UPI ID you submitted before
+      starting the offer.
+    </p>
+
+    <label for="upiInput">
+      UPI ID
+    </label>
+
+    <input
+      id="upiInput"
+      type="text"
+      placeholder="example@upi"
+      autocomplete="off">
+
+    <div class="error" id="upiError">
+      Please enter a valid UPI ID.
+    </div>
+
+    <button
+      class="check-btn"
+      onclick="checkTracking()">
+      Check Tracking
+    </button>
+
+    <div class="secure">
+      🔒 Secure Offerwax tracking lookup
+    </div>
+
+  </section>
+
+
+  <!-- LOADING -->
+
+  <div class="loading" id="loading">
+
+    <div class="spinner"></div>
+
+    Checking your tracking status...
+
+  </div>
+
+
+  <!-- NO RECORD -->
+
+  <div class="empty" id="empty">
+
+    <div class="empty-icon">⌕</div>
+
+    <h3>No Tracking Record Found</h3>
+
+    <p>
+      We couldn't find an offer associated with this
+      UPI ID yet. Make sure you entered the same UPI ID
+      used while starting the offer.
+    </p>
+
+  </div>
+
+
+  <!-- RESULT
+       Hidden until backend returns a real record.
+  -->
+
+  <section class="result" id="result">
+
+    <h2 class="result-title">
+      Tracking Status
+    </h2>
+
+
+    <div class="offer-card">
+
+      <div class="offer-head">
+
+        <div class="offer-logo" id="resultLogo">
+          Kotak
+        </div>
+
+        <div class="offer-info">
+
+          <h3 id="resultOffer">
+            Kotak 811
+          </h3>
+
+          <p id="resultUPI">
+            UPI: bi****@upi
+          </p>
+
+        </div>
+
+
+        <div class="cashback">
+
+          <small>Cashback</small>
+
+          <strong id="resultCashback">
+            ₹500
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="tracking-info">
+
+        <span>Tracking ID</span>
+
+        <strong id="trackingID">
+          OW-XXXXXXXX
+        </strong>
+
+      </div>
+
+
+      <div class="timeline">
+
+
+        <!-- CLICK -->
+
+        <div class="step">
+
+          <div
+            class="step-icon done"
+            id="clickIcon">
+            ✓
+          </div>
+
+          <div class="step-content">
+
+            <h4>Offer Click</h4>
+
+            <p>
+              Offer started through Offerwax.
+            </p>
+
+          </div>
+
+          <div
+            class="status status-done"
+            id="clickStatus">
+            Tracked
+          </div>
+
+        </div>
+
+
+        <!-- INSTALL -->
+
+        <div class="step">
+
+          <div
+            class="step-icon waiting"
+            id="installIcon">
+            2
+          </div>
+
+          <div class="step-content">
+
+            <h4>Install Tracked</h4>
+
+            <p>
+              Checking installation event from
+              the tracking provider.
+            </p>
+
+          </div>
+
+          <div
+            class="status status-waiting"
+            id="installStatus">
+            Waiting
+          </div>
+
+        </div>
+
+
+        <!-- REGISTRATION -->
+
+        <div class="step">
+
+          <div
+            class="step-icon waiting"
+            id="registrationIcon">
+            3
+          </div>
+
+          <div class="step-content">
+
+            <h4>Registration Complete</h4>
+
+            <p>
+              Registration status from the
+              advertiser.
+            </p>
+
+          </div>
+
+          <div
+            class="status status-waiting"
+            id="registrationStatus">
+            Waiting
+          </div>
+
+        </div>
+
+
+        <!-- REQUIRED ACTION -->
+
+        <div class="step">
+
+          <div
+            class="step-icon waiting"
+            id="actionIcon">
+            4
+          </div>
+
+          <div class="step-content">
+
+            <h4>Required Action</h4>
+
+            <p>
+              Required campaign conditions
+              must be completed.
+            </p>
+
+          </div>
+
+          <div
+            class="status status-waiting"
+            id="actionStatus">
+            Waiting
+          </div>
+
+        </div>
+
+
+        <!-- COMPLETE -->
+
+        <div class="step">
+
+          <div
+            class="step-icon waiting"
+            id="completeIcon">
+            5
+          </div>
+
+          <div class="step-content">
+
+            <h4>Completion Tracked</h4>
+
+            <p>
+              Final completion event and
+              validation status.
+            </p>
+
+          </div>
+
+          <div
+            class="status status-waiting"
+            id="completeStatus">
+            Waiting
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="cashback-status">
+
+      <h3>Cashback Status</h3>
+
+      <div class="cashback-row">
+
+        <span>
+          Current status
+        </span>
+
+        <div
+          class="pending-badge"
+          id="cashbackStatus">
+          Pending
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="help">
+    Tracking updates may take time to appear after
+    completing an action on the advertiser's platform.
+  </div>
+
+</main>
+
+
+<script>
+
+/*
+========================================
+ IMPORTANT
+========================================
+
+This page does NOT create fake tracking.
+
+When Cloudflare backend/database is connected,
+checkTracking() will request the real record.
+
+Expected backend endpoint later:
+
+GET /api/tracking?upi=example@upi
+
+Example response:
+
+{
+  "found": true,
+  "trackingId": "OW-X92KD",
+  "offer": "Kotak 811",
+  "logo": "Kotak",
+  "cashback": "₹500",
+
+  "click": true,
+  "install": true,
+  "registration": false,
+  "action": false,
+  "complete": false,
+
+  "cashbackStatus": "Pending"
+}
+
+*/
+
+
+function validUPI(upi){
+
+  return /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}$/
+  .test(upi);
+
+}
+
+
+function checkTracking(){
+
+  const input =
+    document.getElementById("upiInput");
+
+  const upi =
+    input.value.trim();
+
+
+  const error =
+    document.getElementById("upiError");
+
+  const loading =
+    document.getElementById("loading");
+
+  const empty =
+    document.getElementById("empty");
+
+  const result =
+    document.getElementById("result");
+
+
+  error.style.display="none";
+  loading.style.display="none";
+  empty.style.display="none";
+  result.style.display="none";
+
+
+  if(!validUPI(upi)){
+
+    error.style.display="block";
+    return;
+
+  }
+
+
+  loading.style.display="block";
+
+
+  /*
+  ========================================
+  BACKEND CONNECTION WILL GO HERE
+  ========================================
+
+  Example for later:
+
+  fetch(
+    "/api/tracking?upi=" +
+    encodeURIComponent(upi)
+  )
+  .then(response => response.json())
+  .then(data => {
+
+      loading.style.display="none";
+
+      if(!data.found){
+
+        empty.style.display="block";
+        return;
+
+      }
+
+      showTracking(data,upi);
+
+  })
+  .catch(() => {
+
+      loading.style.display="none";
+      empty.style.display="block";
+
+  });
+
+  */
+
+
+  /*
+     TEMPORARY:
+     backend isn't connected yet,
+     therefore we correctly show
+     "No Tracking Record Found"
+     instead of inventing statuses.
+  */
+
+  setTimeout(function(){
+
+    loading.style.display="none";
+
+    empty.style.display="block";
+
+  },700);
+
+}
+
+
+/* =====================================
+   DISPLAY REAL BACKEND DATA
+===================================== */
+
+function showTracking(data,upi){
+
+  document
+  .getElementById("result")
+  .style.display="block";
+
+
+  document
+  .getElementById("resultOffer")
+  .innerText =
+  data.offer || "Offer";
+
+
+  document
+  .getElementById("resultLogo")
+  .innerText =
+  data.logo || "Offer";
+
+
+  document
+  .getElementById("resultCashback")
+  .innerText =
+  data.cashback || "₹0";
+
+
+  document
+  .getElementById("trackingID")
+  .innerText =
+  data.trackingId || "—";
+
+
+  document
+  .getElementById("resultUPI")
+  .innerText =
+  "UPI: " + maskUPI(upi);
+
+
+  setStage(
+    "click",
+    data.click
+  );
+
+  setStage(
+    "install",
+    data.install
+  );
+
+  setStage(
+    "registration",
+    data.registration
+  );
+
+  setStage(
+    "action",
+    data.action
+  );
+
+  setStage(
+    "complete",
+    data.complete
+  );
+
+
+  document
+  .getElementById("cashbackStatus")
+  .innerText =
+  data.cashbackStatus || "Pending";
+
+}
+
+
+/* STATUS STYLE */
+
+function setStage(name,done){
+
+  const icon =
+    document.getElementById(
+      name + "Icon"
+    );
+
+  const status =
+    document.getElementById(
+      name + "Status"
+    );
+
+
+  if(done){
+
+    icon.innerText="✓";
+
+    icon.className=
+      "step-icon done";
+
+    status.innerText=
+      "Tracked";
+
+    status.className=
+      "status status-done";
+
+  }
+
+  else{
+
+    status.innerText=
+      "Waiting";
+
+    status.className=
+      "status status-waiting";
+
+  }
+
+}
+
+
+/* MASK UPI */
+
+function maskUPI(upi){
+
+  const parts =
+    upi.split("@");
+
+  if(parts.length !== 2)
+    return "****";
+
+
+  let username =
+    parts[0];
+
+
+  let masked;
+
+
+  if(username.length <= 2){
+
+    masked =
+      username.charAt(0) + "***";
+
+  }
+
+  else{
+
+    masked =
+      username.substring(0,2) +
+      "****";
+
+  }
+
+
+  return masked + "@" + parts[1];
+
+}
+
+
+/* ENTER KEY */
+
+document
+.getElementById("upiInput")
+.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Enter"){
+
+      checkTracking();
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
