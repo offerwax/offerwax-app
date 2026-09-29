@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060b16">
+
+<title>Support | Offerwax</title>
+
+<style>
+:root{
+  --bg:#060b16;
+  --card:#0b1424;
+  --card2:#0d1728;
+  --border:#263653;
+  --text:#f7f8fc;
+  --muted:#8490a4;
+  --purple:#8428ff;
+  --pink:#df2ce8;
+  --green:#2bdd8b;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(140,35,255,.14),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      #060a14,
+      #07101d 60%,
+      #060b15
+    );
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
+}
+
+.page{
+  width:100%;
+  max-width:470px;
+  margin:auto;
+  padding:22px 18px 35px;
+}
+
+
+/* HEADER */
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.back{
+  width:37px;
+  height:37px;
+  border:1px solid #283750;
+  border-radius:10px;
+  background:#0c1524;
+  color:#fff;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:#df2ce8;
+}
+
+.header-space{
+  width:37px;
+}
+
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:35px 8px 25px;
+}
+
+.help-icon{
+  width:59px;
+  height:59px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(119,39,243,.25),
+      rgba(223,44,232,.18)
+    );
+
+  border:1px solid rgba(193,55,231,.38);
+
+  font-size:27px;
+}
+
+.hero h1{
+  margin-top:16px;
+  font-size:25px;
+  letter-spacing:-.7px;
+}
+
+.hero p{
+  max-width:330px;
+  margin:8px auto 0;
+
+  color:#8793a7;
+  font-size:9px;
+  line-height:1.6;
+}
+
+
+/* QUICK INFO */
+
+.info-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-bottom:12px;
+}
+
+.info{
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  min-height:58px;
+
+  padding:10px;
+
+  border:1px solid #25354e;
+  border-radius:13px;
+
+  background:#0b1422;
+}
+
+.info-icon{
+  width:34px;
+  height:34px;
+  min-width:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:10px;
+  background:#141f31;
+
+  font-size:15px;
+}
+
+.info strong{
+  display:block;
+  font-size:8px;
+}
+
+.info small{
+  display:block;
+  margin-top:4px;
+
+  color:#6e7b8f;
+  font-size:6.5px;
+}
+
+
+/* SUPPORT CARD */
+
+.support-card{
+  border:1px solid #283851;
+  border-radius:17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,27,47,.97),
+      rgba(8,16,29,.97)
+    );
+
+  padding:16px;
+}
+
+.card-head{
+  margin-bottom:17px;
+}
+
+.card-head h2{
+  font-size:15px;
+}
+
+.card-head p{
+  color:#7c899d;
+  font-size:8px;
+  line-height:1.5;
+  margin-top:5px;
+}
+
+
+/* FIELDS */
+
+.field{
+  margin-bottom:12px;
+}
+
+.field label{
+  display:block;
+
+  margin:0 0 6px 2px;
+
+  color:#8b97aa;
+  font-size:7px;
+  font-weight:800;
+}
+
+.input{
+  width:100%;
+  height:45px;
+
+  border:1px solid #30415e;
+  border-radius:11px;
+
+  outline:none;
+
+  background:#07101d;
+  color:#fff;
+
+  padding:0 13px;
+
+  font-size:9.5px;
+}
+
+.input:focus,
+.textarea:focus{
+  border-color:#a83de2;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(184,47,228,.06);
+}
+
+.input::placeholder,
+.textarea::placeholder{
+  color:#596579;
+}
+
+.textarea{
+  width:100%;
+  min-height:120px;
+
+  resize:vertical;
+
+  border:1px solid #30415e;
+  border-radius:11px;
+
+  outline:none;
+
+  background:#07101d;
+  color:#fff;
+
+  padding:13px;
+
+  font-size:9.5px;
+  line-height:1.55;
+}
+
+.counter{
+  display:block;
+
+  text-align:right;
+
+  color:#566276;
+  font-size:6.5px;
+
+  margin-top:5px;
+}
+
+
+/* BUTTON */
+
+.submit-btn{
+  width:100%;
+  height:46px;
+
+  border:0;
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #7628f2,
+      #df2be9
+    );
+
+  color:#fff;
+
+  font-size:10px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 9px 25px
+    rgba(183,35,227,.19);
+}
+
+.submit-btn:active{
+  transform:scale(.99);
+}
+
+
+/* PRIVACY */
+
+.privacy{
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+
+  margin-top:12px;
+
+  color:#657287;
+  font-size:6.8px;
+  line-height:1.5;
+}
+
+.privacy span:first-child{
+  color:#31d98b;
+}
+
+
+/* REQUEST STATUS */
+
+.status-section{
+  margin-top:20px;
+}
+
+.status-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:9px;
+}
+
+.status-title h2{
+  font-size:12px;
+}
+
+.status-title span{
+  color:#68758a;
+  font-size:7px;
+}
+
+.empty-status{
+  border:1px solid #25354d;
+  border-radius:14px;
+
+  background:#0a1321;
+
+  padding:22px 16px;
+
+  text-align:center;
+}
+
+.empty-icon{
+  width:39px;
+  height:39px;
+
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#141f30;
+
+  color:#a949dd;
+
+  font-size:16px;
+}
+
+.empty-status strong{
+  display:block;
+
+  margin-top:10px;
+
+  font-size:9px;
+}
+
+.empty-status p{
+  margin-top:5px;
+
+  color:#69768a;
+  font-size:7px;
+  line-height:1.5;
+}
+
+
+/* REAL RESULT */
+
+.ticket{
+  display:none;
+
+  border:1px solid #293a54;
+  border-radius:14px;
+
+  background:#0a1321;
+
+  padding:14px;
+}
+
+.ticket.show{
+  display:block;
+}
+
+.ticket-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.ticket-id small{
+  color:#68758a;
+  font-size:6.5px;
+}
+
+.ticket-id strong{
+  display:block;
+  margin-top:4px;
+  font-size:10px;
+}
+
+.badge{
+  height:24px;
+  padding:0 9px;
+
+  display:flex;
+  align-items:center;
+
+  border-radius:20px;
+
+  background:rgba(223,44,232,.1);
+  border:1px solid rgba(223,44,232,.25);
+
+  color:#df59e8;
+
+  font-size:6.5px;
+  font-weight:800;
+}
+
+.ticket-problem{
+  margin-top:13px;
+
+  padding-top:12px;
+
+  border-top:1px solid #202d40;
+}
+
+.ticket-problem small{
+  color:#68758a;
+  font-size:6.5px;
+}
+
+.ticket-problem p{
+  margin-top:5px;
+
+  color:#c1c8d3;
+  font-size:8px;
+  line-height:1.55;
+}
+
+
+/* HOW SUPPORT WORKS */
+
+.steps{
+  margin-top:20px;
+}
+
+.steps h2{
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.step{
+  display:flex;
+  gap:10px;
+
+  padding:11px 0;
+
+  border-bottom:1px solid #182437;
+}
+
+.step-number{
+  width:28px;
+  height:28px;
+  min-width:28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  background:#171e34;
+
+  color:#dc43e8;
+
+  font-size:8px;
+  font-weight:900;
+}
+
+.step strong{
+  display:block;
+  font-size:8px;
+}
+
+.step p{
+  margin-top:4px;
+
+  color:#68758a;
+  font-size:6.7px;
+  line-height:1.45;
+}
+
+
+/* FOOTER */
+
+.footer{
+  margin-top:25px;
+  padding-top:17px;
+
+  border-top:1px solid #26344a;
+
+  text-align:center;
+}
+
+.footer-logo{
+  font-size:15px;
+  font-weight:900;
+}
+
+.footer-logo span{
+  color:#dd2ee8;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:13px;
+
+  margin-top:10px;
+}
+
+.footer-links a{
+  color:#7c889b;
+  text-decoration:none;
+  font-size:7px;
+}
+
+.copyright{
+  color:#556175;
+  font-size:6.5px;
+
+  margin-top:11px;
+}
+
+
+@media(max-width:340px){
+
+  .info-row{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<main class="page">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <a
+    href="index.html"
+    class="back">
+    ‹
+  </a>
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+
+  <div class="header-space"></div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="help-icon">
+    🎧
+  </div>
+
+  <h1>
+    How can we help?
+  </h1>
+
+  <p>
+    Having a problem with an offer, tracking,
+    reward or withdrawal? Send your request to
+    the Offerwax support team.
+  </p>
+
+</section>
+
+
+<!-- INFO -->
+
+<section class="info-row">
+
+  <div class="info">
+
+    <div class="info-icon">
+      ◷
+    </div>
+
+    <div>
+      <strong>24 Hours Support</strong>
+      <small>Send request anytime</small>
+    </div>
+
+  </div>
+
+
+  <div class="info">
+
+    <div class="info-icon">
+      ✓
+    </div>
+
+    <div>
+      <strong>Track Your Request</strong>
+      <small>New • Review • Solved</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUPPORT FORM -->
+
+<section class="support-card">
+
+  <div class="card-head">
+
+    <h2>
+      Submit a Support Request
+    </h2>
+
+    <p>
+      Enter your registered details and tell us
+      what problem you're facing.
+    </p>
+
+  </div>
+
+
+  <form
+    id="supportForm"
+    onsubmit="submitSupport(event)">
+
+
+    <div class="field">
+
+      <label>
+        FULL NAME
+      </label>
+
+      <input
+        class="input"
+        id="supportName"
+        type="text"
+        placeholder="Enter your full name"
+        autocomplete="name"
+        required>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        REGISTERED MOBILE NUMBER
+      </label>
+
+      <input
+        class="input"
+        id="supportMobile"
+        type="tel"
+        inputmode="numeric"
+        maxlength="10"
+        placeholder="Enter registered mobile number"
+        autocomplete="tel"
+        required>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        DESCRIBE YOUR PROBLEM
+      </label>
+
+      <textarea
+        class="textarea"
+        id="supportProblem"
+        maxlength="500"
+        placeholder="Tell us what happened..."
+        oninput="updateCounter()"
+        required></textarea>
+
+      <span
+        class="counter"
+        id="problemCounter">
+        0 / 500
+      </span>
+
+    </div>
+
+
+    <button
+      class="submit-btn"
+      type="submit">
+
+      Submit Request →
+
+    </button>
+
+
+    <div class="privacy">
+
+      <span>🔒</span>
+
+      <span>
+        Your details are used only to identify
+        your Offerwax account and resolve your request.
+      </span>
+
+    </div>
+
+  </form>
+
+</section>
+
+
+<!-- REQUEST STATUS -->
+
+<section class="status-section">
+
+  <div class="status-title">
+
+    <h2>
+      Your Support Request
+    </h2>
+
+    <span>
+      Request Status
+    </span>
+
+  </div>
+
+
+  <!-- EMPTY UNTIL BACKEND -->
+
+  <div
+    class="empty-status"
+    id="emptyStatus">
+
+    <div class="empty-icon">
+      ?
+    </div>
+
+    <strong>
+      No support request loaded
+    </strong>
+
+    <p>
+      Your submitted request and its status will
+      appear here after the support system is connected.
+    </p>
+
+  </div>
+
+
+  <!-- FUTURE REAL TICKET -->
+
+  <div
+    class="ticket"
+    id="ticket">
+
+    <div class="ticket-top">
+
+      <div class="ticket-id">
+
+        <small>
+          SUPPORT ID
+        </small>
+
+        <strong id="ticketID">
+          —
+        </strong>
+
+      </div>
+
+
+      <div
+        class="badge"
+        id="ticketStatus">
+
+        NEW
+
+      </div>
+
+    </div>
+
+
+    <div class="ticket-problem">
+
+      <small>
+        YOUR PROBLEM
+      </small>
+
+      <p id="ticketProblem">
+        —
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- STEPS -->
+
+<section class="steps">
+
+  <h2>
+    How Support Works
+  </h2>
+
+
+  <div class="step">
+
+    <div class="step-number">
+      1
+    </div>
+
+    <div>
+
+      <strong>
+        Submit Your Problem
+      </strong>
+
+      <p>
+        Enter your name, registered mobile number
+        and describe the issue.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">
+      2
+    </div>
+
+    <div>
+
+      <strong>
+        Team Reviews It
+      </strong>
+
+      <p>
+        Your request moves from New to In Review
+        when the support team checks it.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">
+      3
+    </div>
+
+    <div>
+
+      <strong>
+        Problem Solved
+      </strong>
+
+      <p>
+        Once resolved, the request status will
+        change to Solved.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-logo">
+    Offer<span>wax</span>
+  </div>
+
+
+  <div class="footer-links">
+
+    <a href="terms.html">
+      Terms
+    </a>
+
+    <a href="privacy.html">
+      Privacy
+    </a>
+
+    <a href="tracking.html">
+      Tracking
+    </a>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Offerwax. All rights reserved.
+  </div>
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+/* ==========================
+   CHARACTER COUNTER
+========================== */
+
+function updateCounter(){
+
+  const problem=
+  document.getElementById("supportProblem");
+
+  document
+  .getElementById("problemCounter")
+  .innerText=
+  problem.value.length+" / 500";
+
+}
+
+
+/* ==========================
+   MOBILE VALIDATION
+========================== */
+
+function validMobile(number){
+
+  return /^[6-9][0-9]{9}$/.test(number);
+
+}
+
+
+/* ==========================
+   SUBMIT SUPPORT
+========================== */
+
+function submitSupport(event){
+
+  event.preventDefault();
+
+
+  const name=
+  document
+  .getElementById("supportName")
+  .value
+  .trim();
+
+
+  const mobile=
+  document
+  .getElementById("supportMobile")
+  .value
+  .trim();
+
+
+  const problem=
+  document
+  .getElementById("supportProblem")
+  .value
+  .trim();
+
+
+  if(name.length<2){
+
+    alert(
+      "Please enter your full name."
+    );
+
+    return;
+
+  }
+
+
+  if(!validMobile(mobile)){
+
+    alert(
+      "Please enter a valid registered mobile number."
+    );
+
+    return;
+
+  }
+
+
+  if(problem.length<10){
+
+    alert(
+      "Please describe your problem in a little more detail."
+    );
+
+    return;
+
+  }
+
+
+  /*
+  =================================
+
+  REAL BACKEND LATER
+
+  POST /api/support
+
+  {
+    name,
+    mobile,
+    problem
+  }
+
+  Server response example:
+
+  {
+    success:true,
+    supportId:"SUP-1051",
+    status:"New"
+  }
+
+  IMPORTANT:
+  Support ID must be generated
+  by the server, not JavaScript.
+
+  =================================
+  */
+
+
+  console.log({
+    name:name,
+    mobile:mobile,
+    problem:problem
+  });
+
+
+  alert(
+    "Support form is ready. Your request will be submitted after the support backend is connected."
+  );
+
+}
+
+
+/* ==========================
+   FUTURE REAL TICKET DISPLAY
+========================== */
+
+function showTicket(data){
+
+  document
+  .getElementById("emptyStatus")
+  .style.display="none";
+
+
+  document
+  .getElementById("ticket")
+  .classList.add("show");
+
+
+  document
+  .getElementById("ticketID")
+  .innerText=data.supportId;
+
+
+  document
+  .getElementById("ticketStatus")
+  .innerText=data.status;
+
+
+  document
+  .getElementById("ticketProblem")
+  .innerText=data.problem;
+
+}
+
+</script>
+
+</body>
+  </html>
