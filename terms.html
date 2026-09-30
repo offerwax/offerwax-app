@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+
+<title>Terms & Conditions | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid #182133;
+  background:rgba(7,11,20,.97);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.back{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#10182a;
+  border:1px solid #202c43;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#d42df4;
+}
+
+.header-space{
+  width:38px;
+}
+
+.container{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding:24px 18px 45px;
+}
+
+.hero{
+  padding:10px 3px 22px;
+}
+
+.tag{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(212,45,244,.09);
+  border:1px solid rgba(212,45,244,.22);
+  color:#db4cf2;
+  font-size:9px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.hero h1{
+  font-size:27px;
+  line-height:1.15;
+}
+
+.hero p{
+  color:#7e8a9f;
+  font-size:10px;
+  line-height:1.6;
+  margin-top:9px;
+}
+
+.updated{
+  color:#5f6c81;
+  font-size:8px;
+  margin-top:10px;
+}
+
+.notice{
+  background:linear-gradient(135deg,#121a2e,#171228);
+  border:1px solid #302747;
+  border-radius:17px;
+  padding:15px;
+  margin-bottom:18px;
+}
+
+.notice strong{
+  display:block;
+  font-size:11px;
+  color:#fff;
+}
+
+.notice p{
+  color:#8c98ab;
+  font-size:9px;
+  line-height:1.6;
+  margin-top:6px;
+}
+
+.terms-card{
+  background:#0e1626;
+  border:1px solid #202c43;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.term{
+  padding:18px 16px;
+  border-bottom:1px solid #202c43;
+}
+
+.term:last-child{
+  border-bottom:0;
+}
+
+.term-head{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+}
+
+.number{
+  width:29px;
+  height:29px;
+  min-width:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:#181f35;
+  color:#db4cf2;
+  font-size:9px;
+  font-weight:900;
+}
+
+.term h2{
+  font-size:13px;
+  margin-top:6px;
+}
+
+.term-content{
+  color:#8995a8;
+  font-size:9.5px;
+  line-height:1.7;
+  margin-top:11px;
+}
+
+.term-content p{
+  margin-top:8px;
+}
+
+.term-content p:first-child{
+  margin-top:0;
+}
+
+.term-content ul{
+  padding-left:18px;
+  margin-top:8px;
+}
+
+.term-content li{
+  margin:6px 0;
+}
+
+.highlight{
+  color:#d4d9e2;
+}
+
+.green{
+  color:#39dc8a;
+}
+
+.legal-links{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
+}
+
+.legal-btn{
+  min-height:48px;
+  border-radius:13px;
+  border:1px solid #28364e;
+  background:#10182a;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:700;
+}
+
+.legal-btn.primary{
+  border-color:#713799;
+  color:#e052f4;
+}
+
+.support{
+  margin-top:18px;
+  padding:16px;
+  border-radius:16px;
+  background:#0d1524;
+  border:1px solid #202c43;
+  text-align:center;
+}
+
+.support strong{
+  display:block;
+  font-size:11px;
+}
+
+.support p{
+  color:#778499;
+  font-size:8.5px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.support a{
+  display:inline-block;
+  margin-top:11px;
+  color:#db4cf2;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+}
+
+.footer{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid #182133;
+  text-align:center;
+}
+
+.footer-logo{
+  font-size:16px;
+  font-weight:900;
+}
+
+.footer-logo span{
+  color:#d42df4;
+}
+
+.footer p{
+  color:#505d71;
+  font-size:7.5px;
+  margin-top:9px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <a href="profile.html" class="back">
+    ‹
+  </a>
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+
+  <div class="header-space"></div>
+
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <div class="tag">
+      OFFERWAX LEGAL
+    </div>
+
+    <h1>
+      Terms & Conditions
+    </h1>
+
+    <p>
+      Please read these terms carefully before using Offerwax,
+      completing offers, referring users or requesting rewards.
+    </p>
+
+    <div class="updated">
+      Last updated: 30 September 2026
+    </div>
+
+  </section>
+
+
+  <div class="notice">
+
+    <strong>
+      Important
+    </strong>
+
+    <p>
+      By creating an Offerwax account or using the platform,
+      you agree to follow these Terms & Conditions and the
+      instructions shown for individual offers.
+    </p>
+
+  </div>
+
+
+  <section class="terms-card">
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">01</div>
+        <h2>About Offerwax</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Offerwax is a rewards platform where eligible users
+          may participate in offers, referral programs and
+          promotional campaigns.
+        </p>
+
+        <p>
+          Rewards depend on successful completion, tracking,
+          advertiser or partner validation and the conditions
+          shown for each offer.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">02</div>
+        <h2>Account Rules</h2>
+      </div>
+
+      <div class="term-content">
+
+        <ul>
+          <li>Users must provide accurate account information.</li>
+
+          <li>
+            A user should not create multiple accounts to obtain
+            duplicate rewards.
+          </li>
+
+          <li>
+            You are responsible for keeping your account and
+            password secure.
+          </li>
+
+          <li>
+            Accounts may be reviewed when unusual or potentially
+            fraudulent activity is detected.
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">03</div>
+        <h2>Offer Completion</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Every offer can have different requirements.
+          Users must follow the instructions displayed on
+          the relevant Offerwax offer page.
+        </p>
+
+        <p class="highlight">
+          Opening an offer or installing an application does
+          not automatically guarantee a reward.
+        </p>
+
+        <p>
+          Required actions may include registration, KYC,
+          account activation, a qualifying transaction or
+          another action specifically disclosed on the offer page.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">04</div>
+        <h2>Tracking & Validation</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Offer activity may pass through stages such as click,
+          install, registration, required action, completion
+          and validation.
+        </p>
+
+        <p>
+          A tracked action is not necessarily an approved action.
+          Final reward eligibility can depend on validation
+          received from the relevant advertiser or tracking partner.
+        </p>
+
+        <p>
+          Validation times can vary between offers.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">05</div>
+        <h2>Rewards</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Reward amounts are displayed on the relevant offer
+          or campaign page and may differ between campaigns.
+        </p>
+
+        <p>
+          A reward may remain pending while the completion
+          is being validated.
+        </p>
+
+        <p class="green">
+          Approved rewards are added according to the applicable
+          Offerwax reward and payout process.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">06</div>
+        <h2>Refer & Earn</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Referral rewards apply only when the conditions displayed
+          in the Refer & Earn section are successfully satisfied.
+        </p>
+
+        <p>
+          Referral reward amounts can vary. Where Offerwax displays
+          “up to ₹100”, the actual reward for an eligible referral
+          may be lower depending on the applicable campaign.
+        </p>
+
+        <p>
+          Self-referrals, duplicate accounts or attempts to
+          artificially generate referrals are not eligible.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">07</div>
+        <h2>Share & Earn</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Share & Earn is separate from the normal Refer & Earn
+          program.
+        </p>
+
+        <p>
+          Users may receive a unique sharing link for eligible
+          campaigns. Rewards are based on the specific campaign
+          requirements and successful validation.
+        </p>
+
+        <p>
+          Cashback or rewards displayed to the customer may differ
+          from other payouts associated with the campaign.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">08</div>
+        <h2>Withdrawals & Payments</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Only eligible and available balance can be submitted
+          for withdrawal.
+        </p>
+
+        <p>
+          A withdrawal may be reviewed before processing.
+          Incorrect payment details can delay or prevent payment.
+        </p>
+
+        <p>
+          Minimum withdrawal limits, supported payment methods
+          and processing conditions may be displayed inside
+          the Wallet section.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">09</div>
+        <h2>Fraud & Prohibited Activity</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          The following activity may result in reward rejection,
+          account review or account restriction:
+        </p>
+
+        <ul>
+          <li>Fake or duplicate accounts</li>
+          <li>Self-referrals where prohibited</li>
+          <li>False information or fabricated completion proof</li>
+          <li>Manipulation of tracking systems</li>
+          <li>Automated or artificial activity</li>
+          <li>Abuse of promotional campaigns</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">10</div>
+        <h2>Third-Party Offers</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Some offers may involve third-party websites,
+          applications, advertisers or service providers.
+        </p>
+
+        <p>
+          Their own terms, privacy policies and eligibility
+          requirements may also apply when you use their services.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">11</div>
+        <h2>Changes to Offers</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Offer availability, reward amounts, requirements and
+          campaign limits may change or end.
+        </p>
+
+        <p>
+          The terms displayed for the applicable campaign should
+          be checked before beginning an offer.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">12</div>
+        <h2>Account Restriction</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          Offerwax may review or restrict an account when there
+          is evidence of misuse, fraud, violation of these terms,
+          or activity that threatens the platform or its users.
+        </p>
+
+        <p>
+          Users may contact Support if they believe an account
+          action requires review.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="term">
+
+      <div class="term-head">
+        <div class="number">13</div>
+        <h2>Updates to These Terms</h2>
+      </div>
+
+      <div class="term-content">
+
+        <p>
+          These Terms & Conditions may be updated as Offerwax
+          features, campaigns or legal requirements change.
+        </p>
+
+        <p>
+          The latest version will be displayed on this page
+          with its updated date.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+  <div class="legal-links">
+
+    <a href="privacy.html" class="legal-btn primary">
+      Privacy Policy →
+    </a>
+
+    <a href="support.html" class="legal-btn">
+      Help & Support
+    </a>
+
+  </div>
+
+
+  <div class="support">
+
+    <strong>
+      Have a question about these terms?
+    </strong>
+
+    <p>
+      Contact Offerwax Support if you need help understanding
+      an offer, reward, account or withdrawal rule.
+    </p>
+
+    <a href="support.html">
+      Contact Support →
+    </a>
+
+  </div>
+
+
+  <footer class="footer">
+
+    <div class="footer-logo">
+      Offer<span>wax</span>
+    </div>
+
+    <p>
+      © 2026 Offerwax. All rights reserved.
+    </p>
+
+  </footer>
+
+</main>
+
+</body>
+  </html>
