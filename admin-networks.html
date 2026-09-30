@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+
+<title>Networks | Offerwax Admin</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#070b14;
+  --card:#10182a;
+  --card2:#0b1322;
+  --border:#202c43;
+  --text:#fff;
+  --muted:#7e899d;
+  --purple:#8528ff;
+  --pink:#d42df4;
+  --green:#2ddd8b;
+  --red:#ff6570;
+  --orange:#ffb44c;
+  --blue:#55a8ff;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:35px;
+}
+
+.header{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid #182133;
+  position:sticky;
+  top:0;
+  background:rgba(7,11,20,.97);
+  z-index:100;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:var(--pink);
+}
+
+.admin-tag{
+  font-size:8px;
+  padding:5px 8px;
+  border-radius:20px;
+  background:rgba(212,45,244,.1);
+  color:#e457f7;
+  border:1px solid rgba(212,45,244,.25);
+}
+
+.back{
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  background:#10182a;
+  border:1px solid var(--border);
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:22px 16px;
+}
+
+.page-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.page-head h1{
+  font-size:22px;
+}
+
+.page-head p{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+  margin-top:7px;
+  max-width:470px;
+}
+
+.add-btn{
+  border:0;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  color:#fff;
+  padding:11px 14px;
+  border-radius:11px;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:22px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:14px;
+}
+
+.stat small{
+  color:var(--muted);
+  font-size:8px;
+}
+
+.stat strong{
+  display:block;
+  font-size:18px;
+  margin-top:7px;
+}
+
+.green{
+  color:var(--green);
+}
+
+.orange{
+  color:var(--orange);
+}
+
+
+/* INFO */
+
+.info{
+  margin-top:16px;
+  padding:13px 14px;
+  border-radius:14px;
+  background:rgba(85,168,255,.06);
+  border:1px solid rgba(85,168,255,.18);
+  color:#91a7c5;
+  font-size:9px;
+  line-height:1.6;
+}
+
+
+/* TOOLBAR */
+
+.toolbar{
+  margin-top:22px;
+  display:flex;
+  gap:9px;
+}
+
+.search{
+  flex:1;
+  height:43px;
+  background:#0b1322;
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:#fff;
+  padding:0 13px;
+  outline:none;
+}
+
+.filter{
+  height:43px;
+  background:#0b1322;
+  color:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:0 10px;
+  outline:none;
+}
+
+
+/* NETWORK */
+
+.network-list{
+  margin-top:14px;
+  display:grid;
+  gap:13px;
+}
+
+.network{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+}
+
+.network-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.network-logo{
+  width:47px;
+  height:47px;
+  min-width:47px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#17243a,#221634);
+  font-size:18px;
+  font-weight:900;
+}
+
+.network-info{
+  flex:1;
+}
+
+.network-name{
+  font-size:14px;
+  font-weight:800;
+}
+
+.network-id{
+  color:var(--muted);
+  font-size:8px;
+  margin-top:5px;
+}
+
+.status{
+  font-size:8px;
+  font-weight:800;
+  padding:6px 9px;
+  border-radius:20px;
+}
+
+.active{
+  color:var(--green);
+  background:rgba(45,221,139,.08);
+}
+
+.pending{
+  color:var(--orange);
+  background:rgba(255,180,76,.08);
+}
+
+.network-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+
+.metric{
+  background:#0a1220;
+  border:1px solid #1c2940;
+  border-radius:12px;
+  padding:11px;
+}
+
+.metric small{
+  color:#718096;
+  font-size:7px;
+}
+
+.metric strong{
+  display:block;
+  font-size:11px;
+  margin-top:6px;
+}
+
+.network-meta{
+  margin-top:13px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+  display:grid;
+  gap:7px;
+}
+
+.meta-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:8px;
+}
+
+.meta-row span:first-child{
+  color:var(--muted);
+}
+
+.meta-row span:last-child{
+  text-align:right;
+  word-break:break-all;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+.action-btn{
+  flex:1;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#121c2f;
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  border-color:#6934a0;
+  color:#e056f5;
+  background:rgba(212,45,244,.07);
+}
+
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(0,0,0,.78);
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:650px;
+  max-height:92vh;
+  overflow:auto;
+  background:#10182a;
+  border:1px solid #29364e;
+  border-radius:24px 24px 0 0;
+  padding:21px 18px 30px;
+}
+
+.modal-line{
+  width:45px;
+  height:4px;
+  background:#455168;
+  border-radius:10px;
+  margin:0 auto 18px;
+}
+
+.modal-title{
+  font-size:19px;
+  font-weight:800;
+}
+
+.modal-sub{
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.form-section{
+  margin-top:21px;
+}
+
+.form-title{
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:12px;
+  color:#c7d0df;
+}
+
+.field{
+  margin-top:12px;
+}
+
+label{
+  display:block;
+  color:#b3bfd1;
+  font-size:9px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+  height:45px;
+  background:#080e19;
+  border:1px solid #29364e;
+  color:#fff;
+  border-radius:11px;
+  padding:0 12px;
+  outline:none;
+  font-size:11px;
+}
+
+input:focus,
+select:focus{
+  border-color:#b932df;
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.secret-note{
+  color:#69778d;
+  font-size:8px;
+  line-height:1.5;
+  margin-top:7px;
+}
+
+.postback-box{
+  margin-top:10px;
+  background:#080e19;
+  border:1px dashed #33435f;
+  border-radius:12px;
+  padding:12px;
+}
+
+.postback-label{
+  color:#8290a6;
+  font-size:8px;
+}
+
+.postback-url{
+  color:#c9d4e7;
+  font-size:9px;
+  line-height:1.6;
+  word-break:break-all;
+  margin-top:7px;
+}
+
+.copy-postback{
+  border:0;
+  margin-top:9px;
+  color:#dd4df3;
+  background:none;
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.save{
+  width:100%;
+  height:48px;
+  margin-top:22px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.cancel{
+  width:100%;
+  border:0;
+  background:none;
+  color:#7e899d;
+  padding:14px 0 0;
+  cursor:pointer;
+}
+
+.warning{
+  margin-top:17px;
+  padding:12px;
+  border-radius:12px;
+  color:#e7b767;
+  background:rgba(255,180,76,.06);
+  border:1px solid rgba(255,180,76,.16);
+  font-size:8px;
+  line-height:1.6;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:650px){
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .network-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .two{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+  <a href="admin.html" class="back">
+    ‹
+  </a>
+
+  <div class="logo">
+    Offer<span>wax</span>
+    <span class="admin-tag">ADMIN</span>
+  </div>
+
+  <div style="width:36px"></div>
+
+</header>
+
+
+<main class="container">
+
+
+<div class="page-head">
+
+  <div>
+
+    <h1>
+      Affiliate Networks
+    </h1>
+
+    <p>
+      Manage affiliate network integrations, offer feeds,
+      API configuration and postback settings.
+    </p>
+
+  </div>
+
+  <button class="add-btn" onclick="openNetworkModal()">
+    + Add Network
+  </button>
+
+</div>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+  <div class="stat">
+    <small>Total Networks</small>
+    <strong id="totalNetworks">2</strong>
+  </div>
+
+  <div class="stat">
+    <small>Active Networks</small>
+    <strong class="green">1</strong>
+  </div>
+
+  <div class="stat">
+    <small>Imported Offers</small>
+    <strong>0</strong>
+  </div>
+
+  <div class="stat">
+    <small>Pending Setup</small>
+    <strong class="orange">1</strong>
+  </div>
+
+</section>
+
+
+<div class="info">
+  API is used to fetch/sync available offers when supported by the
+  affiliate network. Postback is used to receive conversion events.
+  Each network may use different API fields, click-ID parameters and
+  event names.
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="toolbar">
+
+  <input
+    class="search"
+    id="searchInput"
+    type="text"
+    placeholder="Search network..."
+    oninput="filterNetworks()">
+
+  <select
+    class="filter"
+    id="statusFilter"
+    onchange="filterNetworks()">
+
+    <option value="all">
+      All
+    </option>
+
+    <option value="active">
+      Active
+    </option>
+
+    <option value="pending">
+      Pending
+    </option>
+
+  </select>
+
+</div>
+
+
+<!-- NETWORK LIST -->
+
+<div class="network-list" id="networkList">
+
+
+<!-- EXPONENT DEMO -->
+
+<div
+  class="network"
+  data-name="exponent"
+  data-status="active">
+
+  <div class="network-top">
+
+    <div class="network-logo">
+      EX
+    </div>
+
+    <div class="network-info">
+
+      <div class="network-name">
+        Exponent
+      </div>
+
+      <div class="network-id">
+        Network ID: NET-001
+      </div>
+
+    </div>
+
+    <div class="status active">
+      ● Active
+    </div>
+
+  </div>
+
+
+  <div class="network-grid">
+
+    <div class="metric">
+      <small>Imported Offers</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Live Offers</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Conversions</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Revenue</small>
+      <strong>₹0</strong>
+    </div>
+
+  </div>
+
+
+  <div class="network-meta">
+
+    <div class="meta-row">
+      <span>API Status</span>
+      <span class="green">Configured</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Postback</span>
+      <span class="green">Configured</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Click ID Parameter</span>
+      <span>sub1</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Last Sync</span>
+      <span>Not synced yet</span>
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      class="action-btn primary"
+      onclick="demoSync('Exponent')">
+      ↻ Sync Offers
+    </button>
+
+    <button
+      class="action-btn"
+      onclick="editDemo('Exponent')">
+      Edit
+    </button>
+
+    <button
+      class="action-btn"
+      onclick="testIntegration('Exponent')">
+      Test
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SAMPLE PENDING -->
+
+<div
+  class="network"
+  data-name="sample network"
+  data-status="pending">
+
+  <div class="network-top">
+
+    <div class="network-logo">
+      SN
+    </div>
+
+    <div class="network-info">
+
+      <div class="network-name">
+        Sample Network
+      </div>
+
+      <div class="network-id">
+        Network ID: NET-002
+      </div>
+
+    </div>
+
+    <div class="status pending">
+      ● Setup Pending
+    </div>
+
+  </div>
+
+
+  <div class="network-grid">
+
+    <div class="metric">
+      <small>Imported Offers</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Live Offers</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Conversions</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="metric">
+      <small>Revenue</small>
+      <strong>₹0</strong>
+    </div>
+
+  </div>
+
+
+  <div class="network-meta">
+
+    <div class="meta-row">
+      <span>API Status</span>
+      <span class="orange">Not configured</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Postback</span>
+      <span class="orange">Not configured</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Click ID Parameter</span>
+      <span>—</span>
+    </div>
+
+    <div class="meta-row">
+      <span>Last Sync</span>
+      <span>Never</span>
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      class="action-btn"
+      onclick="editDemo('Sample Network')">
+      Complete Setup
+    </button>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+</main>
+
+
+<!-- ADD NETWORK MODAL -->
+
+<div
+  class="modal"
+  id="networkModal"
+  onclick="outsideClose(event)">
+
+<div class="modal-box">
+
+  <div class="modal-line"></div>
+
+  <div class="modal-title">
+    Add Affiliate Network
+  </div>
+
+  <div class="modal-sub">
+    Configure the network's offer API and conversion tracking.
+  </div>
+
+
+  <!-- BASIC -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Network Details
+    </div>
+
+    <div class="field">
+
+      <label>
+        Network Name
+      </label>
+
+      <input
+        id="networkName"
+        type="text"
+        placeholder="Example: Exponent">
+
+    </div>
+
+
+    <div class="two">
+
+      <div class="field">
+
+        <label>
+          Account / Affiliate ID
+        </label>
+
+        <input
+          id="affiliateId"
+          type="text"
+          placeholder="Your affiliate ID">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Default Currency
+        </label>
+
+        <select id="currency">
+
+          <option value="INR">
+            INR ₹
+          </option>
+
+          <option value="USD">
+            USD $
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- API -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Offer API
+    </div>
+
+    <div class="field">
+
+      <label>
+        API / Offer Feed URL
+      </label>
+
+      <input
+        id="apiUrl"
+        type="url"
+        placeholder="https://network.example/api/offers">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        API Key / Token
+      </label>
+
+      <input
+        id="apiKey"
+        type="password"
+        placeholder="Enter API key">
+
+      <div class="secret-note">
+        API secrets must eventually be stored securely on the
+        Offerwax server, never inside public frontend code.
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        API Authentication Type
+      </label>
+
+      <select id="authType">
+
+        <option>
+          Bearer Token
+        </option>
+
+        <option>
+          API Key
+        </option>
+
+        <option>
+          Query Parameter
+        </option>
+
+        <option>
+          Basic Authentication
+        </option>
+
+        <option>
+          Custom
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <!-- TRACKING -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Click Tracking
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Click ID Parameter
+      </label>
+
+      <input
+        id="clickParam"
+        type="text"
+        placeholder="Example: sub1 / aff_sub / click_id">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Tracking URL Template
+      </label>
+
+      <input
+        id="trackingUrl"
+        type="text"
+        placeholder="Network tracking URL">
+
+    </div>
+
+  </div>
+
+
+  <!-- POSTBACK -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Conversion Postback
+    </div>
+
+
+    <div class="postback-box">
+
+      <div class="postback-label">
+        Offerwax Postback URL
+      </div>
+
+      <div
+        class="postback-url"
+        id="postbackUrl">
+        https://api.offerwax.com/postback?network={network}&click_id={click_id}&event={event}&status={status}&payout={payout}
+      </div>
+
+      <button
+        class="copy-postback"
+        onclick="copyPostback()">
+        Copy Postback URL
+      </button>
+
+    </div>
+
+
+    <div class="two">
+
+      <div class="field">
+
+        <label>
+          Network Click ID Macro
+        </label>
+
+        <input
+          id="clickMacro"
+          type="text"
+          placeholder="Example: {sub1}">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Payout Macro
+        </label>
+
+        <input
+          id="payoutMacro"
+          type="text"
+          placeholder="Example: {payout}">
+
+      </div>
+
+    </div>
+
+
+    <div class="two">
+
+      <div class="field">
+
+        <label>
+          Event Macro
+        </label>
+
+        <input
+          id="eventMacro"
+          type="text"
+          placeholder="Example: {event}">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Status Macro
+        </label>
+
+        <input
+          id="statusMacro"
+          type="text"
+          placeholder="Example: {status}">
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Postback Secret / Verification Token
+      </label>
+
+      <input
+        id="postbackSecret"
+        type="password"
+        placeholder="Optional verification secret">
+
+    </div>
+
+  </div>
+
+
+  <div class="warning">
+    This page currently stores no real credentials and does not call
+    affiliate APIs. Real API sync and incoming postbacks require a
+    protected backend/database. Do not place real API keys in public
+    HTML or JavaScript.
+  </div>
+
+
+  <button
+    class="save"
+    onclick="saveNetwork()">
+    Save Network Configuration
+  </button>
+
+
+  <button
+    class="cancel"
+    onclick="closeNetworkModal()">
+    Cancel
+  </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* OPEN MODAL */
+
+function openNetworkModal(){
+
+  document
+  .getElementById("networkModal")
+  .style.display="flex";
+
+}
+
+
+/* CLOSE MODAL */
+
+function closeNetworkModal(){
+
+  document
+  .getElementById("networkModal")
+  .style.display="none";
+
+}
+
+
+function outsideClose(event){
+
+  if(event.target.id === "networkModal"){
+
+    closeNetworkModal();
+
+  }
+
+}
+
+
+/* COPY POSTBACK */
+
+function copyPostback(){
+
+  const url =
+    document
+    .getElementById("postbackUrl")
+    .innerText.trim();
+
+  navigator.clipboard
+  .writeText(url)
+  .then(function(){
+
+    alert(
+      "Postback URL copied."
+    );
+
+  })
+  .catch(function(){
+
+    alert(
+      "Copy the postback URL manually."
+    );
+
+  });
+
+}
+
+
+/* SAVE NETWORK */
+
+function saveNetwork(){
+
+  const name =
+    document
+    .getElementById("networkName")
+    .value.trim();
+
+  const apiUrl =
+    document
+    .getElementById("apiUrl")
+    .value.trim();
+
+  const clickParam =
+    document
+    .getElementById("clickParam")
+    .value.trim();
+
+
+  if(!name){
+
+    alert(
+      "Enter the affiliate network name."
+    );
+
+    return;
+
+  }
+
+
+  if(!apiUrl){
+
+    alert(
+      "Enter the network API / offer feed URL."
+    );
+
+    return;
+
+  }
+
+
+  if(!clickParam){
+
+    alert(
+      "Enter the network click ID parameter."
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    name +
+    " configuration is ready on the frontend. " +
+    "Real API credentials will be saved when the secure backend is connected."
+  );
+
+  closeNetworkModal();
+
+}
+
+
+/* DEMO SYNC */
+
+function demoSync(name){
+
+  alert(
+    "Offer sync for " +
+    name +
+    " will work after its API is connected to the Offerwax backend."
+  );
+
+}
+
+
+/* EDIT DEMO */
+
+function editDemo(name){
+
+  document
+  .getElementById("networkName")
+  .value=name;
+
+  openNetworkModal();
+
+}
+
+
+/* TEST */
+
+function testIntegration(name){
+
+  alert(
+    "API/Postback test for " +
+    name +
+    " requires the backend endpoint."
+  );
+
+}
+
+
+/* FILTER */
+
+function filterNetworks(){
+
+  const search =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  const status =
+    document
+    .getElementById("statusFilter")
+    .value;
+
+  const networks =
+    document
+    .querySelectorAll(".network");
+
+
+  networks.forEach(function(network){
+
+    const name =
+      network.dataset.name;
+
+    const networkStatus =
+      network.dataset.status;
+
+    const searchMatch =
+      name.includes(search);
+
+    const statusMatch =
+      status === "all" ||
+      networkStatus === status;
+
+    network.style.display =
+      searchMatch && statusMatch
+      ? "block"
+      : "none";
+
+  });
+
+}
+
+</script>
+
+</body>
+  </html>
