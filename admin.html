@@ -7,471 +7,370 @@
 <title>Admin Dashboard | Offerwax</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#070b14;
+  --card:#10182a;
+  --card2:#0b1322;
+  --border:#202c43;
+  --text:#fff;
+  --muted:#7e899d;
+  --purple:#8528ff;
+  --pink:#d42df4;
+  --green:#2ddd8b;
+  --orange:#ffb44c;
+  --red:#ff6673;
+  --blue:#55a8ff;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#070b14;
-  color:#fff;
+  background:var(--bg);
+  color:var(--text);
   min-height:100vh;
+  padding-bottom:40px;
 }
 
-button,a{
-  -webkit-tap-highlight-color:transparent;
-}
-
-/* =========================
-   TOP HEADER
-========================= */
-
-.topbar{
-  height:66px;
+.header{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid #182133;
   position:sticky;
   top:0;
   z-index:100;
-  background:#090e18;
-  border-bottom:1px solid #1d2739;
-  display:flex;
-  align-items:center;
-  padding:0 16px;
-  gap:12px;
-}
-
-.menu-btn{
-  width:39px;
-  height:39px;
-  border-radius:11px;
-  border:1px solid #273249;
-  background:#10182a;
-  color:#fff;
-  font-size:19px;
-  cursor:pointer;
+  background:rgba(7,11,20,.97);
 }
 
 .logo{
-  font-size:21px;
-  font-weight:900;
-  flex:1;
-}
-
-.logo span{
-  color:#d42df4;
-}
-
-.admin-label{
-  display:block;
-  color:#707c91;
-  font-size:8px;
-  font-weight:500;
-  margin-top:2px;
-}
-
-.notification-btn{
-  position:relative;
-  width:40px;
-  height:40px;
-  border:1px solid #273249;
-  background:#10182a;
-  color:#fff;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:17px;
-}
-
-.notification-count{
-  position:absolute;
-  right:-4px;
-  top:-5px;
-  min-width:18px;
-  height:18px;
-  padding:0 4px;
-  border-radius:10px;
-  background:#d42df4;
-  color:#fff;
-  font-size:9px;
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  z-index:199;
-  display:none;
-}
-
-.sidebar{
-  position:fixed;
-  left:-290px;
-  top:0;
-  bottom:0;
-  width:280px;
-  z-index:200;
-  background:#0b111d;
-  border-right:1px solid #202b40;
-  transition:.25s ease;
-  overflow-y:auto;
-}
-
-.sidebar.open{
-  left:0;
-}
-
-.sidebar-head{
-  padding:23px 18px;
-  border-bottom:1px solid #202b40;
-}
-
-.sidebar-logo{
   font-size:23px;
   font-weight:900;
 }
 
-.sidebar-logo span{
-  color:#d42df4;
-}
+.logo span{color:var(--pink)}
 
-.sidebar-head p{
-  color:#717d91;
-  font-size:9px;
-  margin-top:5px;
-}
-
-.nav{
-  padding:14px 10px 25px;
-}
-
-.nav-title{
-  color:#566277;
+.admin-tag{
+  display:inline-block;
+  margin-left:5px;
+  padding:5px 8px;
+  border-radius:20px;
   font-size:8px;
-  font-weight:800;
-  padding:13px 11px 7px;
-  text-transform:uppercase;
-  letter-spacing:1px;
+  color:#e457f7;
+  background:rgba(212,45,244,.1);
+  border:1px solid rgba(212,45,244,.25);
 }
 
-.nav-item{
-  display:flex;
-  align-items:center;
-  min-height:49px;
-  padding:8px 11px;
-  margin:3px 0;
-  border-radius:12px;
-  color:#8d98ab;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:700;
+.logout{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  border:1px solid var(--border);
+  background:#10182a;
+  color:#ff7782;
+  cursor:pointer;
 }
-
-.nav-item.active{
-  color:#fff;
-  background:linear-gradient(
-    135deg,
-    rgba(113,39,232,.35),
-    rgba(212,45,244,.18)
-  );
-  border:1px solid rgba(212,45,244,.18);
-}
-
-.nav-icon{
-  width:31px;
-  font-size:16px;
-}
-
-.nav-text{
-  flex:1;
-}
-
-.badge{
-  background:#d42df4;
-  color:#fff;
-  padding:4px 7px;
-  border-radius:10px;
-  font-size:8px;
-}
-
-.red-badge{
-  background:#e64d5c;
-}
-
-/* =========================
-   PAGE
-========================= */
 
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:auto;
-  padding:22px 16px 50px;
+  padding:22px 16px;
 }
 
 .welcome{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:12px;
+  gap:15px;
 }
 
 .welcome h1{
-  font-size:25px;
+  font-size:24px;
 }
 
 .welcome p{
-  color:#778399;
+  margin-top:7px;
+  color:var(--muted);
   font-size:10px;
-  margin-top:6px;
-  line-height:1.5;
+  line-height:1.6;
 }
 
 .live{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  color:#39dc8a;
-  background:rgba(57,220,138,.08);
-  border:1px solid rgba(57,220,138,.16);
-  padding:7px 9px;
+  padding:7px 10px;
   border-radius:20px;
+  background:rgba(45,221,139,.08);
+  color:var(--green);
   font-size:8px;
-  white-space:nowrap;
+  font-weight:800;
 }
 
-.live-dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#39dc8a;
-}
-
-/* =========================
-   STATS
-========================= */
+/* STATS */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:11px;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
   margin-top:22px;
 }
 
-.stat-card{
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:17px;
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
   padding:15px;
-  min-height:112px;
 }
 
-.stat-top{
+.stat small{
+  color:var(--muted);
+  font-size:8px;
+}
+
+.stat strong{
+  display:block;
+  margin-top:8px;
+  font-size:19px;
+}
+
+.stat-note{
+  color:#637087;
+  font-size:7px;
+  margin-top:6px;
+}
+
+.green{color:var(--green)}
+.orange{color:var(--orange)}
+.blue{color:var(--blue)}
+.red{color:var(--red)}
+
+/* PROFIT */
+
+.profit-card{
+  margin-top:13px;
+  padding:18px;
+  border-radius:18px;
+  border:1px solid #3d2861;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(212,45,244,.18),transparent 28%),
+    linear-gradient(135deg,#111a2d,#171226);
+}
+
+.profit-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.stat-icon{
-  width:35px;
-  height:35px;
-  border-radius:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#172238;
-  font-size:15px;
+.profit-title{
+  font-size:10px;
+  color:#a9b4c7;
 }
 
-.stat-change{
-  color:#39dc8a;
-  font-size:8px;
-}
-
-.stat-value{
-  font-size:23px;
+.profit-value{
+  margin-top:7px;
+  font-size:28px;
   font-weight:900;
-  margin-top:12px;
+  color:var(--green);
 }
 
-.stat-name{
-  color:#7d899e;
+.finance-link{
+  color:#df50f4;
+  text-decoration:none;
   font-size:9px;
-  margin-top:5px;
+  font-weight:800;
 }
 
-.warning .stat-value{
-  color:#ff737d;
+.profit-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:16px;
 }
 
-.money .stat-value{
-  color:#39dc8a;
+.profit-item{
+  padding:11px;
+  border-radius:11px;
+  background:rgba(5,9,20,.45);
+  border:1px solid rgba(255,255,255,.06);
 }
 
-/* =========================
-   QUICK ACTIONS
-========================= */
+.profit-item small{
+  display:block;
+  color:#7f8ca1;
+  font-size:7px;
+}
+
+.profit-item strong{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+}
+
+/* SECTIONS */
 
 .section{
   margin-top:27px;
 }
 
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
-
 .section-title{
-  font-size:17px;
+  font-size:14px;
   font-weight:800;
+  margin-bottom:11px;
 }
 
-.view-all{
-  color:#d64ff1;
-  text-decoration:none;
-  font-size:9px;
+.section-sub{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:4px;
+  font-weight:400;
 }
 
-.quick-grid{
+/* MENU */
+
+.menu-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:10px;
 }
 
-.quick{
-  min-height:76px;
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:16px;
-  padding:13px;
+.menu-card{
+  min-height:105px;
+  padding:15px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
   color:#fff;
   text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:11px;
+  position:relative;
+  transition:.15s;
 }
 
-.quick-icon{
+.menu-card:active{
+  transform:scale(.98);
+}
+
+.menu-icon{
   width:39px;
   height:39px;
-  min-width:39px;
   border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(212,45,244,.1);
-  color:#dd4df4;
-  font-size:17px;
-}
-
-.quick strong{
-  display:block;
-  font-size:11px;
-}
-
-.quick small{
-  display:block;
-  color:#6f7b90;
-  font-size:8px;
-  margin-top:4px;
-  line-height:1.4;
-}
-
-/* =========================
-   MODULES
-========================= */
-
-.module-list{
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:19px;
-  overflow:hidden;
-}
-
-.module{
-  display:flex;
-  align-items:center;
-  padding:14px;
-  min-height:66px;
-  border-bottom:1px solid #202c43;
-  text-decoration:none;
-  color:#fff;
-}
-
-.module:last-child{
-  border-bottom:0;
-}
-
-.module-icon{
-  width:42px;
-  height:42px;
-  min-width:42px;
-  border-radius:13px;
   background:#172136;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-right:12px;
   font-size:17px;
 }
 
-.module-info{
-  flex:1;
-}
-
-.module-info strong{
-  display:block;
+.menu-name{
+  margin-top:11px;
   font-size:12px;
-}
-
-.module-info small{
-  display:block;
-  color:#717e93;
-  font-size:8px;
-  margin-top:5px;
-  line-height:1.4;
-}
-
-.module-right{
-  text-align:right;
-}
-
-.module-number{
-  font-size:11px;
   font-weight:800;
-  color:#d94ff2;
+}
+
+.menu-desc{
+  margin-top:5px;
+  color:#748197;
+  font-size:8px;
+  line-height:1.45;
 }
 
 .arrow{
-  color:#59667b;
+  position:absolute;
+  right:14px;
+  top:17px;
+  color:#59677d;
   font-size:17px;
-  margin-top:4px;
 }
 
-/* =========================
-   ACTIVITY
-========================= */
+.badge{
+  position:absolute;
+  top:14px;
+  right:37px;
+  min-width:19px;
+  height:19px;
+  padding:0 5px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--pink);
+  font-size:7px;
+  font-weight:900;
+}
+
+/* NETWORK */
+
+.network-status{
+  margin-top:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  overflow:hidden;
+}
+
+.network-row{
+  display:flex;
+  align-items:center;
+  padding:14px;
+  border-bottom:1px solid var(--border);
+}
+
+.network-row:last-child{
+  border-bottom:0;
+}
+
+.network-logo{
+  width:40px;
+  height:40px;
+  min-width:40px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#172136;
+  font-size:10px;
+  font-weight:900;
+}
+
+.network-info{
+  flex:1;
+  margin-left:11px;
+}
+
+.network-info strong{
+  display:block;
+  font-size:10px;
+}
+
+.network-info small{
+  display:block;
+  margin-top:4px;
+  color:#748197;
+  font-size:7px;
+}
+
+.connected{
+  color:var(--green);
+  font-size:8px;
+  font-weight:800;
+}
+
+/* ACTIVITY */
 
 .activity-card{
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:19px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
   overflow:hidden;
 }
 
 .activity{
   display:flex;
+  align-items:center;
   gap:11px;
-  padding:14px;
-  border-bottom:1px solid #202c43;
+  padding:13px;
+  border-bottom:1px solid var(--border);
 }
 
 .activity:last-child{
@@ -479,190 +378,58 @@ button,a{
 }
 
 .activity-icon{
-  width:37px;
-  height:37px;
-  min-width:37px;
-  border-radius:50%;
+  width:35px;
+  height:35px;
+  min-width:35px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#172136;
   font-size:14px;
 }
 
-.purple{
-  background:rgba(212,45,244,.1);
-  color:#d94ff2;
-}
-
-.green{
-  background:rgba(57,220,138,.1);
-  color:#39dc8a;
-}
-
-.orange{
-  background:rgba(255,184,77,.1);
-  color:#ffb84d;
-}
-
-.red{
-  background:rgba(255,91,103,.1);
-  color:#ff6b76;
-}
-
-.activity-info{
+.activity-text{
   flex:1;
-  min-width:0;
 }
 
-.activity-info strong{
+.activity-text strong{
   display:block;
-  font-size:10px;
-  line-height:1.4;
+  font-size:9px;
 }
 
-.activity-info p{
-  color:#727f94;
-  font-size:8px;
+.activity-text small{
+  display:block;
+  color:#748197;
+  font-size:7px;
   margin-top:4px;
-  line-height:1.45;
 }
 
-.activity-time{
-  color:#5f6b80;
-  font-size:8px;
-  white-space:nowrap;
-}
-
-/* =========================
-   NOTIFICATION DRAWER
-========================= */
-
-.notification-panel{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:100%;
-  max-width:430px;
-  height:100vh;
-  background:#0b111d;
-  z-index:300;
-  transition:.25s ease;
-  overflow-y:auto;
-  border-left:1px solid #202b40;
-}
-
-.notification-panel.open{
-  right:0;
-}
-
-.notification-head{
-  position:sticky;
-  top:0;
-  background:#0b111d;
-  padding:18px 16px;
-  border-bottom:1px solid #202b40;
-  display:flex;
-  align-items:center;
-  z-index:2;
-}
-
-.notification-head h2{
-  flex:1;
-  font-size:18px;
-}
-
-.mark-read{
-  border:0;
-  background:none;
-  color:#d84ff2;
+.activity-value{
   font-size:9px;
-  cursor:pointer;
+  font-weight:800;
 }
 
-.close-notification{
-  margin-left:12px;
-  width:33px;
-  height:33px;
-  border:1px solid #283349;
-  border-radius:10px;
-  background:#121a2a;
-  color:#fff;
-  cursor:pointer;
-}
+/* NOTICE */
 
-.notification-list{
-  padding:10px 12px 30px;
-}
-
-.notification{
-  display:flex;
-  gap:11px;
+.notice{
+  margin-top:25px;
   padding:13px;
-  margin-bottom:8px;
-  background:#10182a;
-  border:1px solid #202c43;
-  border-radius:15px;
-}
-
-.notification.unread{
-  border-color:#4c2b62;
-  background:#13172a;
-}
-
-.notification-content{
-  flex:1;
-}
-
-.notification-content strong{
-  font-size:10px;
-  display:block;
-}
-
-.notification-content p{
-  font-size:9px;
-  color:#7c899d;
-  line-height:1.5;
-  margin-top:5px;
-}
-
-.notification-content small{
-  display:block;
-  color:#566277;
+  border-radius:13px;
+  border:1px solid rgba(255,180,76,.15);
+  background:rgba(255,180,76,.05);
+  color:#b7a27e;
   font-size:8px;
-  margin-top:7px;
+  line-height:1.6;
 }
 
-/* =========================
-   DESKTOP
-========================= */
-
-@media(min-width:850px){
-
-  .menu-btn{
-    display:none;
-  }
-
-  .sidebar{
-    left:0;
-    width:250px;
-  }
-
-  .topbar{
-    margin-left:250px;
-  }
-
-  .container{
-    margin-left:250px;
-    max-width:none;
-    padding:28px 28px 60px;
-  }
-
+@media(max-width:700px){
   .stats{
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:1fr 1fr;
   }
 
-  .quick-grid{
-    grid-template-columns:repeat(4,1fr);
+  .profit-grid{
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -670,950 +437,487 @@ button,a{
 
 <body>
 
-<!-- SIDEBAR OVERLAY -->
-<div
-  class="overlay"
-  id="overlay"
-  onclick="closeSidebar()">
-</div>
-
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar" id="sidebar">
-
-  <div class="sidebar-head">
-
-    <div class="sidebar-logo">
-      Offer<span>wax</span>
-    </div>
-
-    <p>Admin Control Center</p>
-
-  </div>
-
-
-  <nav class="nav">
-
-    <div class="nav-title">Overview</div>
-
-    <a href="admin.html" class="nav-item active">
-      <span class="nav-icon">⌂</span>
-      <span class="nav-text">Dashboard</span>
-    </a>
-
-
-    <div class="nav-title">Management</div>
-
-    <a href="admin-users.html" class="nav-item">
-      <span class="nav-icon">👥</span>
-      <span class="nav-text">Users</span>
-      <span class="badge">248</span>
-    </a>
-
-    <a href="admin-offers.html" class="nav-item">
-      <span class="nav-icon">▣</span>
-      <span class="nav-text">Offers</span>
-    </a>
-
-    <a href="admin-share.html" class="nav-item">
-      <span class="nav-icon">↗</span>
-      <span class="nav-text">Share & Earn</span>
-    </a>
-
-    <a href="admin-refer.html" class="nav-item">
-      <span class="nav-icon">♧</span>
-      <span class="nav-text">Refer & Earn</span>
-    </a>
-
-    <a href="admin-tracking.html" class="nav-item">
-      <span class="nav-icon">⌖</span>
-      <span class="nav-text">Tracking</span>
-    </a>
-
-
-    <div class="nav-title">Operations</div>
-
-    <a href="admin-finance.html" class="nav-item">
-      <span class="nav-icon">₹</span>
-      <span class="nav-text">Finance</span>
-      <span class="badge">7</span>
-    </a>
-
-    <a href="admin-support.html" class="nav-item">
-      <span class="nav-icon">?</span>
-      <span class="nav-text">Support</span>
-      <span class="badge">4</span>
-    </a>
-
-
-    <div class="nav-title">Controls</div>
-
-    <a href="admin-content.html" class="nav-item">
-      <span class="nav-icon">⚙</span>
-      <span class="nav-text">App & Content</span>
-    </a>
-
-    <a href="index.html" class="nav-item">
-      <span class="nav-icon">↗</span>
-      <span class="nav-text">View Website</span>
-    </a>
-
-  </nav>
-
-</aside>
-
-
-<!-- TOP BAR -->
-
-<header class="topbar">
-
-  <button
-    class="menu-btn"
-    onclick="openSidebar()">
-    ☰
-  </button>
+<header class="header">
 
   <div class="logo">
     Offer<span>wax</span>
-    <small class="admin-label">
-      ADMIN PANEL
-    </small>
+    <span class="admin-tag">ADMIN</span>
   </div>
 
-  <button
-    class="notification-btn"
-    onclick="openNotifications()">
-    🔔
-
-    <span
-      class="notification-count"
-      id="notificationCount">
-      6
-    </span>
-
+  <button class="logout" onclick="logoutAdmin()">
+    ↪
   </button>
 
 </header>
 
 
-<!-- MAIN -->
-
 <main class="container">
 
-  <section class="welcome">
+<!-- WELCOME -->
+
+<div class="welcome">
+
+  <div>
+    <h1>Admin Dashboard</h1>
+    <p>
+      Manage Offerwax users, offers, affiliate networks,
+      tracking, finance and support.
+    </p>
+  </div>
+
+  <div class="live">
+    ● System Active
+  </div>
+
+</div>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+  <div class="stat">
+    <small>Total Users</small>
+    <strong>10,248</strong>
+    <div class="stat-note">Registered accounts</div>
+  </div>
+
+  <div class="stat">
+    <small>Live Offers</small>
+    <strong>12</strong>
+    <div class="stat-note">Currently active</div>
+  </div>
+
+  <div class="stat">
+    <small>Pending Withdrawals</small>
+    <strong class="orange">8</strong>
+    <div class="stat-note">Need review</div>
+  </div>
+
+  <div class="stat">
+    <small>Open Support Tickets</small>
+    <strong class="blue">14</strong>
+    <div class="stat-note">Waiting for response</div>
+  </div>
+
+</section>
+
+
+<!-- FINANCE SUMMARY -->
+
+<section class="profit-card">
+
+  <div class="profit-top">
 
     <div>
-      <h1>Dashboard</h1>
+      <div class="profit-title">
+        Estimated Net Profit
+      </div>
 
-      <p>
-        Monitor users, offers, tracking,
-        earnings and platform activity.
-      </p>
+      <div class="profit-value">
+        ₹53,300
+      </div>
     </div>
 
-    <div class="live">
-      <span class="live-dot"></span>
-      System Live
-    </div>
-
-  </section>
-
-
-  <!-- MAIN STATS -->
-
-  <section class="stats">
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">👥</div>
-
-        <div class="stat-change">
-          +18 today
-        </div>
-
-      </div>
-
-      <div class="stat-value">
-        248
-      </div>
-
-      <div class="stat-name">
-        Total Users
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">✓</div>
-
-        <div class="stat-change">
-          72%
-        </div>
-
-      </div>
-
-      <div class="stat-value">
-        179
-      </div>
-
-      <div class="stat-name">
-        Active Users
-      </div>
-
-    </div>
-
-
-    <div class="stat-card warning">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">!</div>
-
-      </div>
-
-      <div class="stat-value">
-        6
-      </div>
-
-      <div class="stat-name">
-        Fraud / Suspicious
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">▣</div>
-
-      </div>
-
-      <div class="stat-value">
-        14
-      </div>
-
-      <div class="stat-name">
-        Live Offers
-      </div>
-
-    </div>
-
-
-    <div class="stat-card money">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">₹</div>
-
-      </div>
-
-      <div class="stat-value">
-        ₹24.8K
-      </div>
-
-      <div class="stat-name">
-        Total User Earnings
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">↗</div>
-
-      </div>
-
-      <div class="stat-value">
-        ₹16.4K
-      </div>
-
-      <div class="stat-name">
-        Share & Earn
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">♧</div>
-
-      </div>
-
-      <div class="stat-value">
-        ₹8.4K
-      </div>
-
-      <div class="stat-name">
-        Refer & Earn
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-top">
-
-        <div class="stat-icon">⏳</div>
-
-      </div>
-
-      <div class="stat-value">
-        7
-      </div>
-
-      <div class="stat-name">
-        Pending Withdrawals
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- QUICK ACTIONS -->
-
-  <section class="section">
-
-    <div class="section-head">
-
-      <h2 class="section-title">
-        Quick Actions
-      </h2>
-
-    </div>
-
-
-    <div class="quick-grid">
-
-      <a
-        href="admin-offers.html"
-        class="quick">
-
-        <div class="quick-icon">
-          +
-        </div>
-
-        <div>
-          <strong>Add Offer</strong>
-          <small>Create or edit offers</small>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-finance.html"
-        class="quick">
-
-        <div class="quick-icon">
-          ₹
-        </div>
-
-        <div>
-          <strong>Withdrawals</strong>
-          <small>7 requests pending</small>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-users.html"
-        class="quick">
-
-        <div class="quick-icon">
-          👤
-        </div>
-
-        <div>
-          <strong>Find User</strong>
-          <small>Manage user accounts</small>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-tracking.html"
-        class="quick">
-
-        <div class="quick-icon">
-          ⌖
-        </div>
-
-        <div>
-          <strong>Tracking</strong>
-          <small>Check offer events</small>
-        </div>
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- MANAGEMENT MODULES -->
-
-  <section class="section">
-
-    <div class="section-head">
-
-      <h2 class="section-title">
-        Management
-      </h2>
-
-    </div>
-
-
-    <div class="module-list">
-
-
-      <a
-        href="admin-users.html"
-        class="module">
-
-        <div class="module-icon">
-          👥
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            User Management
-          </strong>
-
-          <small>
-            Active, blocked, fraud, wallet and full user control
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">248</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-offers.html"
-        class="module">
-
-        <div class="module-icon">
-          ▣
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Offer Management
-          </strong>
-
-          <small>
-            Add offers, payouts, videos, links and instructions
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">14 Live</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-share.html"
-        class="module">
-
-        <div class="module-icon">
-          ↗
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Share & Earn
-          </strong>
-
-          <small>
-            Sharers, clicks, tracked users, completions and earnings
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">₹16.4K</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-refer.html"
-        class="module">
-
-        <div class="module-icon">
-          ♧
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Refer & Earn
-          </strong>
-
-          <small>
-            Referrers, referred users, first tasks and rewards
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">₹8.4K</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-tracking.html"
-        class="module">
-
-        <div class="module-icon">
-          ⌖
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Tracking Management
-          </strong>
-
-          <small>
-            Click, install, registration, action and completion
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-finance.html"
-        class="module">
-
-        <div class="module-icon">
-          ₹
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Finance
-          </strong>
-
-          <small>
-            Wallets, withdrawals, payouts and transaction history
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">7 Pending</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-support.html"
-        class="module">
-
-        <div class="module-icon">
-          ?
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            Support
-          </strong>
-
-          <small>
-            User tickets, replies and issue resolution
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="module-number">4 Open</div>
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-
-      <a
-        href="admin-content.html"
-        class="module">
-
-        <div class="module-icon">
-          ⚙
-        </div>
-
-        <div class="module-info">
-
-          <strong>
-            App & Content Controls
-          </strong>
-
-          <small>
-            Home banners, videos, text and platform content
-          </small>
-
-        </div>
-
-        <div class="module-right">
-          <div class="arrow">›</div>
-        </div>
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- RECENT ACTIVITY -->
-
-  <section class="section">
-
-    <div class="section-head">
-
-      <h2 class="section-title">
-        Recent Activity
-      </h2>
-
-      <button
-        class="mark-read"
-        onclick="openNotifications()">
-        View notifications
-      </button>
-
-    </div>
-
-
-    <div class="activity-card">
-
-
-      <div class="activity">
-
-        <div class="activity-icon orange">
-          ₹
-        </div>
-
-        <div class="activity-info">
-
-          <strong>
-            New withdrawal request
-          </strong>
-
-          <p>
-            User OW8473 requested ₹500 withdrawal.
-          </p>
-
-        </div>
-
-        <div class="activity-time">
-          2m
-        </div>
-
-      </div>
-
-
-      <div class="activity">
-
-        <div class="activity-icon green">
-          ✓
-        </div>
-
-        <div class="activity-info">
-
-          <strong>
-            Kotak 811 completed
-          </strong>
-
-          <p>
-            A tracked user completed the required action.
-          </p>
-
-        </div>
-
-        <div class="activity-time">
-          8m
-        </div>
-
-      </div>
-
-
-      <div class="activity">
-
-        <div class="activity-icon purple">
-          👤
-        </div>
-
-        <div class="activity-info">
-
-          <strong>
-            New user joined
-          </strong>
-
-          <p>
-            A new Offerwax account was created.
-          </p>
-
-        </div>
-
-        <div class="activity-time">
-          14m
-        </div>
-
-      </div>
-
-
-      <div class="activity">
-
-        <div class="activity-icon red">
-          !
-        </div>
-
-        <div class="activity-info">
-
-          <strong>
-            Fraud alert
-          </strong>
-
-          <p>
-            Multiple accounts require admin review.
-          </p>
-
-        </div>
-
-        <div class="activity-time">
-          21m
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- NOTIFICATIONS -->
-
-<section
-  class="notification-panel"
-  id="notificationPanel">
-
-  <div class="notification-head">
-
-    <h2>
-      Notifications
-    </h2>
-
-    <button
-      class="mark-read"
-      onclick="markAllRead()">
-      Mark all read
-    </button>
-
-    <button
-      class="close-notification"
-      onclick="closeNotifications()">
-      ×
-    </button>
+    <a href="admin-finance.html" class="finance-link">
+      Finance →
+    </a>
 
   </div>
 
 
-  <div class="notification-list">
+  <div class="profit-grid">
+
+    <div class="profit-item">
+      <small>Validated Revenue</small>
+      <strong>₹84,500</strong>
+    </div>
+
+    <div class="profit-item">
+      <small>User / Referral Costs</small>
+      <strong class="orange">₹31,200</strong>
+    </div>
+
+    <div class="profit-item">
+      <small>Network Receivable</small>
+      <strong class="blue">₹21,200</strong>
+    </div>
+
+  </div>
+
+</section>
 
 
-    <div class="notification unread">
+<!-- CORE MANAGEMENT -->
 
-      <div class="activity-icon orange">
-        ₹
+<section class="section">
+
+  <div class="section-title">
+    Core Management
+    <span class="section-sub">
+      Main Offerwax controls
+    </span>
+  </div>
+
+  <div class="menu-grid">
+
+
+    <a href="admin-offers.html" class="menu-card">
+
+      <div class="menu-icon">▣</div>
+
+      <div class="menu-name">
+        Offers
       </div>
 
-      <div class="notification-content">
+      <div class="menu-desc">
+        Offers, payouts, user rewards and offer economics.
+      </div>
 
-        <strong>
-          Withdrawal Request
-        </strong>
+      <div class="arrow">›</div>
 
-        <p>
-          User OW8473 requested a ₹500 withdrawal.
-        </p>
+    </a>
 
-        <small>
-          2 minutes ago
-        </small>
 
+    <a href="admin-networks.html" class="menu-card">
+
+      <div class="menu-icon">⌁</div>
+
+      <div class="menu-name">
+        Networks & API
+      </div>
+
+      <div class="menu-desc">
+        Affiliate API, tracking links, events and postbacks.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-finance.html" class="menu-card">
+
+      <div class="menu-icon">₹</div>
+
+      <div class="menu-name">
+        Finance & Profit
+      </div>
+
+      <div class="menu-desc">
+        Revenue, costs, profit and network settlements.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-users.html" class="menu-card">
+
+      <div class="menu-icon">♙</div>
+
+      <div class="menu-name">
+        Users
+      </div>
+
+      <div class="menu-desc">
+        Search and manage registered Offerwax users.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- EARNING SYSTEM -->
+
+<section class="section">
+
+  <div class="section-title">
+    Earning System
+  </div>
+
+  <div class="menu-grid">
+
+
+    <a href="admin-referrals.html" class="menu-card">
+
+      <div class="menu-icon">♧</div>
+
+      <div class="menu-name">
+        Refer & Earn
+      </div>
+
+      <div class="menu-desc">
+        Referral users, commissions and custom payouts.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-share.html" class="menu-card">
+
+      <div class="menu-icon">↗</div>
+
+      <div class="menu-name">
+        Share & Earn
+      </div>
+
+      <div class="menu-desc">
+        Shared campaigns, sharer rewards and cashback.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-withdrawals.html" class="menu-card">
+
+      <div class="menu-icon">₹</div>
+
+      <div class="menu-name">
+        Withdrawals
+      </div>
+
+      <div class="menu-desc">
+        Review and process user payout requests.
+      </div>
+
+      <span class="badge">8</span>
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-conversions.html" class="menu-card">
+
+      <div class="menu-icon">✓</div>
+
+      <div class="menu-name">
+        Conversions
+      </div>
+
+      <div class="menu-desc">
+        Pending, approved and rejected conversions.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- OPERATIONS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Operations
+  </div>
+
+  <div class="menu-grid">
+
+
+    <a href="admin-support.html" class="menu-card">
+
+      <div class="menu-icon">?</div>
+
+      <div class="menu-name">
+        Support Tickets
+      </div>
+
+      <div class="menu-desc">
+        Read user problems and update ticket status.
+      </div>
+
+      <span class="badge">14</span>
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-notifications.html" class="menu-card">
+
+      <div class="menu-icon">♢</div>
+
+      <div class="menu-name">
+        Notifications
+      </div>
+
+      <div class="menu-desc">
+        Send account, offer and support notifications.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-banners.html" class="menu-card">
+
+      <div class="menu-icon">▤</div>
+
+      <div class="menu-name">
+        Home Banners
+      </div>
+
+      <div class="menu-desc">
+        Manage homepage banners and promotional content.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a href="admin-settings.html" class="menu-card">
+
+      <div class="menu-icon">⚙</div>
+
+      <div class="menu-name">
+        Settings
+      </div>
+
+      <div class="menu-desc">
+        Platform settings and admin configuration.
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- NETWORK STATUS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Affiliate Networks
+    <span class="section-sub">
+      Quick integration status
+    </span>
+  </div>
+
+
+  <div class="network-status">
+
+    <div class="network-row">
+
+      <div class="network-logo">
+        EX
+      </div>
+
+      <div class="network-info">
+        <strong>Exponent</strong>
+        <small>API / Postback integration</small>
+      </div>
+
+      <div class="connected">
+        ● Connected
       </div>
 
     </div>
 
 
-    <div class="notification unread">
+    <div class="network-row">
 
-      <div class="activity-icon green">
+      <div class="network-logo">
+        +
+      </div>
+
+      <div class="network-info">
+        <strong>Add Affiliate Network</strong>
+        <small>Configure another API or postback partner</small>
+      </div>
+
+      <a
+        href="admin-networks.html"
+        style="color:#d42df4;text-decoration:none;font-size:18px">
+        ›
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ACTIVITY -->
+
+<section class="section">
+
+  <div class="section-title">
+    Recent Admin Activity
+  </div>
+
+
+  <div class="activity-card">
+
+    <div class="activity">
+
+      <div class="activity-icon">
         ✓
       </div>
 
-      <div class="notification-content">
+      <div class="activity-text">
+        <strong>Angel One conversion approved</strong>
+        <small>Conversion ID: DEMO-1001</small>
+      </div>
 
-        <strong>
-          Offer Completed
-        </strong>
-
-        <p>
-          Kotak 811 required action has been tracked.
-        </p>
-
-        <small>
-          8 minutes ago
-        </small>
-
+      <div class="activity-value green">
+        +₹600
       </div>
 
     </div>
 
 
-    <div class="notification unread">
+    <div class="activity">
 
-      <div class="activity-icon purple">
-        👤
+      <div class="activity-icon">
+        ₹
       </div>
 
-      <div class="notification-content">
+      <div class="activity-text">
+        <strong>Withdrawal request received</strong>
+        <small>User: Earn Smart</small>
+      </div>
 
-        <strong>
-          New User Joined
-        </strong>
-
-        <p>
-          A new user created an Offerwax account.
-        </p>
-
-        <small>
-          14 minutes ago
-        </small>
-
+      <div class="activity-value orange">
+        ₹1,250
       </div>
 
     </div>
 
 
-    <div class="notification unread">
+    <div class="activity">
 
-      <div class="activity-icon red">
-        !
-      </div>
-
-      <div class="notification-content">
-
-        <strong>
-          Fraud Alert
-        </strong>
-
-        <p>
-          Suspicious multi-account activity requires review.
-        </p>
-
-        <small>
-          21 minutes ago
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="notification unread">
-
-      <div class="activity-icon purple">
-        ♧
-      </div>
-
-      <div class="notification-content">
-
-        <strong>
-          Referral Task Completed
-        </strong>
-
-        <p>
-          A referred user completed their first eligible task.
-        </p>
-
-        <small>
-          32 minutes ago
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="notification unread">
-
-      <div class="activity-icon purple">
+      <div class="activity-icon">
         ?
       </div>
 
-      <div class="notification-content">
+      <div class="activity-text">
+        <strong>New support ticket</strong>
+        <small>Offer tracking issue</small>
+      </div>
 
-        <strong>
-          New Support Request
-        </strong>
-
-        <p>
-          A user submitted a new support ticket.
-        </p>
-
-        <small>
-          45 minutes ago
-        </small>
-
+      <div class="activity-value blue">
+        Open
       </div>
 
     </div>
@@ -1623,127 +927,32 @@ button,a{
 </section>
 
 
+<div class="notice">
+  Dashboard numbers above are demo placeholders. Once the backend,
+  affiliate API/postback and database are connected, revenue,
+  conversions, balances and user counts should come from verified
+  server-side records rather than hard-coded HTML values.
+</div>
+
+</main>
+
+
 <script>
 
-/* =========================
-   SIDEBAR
-========================= */
+function logoutAdmin(){
 
-function openSidebar(){
-
-  document
-  .getElementById("sidebar")
-  .classList.add("open");
-
-  document
-  .getElementById("overlay")
-  .style.display="block";
-
-}
-
-
-function closeSidebar(){
-
-  document
-  .getElementById("sidebar")
-  .classList.remove("open");
-
-  document
-  .getElementById("overlay")
-  .style.display="none";
-
-}
-
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-function openNotifications(){
-
-  closeSidebar();
-
-  document
-  .getElementById("notificationPanel")
-  .classList.add("open");
-
-  document
-  .getElementById("overlay")
-  .style.display="block";
-
-  document
-  .getElementById("overlay")
-  .onclick=closeNotifications;
-
-}
-
-
-function closeNotifications(){
-
-  document
-  .getElementById("notificationPanel")
-  .classList.remove("open");
-
-  document
-  .getElementById("overlay")
-  .style.display="none";
-
-  document
-  .getElementById("overlay")
-  .onclick=closeSidebar;
-
-}
-
-
-function markAllRead(){
-
-  const notifications =
-    document.querySelectorAll(
-      ".notification.unread"
-    );
-
-  notifications.forEach(
-    function(item){
-
-      item.classList.remove("unread");
-
-    }
+  const ok = confirm(
+    "Do you want to logout from Offerwax Admin?"
   );
 
+  if(!ok){
+    return;
+  }
 
-  document
-  .getElementById("notificationCount")
-  .style.display="none";
-
+  window.location.href = "admin-login.html";
 }
-
-
-/*
-=========================================
-BACKEND CONNECTION LATER
-=========================================
-
-Dashboard values currently contain
-sample/demo data.
-
-After the Offerwax backend is connected,
-this dashboard will load:
-
-- real user counts
-- fraud alerts
-- live offers
-- Share & Earn totals
-- Refer & Earn totals
-- tracking events
-- withdrawal requests
-- support tickets
-- real notifications
-
-No finance/user action is performed
-by this static dashboard.
-*/
 
 </script>
 
 </body>
-    </html>
+        </html>
