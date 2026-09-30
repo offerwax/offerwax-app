@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+
+<title>Privacy Policy | Offerwax</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid #182133;
+  background:rgba(7,11,20,.97);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.back{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:#10182a;
+  border:1px solid #202c43;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#d42df4;
+}
+
+.header-space{
+  width:38px;
+}
+
+.container{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding:24px 18px 45px;
+}
+
+
+/* HERO */
+
+.hero{
+  padding:10px 3px 22px;
+}
+
+.tag{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(212,45,244,.09);
+  border:1px solid rgba(212,45,244,.22);
+  color:#db4cf2;
+  font-size:9px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.hero h1{
+  font-size:27px;
+  line-height:1.15;
+}
+
+.hero p{
+  color:#7e8a9f;
+  font-size:10px;
+  line-height:1.6;
+  margin-top:9px;
+}
+
+.updated{
+  color:#5f6c81;
+  font-size:8px;
+  margin-top:10px;
+}
+
+
+/* PRIVACY NOTICE */
+
+.notice{
+  background:linear-gradient(135deg,#121a2e,#171228);
+  border:1px solid #302747;
+  border-radius:17px;
+  padding:15px;
+  margin-bottom:18px;
+}
+
+.notice strong{
+  display:block;
+  font-size:11px;
+}
+
+.notice p{
+  color:#8c98ab;
+  font-size:9px;
+  line-height:1.6;
+  margin-top:6px;
+}
+
+
+/* POLICY CARD */
+
+.policy-card{
+  background:#0e1626;
+  border:1px solid #202c43;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.policy{
+  padding:18px 16px;
+  border-bottom:1px solid #202c43;
+}
+
+.policy:last-child{
+  border-bottom:0;
+}
+
+.policy-head{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+}
+
+.number{
+  width:29px;
+  height:29px;
+  min-width:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:#181f35;
+  color:#db4cf2;
+  font-size:9px;
+  font-weight:900;
+}
+
+.policy h2{
+  font-size:13px;
+  margin-top:6px;
+}
+
+.policy-content{
+  color:#8995a8;
+  font-size:9.5px;
+  line-height:1.7;
+  margin-top:11px;
+}
+
+.policy-content p{
+  margin-top:8px;
+}
+
+.policy-content p:first-child{
+  margin-top:0;
+}
+
+.policy-content ul{
+  padding-left:18px;
+  margin-top:8px;
+}
+
+.policy-content li{
+  margin:6px 0;
+}
+
+.highlight{
+  color:#d4d9e2;
+}
+
+.green{
+  color:#39dc8a;
+}
+
+
+/* PRIVACY BOX */
+
+.privacy-box{
+  margin-top:18px;
+  padding:16px;
+  border-radius:16px;
+  background:#0d1524;
+  border:1px solid #202c43;
+}
+
+.privacy-box strong{
+  display:block;
+  font-size:11px;
+}
+
+.privacy-box p{
+  color:#778499;
+  font-size:8.5px;
+  line-height:1.6;
+  margin-top:6px;
+}
+
+
+/* LINKS */
+
+.legal-links{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
+}
+
+.legal-btn{
+  min-height:48px;
+  border-radius:13px;
+  border:1px solid #28364e;
+  background:#10182a;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.legal-btn.primary{
+  border-color:#713799;
+  color:#e052f4;
+}
+
+
+/* SUPPORT */
+
+.support{
+  margin-top:18px;
+  padding:16px;
+  border-radius:16px;
+  background:#0d1524;
+  border:1px solid #202c43;
+  text-align:center;
+}
+
+.support strong{
+  display:block;
+  font-size:11px;
+}
+
+.support p{
+  color:#778499;
+  font-size:8.5px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.support a{
+  display:inline-block;
+  margin-top:11px;
+  color:#db4cf2;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:800;
+}
+
+
+/* FOOTER */
+
+.footer{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid #182133;
+  text-align:center;
+}
+
+.footer-logo{
+  font-size:16px;
+  font-weight:900;
+}
+
+.footer-logo span{
+  color:#d42df4;
+}
+
+.footer p{
+  color:#505d71;
+  font-size:7.5px;
+  margin-top:9px;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <a href="profile.html" class="back">
+    ‹
+  </a>
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
+
+  <div class="header-space"></div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="tag">
+    OFFERWAX LEGAL
+  </div>
+
+  <h1>
+    Privacy Policy
+  </h1>
+
+  <p>
+    This Privacy Policy explains what information may be
+    collected when you use Offerwax, why it is used and
+    how we aim to protect it.
+  </p>
+
+  <div class="updated">
+    Last updated: 30 September 2026
+  </div>
+
+</section>
+
+
+<!-- IMPORTANT -->
+
+<div class="notice">
+
+  <strong>
+    Your Privacy Matters
+  </strong>
+
+  <p>
+    Offerwax should only collect information that is
+    reasonably required to operate accounts, track eligible
+    activity, process rewards, provide support and protect
+    the platform from misuse.
+  </p>
+
+</div>
+
+
+
+<!-- POLICIES -->
+
+<section class="policy-card">
+
+
+<!-- 01 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      01
+    </div>
+
+    <h2>
+      Information You Provide
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      When you create or manage an Offerwax account,
+      information you provide may include:
+    </p>
+
+    <ul>
+
+      <li>
+        Full name
+      </li>
+
+      <li>
+        Mobile number
+      </li>
+
+      <li>
+        Email address, where provided
+      </li>
+
+      <li>
+        UPI ID or other supported payout details
+      </li>
+
+      <li>
+        Referral information
+      </li>
+
+      <li>
+        Information submitted through Support
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
+
+
+
+<!-- 02 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      02
+    </div>
+
+    <h2>
+      Offer & Tracking Information
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      When you participate in eligible campaigns,
+      Offerwax may process information needed to determine
+      the status of an offer.
+    </p>
+
+    <p>
+      This may include campaign identifiers, referral
+      identifiers and events such as:
+    </p>
+
+    <ul>
+
+      <li>
+        Offer or referral clicks
+      </li>
+
+      <li>
+        Install or registration status where available
+      </li>
+
+      <li>
+        Required-action status
+      </li>
+
+      <li>
+        Completion and validation status
+      </li>
+
+      <li>
+        Reward status
+      </li>
+
+    </ul>
+
+    <p class="highlight">
+      The exact tracking information available can depend
+      on the applicable campaign and tracking partner.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 03 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      03
+    </div>
+
+    <h2>
+      How Information Is Used
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Information may be used to operate Offerwax and
+      provide its features, including:
+    </p>
+
+    <ul>
+
+      <li>
+        Creating and managing user accounts
+      </li>
+
+      <li>
+        Displaying offer and reward status
+      </li>
+
+      <li>
+        Processing eligible rewards and withdrawals
+      </li>
+
+      <li>
+        Operating Refer & Earn
+      </li>
+
+      <li>
+        Operating Share & Earn
+      </li>
+
+      <li>
+        Responding to support requests
+      </li>
+
+      <li>
+        Detecting duplicate, fraudulent or abusive activity
+      </li>
+
+      <li>
+        Maintaining platform security
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
+
+
+
+<!-- 04 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      04
+    </div>
+
+    <h2>
+      Payment Information
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      A UPI ID or another supported payment identifier may
+      be required when you request a withdrawal or when a
+      campaign requires reward payment information.
+    </p>
+
+    <p>
+      Payment information should only be used for legitimate
+      reward, withdrawal, verification and support purposes.
+    </p>
+
+    <p class="green">
+      Offerwax should never ask you to provide your UPI PIN,
+      ATM PIN, OTP or internet banking password to receive
+      an Offerwax reward.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 05 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      05
+    </div>
+
+    <h2>
+      Referral Information
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Offerwax may associate a referral code or referral
+      link with an account to determine which eligible
+      account referred another user.
+    </p>
+
+    <p>
+      Referral information may be used to calculate
+      applicable referral rewards and prevent self-referral
+      or duplicate-account abuse.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 06 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      06
+    </div>
+
+    <h2>
+      Share & Earn
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      When Share & Earn is used, a campaign link may contain
+      an identifier associated with the user who shared it.
+    </p>
+
+    <p>
+      Campaign activity may be associated with that
+      identifier so Offerwax can display relevant clicks,
+      tracked activity, completion status and eligible
+      earnings.
+    </p>
+
+    <p>
+      Only information reasonably necessary for the feature
+      should be shown to the person who shared the campaign.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 07 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      07
+    </div>
+
+    <h2>
+      Support Requests
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      When you contact Offerwax Support, the information
+      you submit may be used to identify your account,
+      investigate your request and provide a response.
+    </p>
+
+    <p>
+      Support information may include your name,
+      registered mobile number, description of the problem
+      and related account or offer information.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 08 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      08
+    </div>
+
+    <h2>
+      Third-Party Services
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Offerwax campaigns may direct users to third-party
+      websites, applications, advertisers, tracking
+      providers or other services.
+    </p>
+
+    <p>
+      Those services may collect information under their
+      own privacy policies and terms.
+    </p>
+
+    <p class="highlight">
+      Users should review the privacy information provided
+      by the relevant third-party service before submitting
+      personal information to it.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 09 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      09
+    </div>
+
+    <h2>
+      Information Sharing
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Information may be shared with service providers or
+      campaign partners where reasonably necessary to
+      operate features such as tracking, validation,
+      security, support or payment processing.
+    </p>
+
+    <p>
+      Information may also be disclosed when required by
+      applicable law or a valid legal process.
+    </p>
+
+    <p class="highlight">
+      Offerwax should not sell users' personal information
+      as a standalone product.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 10 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      10
+    </div>
+
+    <h2>
+      Fraud & Security
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Information may be processed to identify suspicious
+      activity and protect Offerwax, its users and campaign
+      partners.
+    </p>
+
+    <p>
+      Security checks may be used to identify activity such
+      as duplicate accounts, self-referrals, artificial
+      activity or attempts to manipulate campaign tracking.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 11 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      11
+    </div>
+
+    <h2>
+      Data Security
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Reasonable technical and organizational measures
+      should be used to protect personal information
+      against unauthorized access, loss, misuse or
+      disclosure.
+    </p>
+
+    <p>
+      However, no internet service or electronic storage
+      system can guarantee absolute security.
+    </p>
+
+    <p>
+      Users are also responsible for protecting their
+      account credentials.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 12 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      12
+    </div>
+
+    <h2>
+      Data Retention
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Personal information should be retained only for as
+      long as reasonably necessary for the purposes for
+      which it was collected, including account operation,
+      reward records, fraud prevention, dispute resolution
+      and applicable legal obligations.
+    </p>
+
+    <p>
+      Retention periods may differ depending on the type
+      of information and applicable requirements.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 13 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      13
+    </div>
+
+    <h2>
+      Your Choices & Requests
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Users may contact Offerwax Support regarding
+      questions or requests concerning their account
+      information.
+    </p>
+
+    <p>
+      Depending on applicable law and the circumstances,
+      users may be able to request correction, access or
+      deletion of certain personal information.
+    </p>
+
+    <p>
+      Some information may need to be retained where
+      required for legal, security, fraud-prevention or
+      legitimate record-keeping purposes.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 14 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      14
+    </div>
+
+    <h2>
+      Children's Privacy
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      Offerwax users must satisfy the age and eligibility
+      requirements applicable to the platform and to each
+      individual offer they choose to participate in.
+    </p>
+
+    <p>
+      Certain third-party financial, investment or other
+      services may have their own minimum-age requirements.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- 15 -->
+
+<div class="policy">
+
+  <div class="policy-head">
+
+    <div class="number">
+      15
+    </div>
+
+    <h2>
+      Changes to This Policy
+    </h2>
+
+  </div>
+
+  <div class="policy-content">
+
+    <p>
+      This Privacy Policy may be updated as Offerwax
+      features, technology, business practices or legal
+      requirements change.
+    </p>
+
+    <p>
+      The latest version will be displayed on this page
+      together with its updated date.
+    </p>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- PRIVACY REMINDER -->
+
+<div class="privacy-box">
+
+  <strong>
+    🔒 Protect Your Account
+  </strong>
+
+  <p>
+    Never share your OTP, UPI PIN, ATM PIN or banking
+    password with anyone claiming it is required to receive
+    an Offerwax reward.
+  </p>
+
+</div>
+
+
+
+<!-- LINKS -->
+
+<div class="legal-links">
+
+  <a
+    href="terms.html"
+    class="legal-btn primary">
+
+    ← Terms & Conditions
+
+  </a>
+
+  <a
+    href="support.html"
+    class="legal-btn">
+
+    Help & Support
+
+  </a>
+
+</div>
+
+
+
+<!-- SUPPORT -->
+
+<div class="support">
+
+  <strong>
+    Privacy question?
+  </strong>
+
+  <p>
+    Contact Offerwax Support if you have a question about
+    your account information or this Privacy Policy.
+  </p>
+
+  <a href="support.html">
+    Contact Support →
+  </a>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-logo">
+    Offer<span>wax</span>
+  </div>
+
+  <p>
+    © 2026 Offerwax. All rights reserved.
+  </p>
+
+</footer>
+
+
+</main>
+
+</body>
+  </html>
