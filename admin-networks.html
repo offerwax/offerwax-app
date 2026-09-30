@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070b14">
 
-<title>Networks | Offerwax Admin</title>
+<title>Networks & API | Offerwax Admin</title>
 
 <style>
 *{
@@ -17,15 +17,15 @@
 :root{
   --bg:#070b14;
   --card:#10182a;
-  --card2:#0b1322;
+  --card2:#0a1220;
   --border:#202c43;
   --text:#fff;
   --muted:#7e899d;
   --purple:#8528ff;
   --pink:#d42df4;
   --green:#2ddd8b;
-  --red:#ff6570;
   --orange:#ffb44c;
+  --red:#ff6673;
   --blue:#55a8ff;
 }
 
@@ -34,7 +34,11 @@ body{
   background:var(--bg);
   color:var(--text);
   min-height:100vh;
-  padding-bottom:35px;
+  padding-bottom:40px;
+}
+
+button,input,select,textarea{
+  font-family:inherit;
 }
 
 .header{
@@ -46,8 +50,22 @@ body{
   border-bottom:1px solid #182133;
   position:sticky;
   top:0;
-  background:rgba(7,11,20,.97);
   z-index:100;
+  background:rgba(7,11,20,.97);
+}
+
+.back{
+  width:36px;
+  height:36px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#10182a;
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
 }
 
 .logo{
@@ -62,63 +80,51 @@ body{
 .admin-tag{
   font-size:8px;
   padding:5px 8px;
+  margin-left:5px;
   border-radius:20px;
-  background:rgba(212,45,244,.1);
   color:#e457f7;
+  background:rgba(212,45,244,.1);
   border:1px solid rgba(212,45,244,.25);
 }
 
-.back{
-  color:#fff;
-  text-decoration:none;
-  font-size:20px;
-  width:36px;
-  height:36px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:11px;
-  background:#10182a;
-  border:1px solid var(--border);
-}
-
 .container{
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
   padding:22px 16px;
 }
 
+/* HEAD */
+
 .page-head{
   display:flex;
-  align-items:flex-start;
   justify-content:space-between;
-  gap:15px;
+  align-items:flex-start;
+  gap:14px;
 }
 
 .page-head h1{
-  font-size:22px;
+  font-size:23px;
 }
 
 .page-head p{
+  margin-top:7px;
   color:var(--muted);
   font-size:10px;
-  line-height:1.5;
-  margin-top:7px;
-  max-width:470px;
+  line-height:1.6;
+  max-width:540px;
 }
 
 .add-btn{
   border:0;
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  color:#fff;
-  padding:11px 14px;
   border-radius:11px;
-  font-size:10px;
+  padding:11px 14px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  font-size:9px;
   font-weight:800;
-  white-space:nowrap;
   cursor:pointer;
+  white-space:nowrap;
 }
-
 
 /* STATS */
 
@@ -130,10 +136,10 @@ body{
 }
 
 .stat{
+  padding:14px;
+  border-radius:15px;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:15px;
-  padding:14px;
 }
 
 .stat small{
@@ -147,72 +153,90 @@ body{
   margin-top:7px;
 }
 
-.green{
-  color:var(--green);
+.green{color:var(--green)}
+.orange{color:var(--orange)}
+.red{color:var(--red)}
+.blue{color:var(--blue)}
+
+/* POSTBACK */
+
+.section{
+  margin-top:25px;
 }
 
-.orange{
-  color:var(--orange);
+.section-title{
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:10px;
 }
 
+.section-sub{
+  color:var(--muted);
+  font-size:8px;
+  line-height:1.5;
+  margin-top:4px;
+}
 
-/* INFO */
+.postback-box{
+  padding:15px;
+  border-radius:17px;
+  background:linear-gradient(135deg,#111a2d,#171226);
+  border:1px solid #34294c;
+}
 
-.info{
-  margin-top:16px;
-  padding:13px 14px;
-  border-radius:14px;
-  background:rgba(85,168,255,.06);
-  border:1px solid rgba(85,168,255,.18);
-  color:#91a7c5;
+.postback-label{
+  color:#8f9caf;
+  font-size:8px;
+}
+
+.postback-row{
+  display:flex;
+  gap:8px;
+  margin-top:9px;
+}
+
+.postback-url{
+  flex:1;
+  min-width:0;
+  height:43px;
+  padding:0 12px;
+  border-radius:11px;
+  border:1px solid #29364e;
+  background:#080e19;
+  color:#c9d4e4;
   font-size:9px;
+}
+
+.copy-btn{
+  border:1px solid #63377e;
+  background:rgba(212,45,244,.08);
+  color:#df50f4;
+  border-radius:10px;
+  padding:0 13px;
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.postback-note{
+  margin-top:10px;
+  color:#78869b;
+  font-size:8px;
   line-height:1.6;
 }
 
-
-/* TOOLBAR */
-
-.toolbar{
-  margin-top:22px;
-  display:flex;
-  gap:9px;
-}
-
-.search{
-  flex:1;
-  height:43px;
-  background:#0b1322;
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:#fff;
-  padding:0 13px;
-  outline:none;
-}
-
-.filter{
-  height:43px;
-  background:#0b1322;
-  color:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:0 10px;
-  outline:none;
-}
-
-
-/* NETWORK */
+/* NETWORK CARD */
 
 .network-list{
-  margin-top:14px;
   display:grid;
   gap:13px;
 }
 
 .network{
+  padding:16px;
+  border-radius:18px;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:18px;
-  padding:16px;
 }
 
 .network-top{
@@ -229,8 +253,8 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#17243a,#221634);
-  font-size:18px;
+  background:linear-gradient(135deg,#19243a,#28172e);
+  font-size:13px;
   font-weight:900;
 }
 
@@ -243,76 +267,76 @@ body{
   font-weight:800;
 }
 
-.network-id{
+.network-meta{
   color:var(--muted);
   font-size:8px;
   margin-top:5px;
 }
 
 .status{
-  font-size:8px;
-  font-weight:800;
   padding:6px 9px;
   border-radius:20px;
+  font-size:8px;
+  font-weight:800;
 }
 
-.active{
+.connected{
   color:var(--green);
   background:rgba(45,221,139,.08);
 }
 
-.pending{
-  color:var(--orange);
-  background:rgba(255,180,76,.08);
+.disconnected{
+  color:var(--red);
+  background:rgba(255,102,115,.08);
 }
 
-.network-grid{
+.network-stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-top:15px;
+  margin-top:14px;
 }
 
 .metric{
-  background:#0a1220;
-  border:1px solid #1c2940;
-  border-radius:12px;
-  padding:11px;
+  padding:10px;
+  border-radius:11px;
+  background:var(--card2);
+  border:1px solid #1d2a40;
 }
 
 .metric small{
+  display:block;
   color:#718096;
   font-size:7px;
 }
 
 .metric strong{
   display:block;
-  font-size:11px;
   margin-top:6px;
+  font-size:11px;
 }
 
-.network-meta{
+.network-details{
   margin-top:13px;
   padding-top:12px;
   border-top:1px solid var(--border);
   display:grid;
-  gap:7px;
+  gap:8px;
 }
 
-.meta-row{
+.detail{
   display:flex;
   justify-content:space-between;
-  gap:12px;
+  gap:15px;
   font-size:8px;
 }
 
-.meta-row span:first-child{
+.detail span:first-child{
   color:var(--muted);
 }
 
-.meta-row span:last-child{
+.detail span:last-child{
   text-align:right;
-  word-break:break-all;
 }
 
 .actions{
@@ -321,24 +345,77 @@ body{
   margin-top:14px;
 }
 
-.action-btn{
+.action{
   flex:1;
   height:36px;
   border-radius:10px;
   border:1px solid var(--border);
   background:#121c2f;
   color:#fff;
-  font-size:9px;
+  font-size:8px;
   font-weight:700;
   cursor:pointer;
 }
 
 .primary{
-  border-color:#6934a0;
-  color:#e056f5;
-  background:rgba(212,45,244,.07);
+  border-color:#623a82;
+  color:#df50f4;
+  background:rgba(212,45,244,.06);
 }
 
+/* LOG */
+
+.log-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  overflow:hidden;
+}
+
+.log{
+  padding:13px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  gap:11px;
+  align-items:center;
+}
+
+.log:last-child{
+  border-bottom:0;
+}
+
+.log-icon{
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#172136;
+  font-size:12px;
+}
+
+.log-info{
+  flex:1;
+}
+
+.log-info strong{
+  display:block;
+  font-size:9px;
+}
+
+.log-info small{
+  display:block;
+  color:#748197;
+  font-size:7px;
+  margin-top:4px;
+}
+
+.log-status{
+  font-size:8px;
+  font-weight:800;
+}
 
 /* MODAL */
 
@@ -346,51 +423,51 @@ body{
   display:none;
   position:fixed;
   inset:0;
-  z-index:500;
   background:rgba(0,0,0,.78);
+  z-index:500;
   align-items:flex-end;
   justify-content:center;
 }
 
 .modal-box{
   width:100%;
-  max-width:650px;
-  max-height:92vh;
+  max-width:680px;
+  max-height:93vh;
   overflow:auto;
+  padding:21px 18px 30px;
+  border-radius:24px 24px 0 0;
   background:#10182a;
   border:1px solid #29364e;
-  border-radius:24px 24px 0 0;
-  padding:21px 18px 30px;
 }
 
 .modal-line{
   width:45px;
   height:4px;
-  background:#455168;
-  border-radius:10px;
   margin:0 auto 18px;
+  border-radius:10px;
+  background:#455168;
 }
 
 .modal-title{
-  font-size:19px;
+  font-size:20px;
   font-weight:800;
 }
 
 .modal-sub{
+  margin-top:6px;
   color:var(--muted);
   font-size:9px;
   line-height:1.5;
-  margin-top:6px;
 }
 
 .form-section{
-  margin-top:21px;
+  margin-top:22px;
 }
 
 .form-title{
   font-size:11px;
   font-weight:800;
-  margin-bottom:12px;
+  margin-bottom:11px;
   color:#c7d0df;
 }
 
@@ -400,28 +477,31 @@ body{
 
 label{
   display:block;
+  margin-bottom:7px;
   color:#b3bfd1;
   font-size:9px;
   font-weight:700;
-  margin-bottom:7px;
 }
 
-input,
-select{
+input,select,textarea{
   width:100%;
-  height:45px;
-  background:#080e19;
   border:1px solid #29364e;
+  background:#080e19;
   color:#fff;
   border-radius:11px;
-  padding:0 12px;
   outline:none;
-  font-size:11px;
+  font-size:10px;
 }
 
-input:focus,
-select:focus{
-  border-color:#b932df;
+input,select{
+  height:45px;
+  padding:0 12px;
+}
+
+textarea{
+  min-height:80px;
+  padding:12px;
+  resize:vertical;
 }
 
 .two{
@@ -430,53 +510,84 @@ select:focus{
   gap:10px;
 }
 
-.secret-note{
-  color:#69778d;
-  font-size:8px;
+.help{
+  margin-top:6px;
+  color:#647289;
+  font-size:7px;
   line-height:1.5;
-  margin-top:7px;
 }
 
-.postback-box{
-  margin-top:10px;
-  background:#080e19;
-  border:1px dashed #33435f;
+.param-box{
+  margin-top:12px;
+  padding:13px;
   border-radius:12px;
-  padding:12px;
+  background:#0a1220;
+  border:1px solid #1d2a40;
 }
 
-.postback-label{
-  color:#8290a6;
-  font-size:8px;
-}
-
-.postback-url{
-  color:#c9d4e7;
-  font-size:9px;
-  line-height:1.6;
-  word-break:break-all;
-  margin-top:7px;
-}
-
-.copy-postback{
-  border:0;
-  margin-top:9px;
-  color:#dd4df3;
-  background:none;
+.param-title{
   font-size:9px;
   font-weight:800;
-  cursor:pointer;
+}
+
+.param-example{
+  margin-top:8px;
+  color:#8ca1bd;
+  font-size:8px;
+  line-height:1.6;
+  word-break:break-all;
+}
+
+.switch-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  margin-top:10px;
+  border-radius:11px;
+  background:#0a1220;
+  border:1px solid #1d2a40;
+}
+
+.switch-info strong{
+  display:block;
+  font-size:9px;
+}
+
+.switch-info small{
+  display:block;
+  margin-top:4px;
+  color:#718096;
+  font-size:7px;
+  line-height:1.5;
+}
+
+.checkbox{
+  width:19px;
+  height:19px;
+}
+
+.warning{
+  margin-top:17px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,180,76,.06);
+  border:1px solid rgba(255,180,76,.16);
+  color:#c8a66e;
+  font-size:8px;
+  line-height:1.6;
 }
 
 .save{
   width:100%;
   height:48px;
-  margin-top:22px;
+  margin-top:20px;
   border:0;
   border-radius:12px;
-  background:linear-gradient(135deg,var(--purple),var(--pink));
   color:#fff;
   font-weight:800;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
   cursor:pointer;
 }
 
@@ -489,48 +600,27 @@ select:focus{
   cursor:pointer;
 }
 
-.warning{
-  margin-top:17px;
-  padding:12px;
-  border-radius:12px;
-  color:#e7b767;
-  background:rgba(255,180,76,.06);
-  border:1px solid rgba(255,180,76,.16);
-  font-size:8px;
-  line-height:1.6;
-}
-
-
-/* RESPONSIVE */
-
-@media(max-width:650px){
-
+@media(max-width:700px){
   .stats{
     grid-template-columns:1fr 1fr;
   }
 
-  .network-grid{
+  .network-stats{
     grid-template-columns:1fr 1fr;
   }
 
   .two{
     grid-template-columns:1fr;
   }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <header class="header">
 
-  <a href="admin.html" class="back">
-    ‹
-  </a>
+  <a href="admin.html" class="back">‹</a>
 
   <div class="logo">
     Offer<span>wax</span>
@@ -544,23 +634,20 @@ select:focus{
 
 <main class="container">
 
+<!-- HEADER -->
 
 <div class="page-head">
 
   <div>
-
-    <h1>
-      Affiliate Networks
-    </h1>
+    <h1>Networks & API</h1>
 
     <p>
-      Manage affiliate network integrations, offer feeds,
-      API configuration and postback settings.
+      Connect affiliate partners, configure tracking parameters,
+      sync offers and receive conversion postbacks.
     </p>
-
   </div>
 
-  <button class="add-btn" onclick="openNetworkModal()">
+  <button class="add-btn" onclick="openNetwork()">
     + Add Network
   </button>
 
@@ -572,283 +659,237 @@ select:focus{
 <section class="stats">
 
   <div class="stat">
-    <small>Total Networks</small>
-    <strong id="totalNetworks">2</strong>
+    <small>Networks</small>
+    <strong>1</strong>
   </div>
 
   <div class="stat">
-    <small>Active Networks</small>
-    <strong class="green">1</strong>
-  </div>
-
-  <div class="stat">
-    <small>Imported Offers</small>
+    <small>Synced Offers</small>
     <strong>0</strong>
   </div>
 
   <div class="stat">
-    <small>Pending Setup</small>
-    <strong class="orange">1</strong>
+    <small>Conversions Today</small>
+    <strong>0</strong>
+  </div>
+
+  <div class="stat">
+    <small>Postback Errors</small>
+    <strong class="green">0</strong>
   </div>
 
 </section>
 
 
-<div class="info">
-  API is used to fetch/sync available offers when supported by the
-  affiliate network. Postback is used to receive conversion events.
-  Each network may use different API fields, click-ID parameters and
-  event names.
-</div>
+<!-- OFFERWAX POSTBACK -->
+
+<section class="section">
+
+  <div class="section-title">
+    Offerwax Postback URL
+
+    <div class="section-sub">
+      Give this endpoint to the affiliate network after the backend is deployed.
+    </div>
+  </div>
 
 
-<!-- SEARCH -->
+  <div class="postback-box">
 
-<div class="toolbar">
-
-  <input
-    class="search"
-    id="searchInput"
-    type="text"
-    placeholder="Search network..."
-    oninput="filterNetworks()">
-
-  <select
-    class="filter"
-    id="statusFilter"
-    onchange="filterNetworks()">
-
-    <option value="all">
-      All
-    </option>
-
-    <option value="active">
-      Active
-    </option>
-
-    <option value="pending">
-      Pending
-    </option>
-
-  </select>
-
-</div>
-
-
-<!-- NETWORK LIST -->
-
-<div class="network-list" id="networkList">
-
-
-<!-- EXPONENT DEMO -->
-
-<div
-  class="network"
-  data-name="exponent"
-  data-status="active">
-
-  <div class="network-top">
-
-    <div class="network-logo">
-      EX
+    <div class="postback-label">
+      Server-to-Server Conversion Endpoint
     </div>
 
-    <div class="network-info">
+    <div class="postback-row">
 
-      <div class="network-name">
-        Exponent
+      <input
+        class="postback-url"
+        id="postbackURL"
+        readonly
+        value="https://api.offerwax.com/postback?click_id={click_id}&event={event}&payout={payout}&status={status}">
+
+      <button
+        class="copy-btn"
+        onclick="copyPostback()">
+        Copy
+      </button>
+
+    </div>
+
+    <div class="postback-note">
+      This is a placeholder structure only. Your real backend domain,
+      parameter names and authentication must match the affiliate
+      network's documentation before using it live.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NETWORKS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Connected Networks
+  </div>
+
+
+  <div class="network-list">
+
+
+    <div class="network">
+
+      <div class="network-top">
+
+        <div class="network-logo">
+          EX
+        </div>
+
+        <div class="network-info">
+
+          <div class="network-name">
+            Exponent
+          </div>
+
+          <div class="network-meta">
+            API + S2S Postback
+          </div>
+
+        </div>
+
+        <div class="status connected">
+          ● Connected
+        </div>
+
       </div>
 
-      <div class="network-id">
-        Network ID: NET-001
+
+      <div class="network-stats">
+
+        <div class="metric">
+          <small>Synced Offers</small>
+          <strong>0</strong>
+        </div>
+
+        <div class="metric">
+          <small>Clicks</small>
+          <strong>0</strong>
+        </div>
+
+        <div class="metric">
+          <small>Conversions</small>
+          <strong>0</strong>
+        </div>
+
+        <div class="metric">
+          <small>Revenue</small>
+          <strong>₹0</strong>
+        </div>
+
       </div>
 
-    </div>
 
-    <div class="status active">
-      ● Active
-    </div>
+      <div class="network-details">
 
-  </div>
+        <div class="detail">
+          <span>Offer Sync</span>
+          <span class="green">Enabled</span>
+        </div>
 
+        <div class="detail">
+          <span>Tracking Method</span>
+          <span>S2S / Click ID</span>
+        </div>
 
-  <div class="network-grid">
+        <div class="detail">
+          <span>Last Sync</span>
+          <span>Not synced yet</span>
+        </div>
 
-    <div class="metric">
-      <small>Imported Offers</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Live Offers</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Conversions</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Revenue</small>
-      <strong>₹0</strong>
-    </div>
-
-  </div>
-
-
-  <div class="network-meta">
-
-    <div class="meta-row">
-      <span>API Status</span>
-      <span class="green">Configured</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Postback</span>
-      <span class="green">Configured</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Click ID Parameter</span>
-      <span>sub1</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Last Sync</span>
-      <span>Not synced yet</span>
-    </div>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button
-      class="action-btn primary"
-      onclick="demoSync('Exponent')">
-      ↻ Sync Offers
-    </button>
-
-    <button
-      class="action-btn"
-      onclick="editDemo('Exponent')">
-      Edit
-    </button>
-
-    <button
-      class="action-btn"
-      onclick="testIntegration('Exponent')">
-      Test
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- SAMPLE PENDING -->
-
-<div
-  class="network"
-  data-name="sample network"
-  data-status="pending">
-
-  <div class="network-top">
-
-    <div class="network-logo">
-      SN
-    </div>
-
-    <div class="network-info">
-
-      <div class="network-name">
-        Sample Network
       </div>
 
-      <div class="network-id">
-        Network ID: NET-002
+
+      <div class="actions">
+
+        <button
+          class="action primary"
+          onclick="editNetwork()">
+          Configure
+        </button>
+
+        <button
+          class="action"
+          onclick="syncOffers()">
+          Sync Offers
+        </button>
+
+        <button
+          class="action"
+          onclick="testConnection()">
+          Test
+        </button>
+
       </div>
 
     </div>
 
-    <div class="status pending">
-      ● Setup Pending
+
+  </div>
+
+</section>
+
+
+<!-- ACTIVITY -->
+
+<section class="section">
+
+  <div class="section-title">
+    Integration Activity
+  </div>
+
+  <div class="log-card">
+
+    <div class="log">
+
+      <div class="log-icon">↻</div>
+
+      <div class="log-info">
+        <strong>Offer synchronization</strong>
+        <small>No real API request made yet</small>
+      </div>
+
+      <div class="log-status orange">
+        Demo
+      </div>
+
+    </div>
+
+
+    <div class="log">
+
+      <div class="log-icon">✓</div>
+
+      <div class="log-info">
+        <strong>Postback endpoint</strong>
+        <small>Backend endpoint still required</small>
+      </div>
+
+      <div class="log-status orange">
+        Setup
+      </div>
+
     </div>
 
   </div>
 
-
-  <div class="network-grid">
-
-    <div class="metric">
-      <small>Imported Offers</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Live Offers</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Conversions</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="metric">
-      <small>Revenue</small>
-      <strong>₹0</strong>
-    </div>
-
-  </div>
-
-
-  <div class="network-meta">
-
-    <div class="meta-row">
-      <span>API Status</span>
-      <span class="orange">Not configured</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Postback</span>
-      <span class="orange">Not configured</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Click ID Parameter</span>
-      <span>—</span>
-    </div>
-
-    <div class="meta-row">
-      <span>Last Sync</span>
-      <span>Never</span>
-    </div>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button
-      class="action-btn"
-      onclick="editDemo('Sample Network')">
-      Complete Setup
-    </button>
-
-  </div>
-
-</div>
-
-
-</div>
-
+</section>
 
 </main>
 
 
-<!-- ADD NETWORK MODAL -->
+<!-- NETWORK MODAL -->
 
 <div
   class="modal"
@@ -860,11 +901,11 @@ select:focus{
   <div class="modal-line"></div>
 
   <div class="modal-title">
-    Add Affiliate Network
+    Affiliate Network
   </div>
 
   <div class="modal-sub">
-    Configure the network's offer API and conversion tracking.
+    Configure how Offerwax communicates with your affiliate partner.
   </div>
 
 
@@ -876,11 +917,10 @@ select:focus{
       Network Details
     </div>
 
+
     <div class="field">
 
-      <label>
-        Network Name
-      </label>
+      <label>Network Name</label>
 
       <input
         id="networkName"
@@ -890,41 +930,25 @@ select:focus{
     </div>
 
 
-    <div class="two">
+    <div class="field">
 
-      <div class="field">
+      <label>Integration Type</label>
 
-        <label>
-          Account / Affiliate ID
-        </label>
+      <select id="integrationType">
 
-        <input
-          id="affiliateId"
-          type="text"
-          placeholder="Your affiliate ID">
+        <option value="api">
+          API + Postback
+        </option>
 
-      </div>
+        <option value="postback">
+          Postback Only
+        </option>
 
+        <option value="manual">
+          Manual
+        </option>
 
-      <div class="field">
-
-        <label>
-          Default Currency
-        </label>
-
-        <select id="currency">
-
-          <option value="INR">
-            INR ₹
-          </option>
-
-          <option value="USD">
-            USD $
-          </option>
-
-        </select>
-
-      </div>
+      </select>
 
     </div>
 
@@ -939,14 +963,13 @@ select:focus{
       Offer API
     </div>
 
+
     <div class="field">
 
-      <label>
-        API / Offer Feed URL
-      </label>
+      <label>API Base URL</label>
 
       <input
-        id="apiUrl"
+        id="apiURL"
         type="url"
         placeholder="https://network.example/api/offers">
 
@@ -955,52 +978,81 @@ select:focus{
 
     <div class="field">
 
-      <label>
-        API Key / Token
-      </label>
+      <label>API Key / Token</label>
 
       <input
         id="apiKey"
         type="password"
-        placeholder="Enter API key">
+        autocomplete="off"
+        placeholder="Enter API token">
 
-      <div class="secret-note">
-        API secrets must eventually be stored securely on the
-        Offerwax server, never inside public frontend code.
+      <div class="help">
+        In production this secret must stay on the Offerwax server,
+        never inside public frontend JavaScript.
       </div>
 
     </div>
 
 
-    <div class="field">
+    <div class="two">
 
-      <label>
-        API Authentication Type
-      </label>
+      <div class="field">
 
-      <select id="authType">
+        <label>Authentication Type</label>
 
-        <option>
-          Bearer Token
-        </option>
+        <select id="authType">
 
-        <option>
-          API Key
-        </option>
+          <option value="bearer">
+            Bearer Token
+          </option>
 
-        <option>
-          Query Parameter
-        </option>
+          <option value="query">
+            Query Parameter
+          </option>
 
-        <option>
-          Basic Authentication
-        </option>
+          <option value="header">
+            Custom Header
+          </option>
 
-        <option>
-          Custom
-        </option>
+          <option value="basic">
+            Basic Auth
+          </option>
 
-      </select>
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Currency</label>
+
+        <select id="currency">
+
+          <option>INR</option>
+          <option>USD</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="switch-row">
+
+      <div class="switch-info">
+        <strong>Automatic Offer Sync</strong>
+        <small>
+          Import/update network offers through the backend API.
+        </small>
+      </div>
+
+      <input
+        type="checkbox"
+        class="checkbox"
+        id="autoSync"
+        checked>
 
     </div>
 
@@ -1019,13 +1071,17 @@ select:focus{
     <div class="field">
 
       <label>
-        Click ID Parameter
+        Network Click ID Parameter
       </label>
 
       <input
-        id="clickParam"
+        id="clickParameter"
         type="text"
-        placeholder="Example: sub1 / aff_sub / click_id">
+        placeholder="Example: click_id">
+
+      <div class="help">
+        Use the exact parameter supported by the affiliate network.
+      </div>
 
     </div>
 
@@ -1033,46 +1089,43 @@ select:focus{
     <div class="field">
 
       <label>
-        Tracking URL Template
+        Additional Tracking Parameter
       </label>
 
       <input
-        id="trackingUrl"
+        id="subParameter"
         type="text"
-        placeholder="Network tracking URL">
+        placeholder="Example: sub_id">
+
+    </div>
+
+
+    <div class="param-box">
+
+      <div class="param-title">
+        Tracking Flow
+      </div>
+
+      <div class="param-example">
+        Offerwax User
+        → Offerwax Click ID
+        → Affiliate Tracking URL
+        → Advertiser
+        → Network Postback
+        → Offerwax Conversion
+      </div>
 
     </div>
 
   </div>
 
 
-  <!-- POSTBACK -->
+  <!-- POSTBACK MAPPING -->
 
   <div class="form-section">
 
     <div class="form-title">
-      Conversion Postback
-    </div>
-
-
-    <div class="postback-box">
-
-      <div class="postback-label">
-        Offerwax Postback URL
-      </div>
-
-      <div
-        class="postback-url"
-        id="postbackUrl">
-        https://api.offerwax.com/postback?network={network}&click_id={click_id}&event={event}&status={status}&payout={payout}
-      </div>
-
-      <button
-        class="copy-postback"
-        onclick="copyPostback()">
-        Copy Postback URL
-      </button>
-
+      Postback Mapping
     </div>
 
 
@@ -1081,34 +1134,16 @@ select:focus{
       <div class="field">
 
         <label>
-          Network Click ID Macro
+          Click ID Macro
         </label>
 
         <input
           id="clickMacro"
           type="text"
-          placeholder="Example: {sub1}">
+          placeholder="{click_id}">
 
       </div>
 
-
-      <div class="field">
-
-        <label>
-          Payout Macro
-        </label>
-
-        <input
-          id="payoutMacro"
-          type="text"
-          placeholder="Example: {payout}">
-
-      </div>
-
-    </div>
-
-
-    <div class="two">
 
       <div class="field">
 
@@ -1119,7 +1154,25 @@ select:focus{
         <input
           id="eventMacro"
           type="text"
-          placeholder="Example: {event}">
+          placeholder="{event}">
+
+      </div>
+
+    </div>
+
+
+    <div class="two">
+
+      <div class="field">
+
+        <label>
+          Payout Macro
+        </label>
+
+        <input
+          id="payoutMacro"
+          type="text"
+          placeholder="{payout}">
 
       </div>
 
@@ -1133,8 +1186,37 @@ select:focus{
         <input
           id="statusMacro"
           type="text"
-          placeholder="Example: {status}">
+          placeholder="{status}">
 
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EVENTS -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Conversion Events
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Payable Event
+      </label>
+
+      <input
+        id="payableEvent"
+        type="text"
+        placeholder="Example: account_opened">
+
+      <div class="help">
+        Only the validated payable event should trigger a user reward.
       </div>
 
     </div>
@@ -1143,13 +1225,71 @@ select:focus{
     <div class="field">
 
       <label>
-        Postback Secret / Verification Token
+        Pending Event
+      </label>
+
+      <input
+        id="pendingEvent"
+        type="text"
+        placeholder="Example: registration">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Rejected / Invalid Status
+      </label>
+
+      <input
+        id="rejectedEvent"
+        type="text"
+        placeholder="Example: rejected">
+
+    </div>
+
+  </div>
+
+
+  <!-- SECURITY -->
+
+  <div class="form-section">
+
+    <div class="form-title">
+      Security
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Postback Secret
       </label>
 
       <input
         id="postbackSecret"
         type="password"
-        placeholder="Optional verification secret">
+        autocomplete="off"
+        placeholder="Server-side secret">
+
+    </div>
+
+
+    <div class="switch-row">
+
+      <div class="switch-info">
+        <strong>Duplicate Protection</strong>
+        <small>
+          Prevent the same conversion ID from being credited twice.
+        </small>
+      </div>
+
+      <input
+        type="checkbox"
+        class="checkbox"
+        id="duplicateProtection"
+        checked>
 
     </div>
 
@@ -1157,23 +1297,22 @@ select:focus{
 
 
   <div class="warning">
-    This page currently stores no real credentials and does not call
-    affiliate APIs. Real API sync and incoming postbacks require a
-    protected backend/database. Do not place real API keys in public
-    HTML or JavaScript.
+    Different affiliate networks use different API fields,
+    macros and event names. Do not assume {click_id},
+    {event}, {payout} or {status} are valid for a real network.
+    Configure them according to that network's actual documentation.
   </div>
 
 
   <button
     class="save"
     onclick="saveNetwork()">
-    Save Network Configuration
+    Save Network
   </button>
-
 
   <button
     class="cancel"
-    onclick="closeNetworkModal()">
+    onclick="closeNetwork()">
     Cancel
   </button>
 
@@ -1184,9 +1323,9 @@ select:focus{
 
 <script>
 
-/* OPEN MODAL */
+/* MODAL */
 
-function openNetworkModal(){
+function openNetwork(){
 
   document
   .getElementById("networkModal")
@@ -1195,9 +1334,7 @@ function openNetworkModal(){
 }
 
 
-/* CLOSE MODAL */
-
-function closeNetworkModal(){
+function closeNetwork(){
 
   document
   .getElementById("networkModal")
@@ -1210,9 +1347,34 @@ function outsideClose(event){
 
   if(event.target.id === "networkModal"){
 
-    closeNetworkModal();
+    closeNetwork();
 
   }
+
+}
+
+
+/* EDIT DEMO */
+
+function editNetwork(){
+
+  document
+  .getElementById("networkName")
+  .value="Exponent";
+
+  document
+  .getElementById("integrationType")
+  .value="api";
+
+  document
+  .getElementById("currency")
+  .value="INR";
+
+  document
+  .getElementById("clickParameter")
+  .value="click_id";
+
+  openNetwork();
 
 }
 
@@ -1221,32 +1383,28 @@ function outsideClose(event){
 
 function copyPostback(){
 
-  const url =
+  const value =
     document
-    .getElementById("postbackUrl")
-    .innerText.trim();
+    .getElementById("postbackURL")
+    .value;
 
   navigator.clipboard
-  .writeText(url)
+  .writeText(value)
   .then(function(){
 
-    alert(
-      "Postback URL copied."
-    );
+    alert("Postback URL copied.");
 
   })
   .catch(function(){
 
-    alert(
-      "Copy the postback URL manually."
-    );
+    alert(value);
 
   });
 
 }
 
 
-/* SAVE NETWORK */
+/* SAVE */
 
 function saveNetwork(){
 
@@ -1255,45 +1413,28 @@ function saveNetwork(){
     .getElementById("networkName")
     .value.trim();
 
-  const apiUrl =
+  const type =
     document
-    .getElementById("apiUrl")
-    .value.trim();
+    .getElementById("integrationType")
+    .value;
 
-  const clickParam =
+  const apiURL =
     document
-    .getElementById("clickParam")
+    .getElementById("apiURL")
     .value.trim();
 
 
   if(!name){
 
-    alert(
-      "Enter the affiliate network name."
-    );
-
+    alert("Enter the affiliate network name.");
     return;
 
   }
 
 
-  if(!apiUrl){
+  if(type === "api" && !apiURL){
 
-    alert(
-      "Enter the network API / offer feed URL."
-    );
-
-    return;
-
-  }
-
-
-  if(!clickParam){
-
-    alert(
-      "Enter the network click ID parameter."
-    );
-
+    alert("Enter the network API URL.");
     return;
 
   }
@@ -1301,95 +1442,32 @@ function saveNetwork(){
 
   alert(
     name +
-    " configuration is ready on the frontend. " +
-    "Real API credentials will be saved when the secure backend is connected."
+    " configuration is ready. No API key or secret has been stored by this demo page. The backend will handle permanent secure storage."
   );
 
-  closeNetworkModal();
+  closeNetwork();
 
 }
 
 
-/* DEMO SYNC */
+/* SYNC */
 
-function demoSync(name){
+function syncOffers(){
 
   alert(
-    "Offer sync for " +
-    name +
-    " will work after its API is connected to the Offerwax backend."
+    "Demo only. After the backend is connected, Offerwax will request the network offer API, map supported fields and import/update offers."
   );
-
-}
-
-
-/* EDIT DEMO */
-
-function editDemo(name){
-
-  document
-  .getElementById("networkName")
-  .value=name;
-
-  openNetworkModal();
 
 }
 
 
 /* TEST */
 
-function testIntegration(name){
+function testConnection(){
 
   alert(
-    "API/Postback test for " +
-    name +
-    " requires the backend endpoint."
+    "No real API request is being made from this frontend. Connection testing will run server-side after the backend is connected."
   );
-
-}
-
-
-/* FILTER */
-
-function filterNetworks(){
-
-  const search =
-    document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase();
-
-  const status =
-    document
-    .getElementById("statusFilter")
-    .value;
-
-  const networks =
-    document
-    .querySelectorAll(".network");
-
-
-  networks.forEach(function(network){
-
-    const name =
-      network.dataset.name;
-
-    const networkStatus =
-      network.dataset.status;
-
-    const searchMatch =
-      name.includes(search);
-
-    const statusMatch =
-      status === "all" ||
-      networkStatus === status;
-
-    network.style.display =
-      searchMatch && statusMatch
-      ? "block"
-      : "none";
-
-  });
 
 }
 
