@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#060b16">
-<title>Offerwax | Register</title>
+
+<title>Offerwax | Login & Register</title>
 
 <style>
+
 :root{
   --bg:#060b16;
-  --bg2:#091120;
   --card:#0b1424;
-  --card2:#0d1728;
   --border:#263653;
   --text:#f7f8fc;
   --muted:#8c98ad;
@@ -26,19 +26,39 @@
   padding:0;
 }
 
-html{scroll-behavior:smooth;}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   min-height:100vh;
   font-family:Arial,Helvetica,sans-serif;
+
   background:
-    radial-gradient(circle at 82% 7%,rgba(136,35,255,.15),transparent 26%),
-    radial-gradient(circle at 10% 45%,rgba(34,99,255,.06),transparent 25%),
-    linear-gradient(180deg,#060a14,#07101d 55%,#060b15);
+    radial-gradient(
+      circle at 82% 7%,
+      rgba(136,35,255,.15),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 10% 45%,
+      rgba(34,99,255,.06),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #060a14,
+      #07101d 55%,
+      #060b15
+    );
+
   color:var(--text);
 }
 
-button,input{font-family:inherit;}
+button,
+input{
+  font-family:inherit;
+}
 
 .page{
   width:100%;
@@ -47,7 +67,9 @@ button,input{font-family:inherit;}
   padding:23px 18px 28px;
 }
 
-/* TOP */
+/* =========================
+   TOP
+========================= */
 
 .top{
   display:flex;
@@ -62,18 +84,25 @@ button,input{font-family:inherit;}
   letter-spacing:-1.4px;
 }
 
-.logo span{color:#dd2ee9;}
+.logo span{
+  color:#dd2ee9;
+}
 
 .safe{
   display:flex;
   align-items:center;
   gap:6px;
+
   border:1px solid #2c3a54;
   background:rgba(14,23,39,.75);
+
   border-radius:10px;
+
   padding:7px 9px;
+
   font-size:8px;
   font-weight:700;
+
   color:#dce2ec;
 }
 
@@ -82,7 +111,9 @@ button,input{font-family:inherit;}
   font-size:12px;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
   padding:31px 2px 23px;
@@ -90,24 +121,36 @@ button,input{font-family:inherit;}
 
 .hero h1{
   max-width:390px;
+
   font-size:35px;
   line-height:1.06;
+
   letter-spacing:-1.6px;
+
   font-weight:900;
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#f1d7ff,#d433ee);
+  background:linear-gradient(
+    90deg,
+    #f1d7ff,
+    #d433ee
+  );
+
   -webkit-background-clip:text;
   background-clip:text;
+
   color:transparent;
 }
 
 .hero-desc{
   max-width:360px;
+
   color:#a5aec0;
+
   font-size:11px;
   line-height:1.55;
+
   margin-top:12px;
 }
 
@@ -115,6 +158,7 @@ button,input{font-family:inherit;}
   display:flex;
   align-items:center;
   gap:9px;
+
   margin-top:17px;
 }
 
@@ -126,28 +170,54 @@ button,input{font-family:inherit;}
 .person{
   width:27px;
   height:27px;
+
   margin-left:-5px;
+
   border-radius:50%;
   border:2px solid #09101c;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:7px;
   font-weight:900;
+
   color:#fff;
-  background:linear-gradient(135deg,#7547e9,#d632de);
+
+  background:
+    linear-gradient(
+      135deg,
+      #7547e9,
+      #d632de
+    );
 }
 
 .person:nth-child(2){
-  background:linear-gradient(135deg,#235dc8,#633be7);
+  background:
+    linear-gradient(
+      135deg,
+      #235dc8,
+      #633be7
+    );
 }
 
 .person:nth-child(3){
-  background:linear-gradient(135deg,#a3532d,#d431b9);
+  background:
+    linear-gradient(
+      135deg,
+      #a3532d,
+      #d431b9
+    );
 }
 
 .person:nth-child(4){
-  background:linear-gradient(135deg,#147d68,#7850dc);
+  background:
+    linear-gradient(
+      135deg,
+      #147d68,
+      #7850dc
+    );
 }
 
 .trusted-text strong{
@@ -155,116 +225,192 @@ button,input{font-family:inherit;}
   font-size:10px;
 }
 
-.trusted-text strong b{color:#e037ed;}
+.trusted-text strong b{
+  color:#e037ed;
+}
 
 .trusted-text small{
   display:block;
+
   margin-top:3px;
+
   color:#7d899d;
+
   font-size:8px;
 }
 
-/* AUTH CARD */
+/* =========================
+   AUTH CARD
+========================= */
 
 .auth-card{
   padding:15px;
+
   border:1px solid #273751;
   border-radius:17px;
-  background:linear-gradient(145deg,rgba(15,27,47,.96),rgba(8,16,29,.96));
-  box-shadow:0 22px 55px rgba(0,0,0,.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,27,47,.96),
+      rgba(8,16,29,.96)
+    );
+
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.25);
 }
 
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:5px;
+
   padding:4px;
+
   border-radius:11px;
+
   background:#060d18;
+
   margin-bottom:14px;
 }
 
 .tab{
   border:0;
+
   height:43px;
+
   border-radius:9px;
+
   background:transparent;
+
   color:#717c90;
+
   font-size:10px;
   font-weight:800;
+
   cursor:pointer;
 }
 
 .tab.active{
   color:#fff;
-  background:linear-gradient(100deg,#7928f6,#df2ce8);
-  box-shadow:0 7px 20px rgba(188,38,231,.18);
+
+  background:
+    linear-gradient(
+      100deg,
+      #7928f6,
+      #df2ce8
+    );
+
+  box-shadow:
+    0 7px 20px rgba(188,38,231,.18);
 }
 
-.form{display:none;}
-.form.active{display:block;}
+.form{
+  display:none;
+}
 
-.field{margin-bottom:10px;}
+.form.active{
+  display:block;
+}
+
+.field{
+  margin-bottom:10px;
+}
 
 .field label{
   display:block;
+
   margin:0 0 5px 3px;
+
   color:#8d98aa;
+
   font-size:7px;
   font-weight:800;
 }
 
-.input-wrap{position:relative;}
+.input-wrap{
+  position:relative;
+}
 
 .input-icon{
   position:absolute;
+
   left:13px;
   top:50%;
+
   transform:translateY(-50%);
+
   color:#a6b0c2;
+
   font-size:12px;
 }
 
 .input{
   width:100%;
   height:46px;
+
   outline:none;
+
   border:1px solid #31415f;
   border-radius:11px;
+
   background:#07101d;
+
   color:#fff;
+
   padding:0 13px 0 38px;
+
   font-size:9.5px;
+
   transition:.2s;
 }
 
-.input.no-icon{padding-left:13px;}
-.input.password-input{padding-right:57px;}
+.input.no-icon{
+  padding-left:13px;
+}
+
+.input.password-input{
+  padding-right:57px;
+}
 
 .input:focus{
   border-color:#a63de2;
-  box-shadow:0 0 0 3px rgba(184,47,228,.06);
+
+  box-shadow:
+    0 0 0 3px rgba(184,47,228,.06);
 }
 
-.input::placeholder{color:#5d687d;}
+.input::placeholder{
+  color:#5d687d;
+}
 
 .show{
   position:absolute;
+
   right:7px;
   top:50%;
+
   transform:translateY(-50%);
+
   border:0;
+
   background:transparent;
+
   color:#dd43e8;
+
   padding:8px;
+
   font-size:7px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .two{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:8px;
 }
 
@@ -276,9 +422,13 @@ button,input{font-family:inherit;}
 .terms{
   display:flex;
   align-items:flex-start;
+
   gap:7px;
+
   margin:4px 2px 12px;
+
   color:#758196;
+
   font-size:7px;
   line-height:1.45;
 }
@@ -296,14 +446,26 @@ button,input{font-family:inherit;}
 .main-btn{
   width:100%;
   height:45px;
+
   border:0;
   border-radius:10px;
+
   color:#fff;
-  background:linear-gradient(100deg,#7628f2,#df2be9);
+
+  background:
+    linear-gradient(
+      100deg,
+      #7628f2,
+      #df2be9
+    );
+
   font-size:10px;
   font-weight:900;
+
   cursor:pointer;
-  box-shadow:0 9px 24px rgba(183,35,227,.2);
+
+  box-shadow:
+    0 9px 24px rgba(183,35,227,.2);
 }
 
 .main-btn:disabled{
@@ -311,14 +473,19 @@ button,input{font-family:inherit;}
   cursor:not-allowed;
 }
 
-.main-btn:active{transform:scale(.99);}
+.main-btn:active{
+  transform:scale(.99);
+}
 
 .login-options{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   margin-top:10px;
+
   color:#768297;
+
   font-size:7px;
 }
 
@@ -328,44 +495,71 @@ button,input{font-family:inherit;}
   gap:5px;
 }
 
-.remember input{accent-color:#9e2ee7;}
+.remember input{
+  accent-color:#9e2ee7;
+}
 
 .forgot{
   color:#db43e5;
+
   text-decoration:none;
+
   font-weight:700;
 }
 
-/* APK */
+/* =========================
+   APK
+========================= */
 
 .apk{
   margin-top:11px;
+
   min-height:62px;
+
   display:flex;
   align-items:center;
+
   gap:12px;
+
   padding:11px 13px;
+
   border:1px solid #8c32e3;
   border-radius:14px;
-  background:linear-gradient(100deg,rgba(83,30,146,.23),rgba(32,20,65,.48));
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(83,30,146,.23),
+      rgba(32,20,65,.48)
+    );
+
   text-decoration:none;
+
   color:#fff;
 }
 
 .apk-icon{
   width:39px;
   height:39px;
+
   min-width:39px;
+
   border-radius:10px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:#22173c;
+
   color:#df42ed;
+
   font-size:19px;
 }
 
-.apk-info{flex:1;}
+.apk-info{
+  flex:1;
+}
 
 .apk-info strong{
   display:block;
@@ -374,8 +568,11 @@ button,input{font-family:inherit;}
 
 .apk-info small{
   display:block;
+
   color:#909aab;
+
   margin-top:4px;
+
   font-size:7.5px;
 }
 
@@ -384,35 +581,49 @@ button,input{font-family:inherit;}
   font-size:21px;
 }
 
-/* FEATURES */
+/* =========================
+   FEATURES
+========================= */
 
 .features{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:9px;
+
   margin-top:10px;
 }
 
 .feature{
   min-height:58px;
+
   display:flex;
   align-items:center;
+
   gap:9px;
+
   border:1px solid #273751;
   border-radius:13px;
+
   background:#0b1422;
+
   padding:10px;
 }
 
 .feature-icon{
   width:35px;
   height:35px;
+
   min-width:35px;
+
   border-radius:10px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:#141f31;
+
   font-size:16px;
 }
 
@@ -423,46 +634,67 @@ button,input{font-family:inherit;}
 
 .feature small{
   display:block;
+
   margin-top:4px;
+
   color:#6e7b8f;
+
   font-size:6.5px;
 }
 
-/* WITHDRAWALS */
+/* =========================
+   WITHDRAWALS
+========================= */
 
-.withdrawals{margin-top:20px;}
+.withdrawals{
+  margin-top:20px;
+}
 
 .section-title{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   margin-bottom:9px;
 }
 
-.section-title h2{font-size:13px;}
+.section-title h2{
+  font-size:13px;
+}
 
 .live{
   display:flex;
   align-items:center;
+
   gap:5px;
+
   color:#7a8699;
+
   font-size:7px;
 }
 
 .live-dot{
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   background:var(--green);
-  box-shadow:0 0 8px rgba(41,223,139,.45);
+
+  box-shadow:
+    0 0 8px rgba(41,223,139,.45);
 }
 
 .withdraw-box{
   height:219px;
+
   overflow:hidden;
+
   border:1px solid #293952;
   border-radius:15px;
+
   background:#0a1321;
+
   padding:0 13px;
 }
 
@@ -472,21 +704,34 @@ button,input{font-family:inherit;}
 
 .withdraw-row{
   height:54px;
+
   display:flex;
   align-items:center;
+
   border-bottom:1px solid #202e42;
 }
 
 .avatar{
   width:31px;
   height:31px;
+
   min-width:31px;
+
   border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#29346a,#8a28d8);
+
+  background:
+    linear-gradient(
+      135deg,
+      #29346a,
+      #8a28d8
+    );
+
   color:#fff;
+
   font-size:7px;
   font-weight:900;
 }
@@ -503,29 +748,40 @@ button,input{font-family:inherit;}
 
 .withdraw-user small{
   display:block;
+
   color:#6d798d;
+
   font-size:6.5px;
+
   margin-top:3px;
 }
 
 .withdraw-time{
   color:#7a879a;
+
   font-size:6.5px;
+
   margin-right:15px;
 }
 
 .amount{
   color:#2ce08b;
+
   font-size:9px;
   font-weight:900;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
   margin-top:22px;
+
   padding-top:16px;
+
   border-top:1px solid #29354a;
+
   text-align:center;
 }
 
@@ -534,44 +790,51 @@ button,input{font-family:inherit;}
   font-weight:900;
 }
 
-.footer-logo span{color:#dc2fe8;}
+.footer-logo span{
+  color:#dc2fe8;
+}
 
 .footer-links{
   margin-top:9px;
+
   display:flex;
   justify-content:center;
+
   gap:14px;
 }
 
 .footer-links a{
   color:#929caf;
+
   text-decoration:none;
+
   font-size:7.5px;
 }
 
-.contact{
-  margin-top:11px;
-  color:#7f8b9f;
-  font-size:7px;
-  min-height:8px;
-}
-
 .copyright{
-  margin-top:9px;
+  margin-top:12px;
+
   color:#606c80;
+
   font-size:6.5px;
 }
 
 @media(max-width:360px){
-  .hero h1{font-size:31px;}
+
+  .hero h1{
+    font-size:31px;
+  }
 
   .two{
     grid-template-columns:1fr;
     gap:0;
   }
 
-  .withdraw-time{display:none;}
+  .withdraw-time{
+    display:none;
+  }
 }
+
 </style>
 </head>
 
@@ -580,12 +843,16 @@ button,input{font-family:inherit;}
 <main class="page">
 
 <header class="top">
-  <div class="logo">Offer<span>wax</span></div>
+
+  <div class="logo">
+    Offer<span>wax</span>
+  </div>
 
   <div class="safe">
     <span class="shield">♢</span>
     Secure & Safe
   </div>
+
 </header>
 
 <section class="hero">
@@ -610,8 +877,15 @@ button,input{font-family:inherit;}
     </div>
 
     <div class="trusted-text">
-      <strong>Trusted by <b>10,000+</b> users</strong>
-      <small>India's Earning Platform 🇮🇳</small>
+
+      <strong>
+        Trusted by <b>10,000+</b> users
+      </strong>
+
+      <small>
+        India's Earning Platform 🇮🇳
+      </small>
+
     </div>
 
   </div>
@@ -620,226 +894,268 @@ button,input{font-family:inherit;}
 
 <section class="auth-card">
 
-  <div class="tabs">
+<div class="tabs">
 
-    <button
-      type="button"
-      class="tab active"
-      id="registerTab"
-      onclick="showRegister()">
-      Register
-    </button>
+  <button
+    type="button"
+    class="tab active"
+    id="registerTab">
+    Register
+  </button>
 
-    <button
-      type="button"
-      class="tab"
-      id="loginTab"
-      onclick="showLogin()">
-      Login
-    </button>
+  <button
+    type="button"
+    class="tab"
+    id="loginTab">
+    Login
+  </button>
+
+</div>
+
+<!-- REGISTER -->
+
+<form
+  class="form active"
+  id="registerForm">
+
+<div class="field">
+
+  <label>FULL NAME</label>
+
+  <div class="input-wrap">
+
+    <span class="input-icon">♙</span>
+
+    <input
+      class="input"
+      id="fullName"
+      type="text"
+      placeholder="Enter your full name"
+      autocomplete="name"
+      required>
 
   </div>
 
-  <form
-    class="form active"
-    id="registerForm"
-    onsubmit="registerUser(event)">
+</div>
 
-    <div class="field">
-      <label>FULL NAME</label>
+<div class="field">
 
-      <div class="input-wrap">
-        <span class="input-icon">♙</span>
+  <label>MOBILE NUMBER</label>
 
-        <input
-          class="input"
-          id="fullName"
-          type="text"
-          placeholder="Enter your full name"
-          autocomplete="name"
-          required>
-      </div>
-    </div>
+  <div class="input-wrap">
 
-    <div class="field">
-      <label>MOBILE NUMBER</label>
+    <span class="input-icon">▯</span>
 
-      <div class="input-wrap">
-        <span class="input-icon">▯</span>
+    <input
+      class="input"
+      id="registerMobile"
+      type="tel"
+      inputmode="numeric"
+      maxlength="10"
+      placeholder="Enter mobile number"
+      autocomplete="tel"
+      required>
 
-        <input
-          class="input"
-          id="registerMobile"
-          type="tel"
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="Enter mobile number"
-          autocomplete="tel"
-          required>
-      </div>
-    </div>
+  </div>
 
-    <div class="two">
+</div>
 
-      <div class="field">
-        <label>PASSWORD</label>
+<div class="two">
 
-        <div class="input-wrap">
+<div class="field">
 
-          <input
-            class="input no-icon password-input"
-            id="registerPassword"
-            type="password"
-            placeholder="Create password"
-            autocomplete="new-password"
-            required>
+<label>PASSWORD</label>
 
-          <button
-            class="show"
-            type="button"
-            onclick="togglePassword('registerPassword',this)">
-            SHOW
-          </button>
+<div class="input-wrap">
 
-        </div>
-      </div>
+<input
+  class="input no-icon password-input"
+  id="registerPassword"
+  type="password"
+  placeholder="Create password"
+  autocomplete="new-password"
+  required>
 
-      <div class="field">
-        <label>CONFIRM PASSWORD</label>
+<button
+  class="show"
+  type="button"
+  data-password="registerPassword">
+  SHOW
+</button>
 
-        <div class="input-wrap">
+</div>
 
-          <input
-            class="input no-icon password-input"
-            id="confirmPassword"
-            type="password"
-            placeholder="Confirm"
-            autocomplete="new-password"
-            required>
+</div>
 
-          <button
-            class="show"
-            type="button"
-            onclick="togglePassword('confirmPassword',this)">
-            SHOW
-          </button>
+<div class="field">
 
-        </div>
-      </div>
+<label>CONFIRM PASSWORD</label>
 
-    </div>
+<div class="input-wrap">
 
-    <div class="field">
+<input
+  class="input no-icon password-input"
+  id="confirmPassword"
+  type="password"
+  placeholder="Confirm password"
+  autocomplete="new-password"
+  required>
 
-      <label>
-        REFERRAL CODE
-        <span class="optional">(OPTIONAL)</span>
-      </label>
+<button
+  class="show"
+  type="button"
+  data-password="confirmPassword">
+  SHOW
+</button>
 
-      <input
-        class="input no-icon"
-        id="referralCode"
-        type="text"
-        placeholder="Enter referral code">
+</div>
 
-    </div>
+</div>
 
-    <label class="terms">
+</div>
 
-      <input
-        id="terms"
-        type="checkbox">
+<div class="field">
 
-      <span>
-        I agree to Offerwax
-        <a href="terms.html">Terms</a>
-        and
-        <a href="privacy.html">Privacy Policy</a>.
-      </span>
+<label>
+  REFERRAL CODE
+  <span class="optional">(OPTIONAL)</span>
+</label>
 
-    </label>
+<input
+  class="input no-icon"
+  id="referralCode"
+  type="text"
+  placeholder="Enter referral code">
 
-    <button type="submit" class="main-btn">
-      Create Account →
-    </button>
+</div>
 
-  </form>
+<label class="terms">
 
-  <form
-    class="form"
-    id="loginForm"
-    onsubmit="loginUser(event)">
+<input
+  id="terms"
+  type="checkbox">
 
-    <div class="field">
+<span>
 
-      <label>MOBILE NUMBER</label>
+I agree to Offerwax
 
-      <div class="input-wrap">
+<a href="terms.html">
+Terms
+</a>
 
-        <span class="input-icon">▯</span>
+and
 
-        <input
-          class="input"
-          id="loginMobile"
-          type="tel"
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="Enter mobile number"
-          autocomplete="tel"
-          required>
+<a href="privacy.html">
+Privacy Policy
+</a>.
 
-      </div>
+</span>
 
-    </div>
+</label>
 
-    <div class="field">
+<button
+  type="submit"
+  class="main-btn">
 
-      <label>PASSWORD</label>
+  Create Account →
 
-      <div class="input-wrap">
+</button>
 
-        <span class="input-icon">♙</span>
+</form>
 
-        <input
-          class="input password-input"
-          id="loginPassword"
-          type="password"
-          placeholder="Enter password"
-          autocomplete="current-password"
-          required>
+<!-- LOGIN -->
 
-        <button
-          class="show"
-          type="button"
-          onclick="togglePassword('loginPassword',this)">
-          SHOW
-        </button>
+<form
+  class="form"
+  id="loginForm">
 
-      </div>
+<div class="field">
 
-    </div>
+<label>MOBILE NUMBER</label>
 
-    <button type="submit" class="main-btn">
-      Login →
-    </button>
+<div class="input-wrap">
 
-    <div class="login-options">
+<span class="input-icon">
+▯
+</span>
 
-      <label class="remember">
-        <input id="rememberMe" type="checkbox">
-        Remember me
-      </label>
+<input
+  class="input"
+  id="loginMobile"
+  type="tel"
+  inputmode="numeric"
+  maxlength="10"
+  placeholder="Enter mobile number"
+  autocomplete="tel"
+  required>
 
-      <a
-        href="#"
-        class="forgot"
-        onclick="forgotPassword(event)">
-        Forgot password?
-      </a>
+</div>
 
-    </div>
+</div>
 
-  </form>
+<div class="field">
+
+<label>PASSWORD</label>
+
+<div class="input-wrap">
+
+<span class="input-icon">
+♙
+</span>
+
+<input
+  class="input password-input"
+  id="loginPassword"
+  type="password"
+  placeholder="Enter password"
+  autocomplete="current-password"
+  required>
+
+<button
+  class="show"
+  type="button"
+  data-password="loginPassword">
+
+SHOW
+
+</button>
+
+</div>
+
+</div>
+
+<button
+  type="submit"
+  class="main-btn">
+
+Login →
+
+</button>
+
+<div class="login-options">
+
+<label class="remember">
+
+<input
+  id="rememberMe"
+  type="checkbox">
+
+Remember me
+
+</label>
+
+<a
+  href="#"
+  class="forgot"
+  id="forgotPassword">
+
+Forgot password?
+
+</a>
+
+</div>
+
+</form>
 
 </section>
 
@@ -848,155 +1164,241 @@ button,input{font-family:inherit;}
   download
   class="apk">
 
-  <div class="apk-icon">♟</div>
+<div class="apk-icon">
+♟
+</div>
 
-  <div class="apk-info">
-    <strong>Download Offerwax APK</strong>
-    <small>Get the app for a better experience</small>
-  </div>
+<div class="apk-info">
 
-  <div class="apk-arrow">›</div>
+<strong>
+Download Offerwax APK
+</strong>
+
+<small>
+Get the app for a better experience
+</small>
+
+</div>
+
+<div class="apk-arrow">
+›
+</div>
 
 </a>
 
 <section class="features">
 
-  <div class="feature">
+<div class="feature">
 
-    <div class="feature-icon">⚡</div>
+<div class="feature-icon">
+⚡
+</div>
 
-    <div>
-      <strong>Fast Payment</strong>
-      <small>Quick & secure payouts</small>
-    </div>
+<div>
 
-  </div>
+<strong>
+Fast Payment
+</strong>
 
-  <div class="feature">
+<small>
+Quick & secure payouts
+</small>
 
-    <div class="feature-icon">🎧</div>
+</div>
 
-    <div>
-      <strong>24 Hours Support</strong>
-      <small>We're here to help you</small>
-    </div>
+</div>
 
-  </div>
+<div class="feature">
+
+<div class="feature-icon">
+🎧
+</div>
+
+<div>
+
+<strong>
+24 Hours Support
+</strong>
+
+<small>
+We're here to help you
+</small>
+
+</div>
+
+</div>
 
 </section>
 
 <section class="withdrawals">
 
-  <div class="section-title">
+<div class="section-title">
 
-    <h2>Recent Withdrawals</h2>
+<h2>
+Recent Withdrawals
+</h2>
 
-    <div class="live">
-      <span class="live-dot"></span>
-      Live Updates
-    </div>
+<div class="live">
 
-  </div>
+<span class="live-dot"></span>
 
-  <div class="withdraw-box">
+Live Updates
 
-    <div class="withdraw-list" id="withdrawList">
+</div>
 
-      <div class="withdraw-row">
-        <div class="avatar">AM</div>
+</div>
 
-        <div class="withdraw-user">
-          <strong>Amit</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="withdraw-box">
 
-        <div class="withdraw-time">2 min ago</div>
-        <div class="amount">₹10,000</div>
-      </div>
+<div
+  class="withdraw-list"
+  id="withdrawList">
 
-      <div class="withdraw-row">
-        <div class="avatar">AK</div>
+<div class="withdraw-row">
 
-        <div class="withdraw-user">
-          <strong>Akash</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="avatar">AM</div>
 
-        <div class="withdraw-time">8 min ago</div>
-        <div class="amount">₹2,500</div>
-      </div>
+<div class="withdraw-user">
+<strong>Amit</strong>
+<small>Withdrawal</small>
+</div>
 
-      <div class="withdraw-row">
-        <div class="avatar">SH</div>
+<div class="withdraw-time">
+2 min ago
+</div>
 
-        <div class="withdraw-user">
-          <strong>Shreya</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="amount">
+₹10,000
+</div>
 
-        <div class="withdraw-time">15 min ago</div>
-        <div class="amount">₹5,000</div>
-      </div>
+</div>
 
-      <div class="withdraw-row">
-        <div class="avatar">RA</div>
+<div class="withdraw-row">
 
-        <div class="withdraw-user">
-          <strong>Rahul</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="avatar">AK</div>
 
-        <div class="withdraw-time">27 min ago</div>
-        <div class="amount">₹1,800</div>
-      </div>
+<div class="withdraw-user">
+<strong>Akash</strong>
+<small>Withdrawal</small>
+</div>
 
-      <div class="withdraw-row">
-        <div class="avatar">AN</div>
+<div class="withdraw-time">
+8 min ago
+</div>
 
-        <div class="withdraw-user">
-          <strong>Ankit</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="amount">
+₹2,500
+</div>
 
-        <div class="withdraw-time">36 min ago</div>
-        <div class="amount">₹3,200</div>
-      </div>
+</div>
 
-      <div class="withdraw-row">
-        <div class="avatar">PR</div>
+<div class="withdraw-row">
 
-        <div class="withdraw-user">
-          <strong>Priya</strong>
-          <small>Withdrawal</small>
-        </div>
+<div class="avatar">SH</div>
 
-        <div class="withdraw-time">42 min ago</div>
-        <div class="amount">₹4,500</div>
-      </div>
+<div class="withdraw-user">
+<strong>Shreya</strong>
+<small>Withdrawal</small>
+</div>
 
-    </div>
+<div class="withdraw-time">
+15 min ago
+</div>
 
-  </div>
+<div class="amount">
+₹5,000
+</div>
+
+</div>
+
+<div class="withdraw-row">
+
+<div class="avatar">RA</div>
+
+<div class="withdraw-user">
+<strong>Rahul</strong>
+<small>Withdrawal</small>
+</div>
+
+<div class="withdraw-time">
+27 min ago
+</div>
+
+<div class="amount">
+₹1,800
+</div>
+
+</div>
+
+<div class="withdraw-row">
+
+<div class="avatar">AN</div>
+
+<div class="withdraw-user">
+<strong>Ankit</strong>
+<small>Withdrawal</small>
+</div>
+
+<div class="withdraw-time">
+36 min ago
+</div>
+
+<div class="amount">
+₹3,200
+</div>
+
+</div>
+
+<div class="withdraw-row">
+
+<div class="avatar">PR</div>
+
+<div class="withdraw-user">
+<strong>Priya</strong>
+<small>Withdrawal</small>
+</div>
+
+<div class="withdraw-time">
+42 min ago
+</div>
+
+<div class="amount">
+₹4,500
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 <footer class="footer">
 
-  <div class="footer-logo">
-    Offer<span>wax</span>
-  </div>
+<div class="footer-logo">
+Offer<span>wax</span>
+</div>
 
-  <div class="footer-links">
-    <a href="terms.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="support.html">Support</a>
-  </div>
+<div class="footer-links">
 
-  <div class="contact" id="contactEmail"></div>
+<a href="terms.html">
+Terms
+</a>
 
-  <div class="copyright">
-    © 2026 Offerwax. All rights reserved.
-  </div>
+<a href="privacy.html">
+Privacy
+</a>
+
+<a href="support.html">
+Support
+</a>
+
+</div>
+
+<div class="copyright">
+© 2026 Offerwax. All rights reserved.
+</div>
 
 </footer>
 
@@ -1004,344 +1406,580 @@ button,input{font-family:inherit;}
 
 <script>
 
-const API_BASE =
-  "https://offerwax-api.technicalbikash59.workers.dev";
+/* =========================
+   API
+========================= */
 
-/* TABS */
+const API_BASE =
+"https://offerwax-api.technicalbikash59.workers.dev";
+
+/* =========================
+   EXISTING SESSION
+========================= */
+
+const existingToken =
+localStorage.getItem("offerwax_token");
+
+if(existingToken){
+
+  fetch(
+    API_BASE + "/api/me",
+    {
+      headers:{
+        "Authorization":
+        "Bearer " + existingToken
+      }
+    }
+  )
+  .then(async response => {
+
+    if(response.ok){
+
+      window.location.replace(
+        "index.html"
+      );
+
+    }else{
+
+      localStorage.removeItem(
+        "offerwax_token"
+      );
+
+      localStorage.removeItem(
+        "offerwax_user"
+      );
+    }
+
+  })
+  .catch(() => {});
+
+}
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const registerTab =
+document.getElementById(
+  "registerTab"
+);
+
+const loginTab =
+document.getElementById(
+  "loginTab"
+);
+
+const registerForm =
+document.getElementById(
+  "registerForm"
+);
+
+const loginForm =
+document.getElementById(
+  "loginForm"
+);
+
+/* =========================
+   TABS
+========================= */
 
 function showRegister(){
 
-  document.getElementById("registerForm")
-    .classList.add("active");
+  registerForm.classList.add(
+    "active"
+  );
 
-  document.getElementById("loginForm")
-    .classList.remove("active");
+  loginForm.classList.remove(
+    "active"
+  );
 
-  document.getElementById("registerTab")
-    .classList.add("active");
+  registerTab.classList.add(
+    "active"
+  );
 
-  document.getElementById("loginTab")
-    .classList.remove("active");
+  loginTab.classList.remove(
+    "active"
+  );
 }
 
 function showLogin(){
 
-  document.getElementById("loginForm")
-    .classList.add("active");
-
-  document.getElementById("registerForm")
-    .classList.remove("active");
-
-  document.getElementById("loginTab")
-    .classList.add("active");
-
-  document.getElementById("registerTab")
-    .classList.remove("active");
-}
-
-/* PASSWORD */
-
-function togglePassword(id,button){
-
-  const input = document.getElementById(id);
-
-  if(input.type === "password"){
-    input.type = "text";
-    button.innerText = "HIDE";
-  }else{
-    input.type = "password";
-    button.innerText = "SHOW";
-  }
-}
-
-/* MOBILE */
-
-function validMobile(number){
-  return /^[6-9][0-9]{9}$/.test(number);
-}
-
-/* REGISTER */
-
-async function registerUser(event){
-
-  event.preventDefault();
-
-  const button =
-    event.target.querySelector(".main-btn");
-
-  const originalText = button.innerText;
-
-  const name =
-    document.getElementById("fullName")
-      .value.trim();
-
-  const mobile =
-    document.getElementById("registerMobile")
-      .value.trim();
-
-  const password =
-    document.getElementById("registerPassword")
-      .value;
-
-  const confirm =
-    document.getElementById("confirmPassword")
-      .value;
-
-  const referralCode =
-    document.getElementById("referralCode")
-      .value.trim().toUpperCase();
-
-  const terms =
-    document.getElementById("terms").checked;
-
-  if(name.length < 2){
-    alert("Please enter your full name.");
-    return;
-  }
-
-  if(!validMobile(mobile)){
-    alert("Please enter a valid 10-digit mobile number.");
-    return;
-  }
-
-  if(password.length < 6){
-    alert("Password must contain at least 6 characters.");
-    return;
-  }
-
-  if(password !== confirm){
-    alert("Passwords do not match.");
-    return;
-  }
-
-  if(!terms){
-    alert("Please accept Terms and Privacy Policy.");
-    return;
-  }
-
-  try{
-
-    button.disabled = true;
-    button.innerText = "Creating Account...";
-
-    const response = await fetch(
-      API_BASE + "/api/register",
-      {
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          name:name,
-          mobile:mobile,
-          password:password,
-          referral_code:referralCode || ""
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if(!response.ok || !data.success){
-      alert(
-        data.message ||
-        "Registration failed. Please try again."
-      );
-      return;
-    }
-
-    /*
-      Current Worker verifies/saves the user in D1.
-      Do NOT pretend we have secure authentication
-      until the Worker starts issuing real sessions.
-    */
-
-    if(data.user){
-      localStorage.setItem(
-        "offerwax_user",
-        JSON.stringify(data.user)
-      );
-    }
-
-    alert(
-      data.message ||
-      "Account created successfully."
-    );
-
-    /*
-      Registration is real.
-      User logs in next.
-    */
-
-    document.getElementById("loginMobile").value =
-      mobile;
-
-    document.getElementById("loginPassword").value =
-      "";
-
-    showLogin();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Unable to connect to Offerwax. Please check your internet and try again."
-    );
-
-  }finally{
-
-    button.disabled = false;
-    button.innerText = originalText;
-  }
-}
-
-/* LOGIN */
-
-async function loginUser(event){
-
-  event.preventDefault();
-
-  const button =
-    event.target.querySelector(".main-btn");
-
-  const originalText = button.innerText;
-
-  const mobile =
-    document.getElementById("loginMobile")
-      .value.trim();
-
-  const password =
-    document.getElementById("loginPassword")
-      .value;
-
-  if(!validMobile(mobile)){
-    alert("Please enter a valid mobile number.");
-    return;
-  }
-
-  if(!password){
-    alert("Please enter your password.");
-    return;
-  }
-
-  try{
-
-    button.disabled = true;
-    button.innerText = "Logging in...";
-
-    const response = await fetch(
-      API_BASE + "/api/login",
-      {
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          mobile:mobile,
-          password:password
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if(!response.ok || !data.success){
-      alert(
-        data.message ||
-        "Invalid mobile number or password."
-      );
-      return;
-    }
-
-    if(data.user){
-      localStorage.setItem(
-        "offerwax_user",
-        JSON.stringify(data.user)
-      );
-    }
-
-    /*
-      IMPORTANT:
-      Current backend does not issue a secure
-      login session/token yet.
-
-      So we intentionally do NOT create a fake
-      logged-in session in localStorage here.
-    */
-
-    alert(
-      "Login verified successfully. Secure session setup is the next backend step."
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Unable to connect to Offerwax. Please check your internet and try again."
-    );
-
-  }finally{
-
-    button.disabled = false;
-    button.innerText = originalText;
-  }
-}
-
-/* FORGOT PASSWORD */
-
-function forgotPassword(event){
-
-  event.preventDefault();
-
-  alert(
-    "Password recovery will be available soon."
+  loginForm.classList.add(
+    "active"
+  );
+
+  registerForm.classList.remove(
+    "active"
+  );
+
+  loginTab.classList.add(
+    "active"
+  );
+
+  registerTab.classList.remove(
+    "active"
   );
 }
 
-/* REFERRAL */
+registerTab.addEventListener(
+  "click",
+  showRegister
+);
+
+loginTab.addEventListener(
+  "click",
+  showLogin
+);
+
+/* =========================
+   PASSWORD SHOW/HIDE
+========================= */
+
+document
+.querySelectorAll(
+  "[data-password]"
+)
+.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      const input =
+      document.getElementById(
+        this.dataset.password
+      );
+
+      if(
+        input.type ===
+        "password"
+      ){
+
+        input.type = "text";
+
+        this.textContent =
+        "HIDE";
+
+      }else{
+
+        input.type =
+        "password";
+
+        this.textContent =
+        "SHOW";
+      }
+    }
+  );
+
+});
+
+/* =========================
+   MOBILE VALIDATION
+========================= */
+
+function validMobile(number){
+
+  return /^[6-9][0-9]{9}$/
+    .test(number);
+}
+
+/* =========================
+   SAVE LOGIN
+========================= */
+
+function saveLogin(data){
+
+  if(!data.token){
+    throw new Error(
+      "Session token missing."
+    );
+  }
+
+  localStorage.setItem(
+    "offerwax_token",
+    data.token
+  );
+
+  if(data.user){
+
+    localStorage.setItem(
+      "offerwax_user",
+      JSON.stringify(
+        data.user
+      )
+    );
+  }
+}
+
+/* =========================
+   REGISTER
+========================= */
+
+registerForm.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+const button =
+registerForm.querySelector(
+  ".main-btn"
+);
+
+const originalText =
+button.textContent;
+
+const name =
+document.getElementById(
+  "fullName"
+).value.trim();
+
+const mobile =
+document.getElementById(
+  "registerMobile"
+).value.trim();
+
+const password =
+document.getElementById(
+  "registerPassword"
+).value;
+
+const confirmPassword =
+document.getElementById(
+  "confirmPassword"
+).value;
+
+const referralCode =
+document.getElementById(
+  "referralCode"
+).value
+.trim()
+.toUpperCase();
+
+const terms =
+document.getElementById(
+  "terms"
+).checked;
+
+if(name.length < 2){
+
+  alert(
+    "Please enter your full name."
+  );
+
+  return;
+}
+
+if(!validMobile(mobile)){
+
+  alert(
+    "Please enter a valid 10-digit mobile number."
+  );
+
+  return;
+}
+
+if(password.length < 6){
+
+  alert(
+    "Password must contain at least 6 characters."
+  );
+
+  return;
+}
+
+if(
+  password !==
+  confirmPassword
+){
+
+  alert(
+    "Passwords do not match."
+  );
+
+  return;
+}
+
+if(!terms){
+
+  alert(
+    "Please accept Terms and Privacy Policy."
+  );
+
+  return;
+}
+
+try{
+
+  button.disabled = true;
+
+  button.textContent =
+  "Creating Account...";
+
+  const response =
+  await fetch(
+    API_BASE +
+    "/api/register",
+    {
+      method:"POST",
+
+      headers:{
+        "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+        name,
+        mobile,
+        password,
+        referral_code:
+          referralCode || ""
+      })
+    }
+  );
+
+  const data =
+  await response.json();
+
+  if(
+    !response.ok ||
+    !data.success
+  ){
+
+    alert(
+      data.message ||
+      "Registration failed."
+    );
+
+    return;
+  }
+
+  saveLogin(data);
+
+  window.location.replace(
+    "index.html"
+  );
+
+}catch(error){
+
+  console.error(error);
+
+  alert(
+    "Unable to connect to Offerwax. Please try again."
+  );
+
+}finally{
+
+  button.disabled = false;
+
+  button.textContent =
+  originalText;
+}
+
+});
+
+/* =========================
+   LOGIN
+========================= */
+
+loginForm.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+const button =
+loginForm.querySelector(
+  ".main-btn"
+);
+
+const originalText =
+button.textContent;
+
+const mobile =
+document.getElementById(
+  "loginMobile"
+).value.trim();
+
+const password =
+document.getElementById(
+  "loginPassword"
+).value;
+
+if(!validMobile(mobile)){
+
+  alert(
+    "Please enter a valid mobile number."
+  );
+
+  return;
+}
+
+if(!password){
+
+  alert(
+    "Please enter your password."
+  );
+
+  return;
+}
+
+try{
+
+  button.disabled = true;
+
+  button.textContent =
+  "Logging in...";
+
+  const response =
+  await fetch(
+    API_BASE +
+    "/api/login",
+    {
+      method:"POST",
+
+      headers:{
+        "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+        mobile,
+        password
+      })
+    }
+  );
+
+  const data =
+  await response.json();
+
+  if(
+    !response.ok ||
+    !data.success
+  ){
+
+    alert(
+      data.message ||
+      "Invalid mobile number or password."
+    );
+
+    return;
+  }
+
+  if(!data.token){
+
+    alert(
+      "Login session could not be created."
+    );
+
+    return;
+  }
+
+  saveLogin(data);
+
+  window.location.replace(
+    "index.html"
+  );
+
+}catch(error){
+
+  console.error(error);
+
+  alert(
+    "Unable to connect to Offerwax. Please try again."
+  );
+
+}finally{
+
+  button.disabled = false;
+
+  button.textContent =
+  originalText;
+}
+
+});
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+document
+.getElementById(
+  "forgotPassword"
+)
+.addEventListener(
+"click",
+function(event){
+
+event.preventDefault();
+
+alert(
+  "Password recovery will be available soon."
+);
+
+});
+
+/* =========================
+   REFERRAL URL
+========================= */
 
 const params =
-  new URLSearchParams(window.location.search);
+new URLSearchParams(
+  window.location.search
+);
 
-const ref = params.get("ref");
+const ref =
+params.get("ref");
 
 if(ref){
 
-  document.getElementById("referralCode").value =
-    ref.toUpperCase();
+  document.getElementById(
+    "referralCode"
+  ).value =
+  ref.toUpperCase();
 }
 
-/* WITHDRAWAL MOVEMENT */
+/* =========================
+   WITHDRAWALS
+========================= */
 
 const withdrawList =
-  document.getElementById("withdrawList");
+document.getElementById(
+  "withdrawList"
+);
 
 if(withdrawList){
 
-  const withdrawRows =
-    withdrawList.querySelectorAll(".withdraw-row");
+  const rows =
+  withdrawList.querySelectorAll(
+    ".withdraw-row"
+  );
 
-  let currentWithdraw = 0;
+  let current = 0;
 
-  setInterval(function(){
+  setInterval(
+    function(){
 
-    currentWithdraw++;
+      current++;
 
-    if(currentWithdraw > withdrawRows.length - 4){
-      currentWithdraw = 0;
-    }
+      if(
+        current >
+        rows.length - 4
+      ){
+        current = 0;
+      }
 
-    withdrawList.style.transform =
+      withdrawList.style.transform =
       "translateY(-" +
-      (currentWithdraw * 54) +
+      (current * 54) +
       "px)";
 
-  },2800);
+    },
+    2800
+  );
 }
 
 </script>
 
 </body>
-   </html>
+  </html>
